@@ -1,7 +1,36 @@
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/hooks/useAuth';
 import Link from 'next/link';
 import { ArrowRight, Shield, Zap, BarChart3, Users } from 'lucide-react';
+import { NoSSR } from '@/components/common/NoSSR';
 
-export default function Home() {
+function HomeContent() {
+  const { user, isLoading } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!isLoading && user) {
+      router.push('/dashboard');
+    }
+  }, [user, isLoading, router]);
+
+  // Se está carregando ou usuário está logado, mostrar loading
+  if (isLoading || user) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <span className="text-white font-bold text-sm">AB</span>
+          </div>
+          <p className="text-gray-600">Carregando...</p>
+        </div>
+      </div>
+    );
+  }
+
   const features = [
     {
       icon: <Shield className="w-8 h-8 text-blue-600" />,
@@ -165,5 +194,22 @@ export default function Home() {
         </div>
       </section>
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <NoSSR fallback={
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <span className="text-white font-bold text-sm">AB</span>
+          </div>
+          <p className="text-gray-600">Carregando...</p>
+        </div>
+      </div>
+    }>
+      <HomeContent />
+    </NoSSR>
   );
 }

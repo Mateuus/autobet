@@ -1,7 +1,6 @@
 'use client';
 
-import { ClientHeader } from '@/components/layout/ClientHeader';
-import { Footer } from '@/components/layout/Footer';
+import { DashboardLayout } from '@/components/layout/DashboardLayout';
 
 interface ClientLayoutProps {
   children: React.ReactNode;
@@ -9,12 +8,8 @@ interface ClientLayoutProps {
 
 export function ClientLayout({ children }: ClientLayoutProps) {
   return (
-    <div className="min-h-screen flex flex-col">
-      <ClientHeader />
-      <main className="flex-1">
-        {children}
-      </main>
-      <Footer />
-    </div>
+    <DashboardLayout>
+      {children}
+    </DashboardLayout>
   );
 }
