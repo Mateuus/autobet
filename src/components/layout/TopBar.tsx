@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { 
   Bell, 
   Search, 
@@ -58,48 +59,65 @@ export function TopBar({ onMenuToggle, title = 'Dashboard' }: TopBarProps) {
           </button>
 
           {/* User Menu */}
-          <div className="relative">
-            <button
-              onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-              className="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 transition-colors"
-            >
-              <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                <span className="text-sm font-medium text-gray-700">
-                  {user?.name?.charAt(0) || 'U'}
-                </span>
-              </div>
-              <div className="hidden md:block text-left">
-                <p className="text-sm font-medium text-gray-900">
-                  {user?.name || 'Usuário'}
-                </p>
-                <p className="text-xs text-gray-500">
-                  {user?.email || 'email@exemplo.com'}
-                </p>
-              </div>
-            </button>
+          {user ? (
+            <div className="relative">
+              <button
+                onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                className="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 transition-colors"
+              >
+                <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                  <span className="text-sm font-medium text-gray-700">
+                    {user?.name?.charAt(0) || 'U'}
+                  </span>
+                </div>
+                <div className="hidden md:block text-left">
+                  <p className="text-sm font-medium text-gray-900">
+                    {user?.name || 'Usuário'}
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    {user?.email || 'email@exemplo.com'}
+                  </p>
+                </div>
+              </button>
 
-            {/* Dropdown Menu */}
-            {isUserMenuOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50">
-                <button className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
-                  <User className="w-4 h-4" />
-                  <span>Perfil</span>
-                </button>
-                <button className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
-                  <Settings className="w-4 h-4" />
-                  <span>Configurações</span>
-                </button>
-                <hr className="my-1" />
-                <button 
-                  onClick={logout}
-                  className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
-                >
-                  <LogOut className="w-4 h-4" />
-                  <span>Sair</span>
-                </button>
-              </div>
-            )}
-          </div>
+              {/* Dropdown Menu */}
+              {isUserMenuOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50">
+                  <button className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
+                    <User className="w-4 h-4" />
+                    <span>Perfil</span>
+                  </button>
+                  <button className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
+                    <Settings className="w-4 h-4" />
+                    <span>Configurações</span>
+                  </button>
+                  <hr className="my-1" />
+                  <button 
+                    onClick={logout}
+                    className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    <span>Sair</span>
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="flex items-center space-x-2">
+              <Link 
+                href="/login" 
+                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              >
+                Entrar
+              </Link>
+              <Link 
+                href="/register" 
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+              >
+                Registrar
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </header>

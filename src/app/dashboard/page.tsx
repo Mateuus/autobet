@@ -8,8 +8,9 @@ import {
   Target,
   Zap
 } from 'lucide-react';
+import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
 
-export default function DashboardPage() {
+function DashboardContent() {
   const stats = [
     {
       name: 'Total de Contas',
@@ -200,5 +201,13 @@ export default function DashboardPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <ProtectedRoute>
+      <DashboardContent />
+    </ProtectedRoute>
   );
 }
