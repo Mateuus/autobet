@@ -1,3 +1,5 @@
+'use client';
+
 import { 
   Settings, 
   User, 
@@ -5,7 +7,6 @@ import {
   Shield, 
   Key,
   Database,
-  Globe,
   Save,
   Eye,
   EyeOff
@@ -56,7 +57,7 @@ function SettingsContent() {
                 <input
                   type="text"
                   defaultValue="João Silva"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
                 />
               </div>
               
@@ -67,7 +68,7 @@ function SettingsContent() {
                 <input
                   type="email"
                   defaultValue="joao@exemplo.com"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
                 />
               </div>
               
@@ -78,7 +79,7 @@ function SettingsContent() {
                 <input
                   type="tel"
                   defaultValue="+55 11 99999-9999"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
                 />
               </div>
               
@@ -89,7 +90,7 @@ function SettingsContent() {
                 <input
                   type="date"
                   defaultValue="1990-01-01"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
                 />
               </div>
             </div>
@@ -117,7 +118,7 @@ function SettingsContent() {
                 <div className="relative">
                   <input
                     type={showPassword ? "text" : "password"}
-                    className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
                     placeholder="Digite sua senha atual"
                   />
                   <button
@@ -136,7 +137,7 @@ function SettingsContent() {
                 </label>
                 <input
                   type="password"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
                   placeholder="Digite sua nova senha"
                 />
               </div>
@@ -147,7 +148,7 @@ function SettingsContent() {
                 </label>
                 <input
                   type="password"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
                   placeholder="Confirme sua nova senha"
                 />
               </div>
