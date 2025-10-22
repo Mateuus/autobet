@@ -129,6 +129,13 @@ export default function EventDetail({ event, onBackToList, loading = false, erro
       marketIds.includes(market.id)
     );
 
+    // Filtrar mercados que não tenham desktopOddIds ou que tenham desktopOddIds vazio
+    filteredMarkets = filteredMarkets.filter(market => 
+      market.desktopOddIds && 
+      market.desktopOddIds.length > 0 &&
+      market.desktopOddIds.some(oddIdGroup => oddIdGroup.length > 0)
+    );
+
     // Filtrar por pesquisa
     if (searchTerm.trim()) {
       filteredMarkets = filteredMarkets.filter(market =>

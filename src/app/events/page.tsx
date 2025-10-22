@@ -11,8 +11,9 @@ import { Sport } from '@/types/events';
 import { useEvents, EventsFilters, UnifiedEvent } from '@/hooks/useEvents';
 import { useLiveEvents } from '@/hooks/useLiveEvents';
 import { useEventDetail } from '@/hooks/useEventDetail';
+import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
 
-export default function EventsPage() {
+function EventsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [selectedSport, setSelectedSport] = useState<Sport | null>(null);
@@ -231,5 +232,13 @@ export default function EventsPage() {
         ))}
       </div>
     </div>
+  );
+}
+
+export default function EventsPage() {
+  return (
+    <ProtectedRoute>
+      <EventsContent />
+    </ProtectedRoute>
   );
 }
