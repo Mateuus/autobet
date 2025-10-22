@@ -1,5 +1,3 @@
-import { AxiosRequestConfig } from 'axios';
-
 const FSSB_BASE_URL = 'https://prod20350-kbet-152319626.fssb.io'; // URL padrão para bet7k
 const PIXBET_FSSB_URL = 'https://prod20383.fssb.io'; // URL para pixbet
 
@@ -10,7 +8,7 @@ export interface FssbTokenResponse {
 
 export interface FssbEventListParams {
   leagueId?: string;
-  sportId?: number;
+  sportId: number; // Obrigatório - removido o ?
   regionCode?: string;
   numberOfLeagues?: number;
   topLeagues?: string;
@@ -261,7 +259,7 @@ export class FssbApiService {
   async getLeagueEventsRaw(params: FssbEventListParams): Promise<FssbRawResponse> {
     const {
       leagueId,
-      sportId = 1,
+      sportId, // Removido valor padrão - agora é obrigatório
       regionCode = 'BR',
       numberOfLeagues = 10,
       topLeagues = '',
@@ -327,7 +325,7 @@ export class FssbApiService {
       regionCode = 'BR',
       isAllPreMatch = true,
       prioritySports = '1,234,19,2,6,14,8,64,10,26,236,3,7,20,41,11',
-      sportId = 1,
+      sportId, // Removido valor padrão - agora é obrigatório
       returnAvailableDates = true,
       fetchSports = true,
       marketTypeIds = 'ML0,ML1,OU200,OU201,QA158',
@@ -449,7 +447,7 @@ export class FssbApiService {
   /**
    * Buscar eventos para múltiplas ligas
    */
-  async getEventsForLeagues(leagueIds: string[], siteName: string): Promise<Map<string, FssbEventListResponse>> {
+  async getEventsForLeagues(leagueIds: string[], sportId: number, siteName: string): Promise<Map<string, FssbEventListResponse>> {
     const results = new Map<string, FssbEventListResponse>();
     
     // Obter tokens se necessário
@@ -459,7 +457,7 @@ export class FssbApiService {
     
     const promises = leagueIds.map(async (leagueId) => {
       try {
-        const events = await this.getLeagueEvents({ leagueId });
+        const events = await this.getLeagueEvents({ leagueId, sportId });
         results.set(leagueId, events);
       } catch (error) {
         console.error(`Erro ao buscar eventos para leagueId ${leagueId}:`, error);
