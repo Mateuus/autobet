@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import MarketCard from './MarketCard';
+import OddsButton from './OddsButton';
 import { BiaHostedEventDetail, BiaHostedMarket, BiaHostedOdd } from '@/types/events';
 import { shouldRemoveDuplicates } from '@/config/market-config';
 
@@ -379,72 +380,78 @@ export default function EventDetail({ event, onBackToList, loading = false, erro
                 {/* Coluna Mais */}
                 <div className="space-y-2">
                   {currentMaisOdds.map((odd: BiaHostedOdd) => (
-                    <button
+                    <OddsButton
                       key={odd.id}
+                      label={odd.name}
+                      odds={odd.price || 1.0}
                       onClick={() => handleOddsClick(`market-${market.id}-${odd.id}`)}
-                      disabled={odd.oddStatus !== 0}
-                      className={`
-                        w-full flex items-center justify-between p-2 rounded border transition-colors relative
-                        ${odd.oddStatus !== 0 
-                          ? 'bg-gray-100 border-gray-200 text-gray-400 cursor-not-allowed' 
-                          : selectedOdds === `market-${market.id}-${odd.id}`
-                            ? 'bg-blue-50 border-blue-300 text-blue-900'
-                            : 'bg-gray-50 hover:bg-gray-100 border-gray-200'
-                        }
-                      `}
-                    >
-                      {/* Ícone de cadeado para odds desativadas */}
-                      {odd.oddStatus !== 0 && (
-                        <div className="absolute top-1 right-1">
-                          <svg className="w-3 h-3 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                          </svg>
-                        </div>
-                      )}
-                      
-                      <div className={`text-sm ${odd.oddStatus !== 0 ? 'text-gray-400' : (selectedOdds === `market-${market.id}-${odd.id}` ? 'text-blue-900' : 'text-gray-700')}`}>
-                        {odd.name}
-                      </div>
-                      <div className={`font-bold ${odd.oddStatus !== 0 ? 'text-gray-400' : (selectedOdds === `market-${market.id}-${odd.id}` ? 'text-blue-600' : 'text-blue-500')}`}>
-                        {odd.price}
-                      </div>
-                    </button>
+                      isSelected={selectedOdds === `market-${market.id}-${odd.id}`}
+                      isDisabled={odd.oddStatus !== 0}
+                      oddStatus={odd.oddStatus || 0}
+                      oddId={odd.id}
+                      eventData={{
+                        id: event.id,
+                        name: event.name,
+                        startDate: event.startDate,
+                        code: event.eventCode,
+                        competitors: event.competitors,
+                        sport: event.sport,
+                        championship: event.champ,
+                        category: event.category
+                      }}
+                      marketData={{
+                        typeId: market.typeId,
+                        isMB: market.isMB,
+                        sv: market.sv,
+                        shortName: market.shortName,
+                        name: market.name,
+                        desktopOddIds: market.desktopOddIds,
+                        mobileOddIds: market.mobileOddIds,
+                        isBB: market.isBB,
+                        so: market.so,
+                        sportMarketId: market.sportMarketId,
+                        id: market.id
+                      }}
+                    />
                   ))}
                 </div>
 
                 {/* Coluna Menos */}
                 <div className="space-y-2">
                   {currentMenosOdds.map((odd: BiaHostedOdd) => (
-                    <button
+                    <OddsButton
                       key={odd.id}
+                      label={odd.name}
+                      odds={odd.price || 1.0}
                       onClick={() => handleOddsClick(`market-${market.id}-${odd.id}`)}
-                      disabled={odd.oddStatus !== 0}
-                      className={`
-                        w-full flex items-center justify-between p-2 rounded border transition-colors relative
-                        ${odd.oddStatus !== 0 
-                          ? 'bg-gray-100 border-gray-200 text-gray-400 cursor-not-allowed' 
-                          : selectedOdds === `market-${market.id}-${odd.id}`
-                            ? 'bg-blue-50 border-blue-300 text-blue-900'
-                            : 'bg-gray-50 hover:bg-gray-100 border-gray-200'
-                        }
-                      `}
-                    >
-                      {/* Ícone de cadeado para odds desativadas */}
-                      {odd.oddStatus !== 0 && (
-                        <div className="absolute top-1 right-1">
-                          <svg className="w-3 h-3 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                          </svg>
-                        </div>
-                      )}
-                      
-                      <div className={`text-sm ${odd.oddStatus !== 0 ? 'text-gray-400' : (selectedOdds === `market-${market.id}-${odd.id}` ? 'text-blue-900' : 'text-gray-700')}`}>
-                        {odd.name}
-                      </div>
-                      <div className={`font-bold ${odd.oddStatus !== 0 ? 'text-gray-400' : (selectedOdds === `market-${market.id}-${odd.id}` ? 'text-blue-600' : 'text-blue-500')}`}>
-                        {odd.price}
-                      </div>
-                    </button>
+                      isSelected={selectedOdds === `market-${market.id}-${odd.id}`}
+                      isDisabled={odd.oddStatus !== 0}
+                      oddStatus={odd.oddStatus || 0}
+                      oddId={odd.id}
+                      eventData={{
+                        id: event.id,
+                        name: event.name,
+                        startDate: event.startDate,
+                        code: event.eventCode,
+                        competitors: event.competitors,
+                        sport: event.sport,
+                        championship: event.champ,
+                        category: event.category
+                      }}
+                      marketData={{
+                        typeId: market.typeId,
+                        isMB: market.isMB,
+                        sv: market.sv,
+                        shortName: market.shortName,
+                        name: market.name,
+                        desktopOddIds: market.desktopOddIds,
+                        mobileOddIds: market.mobileOddIds,
+                        isBB: market.isBB,
+                        so: market.so,
+                        sportMarketId: market.sportMarketId,
+                        id: market.id
+                      }}
+                    />
                   ))}
                 </div>
               </div>

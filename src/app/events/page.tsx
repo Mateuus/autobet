@@ -26,7 +26,7 @@ function EventsContent() {
     sortBy: 'date'
   });
   const [activeTab, setActiveTab] = useState<EventTabType>('prematch');
-  const { isOpen, setIsOpen } = useBetting();
+  const { isOpen, setIsOpen, addSelection } = useBetting();
 
   // Criar uma data fixa para evitar recriação a cada render
   const [currentDate] = useState(() => new Date());
@@ -155,13 +155,20 @@ function EventsContent() {
 
   if (selectedEventId && eventDetail) {
     return (
-      <EventDetail 
-        event={eventDetail}
-        onBackToList={handleBackToList}
-        loading={eventDetailLoading}
-        error={eventDetailError}
-        onRetry={refetchEventDetail}
-      />
+      <>
+        <EventDetail 
+          event={eventDetail}
+          onBackToList={handleBackToList}
+          loading={eventDetailLoading}
+          error={eventDetailError}
+          onRetry={refetchEventDetail}
+        />
+        
+        {/* Sistema de Apostas */}
+        <FloatingBettingButton />
+        <BettingSlipModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+        
+      </>
     );
   }
 
@@ -172,36 +179,43 @@ function EventsContent() {
     const currentRefetch = activeTab === 'live' ? refetchLive : refetch;
 
     return (
-      <div className="space-y-6">
-        {/* Abas AO VIVO / PRÉ-JOGO */}
-        <EventsTabs
-          activeTab={activeTab}
-          onTabChange={setActiveTab}
-          liveEventsCount={liveEvents.length}
-          prematchEventsCount={totalEvents}
-          isLiveRefreshing={isLiveRefreshing}
-        />
+      <>
+        <div className="space-y-6">
+          {/* Abas AO VIVO / PRÉ-JOGO */}
+          <EventsTabs
+            activeTab={activeTab}
+            onTabChange={setActiveTab}
+            liveEventsCount={liveEvents.length}
+            prematchEventsCount={totalEvents}
+            isLiveRefreshing={isLiveRefreshing}
+          />
 
-        {/* Lista de Eventos */}
-        <EventsList
-          events={currentEvents}
-          sportName={selectedSport?.sport || ''}
-          onEventSelect={handleEventSelect}
-          onBackToSports={handleBackToSports}
-          loading={currentLoading}
-          error={currentError}
-          onRetry={currentRefetch}
-          totalEvents={activeTab === 'prematch' ? totalEvents : liveEvents.length}
-          currentPage={activeTab === 'prematch' ? currentPage : 1}
-          totalPages={activeTab === 'prematch' ? totalPages : 1}
-          onPageChange={activeTab === 'prematch' ? (page) => onPageChange(page, handlePageChange) : undefined}
-          filters={filters}
-          onFiltersChange={handleFiltersChange}
-          onSearch={handleSearch}
-          isLiveRefreshing={isLiveRefreshing}
-          lastLiveUpdate={lastLiveUpdate}
-        />
-      </div>
+          {/* Lista de Eventos */}
+          <EventsList
+            events={currentEvents}
+            sportName={selectedSport?.sport || ''}
+            onEventSelect={handleEventSelect}
+            onBackToSports={handleBackToSports}
+            loading={currentLoading}
+            error={currentError}
+            onRetry={currentRefetch}
+            totalEvents={activeTab === 'prematch' ? totalEvents : liveEvents.length}
+            currentPage={activeTab === 'prematch' ? currentPage : 1}
+            totalPages={activeTab === 'prematch' ? totalPages : 1}
+            onPageChange={activeTab === 'prematch' ? (page) => onPageChange(page, handlePageChange) : undefined}
+            filters={filters}
+            onFiltersChange={handleFiltersChange}
+            onSearch={handleSearch}
+            isLiveRefreshing={isLiveRefreshing}
+            lastLiveUpdate={lastLiveUpdate}
+          />
+        </div>
+        
+        {/* Sistema de Apostas */}
+        <FloatingBettingButton />
+        <BettingSlipModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+        
+      </>
     );
   }
 

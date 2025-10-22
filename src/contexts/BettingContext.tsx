@@ -76,7 +76,7 @@ export interface BettingSelection {
 
 export interface BettingState {
   selections: BettingSelection[];
-  totoCampaigns: any[];
+  totoCampaigns: unknown[];
   selectionView: string;
   oddIds: number[];
   boostedOddIds: number[];
