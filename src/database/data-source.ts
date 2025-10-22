@@ -18,7 +18,7 @@ export const AppDataSource = new DataSource({
     password: process.env.DB_PASSWORD || '',
     database: databaseName || 'autobet',
     synchronize: process.env.NODE_ENV !== 'production', // Apenas em desenvolvimento
-    logging: process.env.NODE_ENV === 'development',
+    logging: false,//process.env.NODE_ENV === 'development',
     entities: [Account, BetAccount],
     subscribers: [],
     migrations: [`${__dirname}/**/migrations/*.{ts,js}`],

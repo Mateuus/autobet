@@ -20,11 +20,20 @@ export class BetAccount {
   @Column({ type: 'varchar', length: 500 })
   siteUrl!: string; // https://lotogreen.bet.br
 
-  @Column({ type: 'decimal', precision: 10, scale: 2, default: 0 })
-  balance!: number; // Saldo em centavos (ex: 900 = R$ 9,00)
+  @Column({ type: 'int', default: 0 })
+  balance!: number; // Saldo em centavos (ex: 1113 = R$ 11,13)
 
   @Column({ type: 'varchar', length: 100, nullable: true })
   userId?: string; // ID do usuário na plataforma
+
+  @Column({ type: 'text', nullable: true })
+  accessToken?: string; // Token de acesso da plataforma
+
+  @Column({ type: 'text', nullable: true })
+  userToken?: string; // Token do usuário
+
+  @Column({ type: 'text', nullable: true })
+  platformToken?: string; // Token da plataforma para operações
 
   @Column({ type: 'boolean', default: true })
   isActive!: boolean;

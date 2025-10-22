@@ -14,10 +14,16 @@ export abstract class BasePlatform {
     
     this.httpClient = axios.create({
       timeout: 30000,
+      withCredentials: true,
+      maxBodyLength: Infinity,
       headers: {
         'Content-Type': 'application/json',
         'Origin': baseUrl,
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
+        'Accept': 'application/json',
+        'Accept-Language': 'pt-BR,pt;q=0.9,en;q=0.8',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive'
       }
     });
   }
@@ -57,10 +63,29 @@ export abstract class BasePlatform {
    */
   protected async makeRequest<T>(config: AxiosRequestConfig): Promise<T> {
     try {
+      console.log(`🚀 Requisição para ${this.integration}:`);
+      console.log(`📤 URL: ${config.url}`);
+      console.log(`📤 Method: ${config.method}`);
+      console.log(`📤 Headers:`, JSON.stringify(config.headers, null, 2));
+      console.log(`📤 Body:`, JSON.stringify(config.data, null, 2));
+      
       const response = await this.httpClient.request(config);
+      
+      console.log(`✅ Resposta de ${this.integration}:`);
+      console.log(`📥 Status: ${response.status}`);
+      console.log(`📥 Headers:`, JSON.stringify(response.headers, null, 2));
+      console.log(`📥 Body:`, JSON.stringify(response.data, null, 2));
+      
       return response.data;
     } catch (error: unknown) {
-      console.error(`Erro na requisição para ${this.integration}:`, error instanceof Error ? error.message : 'Erro desconhecido');
+      console.error(`❌ Erro na requisição para ${this.integration}:`);
+      if (error && typeof error === 'object' && 'response' in error) {
+        const axiosError = error as { response?: { status?: number; headers?: unknown; data?: unknown } };
+        console.error(`📥 Status: ${axiosError.response?.status}`);
+        console.error(`📥 Headers:`, JSON.stringify(axiosError.response?.headers, null, 2));
+        console.error(`📥 Body:`, JSON.stringify(axiosError.response?.data, null, 2));
+      }
+      console.error(`❌ Erro:`, error instanceof Error ? error.message : 'Erro desconhecido');
       throw error;
     }
   }
