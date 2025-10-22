@@ -233,3 +233,45 @@ export interface ConvertedEvent {
   markets: MarketType[];
   marketGroups: EventMarketGroup[];
 }
+
+// Tipos para eventos ao vivo (Live Events)
+export interface BiaHostedLiveEvent {
+  liveTime?: string;
+  lst?: string;
+  ls?: string;
+  score?: number[];
+  marketIds: number[];
+  isBooked: boolean;
+  isParlay: boolean;
+  offers?: BiaHostedOffer[];
+  code?: number;
+  hasStream: boolean;
+  extId: string;
+  sc: number;
+  mc: number;
+  rc: boolean;
+  pId: number;
+  et: number;
+  hasStats: boolean;
+  competitorIds: number[];
+  sportId: number;
+  catId: number;
+  champId: number;
+  status: number;
+  startDate: string;
+  id: number;
+  name: string;
+}
+
+export interface BiaHostedLiveEventsList {
+  headers: BiaHostedMarketGroup[];
+  pageCount: number;
+  page: number;
+  markets: BiaHostedMarket[];
+  odds: BiaHostedOdd[];
+  events: BiaHostedLiveEvent[];
+  sports: BiaHostedSport[];
+  categories: BiaHostedCategory[];
+  champs: BiaHostedChampionship[];
+  competitors: BiaHostedCompetitor[];
+}

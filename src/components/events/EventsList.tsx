@@ -1,25 +1,28 @@
-import { Calendar, Star, Monitor, RefreshCw, AlertCircle } from 'lucide-react';
-import { BiaHostedEventListItem } from '@/types/events';
+import { Calendar, Star, Monitor, RefreshCw, AlertCircle, Wifi } from 'lucide-react';
+import { UnifiedEvent } from '@/hooks/useEvents';
 import { EventsFilters } from '@/hooks/useEvents';
 import EventsFiltersComponent from './EventsFilters';
 import Pagination from './Pagination';
 
 interface EventsListProps {
-  events: BiaHostedEventListItem[];
+  events: UnifiedEvent[];
   sportName: string;
-  onEventSelect: (event: BiaHostedEventListItem) => void;
+  onEventSelect: (event: UnifiedEvent) => void;
   onBackToSports: () => void;
   loading?: boolean;
   error?: string | null;
   onRetry?: () => void;
-  // Novas props para paginação e filtros
-  hasMore?: boolean;
+  // Props para paginação
   totalEvents?: number;
   currentPage?: number;
-  onLoadMore?: () => void;
+  totalPages?: number;
+  onPageChange?: (page: number) => void;
   filters?: EventsFilters;
   onFiltersChange?: (filters: EventsFilters) => void;
   onSearch?: (searchTerm: string) => void;
+  // Props para atualização em tempo real
+  isLiveRefreshing?: boolean;
+  lastLiveUpdate?: Date | null;
 }
 
 export default function EventsList({ 
@@ -30,13 +33,15 @@ export default function EventsList({
   loading = false,
   error = null,
   onRetry,
-  hasMore = false,
   totalEvents = 0,
   currentPage = 1,
-  onLoadMore,
+  totalPages = 1,
+  onPageChange,
   filters,
   onFiltersChange,
-  onSearch
+  onSearch,
+  isLiveRefreshing = false,
+  lastLiveUpdate = null
 }: EventsListProps) {
 
   return (
@@ -57,6 +62,21 @@ export default function EventsList({
           {sportName.charAt(0).toUpperCase() + sportName.slice(1)} - Eventos ao Vivo
         </h1>
         <p className="text-gray-600">Selecione um evento para ver os detalhes e odds</p>
+        
+        {/* Indicador de atualização em tempo real */}
+        <div className="flex items-center gap-2 mt-2">
+          <div className="flex items-center gap-1">
+            <Wifi className={`w-4 h-4 ${isLiveRefreshing ? 'text-green-500 animate-pulse' : 'text-gray-400'}`} />
+            <span className={`text-sm ${isLiveRefreshing ? 'text-green-600' : 'text-gray-500'}`}>
+              {isLiveRefreshing ? 'Atualizando odds...' : 'Tempo real ativo'}
+            </span>
+          </div>
+          {lastLiveUpdate && (
+            <span className="text-xs text-gray-400">
+              Última atualização: {lastLiveUpdate.toLocaleTimeString('pt-BR')}
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Filtros e Pesquisa */}
@@ -127,8 +147,26 @@ export default function EventsList({
                   <Star className="w-4 h-4 text-gray-400" />
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-green-600 text-sm font-medium">AO VIVO</span>
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  {event.isLive ? (
+                    <>
+                      <div className="flex items-center gap-2">
+                        <span className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">
+                          AO VIVO
+                        </span>
+                        {event.liveTime && (
+                          <span className="text-green-600 text-sm font-mono font-bold">
+                            {event.liveTime}
+                          </span>
+                        )}
+                      </div>
+                      <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                    </>
+                  ) : (
+                    <>
+                      <span className="text-blue-600 text-sm font-medium">PRÉ-JOGO</span>
+                      <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                    </>
+                  )}
                 </div>
               </div>
 
@@ -136,6 +174,21 @@ export default function EventsList({
               <div className="flex items-center justify-between mb-3">
                 <div className="flex-1">
                   <div className="text-gray-900 font-medium">{event.name}</div>
+                  {/* Mostrar placar para eventos ao vivo */}
+                  {event.isLive && event.score && event.score.length >= 2 && (
+                    <div className="flex items-center gap-3 mt-2">
+                      <span className="text-sm text-gray-600 font-medium">Placar:</span>
+                      <div className="flex items-center gap-2">
+                        <div className="bg-gray-800 text-white px-3 py-1 rounded-md text-sm font-bold min-w-[30px] text-center">
+                          {event.score[0]}
+                        </div>
+                        <span className="text-gray-400 font-bold">-</span>
+                        <div className="bg-gray-800 text-white px-3 py-1 rounded-md text-sm font-bold min-w-[30px] text-center">
+                          {event.score[1]}
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
                 <div className="text-right">
                   <div className="flex items-center gap-1 mb-1">
@@ -145,26 +198,24 @@ export default function EventsList({
                 </div>
               </div>
 
-              {/* Event Info */}
+              {/* Event Info 
               <div className="grid grid-cols-3 gap-2 text-xs text-gray-500">
                 <div>Sport ID: {event.sportId}</div>
                 <div>Cat ID: {event.catId}</div>
                 <div>Champ ID: {event.champId}</div>
-              </div>
+              </div>*/}
             </div>
           );
         })}
       </div>
 
       {/* Paginação */}
-      {onLoadMore && (
+      {onPageChange && (
         <Pagination
           currentPage={currentPage}
           totalEvents={totalEvents}
-          pageSize={20}
-          hasMore={hasMore}
-          loading={loading}
-          onLoadMore={onLoadMore}
+          totalPages={totalPages}
+          onPageChange={onPageChange}
         />
       )}
     </div>

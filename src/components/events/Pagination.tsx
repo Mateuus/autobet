@@ -1,27 +1,20 @@
-import { ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface PaginationProps {
   currentPage: number;
   totalEvents: number;
-  pageSize: number;
-  hasMore: boolean;
-  loading: boolean;
-  onLoadMore: () => void;
+  totalPages: number;
   onPageChange?: (page: number) => void;
 }
 
 export default function Pagination({
   currentPage,
   totalEvents,
-  pageSize,
-  hasMore,
-  loading,
-  onLoadMore,
+  totalPages,
   onPageChange
 }: PaginationProps) {
-  const totalPages = Math.ceil(totalEvents / pageSize);
-  const showingFrom = (currentPage - 1) * pageSize + 1;
-  const showingTo = Math.min(currentPage * pageSize, totalEvents);
+  const showingFrom = (currentPage - 1) * 20 + 1;
+  const showingTo = Math.min(currentPage * 20, totalEvents);
 
   return (
     <div className="bg-white rounded-lg p-4 border border-gray-200 shadow-sm">
@@ -32,61 +25,57 @@ export default function Pagination({
         </div>
         
         {totalPages > 1 && onPageChange && (
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
+            {/* Botão Anterior */}
             <button
               onClick={() => onPageChange(currentPage - 1)}
               disabled={currentPage === 1}
-              className="flex items-center gap-1 px-3 py-1 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-3 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-gray-700 hover:text-gray-900"
             >
               <ChevronLeft className="w-4 h-4" />
-              Anterior
             </button>
             
-            <span className="px-3 py-1 text-sm bg-blue-100 text-blue-800 rounded-lg">
-              {currentPage} de {totalPages}
-            </span>
+            {/* Números de página */}
+            <div className="flex items-center gap-1">
+              {Array.from({ length: Math.min(9, totalPages) }, (_, i) => {
+                let pageNumber: number;
+                if (totalPages <= 9) {
+                  pageNumber = i + 1;
+                } else if (currentPage <= 5) {
+                  pageNumber = i + 1;
+                } else if (currentPage >= totalPages - 4) {
+                  pageNumber = totalPages - 8 + i;
+                } else {
+                  pageNumber = currentPage - 4 + i;
+                }
+                
+                return (
+                  <button
+                    key={pageNumber}
+                    onClick={() => onPageChange(pageNumber)}
+                    className={`px-3 py-2 text-sm rounded-lg transition-colors ${
+                      currentPage === pageNumber
+                        ? 'bg-blue-600 text-white font-semibold'
+                        : 'border border-gray-300 hover:bg-gray-50 text-gray-700 hover:text-gray-900'
+                    }`}
+                  >
+                    {pageNumber}
+                  </button>
+                );
+              })}
+            </div>
             
+            {/* Botão Próximo */}
             <button
               onClick={() => onPageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
-              className="flex items-center gap-1 px-3 py-1 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-3 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-gray-700 hover:text-gray-900"
             >
-              Próximo
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         )}
       </div>
-
-      {/* Botão Carregar Mais */}
-      {hasMore && (
-        <div className="text-center">
-          <button
-            onClick={onLoadMore}
-            disabled={loading}
-            className="flex items-center gap-2 mx-auto px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-          >
-            {loading ? (
-              <>
-                <Loader2 className="w-4 h-4 animate-spin" />
-                Carregando...
-              </>
-            ) : (
-              <>
-                <ChevronRight className="w-4 h-4" />
-                Carregar Mais Eventos
-              </>
-            )}
-          </button>
-        </div>
-      )}
-
-      {/* Indicador de fim */}
-      {!hasMore && totalEvents > pageSize && (
-        <div className="text-center text-gray-500 text-sm">
-          Todos os eventos foram carregados
-        </div>
-      )}
     </div>
   );
 }

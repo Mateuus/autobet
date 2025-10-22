@@ -1,0 +1,2345 @@
+{
+    "headers": [
+        {
+            "typeId": 1,
+            "name": "Vencedor do encontro",
+            "mst": 0,
+            "odds": [
+                {
+                    "id": 1,
+                    "name": "1"
+                },
+                {
+                    "id": 2,
+                    "name": "X"
+                },
+                {
+                    "id": 3,
+                    "name": "2"
+                }
+            ]
+        },
+        {
+            "typeId": 18,
+            "name": "Total de Gols (incluindo linhas Asiáticas)",
+            "mst": 0,
+            "odds": [
+                {
+                    "id": 12,
+                    "name": "mais de"
+                },
+                {
+                    "id": 13,
+                    "name": "menos de"
+                }
+            ],
+            "specialOdd": {
+                "typeId": 1,
+                "name": "Gols"
+            }
+        },
+        {
+            "typeId": 29,
+            "name": "Ambas equipes marcam",
+            "mst": 0,
+            "odds": [
+                {
+                    "id": 74,
+                    "name": "sim"
+                },
+                {
+                    "id": 76,
+                    "name": "Não"
+                }
+            ]
+        },
+        {
+            "typeId": 10,
+            "name": "Chance dupla",
+            "mst": 0,
+            "odds": [
+                {
+                    "id": 9,
+                    "name": "1X"
+                },
+                {
+                    "id": 10,
+                    "name": "12"
+                },
+                {
+                    "id": 11,
+                    "name": "X2"
+                }
+            ]
+        },
+        {
+            "typeId": 11,
+            "name": "Empate devolve aposta",
+            "mst": 0,
+            "odds": [
+                {
+                    "id": 1,
+                    "name": "1"
+                },
+                {
+                    "id": 3,
+                    "name": "2"
+                }
+            ]
+        }
+    ],
+    "pageCount": 0,
+    "page": 0,
+    "markets": [
+        {
+            "oddIds": [
+                3016636193,
+                3016636194,
+                3016636195
+            ],
+            "typeId": 1,
+            "isMB": false,
+            "sportMarketId": 70472,
+            "id": 1227986480,
+            "name": "Vencedor do encontro"
+        },
+        {
+            "oddIds": [
+                3016636342,
+                3016636343,
+                3016636344
+            ],
+            "typeId": 10,
+            "isMB": false,
+            "sportMarketId": 70495,
+            "id": 1227986525,
+            "name": "Chance dupla"
+        },
+        {
+            "oddIds": [
+                3016636328,
+                3016636329
+            ],
+            "typeId": 11,
+            "isMB": false,
+            "sportMarketId": 70500,
+            "id": 1227986522,
+            "name": "Empate devolve aposta"
+        },
+        {
+            "oddIds": [
+                3016636148,
+                3016636149
+            ],
+            "typeId": 18,
+            "isMB": true,
+            "sportMarketId": 70520,
+            "sv": "2.5",
+            "sn": "2.5",
+            "id": 1227986463,
+            "name": "Total de Gols (incluindo linhas Asiáticas)"
+        },
+        {
+            "oddIds": [
+                3016636370,
+                3016636371
+            ],
+            "typeId": 29,
+            "isMB": false,
+            "sportMarketId": 70545,
+            "id": 1227986527,
+            "name": "Ambas equipes marcam"
+        },
+        {
+            "oddIds": [
+                3016652568,
+                3016652569,
+                3016652570
+            ],
+            "typeId": 1,
+            "isMB": false,
+            "sportMarketId": 70472,
+            "id": 1227993163,
+            "name": "Vencedor do encontro"
+        },
+        {
+            "oddIds": [
+                3016652531,
+                3016652532
+            ],
+            "typeId": 18,
+            "isMB": true,
+            "sportMarketId": 70520,
+            "sv": "3.5",
+            "sn": "3.5",
+            "id": 1227993150,
+            "name": "Total de Gols (incluindo linhas Asiáticas)"
+        },
+        {
+            "oddIds": [
+                3016652749,
+                3016652750
+            ],
+            "typeId": 29,
+            "isMB": false,
+            "sportMarketId": 70545,
+            "id": 1227993212,
+            "name": "Ambas equipes marcam"
+        },
+        {
+            "oddIds": [
+                3016723443,
+                3016723444,
+                3016723445
+            ],
+            "typeId": 1,
+            "isMB": false,
+            "sportMarketId": 70472,
+            "id": 1228023164,
+            "name": "Vencedor do encontro"
+        },
+        {
+            "oddIds": [
+                3016723440,
+                3016723441,
+                3016723442
+            ],
+            "typeId": 10,
+            "isMB": false,
+            "sportMarketId": 70495,
+            "id": 1228023163,
+            "name": "Chance dupla"
+        },
+        {
+            "oddIds": [
+                3016723438,
+                3016723439
+            ],
+            "typeId": 11,
+            "isMB": false,
+            "sportMarketId": 70500,
+            "id": 1228023162,
+            "name": "Empate devolve aposta"
+        },
+        {
+            "oddIds": [
+                3018401385,
+                3018401386
+            ],
+            "typeId": 18,
+            "isMB": true,
+            "sportMarketId": 70520,
+            "sv": "6.5",
+            "sn": "6.5",
+            "id": 1228718726,
+            "name": "Total de Gols (incluindo linhas Asiáticas)"
+        },
+        {
+            "oddIds": [
+                3016439971,
+                3016439972,
+                3016439973
+            ],
+            "typeId": 1,
+            "isMB": false,
+            "sportMarketId": 70472,
+            "id": 1227904778,
+            "name": "Vencedor do encontro"
+        },
+        {
+            "oddIds": [
+                3016439968,
+                3016439969,
+                3016439970
+            ],
+            "typeId": 10,
+            "isMB": false,
+            "sportMarketId": 70495,
+            "id": 1227904777,
+            "name": "Chance dupla"
+        },
+        {
+            "oddIds": [
+                3018373715,
+                3018373716
+            ],
+            "typeId": 18,
+            "isMB": true,
+            "sportMarketId": 70520,
+            "sv": "3.5",
+            "sn": "3.5",
+            "id": 1228708361,
+            "name": "Total de Gols (incluindo linhas Asiáticas)"
+        },
+        {
+            "oddIds": [
+                3018458261,
+                3018458262,
+                3018458263
+            ],
+            "typeId": 1,
+            "isMB": false,
+            "sportMarketId": 72858,
+            "id": 1228741669,
+            "name": "1x2"
+        },
+        {
+            "oddIds": [
+                3018458278,
+                3018458279,
+                3018458280
+            ],
+            "typeId": 10,
+            "isMB": false,
+            "sportMarketId": 72860,
+            "id": 1228741676,
+            "name": "Chance dupla"
+        },
+        {
+            "oddIds": [
+                3018458264,
+                3018458265
+            ],
+            "typeId": 18,
+            "isMB": true,
+            "sportMarketId": 72862,
+            "sv": "2.5",
+            "sn": "2.5",
+            "id": 1228741670,
+            "name": "Total"
+        },
+        {
+            "oddIds": [
+                3018461950,
+                3018461951,
+                3018461952
+            ],
+            "typeId": 1,
+            "isMB": false,
+            "sportMarketId": 72858,
+            "id": 1228743313,
+            "name": "1x2"
+        },
+        {
+            "oddIds": [
+                3018461967,
+                3018461968,
+                3018461969
+            ],
+            "typeId": 10,
+            "isMB": false,
+            "sportMarketId": 72860,
+            "id": 1228743320,
+            "name": "Chance dupla"
+        },
+        {
+            "oddIds": [
+                3018462065,
+                3018462066
+            ],
+            "typeId": 18,
+            "isMB": true,
+            "sportMarketId": 72862,
+            "sv": "2.5",
+            "sn": "2.5",
+            "id": 1228743362,
+            "name": "Total"
+        },
+        {
+            "oddIds": [
+                3018461955,
+                3018461956
+            ],
+            "typeId": 29,
+            "isMB": false,
+            "sportMarketId": 72866,
+            "id": 1228743315,
+            "name": "Ambas equipes marcam"
+        },
+        {
+            "oddIds": [
+                3018359204,
+                3018359206,
+                3018359205
+            ],
+            "typeId": 1,
+            "isMB": false,
+            "sportMarketId": 72858,
+            "sv": "way:three|three",
+            "id": 1228702012,
+            "name": "1x2"
+        },
+        {
+            "oddIds": [
+                3018359195,
+                3018359194
+            ],
+            "typeId": 18,
+            "isMB": true,
+            "sportMarketId": 72862,
+            "sv": "8.5",
+            "sn": "8.5",
+            "id": 1228702008,
+            "name": "Total"
+        },
+        {
+            "oddIds": [
+                3018364438,
+                3018364440,
+                3018364439
+            ],
+            "typeId": 1,
+            "isMB": false,
+            "sportMarketId": 72858,
+            "sv": "way:three|three",
+            "id": 1228704323,
+            "name": "1x2"
+        },
+        {
+            "oddIds": [
+                3018364460,
+                3018364459
+            ],
+            "typeId": 18,
+            "isMB": true,
+            "sportMarketId": 72862,
+            "sv": "5.5",
+            "sn": "5.5",
+            "id": 1228704332,
+            "name": "Total"
+        },
+        {
+            "oddIds": [
+                3018364447,
+                3018364448
+            ],
+            "typeId": 29,
+            "isMB": false,
+            "sportMarketId": 72866,
+            "id": 1228704327,
+            "name": "Ambas equipes marcam"
+        },
+        {
+            "oddIds": [
+                3018357179,
+                3018357180,
+                3018357181
+            ],
+            "typeId": 1,
+            "isMB": false,
+            "sportMarketId": 72858,
+            "id": 1228701085,
+            "name": "1x2"
+        },
+        {
+            "oddIds": [
+                3018462942,
+                3018462943,
+                3018462944
+            ],
+            "isAlt": true,
+            "typeId": 1,
+            "isMB": false,
+            "sportMarketId": 0,
+            "id": 3018462942,
+            "name": "Oitavo gol"
+        },
+        {
+            "oddIds": [
+                3018373871,
+                3018373872,
+                3018373873
+            ],
+            "typeId": 1,
+            "isMB": false,
+            "sportMarketId": 72858,
+            "id": 1228708416,
+            "name": "1x2"
+        },
+        {
+            "oddIds": [
+                3018463518,
+                3018463516,
+                3018463517
+            ],
+            "typeId": 10,
+            "isMB": false,
+            "sportMarketId": 72860,
+            "id": 1228743962,
+            "name": "Chance dupla"
+        },
+        {
+            "oddIds": [
+                3018373879,
+                3018373880
+            ],
+            "typeId": 18,
+            "isMB": true,
+            "sportMarketId": 72862,
+            "sv": "5.5",
+            "sn": "5.5",
+            "id": 1228708419,
+            "name": "Total"
+        },
+        {
+            "oddIds": [
+                3018374839,
+                3018374840,
+                3018374841
+            ],
+            "typeId": 1,
+            "isMB": false,
+            "sportMarketId": 72858,
+            "id": 1228708809,
+            "name": "1x2"
+        },
+        {
+            "oddIds": [
+                3018457508,
+                3018457506,
+                3018457507
+            ],
+            "typeId": 10,
+            "isMB": false,
+            "sportMarketId": 72860,
+            "id": 1228741388,
+            "name": "Chance dupla"
+        },
+        {
+            "oddIds": [
+                3018458247,
+                3018458248
+            ],
+            "typeId": 18,
+            "isMB": true,
+            "sportMarketId": 72862,
+            "sv": "4.5",
+            "sn": "4.5",
+            "id": 1228741662,
+            "name": "Total"
+        },
+        {
+            "oddIds": [
+                3018379591,
+                3018379592,
+                3018379593
+            ],
+            "typeId": 1,
+            "isMB": false,
+            "sportMarketId": 72858,
+            "id": 1228710408,
+            "name": "1x2"
+        },
+        {
+            "oddIds": [
+                3018457571,
+                3018457569,
+                3018457570
+            ],
+            "typeId": 10,
+            "isMB": false,
+            "sportMarketId": 72860,
+            "id": 1228741401,
+            "name": "Chance dupla"
+        },
+        {
+            "oddIds": [
+                3018457623,
+                3018457624
+            ],
+            "typeId": 18,
+            "isMB": true,
+            "sportMarketId": 72862,
+            "sv": "3.5",
+            "sn": "3.5",
+            "id": 1228741409,
+            "name": "Total"
+        }
+    ],
+    "odds": [
+        {
+            "typeId": 1,
+            "price": 1.3333,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 97722,
+            "id": 3016636193,
+            "name": "Mazatlán "
+        },
+        {
+            "typeId": 2,
+            "price": 4.2,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3016636194,
+            "name": "Empate"
+        },
+        {
+            "typeId": 3,
+            "price": 12,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 47212,
+            "id": 3016636195,
+            "name": "Santos Laguna"
+        },
+        {
+            "typeId": 9,
+            "price": 1.04,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 97722,
+            "id": 3016636342,
+            "name": "Mazatlán  ou empate"
+        },
+        {
+            "typeId": 10,
+            "price": 1.2,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3016636343,
+            "name": "Mazatlán  ou Santos Laguna"
+        },
+        {
+            "typeId": 11,
+            "price": 3.1,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 47212,
+            "id": 3016636344,
+            "name": "Empate ou Santos Laguna"
+        },
+        {
+            "typeId": 1,
+            "price": 1.05,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 97722,
+            "id": 3016636328,
+            "name": "Mazatlán "
+        },
+        {
+            "typeId": 3,
+            "price": 8.5,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 47212,
+            "id": 3016636329,
+            "name": "Santos Laguna"
+        },
+        {
+            "typeId": 12,
+            "price": 2.35,
+            "isMB": true,
+            "oddStatus": 0,
+            "id": 3016636148,
+            "name": "Mais de 2.5"
+        },
+        {
+            "typeId": 13,
+            "price": 1.55,
+            "isMB": true,
+            "oddStatus": 0,
+            "id": 3016636149,
+            "name": "Menos de 2.5"
+        },
+        {
+            "typeId": 74,
+            "price": 1.93,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3016636370,
+            "name": "Sim"
+        },
+        {
+            "typeId": 76,
+            "price": 1.75,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3016636371,
+            "name": "Não"
+        },
+        {
+            "typeId": 1,
+            "price": 1.0303,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 46415,
+            "id": 3016652568,
+            "name": "Monterrey"
+        },
+        {
+            "typeId": 2,
+            "price": 13,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3016652569,
+            "name": "Empate"
+        },
+        {
+            "typeId": 3,
+            "price": 40,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 50909,
+            "id": 3016652570,
+            "name": "Juárez"
+        },
+        {
+            "typeId": 12,
+            "price": 2.15,
+            "isMB": true,
+            "oddStatus": 0,
+            "id": 3016652531,
+            "name": "Mais de 3.5"
+        },
+        {
+            "typeId": 13,
+            "price": 1.65,
+            "isMB": true,
+            "oddStatus": 0,
+            "id": 3016652532,
+            "name": "Menos de 3.5"
+        },
+        {
+            "typeId": 74,
+            "price": 2,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3016652749,
+            "name": "Sim"
+        },
+        {
+            "typeId": 76,
+            "price": 1.7,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3016652750,
+            "name": "Não"
+        },
+        {
+            "typeId": 1,
+            "price": 10,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 410120,
+            "id": 3016723443,
+            "name": "West Zone United"
+        },
+        {
+            "typeId": 2,
+            "price": 6.7,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3016723444,
+            "name": "Empate"
+        },
+        {
+            "typeId": 3,
+            "price": 1.1429,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 410121,
+            "id": 3016723445,
+            "name": "Charkop FC"
+        },
+        {
+            "typeId": 9,
+            "price": 4.3,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 410120,
+            "id": 3016723440,
+            "name": "West Zone United ou empate"
+        },
+        {
+            "typeId": 10,
+            "price": 1.0625,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3016723441,
+            "name": "West Zone United ou Charkop FC"
+        },
+        {
+            "typeId": 11,
+            "price": 1.02,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 410121,
+            "id": 3016723442,
+            "name": "Empate ou Charkop FC"
+        },
+        {
+            "typeId": 1,
+            "price": 8.4,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 410120,
+            "id": 3016723438,
+            "name": "West Zone United"
+        },
+        {
+            "typeId": 3,
+            "price": 1.0303,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 410121,
+            "id": 3016723439,
+            "name": "Charkop FC"
+        },
+        {
+            "typeId": 12,
+            "price": 1.7778,
+            "isMB": true,
+            "oddStatus": 0,
+            "id": 3018401385,
+            "name": "Mais de 6.5"
+        },
+        {
+            "typeId": 13,
+            "price": 1.9,
+            "isMB": true,
+            "oddStatus": 0,
+            "id": 3018401386,
+            "name": "Menos de 6.5"
+        },
+        {
+            "typeId": 1,
+            "price": 1.1,
+            "isMB": false,
+            "oddStatus": 7,
+            "competitorId": 2044115,
+            "id": 3016439971,
+            "name": "GHUPO"
+        },
+        {
+            "typeId": 2,
+            "price": 5.5,
+            "isMB": false,
+            "oddStatus": 7,
+            "id": 3016439972,
+            "name": "Empate"
+        },
+        {
+            "typeId": 3,
+            "price": 23,
+            "isMB": false,
+            "oddStatus": 7,
+            "competitorId": 117382,
+            "id": 3016439973,
+            "name": "Laugu United Honiara"
+        },
+        {
+            "typeId": 9,
+            "price": 1,
+            "isMB": false,
+            "oddStatus": 7,
+            "competitorId": 2044115,
+            "id": 3016439968,
+            "name": "GHUPO ou empate"
+        },
+        {
+            "typeId": 10,
+            "price": 1.0833,
+            "isMB": false,
+            "oddStatus": 7,
+            "id": 3016439969,
+            "name": "GHUPO ou Laugu United Honiara"
+        },
+        {
+            "typeId": 11,
+            "price": 4.9,
+            "isMB": false,
+            "oddStatus": 7,
+            "competitorId": 117382,
+            "id": 3016439970,
+            "name": "Empate ou Laugu United Honiara"
+        },
+        {
+            "typeId": 12,
+            "price": 1.75,
+            "isMB": true,
+            "oddStatus": 7,
+            "id": 3018373715,
+            "name": "Mais de 3.5"
+        },
+        {
+            "typeId": 13,
+            "price": 1.93,
+            "isMB": true,
+            "oddStatus": 7,
+            "id": 3018373716,
+            "name": "Menos de 3.5"
+        },
+        {
+            "typeId": 1,
+            "price": 3.3,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1350218,
+            "id": 3018458261,
+            "name": "Real Madrid (GREED)"
+        },
+        {
+            "typeId": 2,
+            "price": 1.9,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3018458262,
+            "name": "Empate"
+        },
+        {
+            "typeId": 3,
+            "price": 3.2,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1986089,
+            "id": 3018458263,
+            "name": "Paris SG (CATALYST)"
+        },
+        {
+            "typeId": 9,
+            "price": 1.26,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1350218,
+            "id": 3018458278,
+            "name": "Real Madrid (GREED) ou empate"
+        },
+        {
+            "typeId": 10,
+            "price": 1.7,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3018458279,
+            "name": "Real Madrid (GREED) ou Paris SG (CATALYST)"
+        },
+        {
+            "typeId": 11,
+            "price": 1.25,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1986089,
+            "id": 3018458280,
+            "name": "Empate ou Paris SG (CATALYST)"
+        },
+        {
+            "typeId": 12,
+            "price": 1.52,
+            "isMB": true,
+            "oddStatus": 0,
+            "id": 3018458264,
+            "name": "Mais de 2.5"
+        },
+        {
+            "typeId": 13,
+            "price": 2.3,
+            "isMB": true,
+            "oddStatus": 0,
+            "id": 3018458265,
+            "name": "Menos de 2.5"
+        },
+        {
+            "typeId": 1,
+            "price": 1.9,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1404080,
+            "id": 3018461950,
+            "name": "France (FAITH)"
+        },
+        {
+            "typeId": 2,
+            "price": 3.3,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3018461951,
+            "name": "Empate"
+        },
+        {
+            "typeId": 3,
+            "price": 3.2,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1262405,
+            "id": 3018461952,
+            "name": "Spain (EDEN)"
+        },
+        {
+            "typeId": 9,
+            "price": 1.26,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1404080,
+            "id": 3018461967,
+            "name": "France (FAITH) ou empate"
+        },
+        {
+            "typeId": 10,
+            "price": 1.25,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3018461968,
+            "name": "France (FAITH) ou Spain (EDEN)"
+        },
+        {
+            "typeId": 11,
+            "price": 1.7,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 1262405,
+            "id": 3018461969,
+            "name": "Empate ou Spain (EDEN)"
+        },
+        {
+            "typeId": 12,
+            "price": 2.07,
+            "isMB": true,
+            "oddStatus": 0,
+            "id": 3018462065,
+            "name": "Mais de 2.5"
+        },
+        {
+            "typeId": 13,
+            "price": 1.65,
+            "isMB": true,
+            "oddStatus": 0,
+            "id": 3018462066,
+            "name": "Menos de 2.5"
+        },
+        {
+            "typeId": 74,
+            "price": 1.9,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3018461955,
+            "name": "Sim"
+        },
+        {
+            "typeId": 76,
+            "price": 1.7778,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3018461956,
+            "name": "Não"
+        },
+        {
+            "typeId": 1,
+            "price": 1.03,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2206211,
+            "id": 3018359204,
+            "name": "Sevilla FC (Bony)"
+        },
+        {
+            "typeId": 2,
+            "price": 8,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3018359206,
+            "name": "Empate"
+        },
+        {
+            "typeId": 3,
+            "price": 9,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 191626,
+            "id": 3018359205,
+            "name": "Villarreal CF (Jacob17)"
+        },
+        {
+            "typeId": 12,
+            "price": 1.82,
+            "isMB": true,
+            "oddStatus": 0,
+            "id": 3018359195,
+            "name": "Mais de 8.5"
+        },
+        {
+            "typeId": 13,
+            "price": 1.9,
+            "isMB": true,
+            "oddStatus": 0,
+            "id": 3018359194,
+            "name": "Menos de 8.5"
+        },
+        {
+            "typeId": 1,
+            "price": 1.78,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2209473,
+            "id": 3018364438,
+            "name": "Real Sociedad (Lucas)"
+        },
+        {
+            "typeId": 2,
+            "price": 4.8,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3018364440,
+            "name": "Empate"
+        },
+        {
+            "typeId": 3,
+            "price": 2.8,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2260255,
+            "id": 3018364439,
+            "name": "Athletic Club (Gavi)"
+        },
+        {
+            "typeId": 12,
+            "price": 1.78,
+            "isMB": true,
+            "oddStatus": 0,
+            "id": 3018364460,
+            "name": "Mais de 5.5"
+        },
+        {
+            "typeId": 13,
+            "price": 1.92,
+            "isMB": true,
+            "oddStatus": 0,
+            "id": 3018364459,
+            "name": "Menos de 5.5"
+        },
+        {
+            "typeId": 74,
+            "price": 1.08,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3018364447,
+            "name": "Sim"
+        },
+        {
+            "typeId": 76,
+            "price": 6.3,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3018364448,
+            "name": "Não"
+        },
+        {
+            "typeId": 1,
+            "price": 4.35,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2259029,
+            "id": 3018357179,
+            "name": "Chelsea (Boulevard)"
+        },
+        {
+            "typeId": 2,
+            "price": 1.46,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3018357180,
+            "name": "Empate"
+        },
+        {
+            "typeId": 3,
+            "price": 4.75,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2256608,
+            "id": 3018357181,
+            "name": "Liverpool (Kray)"
+        },
+        {
+            "typeId": 1,
+            "price": 2.93,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2259025,
+            "id": 3018462942,
+            "name": "Manchester United (Inquisitor)"
+        },
+        {
+            "typeId": 7,
+            "price": 1.83,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3018462943,
+            "name": "Nenhum"
+        },
+        {
+            "typeId": 3,
+            "price": 4.01,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2298598,
+            "id": 3018462944,
+            "name": "Arsenal (Kodak)"
+        },
+        {
+            "typeId": 1,
+            "price": 1.65,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2244523,
+            "id": 3018373871,
+            "name": "Ettifaq FC (flamez)"
+        },
+        {
+            "typeId": 2,
+            "price": 4.74,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3018373872,
+            "name": "Empate"
+        },
+        {
+            "typeId": 3,
+            "price": 3.28,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2436278,
+            "id": 3018373873,
+            "name": "Al Hilal (why)"
+        },
+        {
+            "typeId": 9,
+            "price": 1.29,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2244523,
+            "id": 3018463518,
+            "name": "Ettifaq FC (flamez) ou empate"
+        },
+        {
+            "typeId": 10,
+            "price": 1.15,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3018463516,
+            "name": "Ettifaq FC (flamez) ou Al Hilal (why)"
+        },
+        {
+            "typeId": 11,
+            "price": 2.13,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2436278,
+            "id": 3018463517,
+            "name": "Empate ou Al Hilal (why)"
+        },
+        {
+            "typeId": 12,
+            "price": 1.76,
+            "isMB": true,
+            "oddStatus": 0,
+            "id": 3018373879,
+            "name": "Mais de 5.5"
+        },
+        {
+            "typeId": 13,
+            "price": 1.85,
+            "isMB": true,
+            "oddStatus": 0,
+            "id": 3018373880,
+            "name": "Menos de 5.5"
+        },
+        {
+            "typeId": 1,
+            "price": 15.28,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2548462,
+            "id": 3018374839,
+            "name": "Boca Juniors (Vick)"
+        },
+        {
+            "typeId": 2,
+            "price": 7.68,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3018374840,
+            "name": "Empate"
+        },
+        {
+            "typeId": 3,
+            "price": 1.08,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2557431,
+            "id": 3018374841,
+            "name": "Paris Saint-Germain F.C. (chevare)"
+        },
+        {
+            "typeId": 9,
+            "price": 6.65,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2548462,
+            "id": 3018457508,
+            "name": "Boca Juniors (Vick) ou empate"
+        },
+        {
+            "typeId": 10,
+            "price": 1.05,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3018457506,
+            "name": "Boca Juniors (Vick) ou Paris Saint-Germain F.C. (chevare)"
+        },
+        {
+            "typeId": 11,
+            "price": 1.01,
+            "isMB": false,
+            "oddStatus": 7,
+            "competitorId": 2557431,
+            "id": 3018457507,
+            "name": "Empate ou Paris Saint-Germain F.C. (chevare)"
+        },
+        {
+            "typeId": 12,
+            "price": 2.34,
+            "isMB": true,
+            "oddStatus": 0,
+            "id": 3018458247,
+            "name": "Mais de 4.5"
+        },
+        {
+            "typeId": 13,
+            "price": 1.46,
+            "isMB": true,
+            "oddStatus": 0,
+            "id": 3018458248,
+            "name": "Menos de 4.5"
+        },
+        {
+            "typeId": 1,
+            "price": 2.22,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2538522,
+            "id": 3018379591,
+            "name": "River Plate (Cira)"
+        },
+        {
+            "typeId": 2,
+            "price": 2.29,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3018379592,
+            "name": "Empate"
+        },
+        {
+            "typeId": 3,
+            "price": 4.24,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2576428,
+            "id": 3018379593,
+            "name": "Real Madrid (Somibg)"
+        },
+        {
+            "typeId": 9,
+            "price": 1.19,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2538522,
+            "id": 3018457571,
+            "name": "River Plate (Cira) ou empate"
+        },
+        {
+            "typeId": 10,
+            "price": 1.56,
+            "isMB": false,
+            "oddStatus": 0,
+            "id": 3018457569,
+            "name": "River Plate (Cira) ou Real Madrid (Somibg)"
+        },
+        {
+            "typeId": 11,
+            "price": 1.59,
+            "isMB": false,
+            "oddStatus": 0,
+            "competitorId": 2576428,
+            "id": 3018457570,
+            "name": "Empate ou Real Madrid (Somibg)"
+        },
+        {
+            "typeId": 12,
+            "price": 1.87,
+            "isMB": true,
+            "oddStatus": 0,
+            "id": 3018457623,
+            "name": "Mais de 3.5"
+        },
+        {
+            "typeId": 13,
+            "price": 1.74,
+            "isMB": true,
+            "oddStatus": 0,
+            "id": 3018457624,
+            "name": "Menos de 3.5"
+        }
+    ],
+    "events": [
+        {
+            "liveTime": "54'",
+            "lst": "2025-10-22T03:24:21Z",
+            "ls": "2ª parte",
+            "score": [
+                1,
+                0
+            ],
+            "marketIds": [
+                1227986480,
+                1227986525,
+                1227986522,
+                1227986463,
+                1227986527
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "offers": [
+                {
+                    "type": 6
+                }
+            ],
+            "code": 1858,
+            "hasStream": false,
+            "extId": "fp16_bg:match:12433245",
+            "sc": 749,
+            "mc": 108,
+            "rc": false,
+            "pId": 16,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+                97722,
+                47212
+            ],
+            "sportId": 66,
+            "catId": 560,
+            "champId": 10009,
+            "status": 1,
+            "startDate": "2025-10-22T03:00:00Z",
+            "id": 13077152,
+            "name": "Mazatlán  vs. Santos Laguna"
+        },
+        {
+            "liveTime": "53'",
+            "lst": "2025-10-22T03:25:35Z",
+            "ls": "2ª parte",
+            "score": [
+                2,
+                0
+            ],
+            "marketIds": [
+                1227993163,
+                1227993150,
+                1227993212
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "offers": [
+                {
+                    "type": 6
+                }
+            ],
+            "code": 2019,
+            "hasStream": true,
+            "extId": "fp16_bg:match:12433246",
+            "sc": 381,
+            "mc": 63,
+            "rc": false,
+            "pId": 16,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+                46415,
+                50909
+            ],
+            "sportId": 66,
+            "catId": 560,
+            "champId": 10009,
+            "status": 1,
+            "startDate": "2025-10-22T03:05:00Z",
+            "id": 13077271,
+            "name": "Monterrey vs. Juárez"
+        },
+        {
+            "liveTime": "34'",
+            "lst": "2025-10-22T03:44:26Z",
+            "ls": "1ª parte",
+            "score": [
+                1,
+                2
+            ],
+            "marketIds": [
+                1228023164,
+                1228023163,
+                1228023162,
+                1228718726
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "offers": [
+                {
+                    "type": 6
+                }
+            ],
+            "code": 6868,
+            "hasStream": false,
+            "extId": "fp16_bg:match:13196222",
+            "sc": 15,
+            "mc": 6,
+            "rc": false,
+            "pId": 16,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+                410120,
+                410121
+            ],
+            "sportId": 66,
+            "catId": 567,
+            "champId": 9248,
+            "status": 1,
+            "startDate": "2025-10-22T03:30:00Z",
+            "id": 14365491,
+            "name": "West Zone United vs. Charkop FC"
+        },
+        {
+            "liveTime": "73'",
+            "lst": "2025-10-22T03:04:51Z",
+            "ls": "2ª parte",
+            "score": [
+                2,
+                1
+            ],
+            "marketIds": [
+                1227904778,
+                1227904777,
+                1228708361
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "offers": [
+                {
+                    "type": 6
+                }
+            ],
+            "code": 6064,
+            "hasStream": false,
+            "extId": "fp16_bg:match:13206679",
+            "sc": 15,
+            "mc": 6,
+            "rc": false,
+            "pId": 16,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+                2044115,
+                117382
+            ],
+            "sportId": 66,
+            "catId": 1145,
+            "champId": 9270,
+            "status": 1,
+            "startDate": "2025-10-22T02:00:00Z",
+            "id": 14363546,
+            "name": "GHUPO vs. Laugu United Honiara"
+        },
+        {
+            "liveTime": "2ª parte",
+            "lst": "2025-10-22T03:31:57Z",
+            "ls": "2ª parte",
+            "score": [
+                1,
+                1
+            ],
+            "marketIds": [
+                1228741669,
+                1228741676,
+                1228741670
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "hasStream": true,
+            "extId": "fp16_bg:match:13212635",
+            "sc": 29,
+            "mc": 10,
+            "rc": false,
+            "pId": 16,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+                1350218,
+                1986089
+            ],
+            "sportId": 66,
+            "catId": 2085,
+            "champId": 47155,
+            "status": 1,
+            "startDate": "2025-10-22T04:12:00Z",
+            "id": 14366582,
+            "name": "Real Madrid (GREED) vs. Paris SG (CATALYST)"
+        },
+        {
+            "liveTime": "1ª parte",
+            "lst": "2025-10-22T04:16:08Z",
+            "ls": "1ª parte",
+            "score": [
+                0,
+                0
+            ],
+            "marketIds": [
+                1228743313,
+                1228743320,
+                1228743362,
+                1228743315
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "hasStream": false,
+            "extId": "fp16_bg:match:13214601",
+            "sc": 0,
+            "mc": 0,
+            "rc": false,
+            "pId": 16,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+                1404080,
+                1262405
+            ],
+            "sportId": 66,
+            "catId": 2085,
+            "champId": 47155,
+            "status": 1,
+            "startDate": "2025-10-22T04:16:00Z",
+            "id": 14377886,
+            "name": "France (FAITH) vs. Spain (EDEN)"
+        },
+        {
+            "liveTime": "2ª parte",
+            "lst": "2025-10-22T03:29:33Z",
+            "ls": "2ª parte",
+            "score": [
+                4,
+                3
+            ],
+            "marketIds": [],
+            "isBooked": true,
+            "isParlay": false,
+            "hasStream": true,
+            "extId": "fp37_od:match:2163407",
+            "sc": 0,
+            "mc": 0,
+            "rc": false,
+            "pId": 37,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+                1876343,
+                1630154
+            ],
+            "sportId": 66,
+            "catId": 1571,
+            "champId": 57593,
+            "status": 1,
+            "startDate": "2025-10-22T04:10:00Z",
+            "id": 14378262,
+            "name": "France (Lotta) vs. Argentina (Valeria)"
+        },
+        {
+            "liveTime": "1ª parte",
+            "lst": "2025-10-22T04:16:03Z",
+            "ls": "1ª parte",
+            "score": [
+                2,
+                0
+            ],
+            "marketIds": [
+                1228702012,
+                1228702008
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "hasStream": true,
+            "extId": "fp37_od:match:2162154",
+            "sc": 0,
+            "mc": 0,
+            "rc": false,
+            "pId": 37,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+                2206211,
+                191626
+            ],
+            "sportId": 66,
+            "catId": 1571,
+            "champId": 57596,
+            "status": 1,
+            "startDate": "2025-10-22T04:16:00Z",
+            "id": 14378271,
+            "name": "Sevilla FC (Bony) vs. Villarreal CF (Jacob17)"
+        },
+        {
+            "liveTime": "1ª parte",
+            "lst": "2025-10-22T04:18:04Z",
+            "ls": "1ª parte",
+            "score": [
+                0,
+                0
+            ],
+            "marketIds": [
+                1228704323,
+                1228704332,
+                1228704327
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "hasStream": true,
+            "extId": "fp37_od:match:2162155",
+            "sc": 30,
+            "mc": 14,
+            "rc": false,
+            "pId": 37,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+                2209473,
+                2260255
+            ],
+            "sportId": 66,
+            "catId": 1571,
+            "champId": 57596,
+            "status": 1,
+            "startDate": "2025-10-22T04:18:00Z",
+            "id": 14378493,
+            "name": "Real Sociedad (Lucas) vs. Athletic Club (Gavi)"
+        },
+        {
+            "liveTime": "2ª parte",
+            "lst": "2025-10-22T03:29:45Z",
+            "ls": "2ª parte",
+            "score": [
+                3,
+                3
+            ],
+            "marketIds": [
+                1228701085
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 1469,
+            "hasStream": true,
+            "extId": "fp61_bt:match:e70e23ed-f6d4-4b4b-a342-dc6b368986b7",
+            "sc": 83,
+            "mc": 14,
+            "rc": false,
+            "pId": 61,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+                2259029,
+                2256608
+            ],
+            "sportId": 66,
+            "catId": 1728,
+            "champId": 37286,
+            "status": 1,
+            "startDate": "2025-10-22T04:10:00Z",
+            "id": 14369277,
+            "name": "Chelsea (Boulevard) vs. Liverpool (Kray)"
+        },
+        {
+            "liveTime": "2ª parte",
+            "lst": "2025-10-22T03:29:59Z",
+            "ls": "2ª parte",
+            "score": [
+                2,
+                5
+            ],
+            "marketIds": [
+                3018462942
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 693,
+            "hasStream": true,
+            "extId": "fp61_bt:match:eaee510d-bb85-40d0-b675-811c47e498f0",
+            "sc": 82,
+            "mc": 13,
+            "rc": false,
+            "pId": 61,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+                2259025,
+                2298598
+            ],
+            "sportId": 66,
+            "catId": 1728,
+            "champId": 37286,
+            "status": 1,
+            "startDate": "2025-10-22T04:10:00Z",
+            "id": 14369235,
+            "name": "Manchester United (Inquisitor) vs. Arsenal (Kodak)"
+        },
+        {
+            "liveTime": "Por iniciar",
+            "ls": "Por iniciar",
+            "score": [
+                0,
+                0
+            ],
+            "marketIds": [],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 9844,
+            "hasStream": true,
+            "extId": "fp61_bt:match:ea66db97-09b1-41c2-b00f-a74fa05f356a",
+            "sc": 0,
+            "mc": 0,
+            "rc": false,
+            "pId": 61,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+                2404786,
+                2418172
+            ],
+            "sportId": 66,
+            "catId": 1728,
+            "champId": 39663,
+            "status": 0,
+            "startDate": "2025-10-22T04:00:00Z",
+            "id": 14371151,
+            "name": "Denmark (nicksz) vs. Ukraine (Stason23)"
+        },
+        {
+            "liveTime": "Por iniciar",
+            "ls": "Por iniciar",
+            "score": [
+                0,
+                0
+            ],
+            "marketIds": [],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 6951,
+            "hasStream": true,
+            "extId": "fp61_bt:match:3f3aa1f3-59e6-4669-85e5-09f21a7d181e",
+            "sc": 0,
+            "mc": 0,
+            "rc": false,
+            "pId": 61,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+                2244379,
+                2418174
+            ],
+            "sportId": 66,
+            "catId": 1728,
+            "champId": 39663,
+            "status": 0,
+            "startDate": "2025-10-22T04:09:00Z",
+            "id": 14371148,
+            "name": "Czechia (vladl3n) vs. United States (Trush99)"
+        },
+        {
+            "liveTime": "Por iniciar",
+            "ls": "Por iniciar",
+            "score": [
+                0,
+                0
+            ],
+            "marketIds": [],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 7388,
+            "hasStream": true,
+            "extId": "fp61_bt:match:4557ad32-f27f-4c5b-8c4c-080505649dab",
+            "sc": 0,
+            "mc": 0,
+            "rc": false,
+            "pId": 61,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+                2432081,
+                2404786
+            ],
+            "sportId": 66,
+            "catId": 1728,
+            "champId": 39663,
+            "status": 0,
+            "startDate": "2025-10-22T04:18:00Z",
+            "id": 14371157,
+            "name": "Ghana (Mikhalich) vs. Denmark (nicksz)"
+        },
+        {
+            "liveTime": "Por iniciar",
+            "ls": "Por iniciar",
+            "score": [
+                0,
+                0
+            ],
+            "marketIds": [],
+            "isBooked": true,
+            "isParlay": false,
+            "code": 5884,
+            "hasStream": true,
+            "extId": "fp61_bt:match:98e43752-4656-4e32-a225-aaab2d09a958",
+            "sc": 0,
+            "mc": 0,
+            "rc": false,
+            "pId": 61,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+                2418174,
+                2418172
+            ],
+            "sportId": 66,
+            "catId": 1728,
+            "champId": 39663,
+            "status": 0,
+            "startDate": "2025-10-22T04:18:00Z",
+            "id": 14371110,
+            "name": "United States (Trush99) vs. Ukraine (Stason23)"
+        },
+        {
+            "liveTime": "Unknown",
+            "ls": "Unknown",
+            "score": [],
+            "marketIds": [],
+            "isBooked": true,
+            "isParlay": false,
+            "hasStream": true,
+            "extId": "fp61_bt:match:a432120e-cb45-4555-b015-5f845f955278",
+            "sc": 0,
+            "mc": 0,
+            "rc": false,
+            "pId": 61,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+                2321036,
+                1391299
+            ],
+            "sportId": 66,
+            "catId": 1728,
+            "champId": 49427,
+            "status": 0,
+            "startDate": "2025-10-22T04:18:00Z",
+            "id": 14378707,
+            "name": "Al Ittihad (GanGsta_Panda) vs. Al Nassr Riyadh (SpeciAL)"
+        },
+        {
+            "liveTime": "Unknown",
+            "ls": "Unknown",
+            "score": [],
+            "marketIds": [
+                1228708416,
+                1228743962,
+                1228708419
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "hasStream": true,
+            "extId": "fp61_bt:match:464fdadc-de46-4bfe-8ca1-2e5a4109eee3",
+            "sc": 92,
+            "mc": 13,
+            "rc": false,
+            "pId": 61,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+                2244523,
+                2436278
+            ],
+            "sportId": 66,
+            "catId": 1728,
+            "champId": 49427,
+            "status": 0,
+            "startDate": "2025-10-22T04:18:00Z",
+            "id": 14378718,
+            "name": "Ettifaq FC (flamez) vs. Al Hilal (why)"
+        },
+        {
+            "liveTime": "2ª parte",
+            "lst": "2025-10-22T03:31:52Z",
+            "ls": "2ª parte",
+            "score": [
+                0,
+                2
+            ],
+            "marketIds": [
+                1228708809,
+                1228741388,
+                1228741662
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "hasStream": true,
+            "extId": "fp61_bt:match:2ec71ac9-68ca-4c93-b06a-3097a8d53a9a",
+            "sc": 81,
+            "mc": 13,
+            "rc": false,
+            "pId": 61,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+                2548462,
+                2557431
+            ],
+            "sportId": 66,
+            "catId": 1728,
+            "champId": 49428,
+            "status": 1,
+            "startDate": "2025-10-22T04:12:00Z",
+            "id": 14378203,
+            "name": "Boca Juniors (Vick) vs. Paris Saint-Germain F.C. (chevare)"
+        },
+        {
+            "liveTime": "2ª parte",
+            "lst": "2025-10-22T03:31:29Z",
+            "ls": "2ª parte",
+            "score": [
+                1,
+                1
+            ],
+            "marketIds": [
+                1228710408,
+                1228741401,
+                1228741409
+            ],
+            "isBooked": true,
+            "isParlay": false,
+            "hasStream": true,
+            "extId": "fp61_bt:match:bb3ac6e6-577b-4943-a0aa-000991dfd9ab",
+            "sc": 84,
+            "mc": 14,
+            "rc": false,
+            "pId": 61,
+            "et": 0,
+            "hasStats": false,
+            "competitorIds": [
+                2538522,
+                2576428
+            ],
+            "sportId": 66,
+            "catId": 1728,
+            "champId": 49428,
+            "status": 1,
+            "startDate": "2025-10-22T04:12:00Z",
+            "id": 14378210,
+            "name": "River Plate (Cira) vs. Real Madrid (Somibg)"
+        }
+    ],
+    "sports": [
+        {
+            "catIds": [
+                560,
+                567,
+                1145,
+                2085,
+                1571,
+                1728
+            ],
+            "typeId": 1,
+            "iconName": "soccer",
+            "hasLiveEvents": false,
+            "id": 66,
+            "name": "Futebol"
+        }
+    ],
+    "categories": [
+        {
+            "champIds": [
+                10009
+            ],
+            "iso": "MEX",
+            "hasLiveEvents": false,
+            "id": 560,
+            "name": "México"
+        },
+        {
+            "champIds": [
+                9248
+            ],
+            "iso": "IND",
+            "hasLiveEvents": false,
+            "id": 567,
+            "name": "Índia"
+        },
+        {
+            "champIds": [
+                9270
+            ],
+            "iso": "SLB",
+            "hasLiveEvents": false,
+            "id": 1145,
+            "name": "Ilhas Salomão"
+        },
+        {
+            "champIds": [
+                47155
+            ],
+            "iso": "",
+            "hasLiveEvents": false,
+            "id": 2085,
+            "name": "H2H GG League"
+        },
+        {
+            "champIds": [
+                57593,
+                57596
+            ],
+            "iso": "",
+            "hasLiveEvents": false,
+            "id": 1571,
+            "name": "Rush Football"
+        },
+        {
+            "champIds": [
+                37286,
+                39663,
+                49427,
+                49428
+            ],
+            "iso": "",
+            "hasLiveEvents": false,
+            "id": 1728,
+            "name": "E-battles"
+        }
+    ],
+    "champs": [
+        {
+            "offers": [
+                {
+                    "type": 6
+                }
+            ],
+            "hasLiveEvents": false,
+            "id": 10009,
+            "name": "Liga MX"
+        },
+        {
+            "offers": [
+                {
+                    "type": 6
+                }
+            ],
+            "hasLiveEvents": false,
+            "id": 9248,
+            "name": "India Mumbai Super Division "
+        },
+        {
+            "offers": [
+                {
+                    "type": 6
+                }
+            ],
+            "hasLiveEvents": false,
+            "id": 9270,
+            "name": "Liga Premier das Ilhas Solomão"
+        },
+        {
+            "hasLiveEvents": false,
+            "id": 47155,
+            "name": "H2H GG - E-football"
+        },
+        {
+            "hasLiveEvents": false,
+            "id": 57593,
+            "name": "Valkyrie Cup 2025 Week #43"
+        },
+        {
+            "hasLiveEvents": false,
+            "id": 57596,
+            "name": "Valhalla Cup 2025 Week #43"
+        },
+        {
+            "hasLiveEvents": false,
+            "id": 37286,
+            "name": "Premier League (2x4 mins)"
+        },
+        {
+            "hasLiveEvents": false,
+            "id": 39663,
+            "name": "Volta International III 4x4 (2x3 mins)"
+        },
+        {
+            "hasLiveEvents": false,
+            "id": 49427,
+            "name": "ESportsBattle. RSL (2x6 mins)"
+        },
+        {
+            "hasLiveEvents": false,
+            "id": 49428,
+            "name": "ESportsBattle. Club World Cup (2x4 mins)"
+        }
+    ],
+    "competitors": [
+        {
+            "jerseySource": 2,
+            "jerseyChamps": [
+                10009
+            ],
+            "id": 97722,
+            "name": "Mazatlán "
+        },
+        {
+            "jerseySource": 2,
+            "jerseyChamps": [
+                10009
+            ],
+            "id": 47212,
+            "name": "Santos Laguna"
+        },
+        {
+            "jerseySource": 2,
+            "jerseyChamps": [
+                10009
+            ],
+            "id": 46415,
+            "name": "Monterrey"
+        },
+        {
+            "jerseySource": 2,
+            "jerseyChamps": [
+                10009
+            ],
+            "id": 50909,
+            "name": "Juárez"
+        },
+        {
+            "id": 410120,
+            "name": "West Zone United"
+        },
+        {
+            "id": 410121,
+            "name": "Charkop FC"
+        },
+        {
+            "id": 2044115,
+            "name": "GHUPO"
+        },
+        {
+            "id": 117382,
+            "name": "Laugu United Honiara"
+        },
+        {
+            "id": 1350218,
+            "name": "Real Madrid (GREED)"
+        },
+        {
+            "id": 1986089,
+            "name": "Paris SG (CATALYST)"
+        },
+        {
+            "id": 1404080,
+            "name": "France (FAITH)"
+        },
+        {
+            "id": 1262405,
+            "name": "Spain (EDEN)"
+        },
+        {
+            "id": 1876343,
+            "name": "France (Lotta)"
+        },
+        {
+            "id": 1630154,
+            "name": "Argentina (Valeria)"
+        },
+        {
+            "id": 2206211,
+            "name": "Sevilla FC (Bony)"
+        },
+        {
+            "id": 191626,
+            "name": "Villarreal CF (Jacob17)"
+        },
+        {
+            "id": 2209473,
+            "name": "Real Sociedad (Lucas)"
+        },
+        {
+            "id": 2260255,
+            "name": "Athletic Club (Gavi)"
+        },
+        {
+            "id": 2259029,
+            "name": "Chelsea (Boulevard)"
+        },
+        {
+            "id": 2256608,
+            "name": "Liverpool (Kray)"
+        },
+        {
+            "id": 2259025,
+            "name": "Manchester United (Inquisitor)"
+        },
+        {
+            "id": 2298598,
+            "name": "Arsenal (Kodak)"
+        },
+        {
+            "id": 2404786,
+            "name": "Denmark (nicksz)"
+        },
+        {
+            "id": 2418172,
+            "name": "Ukraine (Stason23)"
+        },
+        {
+            "id": 2244379,
+            "name": "Czechia (vladl3n)"
+        },
+        {
+            "id": 2418174,
+            "name": "United States (Trush99)"
+        },
+        {
+            "id": 2432081,
+            "name": "Ghana (Mikhalich)"
+        },
+        {
+            "id": 2321036,
+            "name": "Al Ittihad (GanGsta_Panda)"
+        },
+        {
+            "id": 1391299,
+            "name": "Al Nassr Riyadh (SpeciAL)"
+        },
+        {
+            "id": 2244523,
+            "name": "Ettifaq FC (flamez)"
+        },
+        {
+            "id": 2436278,
+            "name": "Al Hilal (why)"
+        },
+        {
+            "id": 2548462,
+            "name": "Boca Juniors (Vick)"
+        },
+        {
+            "id": 2557431,
+            "name": "Paris Saint-Germain F.C. (chevare)"
+        },
+        {
+            "id": 2538522,
+            "name": "River Plate (Cira)"
+        },
+        {
+            "id": 2576428,
+            "name": "Real Madrid (Somibg)"
+        }
+    ]
+}

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search, Filter, Calendar, SortAsc } from 'lucide-react';
+import { Search, Filter, Calendar, SortAsc, X } from 'lucide-react';
 import { EventsFilters } from '@/hooks/useEvents';
 
 interface EventsFiltersProps {
@@ -22,7 +22,7 @@ export default function EventsFiltersComponent({
     onFiltersChange({ ...filters, searchTerm });
   };
 
-  const handleFilterChange = (key: keyof EventsFilters, value: any) => {
+  const handleFilterChange = (key: keyof EventsFilters, value: string | Date | boolean | undefined) => {
     onFiltersChange({ ...filters, [key]: value });
   };
 
@@ -30,7 +30,6 @@ export default function EventsFiltersComponent({
     setSearchTerm('');
     onFiltersChange({
       searchTerm: '',
-      status: 'all',
       sortBy: 'date'
     });
   };
@@ -43,67 +42,41 @@ export default function EventsFiltersComponent({
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
           <input
             type="text"
-            placeholder="Pesquisar eventos..."
+            placeholder="Digite o nome do evento ou time..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 shadow-sm hover:shadow-md text-black"
           />
           <button
             type="submit"
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white px-3 py-1 rounded-md text-sm hover:bg-blue-700 transition-colors"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-all duration-200 shadow-sm hover:shadow-md"
           >
             Buscar
           </button>
         </div>
       </form>
 
-      {/* Filtros Rápidos */}
-      <div className="flex flex-wrap gap-2 mb-4">
-        <button
-          onClick={() => handleFilterChange('status', 'all')}
-          className={`px-3 py-1 rounded-full text-sm transition-colors ${
-            filters.status === 'all' || !filters.status
-              ? 'bg-blue-100 text-blue-800 border border-blue-200'
-              : 'bg-gray-100 text-gray-700 border border-gray-200 hover:bg-gray-200'
-          }`}
-        >
-          Todos
-        </button>
-        <button
-          onClick={() => handleFilterChange('status', 'live')}
-          className={`px-3 py-1 rounded-full text-sm transition-colors ${
-            filters.status === 'live'
-              ? 'bg-green-100 text-green-800 border border-green-200'
-              : 'bg-gray-100 text-gray-700 border border-gray-200 hover:bg-gray-200'
-          }`}
-        >
-          🔴 Ao Vivo
-        </button>
-        <button
-          onClick={() => handleFilterChange('status', 'upcoming')}
-          className={`px-3 py-1 rounded-full text-sm transition-colors ${
-            filters.status === 'upcoming'
-              ? 'bg-orange-100 text-orange-800 border border-orange-200'
-              : 'bg-gray-100 text-gray-700 border border-gray-200 hover:bg-gray-200'
-          }`}
-        >
-          ⏰ Próximos
-        </button>
-        
+      {/* Botão Filtros Avançados */}
+      <div className="flex justify-end mb-4">
         <button
           onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
-          className="flex items-center gap-1 px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-700 border border-gray-200 hover:bg-gray-200 transition-colors"
+          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
+            showAdvancedFilters
+              ? 'bg-purple-100 text-purple-800 border-2 border-purple-200 shadow-sm'
+              : 'bg-gray-100 text-gray-700 border-2 border-gray-200 hover:bg-gray-200 hover:shadow-sm'
+          }`}
         >
           <Filter className="w-4 h-4" />
-          Filtros
+          Filtros Avançados
         </button>
 
-        {(filters.searchTerm || filters.status !== 'all' || filters.sortBy !== 'date') && (
+        {(filters.searchTerm || filters.sortBy !== 'date') && (
           <button
             onClick={clearFilters}
-            className="px-3 py-1 rounded-full text-sm bg-red-100 text-red-700 border border-red-200 hover:bg-red-200 transition-colors"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium bg-red-100 text-red-700 border-2 border-red-200 hover:bg-red-200 hover:shadow-sm transition-all duration-200 ml-2"
           >
-            Limpar
+            <X className="w-4 h-4" />
+            Limpar Filtros
           </button>
         )}
       </div>
@@ -121,25 +94,25 @@ export default function EventsFiltersComponent({
               <select
                 value={filters.sortBy || 'date'}
                 onChange={(e) => handleFilterChange('sortBy', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 shadow-sm hover:shadow-md bg-white text-black"
               >
-                <option value="date">Data</option>
-                <option value="name">Nome</option>
-                <option value="league">Liga</option>
+                <option value="date">Data de início</option>
+                <option value="name">Nome do evento</option>
+                <option value="league">Nome da liga</option>
               </select>
             </div>
 
             {/* Filtro por Liga */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Liga
+                Nome da Liga
               </label>
               <input
                 type="text"
-                placeholder="Ex: Liga MX, Premier League..."
+                placeholder="Ex: Liga MX, Premier League, Champions League..."
                 value={filters.league || ''}
                 onChange={(e) => handleFilterChange('league', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 shadow-sm hover:shadow-md text-black"
               />
             </div>
 
@@ -147,13 +120,13 @@ export default function EventsFiltersComponent({
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 <Calendar className="w-4 h-4 inline mr-1" />
-                Data
+                Data do evento
               </label>
               <input
                 type="date"
                 value={filters.date ? filters.date.toISOString().split('T')[0] : ''}
                 onChange={(e) => handleFilterChange('date', e.target.value ? new Date(e.target.value) : undefined)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 shadow-sm hover:shadow-md text-black"
               />
             </div>
           </div>

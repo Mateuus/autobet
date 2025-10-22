@@ -4,10 +4,12 @@ import { useState, useEffect } from 'react';
 import { Calendar } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import sportsConfig from '@/data/sports-config.json';
+import EventsTabs, { EventTabType } from '@/components/events/EventsTabs';
 import EventsList from '@/components/events/EventsList';
 import EventDetail from '@/components/events/EventDetail';
-import { Sport, BiaHostedEventListItem, BiaHostedEventDetail } from '@/types/events';
-import { useEvents, EventsFilters } from '@/hooks/useEvents';
+import { Sport, BiaHostedEventDetail } from '@/types/events';
+import { useEvents, EventsFilters, UnifiedEvent } from '@/hooks/useEvents';
+import { useLiveEvents } from '@/hooks/useLiveEvents';
 
 // Mock temporário para detalhes do evento (até implementarmos o endpoint)
 const mockEventDetail: BiaHostedEventDetail = {
@@ -100,9 +102,9 @@ export default function EventsPage() {
   const [showEventsModal, setShowEventsModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<BiaHostedEventDetail | null>(null);
   const [filters, setFilters] = useState<EventsFilters>({
-    status: 'all',
     sortBy: 'date'
   });
+  const [activeTab, setActiveTab] = useState<EventTabType>('prematch');
 
   // Criar uma data fixa para evitar recriação a cada render
   const [currentDate] = useState(() => new Date());
@@ -113,10 +115,10 @@ export default function EventsPage() {
     loading, 
     error, 
     refetch, 
-    hasMore, 
-    loadMore, 
     totalEvents, 
-    currentPage 
+    currentPage,
+    totalPages,
+    onPageChange
   } = useEvents(
     selectedSport?.sportId || 0,
     currentDate,
@@ -124,10 +126,21 @@ export default function EventsPage() {
     20 // pageSize
   );
 
+  // Hook para eventos ao vivo
+  const {
+    liveEvents,
+    loading: liveLoading,
+    error: liveError,
+    isRefreshing: isLiveRefreshing,
+    lastUpdate: lastLiveUpdate,
+    refetch: refetchLive
+  } = useLiveEvents(selectedSport?.sportId || 0, currentDate);
+
   // Verificar se há parâmetros na URL ao carregar a página
   useEffect(() => {
     const eventId = searchParams.get('eventId');
     const sportId = searchParams.get('sportId');
+    const page = searchParams.get('page');
 
     if (eventId && sportId) {
       // Cenário 1: URL com eventId e sportId - mostrar detalhes do evento
@@ -146,6 +159,11 @@ export default function EventsPage() {
         setSelectedSport(sport);
         setShowEventsModal(true);
         setSelectedEvent(null);
+        
+        // Se há parâmetro page na URL, usar ele
+        if (page && parseInt(page) > 1) {
+          onPageChange(parseInt(page));
+        }
       }
     } else {
       // Cenário 3: URL sem parâmetros - mostrar seleção de esportes
@@ -153,7 +171,7 @@ export default function EventsPage() {
       setShowEventsModal(false);
       setSelectedEvent(null);
     }
-  }, [searchParams]);
+  }, [searchParams, onPageChange]);
 
   const handleSportSelect = (sport: Sport) => {
     setSelectedSport(sport);
@@ -162,7 +180,16 @@ export default function EventsPage() {
     router.push(`/events?sportId=${sport.sportId}`);
   };
 
-  const handleEventSelect = (event: BiaHostedEventListItem) => {
+  const handlePageChange = (page: number) => {
+    if (selectedSport) {
+      const url = page > 1 
+        ? `/events?sportId=${selectedSport.sportId}&page=${page}`
+        : `/events?sportId=${selectedSport.sportId}`;
+      router.push(url);
+    }
+  };
+
+  const handleEventSelect = (event: UnifiedEvent) => {
     // TODO: Implementar busca de detalhes do evento quando o endpoint estiver disponível
     // Por enquanto, usar o mockEventDetail
     setSelectedEvent(mockEventDetail);
@@ -209,23 +236,42 @@ export default function EventsPage() {
   }
 
   if (showEventsModal) {
+    const currentEvents = activeTab === 'live' ? liveEvents : events;
+    const currentLoading = activeTab === 'live' ? liveLoading : loading;
+    const currentError = activeTab === 'live' ? liveError : error;
+    const currentRefetch = activeTab === 'live' ? refetchLive : refetch;
+
     return (
-      <EventsList
-        events={events}
-        sportName={selectedSport?.sport || ''}
-        onEventSelect={handleEventSelect}
-        onBackToSports={handleBackToSports}
-        loading={loading}
-        error={error}
-        onRetry={refetch}
-        hasMore={hasMore}
-        totalEvents={totalEvents}
-        currentPage={currentPage}
-        onLoadMore={loadMore}
-        filters={filters}
-        onFiltersChange={handleFiltersChange}
-        onSearch={handleSearch}
-      />
+      <div className="space-y-6">
+        {/* Abas AO VIVO / PRÉ-JOGO */}
+        <EventsTabs
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+          liveEventsCount={liveEvents.length}
+          prematchEventsCount={totalEvents}
+          isLiveRefreshing={isLiveRefreshing}
+        />
+
+        {/* Lista de Eventos */}
+        <EventsList
+          events={currentEvents}
+          sportName={selectedSport?.sport || ''}
+          onEventSelect={handleEventSelect}
+          onBackToSports={handleBackToSports}
+          loading={currentLoading}
+          error={currentError}
+          onRetry={currentRefetch}
+          totalEvents={activeTab === 'prematch' ? totalEvents : liveEvents.length}
+          currentPage={activeTab === 'prematch' ? currentPage : 1}
+          totalPages={activeTab === 'prematch' ? totalPages : 1}
+          onPageChange={activeTab === 'prematch' ? (page) => onPageChange(page, handlePageChange) : undefined}
+          filters={filters}
+          onFiltersChange={handleFiltersChange}
+          onSearch={handleSearch}
+          isLiveRefreshing={isLiveRefreshing}
+          lastLiveUpdate={lastLiveUpdate}
+        />
+      </div>
     );
   }
 

@@ -2,22 +2,31 @@ import { useState, useEffect, useCallback } from 'react';
 import { BiaHostedEventListItem } from '@/types/events';
 import { biaHostedApi, EventsListParams } from '@/services/biaHostedApi';
 
+// Tipo unificado para eventos (normais + ao vivo)
+export type UnifiedEvent = BiaHostedEventListItem & {
+  // Campos específicos de eventos ao vivo
+  liveTime?: string;
+  lst?: string;
+  ls?: string;
+  score?: number[];
+  isLive?: boolean;
+};
+
 export interface UseEventsReturn {
-  events: BiaHostedEventListItem[];
+  events: UnifiedEvent[];
   loading: boolean;
   error: string | null;
   refetch: () => Promise<void>;
-  hasMore: boolean;
-  loadMore: () => Promise<void>;
   totalEvents: number;
   currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number, onUrlUpdate?: (page: number) => void) => void;
 }
 
 export interface EventsFilters {
   searchTerm?: string;
   date?: Date;
   league?: string;
-  status?: 'all' | 'live' | 'upcoming';
   sortBy?: 'date' | 'name' | 'league';
 }
 
@@ -36,15 +45,16 @@ export function useEvents(
   filters?: EventsFilters,
   pageSize: number = 20
 ): UseEventsReturn {
-  const [events, setEvents] = useState<BiaHostedEventListItem[]>([]);
+  const [allEvents, setAllEvents] = useState<UnifiedEvent[]>([]);
+  const [events, setEvents] = useState<UnifiedEvent[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
   const [totalEvents, setTotalEvents] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
 
   // Função para aplicar filtros aos eventos
-  const applyFilters = useCallback((eventsList: BiaHostedEventListItem[], filters?: EventsFilters) => {
+  const applyFilters = useCallback((eventsList: UnifiedEvent[], filters?: EventsFilters) => {
     if (!filters) return eventsList;
 
     let filtered = [...eventsList];
@@ -55,19 +65,6 @@ export function useEvents(
       filtered = filtered.filter(event => 
         event.name.toLowerCase().includes(searchLower)
       );
-    }
-
-    // Filtro por status
-    if (filters.status && filters.status !== 'all') {
-      filtered = filtered.filter(event => {
-        if (filters.status === 'live') {
-          return event.et === 1; // et = 1 significa ao vivo
-        }
-        if (filters.status === 'upcoming') {
-          return event.et === 0; // et = 0 significa próximo
-        }
-        return true;
-      });
     }
 
     // Filtro por liga (baseado no nome do evento)
@@ -96,13 +93,20 @@ export function useEvents(
     return filtered;
   }, []);
 
-  const fetchEvents = useCallback(async (page: number = 1, reset: boolean = true) => {
+  // Função para paginar eventos localmente
+  const paginateEvents = useCallback((eventsList: UnifiedEvent[], page: number) => {
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    return eventsList.slice(startIndex, endIndex);
+  }, [pageSize]);
+
+  const fetchEvents = useCallback(async () => {
     if (!sportId || sportId === 0) {
       console.log('🚫 Hook useEvents: sportId inválido, não fazendo requisição');
       return;
     }
 
-    console.log('🔄 Hook useEvents: Fazendo requisição para sportId:', sportId, 'página:', page);
+    console.log('🔄 Hook useEvents: Fazendo requisição para sportId:', sportId);
     setLoading(true);
     setError(null);
 
@@ -112,25 +116,30 @@ export function useEvents(
         date: date || new Date(),
       };
 
-      const data = await biaHostedApi.getEventsList(params);
-      const allEventsData = data.events || [];
+      // Carregar todos os eventos normais de uma vez
+      console.log('📅 Carregando todos os eventos normais...');
+      const normalData = await biaHostedApi.getEventsList(params);
+      const normalEvents: UnifiedEvent[] = (normalData.events || []).map(event => ({
+        ...event,
+        isLive: false,
+      }));
+      console.log('📅 Eventos normais encontrados:', normalEvents.length);
       
-      // Aplicar filtros
-      const filteredEvents = applyFilters(allEventsData, filters);
+      // Aplicar filtros aos eventos
+      const filteredEvents = applyFilters(normalEvents, filters);
       
-      if (reset) {
-        setEvents(filteredEvents.slice(0, pageSize));
-        setCurrentPage(1);
-      } else {
-        const startIndex = (page - 1) * pageSize;
-        const endIndex = startIndex + pageSize;
-        const newEvents = filteredEvents.slice(startIndex, endIndex);
-        setEvents(prev => [...prev, ...newEvents]);
-        setCurrentPage(page);
-      }
-      
+      // Armazenar todos os eventos filtrados
+      setAllEvents(filteredEvents);
       setTotalEvents(filteredEvents.length);
-      setHasMore((currentPage * pageSize) < filteredEvents.length);
+      
+      // Calcular total de páginas
+      const totalPagesCount = Math.ceil(filteredEvents.length / pageSize);
+      setTotalPages(totalPagesCount);
+      
+      // Mostrar primeira página
+      const firstPageEvents = paginateEvents(filteredEvents, 1);
+      setEvents(firstPageEvents);
+      setCurrentPage(1);
       
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Erro desconhecido';
@@ -139,19 +148,28 @@ export function useEvents(
     } finally {
       setLoading(false);
     }
-  }, [sportId, date, filters, pageSize, applyFilters, currentPage]);
-
-  const loadMore = useCallback(async () => {
-    if (!hasMore || loading) return;
-    await fetchEvents(currentPage + 1, false);
-  }, [hasMore, loading, currentPage, fetchEvents]);
+  }, [sportId, date, filters, pageSize, applyFilters, paginateEvents]);
 
   const refetch = useCallback(async () => {
-    await fetchEvents(1, true);
+    await fetchEvents();
   }, [fetchEvents]);
 
+  const onPageChange = useCallback((page: number, onUrlUpdate?: (page: number) => void) => {
+    console.log('📄 Mudando para página:', page);
+    
+    // Paginar eventos localmente sem fazer nova requisição
+    const pageEvents = paginateEvents(allEvents, page);
+    setEvents(pageEvents);
+    setCurrentPage(page);
+    
+    // Atualizar URL se callback fornecido
+    if (onUrlUpdate) {
+      onUrlUpdate(page);
+    }
+  }, [allEvents, paginateEvents]);
+
   useEffect(() => {
-    fetchEvents(1, true);
+    fetchEvents();
   }, [fetchEvents]);
 
   return {
@@ -159,10 +177,10 @@ export function useEvents(
     loading,
     error,
     refetch,
-    hasMore,
-    loadMore,
     totalEvents,
     currentPage,
+    totalPages,
+    onPageChange,
   };
 }
 
