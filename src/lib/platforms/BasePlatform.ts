@@ -97,7 +97,7 @@ export abstract class BasePlatform {
     return {
       culture: betData.culture || 'pt-BR',
       timezoneOffset: betData.timezoneOffset || 180,
-      integration: this.integration,
+      integration: betData.integration || this.integration,
       deviceType: betData.deviceType || 1,
       numFormat: betData.numFormat || 'en-GB',
       countryCode: betData.countryCode || 'BR',

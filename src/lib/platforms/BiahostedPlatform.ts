@@ -434,10 +434,11 @@ export class BiahostedPlatform extends BasePlatform {
   }
 
   async signIn(userToken: string): Promise<PlatformToken> {
+    const integration = this.integration === 'mcgames' ? 'mcgames2' : this.integration;
     const data = {
       culture: 'pt-BR',
       timezoneOffset: 180,
-      integration: this.integration,
+      integration: integration,
       deviceType: 1,
       numFormat: 'en-GB',
       countryCode: 'BR',
