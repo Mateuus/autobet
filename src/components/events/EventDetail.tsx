@@ -2,7 +2,7 @@ import { useState } from 'react';
 import MarketCard from './MarketCard';
 import OddsButton from './OddsButton';
 import { BiaHostedEventDetail, BiaHostedMarket, BiaHostedOdd } from '@/types/events';
-import { shouldRemoveDuplicates } from '@/config/market-config';
+import { shouldRemoveDuplicates, shouldExcludeFromSlider } from '@/config/market-config';
 
 interface EventDetailProps {
   event: BiaHostedEventDetail;
@@ -639,10 +639,13 @@ export default function EventDetail({ event, onBackToList, loading = false, erro
         {/* Renderizar mercados filtrados */}
         {filteredMarkets.length > 0 ? (
           filteredMarkets.map((market, index) => {
+            // Verificar se o mercado deve ser excluído do slider
+            const shouldExcludeFromSliderMarket = shouldExcludeFromSlider(market.sportMarketId);
+            
             // Verificar se o mercado tem odds com sv (spread value)
             // Exceção: Handicap Europeu 1x2 (sportMarketId: 70510) deve ser tratado como mercado normal
             const isEuropeanHandicap = market.sportMarketId === 70510;
-            const hasSpreadOdds = !isEuropeanHandicap && market.desktopOddIds?.some(oddIdGroup => 
+            const hasSpreadOdds = !isEuropeanHandicap && !shouldExcludeFromSliderMarket && market.desktopOddIds?.some(oddIdGroup => 
               oddIdGroup.some(oddId => {
                 const odd = event.odds?.find(o => o.id === oddId);
                 return odd?.sv !== undefined;

@@ -13,6 +13,10 @@
  *    - Array com IDs de mercados que devem ter processamento de duplicatas
  *    - Usado apenas quando removeDuplicatesForAllMarkets = false
  * 
+ * 3. excludeFromSliderSportMarketIds: number[]
+ *    - Array com IDs de mercados que devem ser excluídos do slider
+ *    - Estes mercados serão renderizados apenas como lista normal (sem slider)
+ * 
  * COMO FUNCIONA:
  * Quando há mercados duplicados com mesmo ID:
  * - Mercado índice 1: {id: 123, shortName: "Vencedor do encontro", ...}
@@ -29,6 +33,9 @@
  * Para processamento específico (padrão):
  * removeDuplicatesForAllMarkets: false
  * duplicateRemovalSportMarketIds: [70472, 12345]
+ * 
+ * Para excluir mercados do slider:
+ * excludeFromSliderSportMarketIds: [70491, 12345]
  */
 
 export interface MarketSpecialConfig {
@@ -37,6 +44,9 @@ export interface MarketSpecialConfig {
   
   /** IDs de sportMarket que devem ter processamento de duplicatas (quando removeDuplicatesForAllMarkets = false) */
   duplicateRemovalSportMarketIds: number[];
+  
+  /** IDs de sportMarket que devem ser excluídos do slider (renderizados apenas como lista normal) */
+  excludeFromSliderSportMarketIds: number[];
   
   /** Outras configurações futuras podem ser adicionadas aqui */
   // exemplo: specialHandlingSportMarketIds: number[];
@@ -50,7 +60,13 @@ export const MARKET_CONFIG: MarketSpecialConfig = {
   // (usado apenas quando removeDuplicatesForAllMarkets = false)
   duplicateRemovalSportMarketIds: [
     70472, // Vencedor do encontro - exemplo
-    70491 // Primeiro Gol
+    //70491 // Primeiro Gol
+  ],
+  
+  // Configurar aqui os sportMarketIds que devem ser excluídos do slider
+  // (renderizados apenas como lista normal, sem slider)
+  excludeFromSliderSportMarketIds: [
+    70491 // Primeiro Gol - não deve aparecer no slider
   ]
 };
 
@@ -65,4 +81,11 @@ export function shouldRemoveDuplicates(sportMarketId: number): boolean {
   
   // Caso contrário, apenas dos sportMarketIds específicos
   return MARKET_CONFIG.duplicateRemovalSportMarketIds.includes(sportMarketId);
+}
+
+/**
+ * Verifica se um mercado deve ser excluído do slider (renderizado apenas como lista normal)
+ */
+export function shouldExcludeFromSlider(sportMarketId: number): boolean {
+  return MARKET_CONFIG.excludeFromSliderSportMarketIds.includes(sportMarketId);
 }
