@@ -155,17 +155,44 @@ export default function EventDetail({ event, onBackToList, loading = false, erro
       }).filter((item): item is BiaHostedOdd => item !== null)
     ) || [];
 
-    if (spreadOdds.length === 0) return null;
+    if (spreadOdds.length === 0) {
+      // Se não tem odds com sv, renderizar como mercado normal
+      const marketOptions = market.desktopOddIds?.flatMap(oddIdGroup => 
+        oddIdGroup.map(oddId => {
+          const odd = event.odds?.find(o => o.id === oddId);
+          if (!odd) return null;
 
-    // Separar odds por tipo (Mais/Menos)
-    const maisOdds = spreadOdds.filter((odd: BiaHostedOdd) => odd.typeId === 12);
-    const menosOdds = spreadOdds.filter((odd: BiaHostedOdd) => odd.typeId === 13);
+          return {
+            label: odd.name,
+            odds: odd.price || 1.0,
+            onClick: () => handleOddsClick(`market-${market.id}-${odd.id}`),
+            isSelected: selectedOdds === `market-${market.id}-${odd.id}`,
+            isDisabled: false,
+            oddStatus: odd.oddStatus || 0
+          };
+        }).filter((item): item is NonNullable<typeof item> => item !== null)
+      ) || [];
+
+      return (
+        <MarketCard
+          key={uniqueKey}
+          title={market.name}
+          options={marketOptions}
+          isCollapsed={collapsedMarkets.has(market.id)}
+          onToggleCollapse={() => toggleMarketCollapse(market.id)}
+        />
+      );
+    }
+
+    // Separar odds por tipo (Mais/Menos) - incluindo typeIds asiáticos
+    const maisOdds = spreadOdds.filter((odd: BiaHostedOdd) => odd.typeId === 12 || odd.typeId === 1715);
+    const menosOdds = spreadOdds.filter((odd: BiaHostedOdd) => odd.typeId === 13 || odd.typeId === 1714);
     
-    // Pegar todos os valores únicos de spread disponíveis (filtrar valores negativos e inválidos)
+    // Pegar todos os valores únicos de spread disponíveis (incluir valores negativos para mercados asiáticos)
     const availableSpreadValues = [...new Set(spreadOdds.map(odd => odd.sv).filter(Boolean))]
       .filter(value => {
         const num = parseFloat(value || '0');
-        return !isNaN(num) && num > 0; // Apenas valores positivos válidos
+        return !isNaN(num); // Aceitar valores negativos para mercados asiáticos
       })
       .sort((a, b) => parseFloat(a || '0') - parseFloat(b || '0'));
     
@@ -604,7 +631,9 @@ export default function EventDetail({ event, onBackToList, loading = false, erro
         {filteredMarkets.length > 0 ? (
           filteredMarkets.map((market, index) => {
             // Verificar se o mercado tem odds com sv (spread value)
-            const hasSpreadOdds = market.desktopOddIds?.some(oddIdGroup => 
+            // Exceção: Handicap Europeu 1x2 (sportMarketId: 70510) deve ser tratado como mercado normal
+            const isEuropeanHandicap = market.sportMarketId === 70510;
+            const hasSpreadOdds = !isEuropeanHandicap && market.desktopOddIds?.some(oddIdGroup => 
               oddIdGroup.some(oddId => {
                 const odd = event.odds?.find(o => o.id === oddId);
                 return odd?.sv !== undefined;
@@ -615,7 +644,7 @@ export default function EventDetail({ event, onBackToList, loading = false, erro
               // Layout especial para mercados com spread
               return renderSpreadMarket(market, index);
             } else {
-              // Layout normal para mercados sem spread
+              // Layout normal para mercados sem spread - SEMPRE renderizar
               const marketOptions = market.desktopOddIds?.flatMap(oddIdGroup => 
                 oddIdGroup.map(oddId => {
                   const odd = event.odds?.find(o => o.id === oddId);
