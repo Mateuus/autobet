@@ -236,3 +236,6 @@ export interface DashboardStats {
   totalProfit: number;
   successRate: number;
 }
+
+// Re-export dos tipos de eventos
+export * from './events';

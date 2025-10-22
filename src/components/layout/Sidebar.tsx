@@ -11,7 +11,8 @@ import {
   LogOut,
   ChevronLeft,
   ChevronRight,
-  User
+  User,
+  Calendar
 } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { usePathname } from 'next/navigation';
@@ -32,6 +33,7 @@ export function Sidebar({ isCollapsed, onToggle }: SidebarProps) {
   const authenticatedNavigation = [
     { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard, isAuth: true },
     { name: 'Contas', href: '/dashboard/accounts', icon: CreditCard, isAuth: true },
+    { name: 'Eventos', href: '/events', icon: Calendar, isAuth: true },
     { name: 'Estratégias', href: '/dashboard/strategies', icon: BarChart3, isAuth: true },
     { name: 'Histórico', href: '/dashboard/history', icon: History, isAuth: true },
     { name: 'Configurações', href: '/dashboard/settings', icon: Settings, isAuth: true },
@@ -51,6 +53,9 @@ export function Sidebar({ isCollapsed, onToggle }: SidebarProps) {
     }
     if (href === '/') {
       return pathname === '/';
+    }
+    if (href === '/events') {
+      return pathname === '/events';
     }
     return pathname.startsWith(href);
   };

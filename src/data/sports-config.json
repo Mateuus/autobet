@@ -1,0 +1,12 @@
+[
+  {
+    "sport": "futebol",
+    "sportId": 66,
+    "couponType": 3
+  },
+  {
+    "sport": "basquete",
+    "sportId": 67,
+    "couponType": 3
+  }
+]
