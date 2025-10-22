@@ -287,18 +287,7 @@ function EventsContent() {
       return (
         <div className="space-y-6">
           {/* Header com opção de voltar */}
-          <div className="flex items-center justify-between">
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <Calendar className="w-5 h-5 text-gray-400" />
-                <span className="text-gray-400">23/10/2025</span>
-              </div>
-              <h1 className="text-2xl font-bold text-gray-900">Eventos</h1>
-              <p className="text-gray-600">
-                {selectedPlatform.name} - {selectedSite.name}
-              </p>
-            </div>
-            
+          <div className="flex items-center justify-end">
             <button
               onClick={handleBackToPlatformSelector}
               className="px-4 py-2 text-sm text-gray-600 hover:text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
@@ -316,18 +305,7 @@ function EventsContent() {
       return (
         <div className="space-y-6">
           {/* Header com opção de voltar */}
-          <div className="flex items-center justify-between">
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <Calendar className="w-5 h-5 text-gray-400" />
-                <span className="text-gray-400">23/10/2025</span>
-              </div>
-              <h1 className="text-2xl font-bold text-gray-900">Eventos</h1>
-              <p className="text-gray-600">
-                {selectedPlatform.name} - {selectedSite.name}
-              </p>
-            </div>
-            
+          <div className="flex items-center justify-end">
             <button
               onClick={handleBackToPlatformSelector}
               className="px-4 py-2 text-sm text-gray-600 hover:text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"

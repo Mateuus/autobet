@@ -1,11 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../ui/card';
-import { Button } from '../../ui/button';
-import { Badge } from '../../ui/badge';
-import { Skeleton } from '../../ui/skeleton';
-import { Clock, Users, Calendar, ArrowLeft, Trophy, Target } from 'lucide-react';
+import MarketCard from '../MarketCard';
 
 interface Team {
   id: string;
@@ -79,6 +75,11 @@ export default function EventDetails({ eventId, onBack }: EventDetailsProps) {
   const [markets, setMarkets] = useState<Market[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState('Popular');
+  const [selectedOdds, setSelectedOdds] = useState<string | null>(null);
+  const [collapsedMarkets, setCollapsedMarkets] = useState<Set<number>>(new Set());
+  const [searchTerm, setSearchTerm] = useState('');
+  const [isSearchActive, setIsSearchActive] = useState(false);
 
   useEffect(() => {
     if (eventId) {
@@ -183,227 +184,330 @@ export default function EventDetails({ eventId, onBack }: EventDetailsProps) {
     }
   };
 
-  const formatDateTime = (dateString: string) => {
-    const date = new Date(dateString);
-    return {
-      date: date.toLocaleDateString('pt-BR'),
-      time: date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
-    };
+  const handleOddsClick = (oddsId: string) => {
+    setSelectedOdds(selectedOdds === oddsId ? null : oddsId);
   };
 
+  const handleSearchToggle = () => {
+    setIsSearchActive(!isSearchActive);
+    if (isSearchActive) {
+      setSearchTerm('');
+    }
+  };
+
+  const handleSearchChange = (value: string) => {
+    setSearchTerm(value);
+    if (value.trim()) {
+      setIsSearchActive(true);
+    }
+  };
+
+  const handleSearchClose = () => {
+    setIsSearchActive(false);
+    setSearchTerm('');
+  };
+
+  const toggleMarketCollapse = (marketId: number) => {
+    setCollapsedMarkets(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(marketId)) {
+        newSet.delete(marketId);
+      } else {
+        newSet.add(marketId);
+      }
+      return newSet;
+    });
+  };
+
+  // Criar categorias dinâmicas baseadas nos mercados
+  const categories = [
+    'Todos',
+    'Popular',
+    'Resultado Final',
+    'Ambas Marcam',
+    'Over/Under'
+  ];
+
+  // Estados de loading e error
   if (loading) {
     return (
-      <div className="space-y-6">
-        <div className="flex items-center gap-2">
-          <Skeleton className="h-8 w-8" />
-          <Skeleton className="h-6 w-32" />
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Carregando detalhes do evento...</p>
         </div>
-        
-        <Card>
-          <CardContent className="p-6">
-            <div className="space-y-4">
-              <Skeleton className="h-6 w-3/4" />
-              <div className="flex justify-between">
-                <Skeleton className="h-4 w-1/3" />
-                <Skeleton className="h-4 w-1/4" />
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-        
-        {[...Array(3)].map((_, i) => (
-          <Card key={i}>
-            <CardContent className="p-4">
-              <div className="space-y-3">
-                <Skeleton className="h-4 w-1/2" />
-                <div className="grid grid-cols-3 gap-2">
-                  <Skeleton className="h-8 w-full" />
-                  <Skeleton className="h-8 w-full" />
-                  <Skeleton className="h-8 w-full" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="space-y-6">
-        <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm" onClick={onBack}>
-            <ArrowLeft className="h-4 w-4" />
-          </Button>
-          <h2 className="text-xl font-semibold text-gray-800">Detalhes do Evento</h2>
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-red-500 text-6xl mb-4">⚠️</div>
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">Erro ao carregar evento</h2>
+          <p className="text-gray-600 mb-4">{error}</p>
+          <button
+            onClick={loadEventDetails}
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Tentar Novamente
+          </button>
+          <button
+            onClick={onBack}
+            className="ml-3 bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
+          >
+            Voltar à Lista
+          </button>
         </div>
-        
-        <Card>
-          <CardContent className="p-6 text-center">
-            <p className="text-red-600">{error}</p>
-            <Button 
-              onClick={loadEventDetails} 
-              className="mt-4"
-              variant="outline"
-            >
-              Tentar Novamente
-            </Button>
-          </CardContent>
-        </Card>
       </div>
     );
   }
 
   if (!event) {
     return (
-      <div className="space-y-6">
-        <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm" onClick={onBack}>
-            <ArrowLeft className="h-4 w-4" />
-          </Button>
-          <h2 className="text-xl font-semibold text-gray-800">Detalhes do Evento</h2>
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-gray-500 text-6xl mb-4">📋</div>
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">Evento não encontrado</h2>
+          <p className="text-gray-600 mb-4">O evento solicitado não foi encontrado.</p>
+          <button
+            onClick={onBack}
+            className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
+          >
+            Voltar à Lista
+          </button>
         </div>
-        
-        <Card>
-          <CardContent className="p-6 text-center">
-            <p className="text-gray-500">Evento não encontrado.</p>
-          </CardContent>
-        </Card>
       </div>
     );
   }
 
-  const { date, time } = formatDateTime(event.startTime as string);
+  // Converter data ISO para formato brasileiro
+  const eventDate = new Date(event.startTime);
+  const dateStr = `${eventDate.getDate().toString().padStart(2, '0')}/${(eventDate.getMonth() + 1).toString().padStart(2, '0')}`;
+  const timeStr = `${eventDate.getHours().toString().padStart(2, '0')}:${eventDate.getMinutes().toString().padStart(2, '0')}`;
+
+  // Extrair nomes dos times dos teams
+  const homeTeam = event.teams[0]?.name || 'Time Casa';
+  const awayTeam = event.teams[1]?.name || 'Time Visitante';
+
+  // Filtrar mercados por categoria e pesquisa
+  const getFilteredMarkets = () => {
+    let filteredMarkets = markets;
+
+    // Filtrar por pesquisa
+    if (searchTerm.trim()) {
+      filteredMarkets = filteredMarkets.filter(market =>
+        market.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    return filteredMarkets;
+  };
+
+  const filteredMarkets = getFilteredMarkets();
 
   return (
     <div className="space-y-6">
-      {/* Header */}
+      {/* Navigation */}
       <div className="flex items-center gap-2">
-        <Button variant="ghost" size="sm" onClick={onBack}>
-          <ArrowLeft className="h-4 w-4" />
-        </Button>
-        <h2 className="text-xl font-semibold text-gray-800">Detalhes do Evento</h2>
+        <button 
+          onClick={onBack}
+          className="text-blue-600 hover:text-blue-700"
+        >
+          ← Voltar para Lista
+        </button>
+        <span className="text-gray-400">/</span>
+        <span className="text-sm text-gray-500">{event.sportName}</span>
+        <span className="text-gray-400">/</span>
+        <span className="text-sm text-gray-500">{event.leagueName}</span>
+        <div className="ml-2 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+          {homeTeam} x {awayTeam}
+        </div>
+        <button className="text-gray-400">
+          ▼
+        </button>
       </div>
 
-      {/* Event Info */}
-      <Card>
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <CardTitle className="text-lg text-gray-800">{event.name as string}</CardTitle>
-            <div className="flex items-center gap-2">
-              {(event.isLive as boolean) && (
-                <Badge variant="destructive" className="text-xs">
-                  AO VIVO
-                </Badge>
-              )}
-              {(event.isSuspended as boolean) && (
-                <Badge variant="secondary" className="text-xs">
-                  Suspenso
-                </Badge>
-              )}
-              {(event.isPostponed as boolean) && (
-                <Badge variant="outline" className="text-xs">
-                  Adiado
-                </Badge>
-              )}
-            </div>
-          </div>
-          <CardDescription className="text-gray-700">{event.leagueName as string}</CardDescription>
-        </CardHeader>
-        
-        <CardContent>
-          <div className="space-y-4">
-            {/* Teams */}
-            <div className="flex items-center justify-between">
-              <div className="text-center">
-                <div className="font-semibold text-lg text-gray-800">{(event.teams as Team[])[0]?.name}</div>
-                <div className="text-sm text-gray-600">Casa</div>
-              </div>
-              
-              <div className="text-center">
-                <div className="text-2xl font-bold text-gray-400">VS</div>
-              </div>
-              
-              <div className="text-center">
-                <div className="font-semibold text-lg text-gray-800">{(event.teams as Team[])[1]?.name}</div>
-                <div className="text-sm text-gray-600">Fora</div>
-              </div>
-            </div>
-
-            {/* Event Details */}
-            <div className="grid grid-cols-2 gap-4 text-sm">
-              <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4 text-gray-600" />
-                <span className="text-gray-700">{date}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4 text-gray-600" />
-                <span className="text-gray-700">{time}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Trophy className="h-4 w-4 text-gray-600" />
-                <span className="text-gray-700">{event.countryName as string}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Users className="h-4 w-4 text-gray-600" />
-                <span className="text-gray-700">{event.sportName as string}</span>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Markets */}
-      <div className="space-y-4">
-        <div className="flex items-center gap-2">
-          <Target className="h-5 w-5 text-blue-500" />
-          <h3 className="text-lg font-semibold text-gray-800">Mercados Disponíveis</h3>
-          <Badge variant="secondary">{markets.length} mercados</Badge>
+      {/* Event Header */}
+      <div className="text-center">
+        <div className="text-sm text-gray-500 mb-2">
+          {event.leagueName.toUpperCase()}, APERTURA | DIA DE JOGO 14
         </div>
+        <div className="text-sm text-gray-500 mb-4">
+          {dateStr.replace('/', ' ').toUpperCase()} {timeStr}
+        </div>
+        <div className="flex items-center justify-center gap-8">
+          <div className="text-center">
+            <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mb-2">
+              <span className="text-white font-bold text-sm">{homeTeam.charAt(0)}</span>
+            </div>
+            <div className="text-sm font-medium text-gray-900">{homeTeam}</div>
+          </div>
+          <div className="text-gray-400">x</div>
+          <div className="text-center">
+            <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mb-2">
+              <span className="text-white font-bold text-sm">{awayTeam.charAt(0)}</span>
+            </div>
+            <div className="text-sm font-medium text-gray-900">{awayTeam}</div>
+          </div>
+        </div>
+      </div>
 
-        {markets.length === 0 ? (
-          <Card>
-            <CardContent className="p-6 text-center">
-              <p className="text-gray-700">Nenhum mercado disponível para este evento.</p>
-            </CardContent>
-          </Card>
+      {/* Categories */}
+      <div className="relative">
+        {/* Categorias com scroll customizado */}
+        {!isSearchActive && (
+          <div className="relative">
+            <div className="flex gap-2 overflow-x-auto scrollbar-custom pb-2 pl-4 pr-4">
+              {/* Botão de pesquisa dentro da tab */}
+              <button
+                onClick={handleSearchToggle}
+                className="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 transition-all duration-300 shrink-0"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </button>
+
+              {/* Categorias */}
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`shrink-0 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 whitespace-nowrap ${
+                    selectedCategory === category 
+                      ? 'bg-blue-600 text-white shadow-md' 
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-gray-900'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+            
+            {/* Gradiente nas bordas para indicar scroll */}
+            <div className="absolute left-0 top-0 bottom-2 w-4 bg-linear-to-r from-white to-transparent pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-2 w-4 bg-linear-to-l from-white to-transparent pointer-events-none"></div>
+          </div>
+        )}
+
+        {/* Input de pesquisa (expansível) */}
+        {isSearchActive && (
+          <div className="flex items-center gap-4 mb-4">
+            {/* Botão de pesquisa ativo */}
+            <button
+              onClick={handleSearchToggle}
+              className="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-600 text-white transition-all duration-300"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Input expandido */}
+            <div className="flex-1">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Pesquisar mercados..."
+                  value={searchTerm}
+                  onChange={(e) => handleSearchChange(e.target.value)}
+                  className="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 placeholder-gray-500"
+                  autoFocus={isSearchActive}
+                />
+                {searchTerm && (
+                  <button
+                    onClick={handleSearchClose}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Market Cards */}
+      <div className="space-y-4">
+        {/* Renderizar mercados filtrados */}
+        {filteredMarkets.length > 0 ? (
+          filteredMarkets.map((market, index) => {
+            const marketOptions = market.outcomes.map((outcome: Outcome) => ({
+              label: outcome.displayName,
+              odds: outcome.odds,
+              onClick: () => handleOddsClick(`market-${market.id}-${outcome.id}`),
+              isSelected: selectedOdds === `market-${market.id}-${outcome.id}`,
+              isDisabled: outcome.isSuspended,
+              oddStatus: outcome.isSuspended ? 1 : 0,
+              oddId: parseInt(outcome.id)
+            }));
+
+            const uniqueKey = `${selectedCategory}-${index}-${market.id}`;
+
+            return (
+              <MarketCard
+                key={uniqueKey}
+                title={market.displayName}
+                options={marketOptions}
+                isCollapsed={collapsedMarkets.has(parseInt(market.id))}
+                onToggleCollapse={() => toggleMarketCollapse(parseInt(market.id))}
+                isBB={false}
+                eventData={{
+                  id: parseInt(event.id),
+                  name: event.name,
+                  startDate: event.startTime,
+                  code: parseInt(event.providerEventId),
+                  competitors: event.teams.map(team => ({
+                    id: parseInt(team.id),
+                    name: team.name
+                  })),
+                  sport: {
+                    typeId: parseInt(event.sportId),
+                    iconName: 'soccer',
+                    hasLiveEvents: event.isLive,
+                    id: parseInt(event.sportId),
+                    name: event.sportName
+                  },
+                  championship: {
+                    hasLiveEvents: event.isLive,
+                    id: parseInt(event.leagueId),
+                    name: event.leagueName
+                  },
+                  category: {
+                    iso: event.countryCode,
+                    hasLiveEvents: event.isLive,
+                    id: parseInt(event.countryId),
+                    name: event.countryName
+                  }
+                }}
+                marketData={{
+                  typeId: parseInt(market.id),
+                  isMB: false,
+                  sv: undefined,
+                  shortName: market.name,
+                  name: market.displayName,
+                  desktopOddIds: [[parseInt(market.id)]],
+                  mobileOddIds: [[parseInt(market.id)]],
+                  isBB: false,
+                  so: 0,
+                  sportMarketId: parseInt(market.id),
+                  id: parseInt(market.id)
+                }}
+              />
+            );
+          })
         ) : (
-          <div className="space-y-4">
-            {markets.map((market) => (
-              <Card key={(market as Market).id}>
-                <CardHeader>
-                  <CardTitle className="text-base text-gray-800">{(market as Market).displayName}</CardTitle>
-                  {(market as Market).description && (
-                    <CardDescription>{(market as Market).description}</CardDescription>
-                  )}
-                </CardHeader>
-                
-                <CardContent>
-                  {(market as Market).outcomes.length > 0 ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-                      {(market as Market).outcomes.map((outcome: Outcome) => (
-                        <Button
-                          key={outcome.id}
-                          variant={outcome.isSuspended ? "secondary" : "outline"}
-                          className={`h-12 flex flex-col items-center justify-center ${
-                            outcome.isSuspended ? 'opacity-50' : 'hover:bg-blue-50'
-                          }`}
-                          disabled={outcome.isSuspended}
-                        >
-                          <div className="font-medium text-sm">{outcome.displayName}</div>
-                          <div className="text-xs text-gray-500">
-                            {outcome.oddsDisplay?.[1] || outcome.odds?.toFixed(2)}
-                          </div>
-                        </Button>
-                      ))}
-                    </div>
-                  ) : (
-                    <p className="text-gray-500 text-sm">Nenhuma opção disponível</p>
-                  )}
-                </CardContent>
-              </Card>
-            ))}
+          <div className="text-center py-8 text-gray-500">
+            <div className="text-4xl mb-2">🔍</div>
+            <p>Nenhum mercado encontrado</p>
+            {searchTerm && (
+              <p className="text-sm mt-1">Tente pesquisar por outro termo</p>
+            )}
           </div>
         )}
       </div>

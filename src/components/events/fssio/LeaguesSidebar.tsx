@@ -1,12 +1,10 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { Card, CardContent } from '../../ui/card';
 import { Button } from '../../ui/button';
-import { Badge } from '../../ui/badge';
 import { Skeleton } from '../../ui/skeleton';
 import { ScrollArea } from '../../ui/scroll-area';
-import { X, Trophy, MapPin, Calendar } from 'lucide-react';
+import { X, Trophy, Search } from 'lucide-react';
 
 interface League {
   id: string;
@@ -37,8 +35,10 @@ export default function LeaguesSidebar({
   selectedLeagueId 
 }: LeaguesSidebarProps) {
   const [leagues, setLeagues] = useState<League[]>([]);
+  const [filteredLeagues, setFilteredLeagues] = useState<League[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const loadLeagues = useCallback(async () => {
     try {
@@ -69,6 +69,7 @@ export default function LeaguesSidebar({
           league.sport.toLowerCase() === 'futebol' || league.sportId === sportId
         );
         setLeagues(filteredLeagues);
+        setFilteredLeagues(filteredLeagues);
       } else {
         setError('Formato de dados inválido');
       }
@@ -86,8 +87,25 @@ export default function LeaguesSidebar({
     }
   }, [isOpen, sportId, loadLeagues]);
 
+  // Filtrar ligas por termo de busca
+  useEffect(() => {
+    if (searchTerm.trim()) {
+      const filtered = leagues.filter(league =>
+        league.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        league.country.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredLeagues(filtered);
+    } else {
+      setFilteredLeagues(leagues);
+    }
+  }, [searchTerm, leagues]);
+
   const handleLeagueClick = (leagueId: string) => {
     onLeagueSelect(leagueId);
+  };
+
+  const handleSearchChange = (value: string) => {
+    setSearchTerm(value);
   };
 
   if (!isOpen) return null;
@@ -97,7 +115,7 @@ export default function LeaguesSidebar({
       <div className="flex items-center justify-between p-4 border-b border-gray-200">
         <div className="flex items-center gap-2">
           <Trophy className="h-5 w-5 text-blue-600" />
-          <h2 className="text-lg font-semibold text-gray-800">Ligas Disponíveis</h2>
+          <h2 className="text-lg font-semibold text-gray-900">Ligas Disponíveis</h2>
         </div>
         <Button
           variant="ghost"
@@ -109,77 +127,92 @@ export default function LeaguesSidebar({
         </Button>
       </div>
 
-      <ScrollArea className="h-[calc(100vh-80px)]">
-        <div className="p-4 space-y-3">
+      {/* Barra de Busca */}
+      <div className="p-4 border-b border-gray-200">
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+          <input
+            type="text"
+            placeholder="Buscar ligas..."
+            value={searchTerm}
+            onChange={(e) => handleSearchChange(e.target.value)}
+            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 placeholder-gray-500"
+          />
+        </div>
+      </div>
+
+      <ScrollArea className="h-[calc(100vh-140px)]">
+        <div className="p-2">
           {loading ? (
-            <>
+            <div className="space-y-2">
               {[...Array(10)].map((_, i) => (
-                <Card key={i}>
-                  <CardContent className="p-3">
-                    <div className="space-y-2">
-                      <Skeleton className="h-4 w-3/4" />
-                      <Skeleton className="h-3 w-1/2" />
-                    </div>
-                  </CardContent>
-                </Card>
+                <div key={i} className="p-3 border border-gray-200 rounded-lg">
+                  <div className="space-y-2">
+                    <Skeleton className="h-4 w-3/4" />
+                    <Skeleton className="h-3 w-1/2" />
+                  </div>
+                </div>
               ))}
-            </>
+            </div>
           ) : error ? (
-            <Card>
-              <CardContent className="p-6 text-center">
-                <p className="text-red-600">{error}</p>
-                <Button 
-                  onClick={loadLeagues} 
-                  className="mt-4"
-                  variant="outline"
-                >
-                  Tentar Novamente
-                </Button>
-              </CardContent>
-            </Card>
-          ) : (
-            leagues.map((league) => (
-              <Card 
-                key={league.id}
-                className={`cursor-pointer transition-all duration-200 hover:shadow-md ${
-                  selectedLeagueId === league.id 
-                    ? 'ring-2 ring-blue-500 bg-blue-50' 
-                    : 'hover:shadow-sm'
-                }`}
-                onClick={() => handleLeagueClick(league.id)}
+            <div className="p-6 text-center">
+              <p className="text-red-600">{error}</p>
+              <Button 
+                onClick={loadLeagues} 
+                className="mt-4"
+                variant="outline"
               >
-                <CardContent className="p-3">
-                  <div className="flex items-start justify-between mb-2">
-                    <h4 className="font-medium text-gray-800 text-sm leading-tight">
-                      {league.name}
-                    </h4>
-                    {league.isPopular && (
-                      <Badge variant="default" className="text-xs ml-2">
-                        Popular
-                      </Badge>
-                    )}
-                  </div>
-                  
-                  <div className="space-y-1 text-xs text-gray-700">
-                    <div className="flex items-center gap-1">
-                      <MapPin className="h-3 w-3 text-gray-600" />
-                      <span>{league.country}</span>
+                Tentar Novamente
+              </Button>
+            </div>
+          ) : filteredLeagues.length === 0 ? (
+            <div className="p-6 text-center">
+              <p className="text-gray-500">Nenhuma liga encontrada</p>
+              {searchTerm && (
+                <p className="text-sm text-gray-400 mt-1">Tente outro termo de busca</p>
+              )}
+            </div>
+          ) : (
+            <div className="space-y-1">
+              {filteredLeagues.map((league) => (
+                <div 
+                  key={league.id}
+                  onClick={() => handleLeagueClick(league.id)}
+                  className={`p-3 rounded-lg cursor-pointer transition-colors border ${
+                    selectedLeagueId === league.id 
+                      ? 'bg-blue-50 border-blue-300 text-blue-900' 
+                      : 'bg-white border-gray-200 hover:bg-gray-50 hover:border-gray-300'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <h4 className="font-medium text-sm text-gray-900 truncate">{league.name}</h4>
+                        {league.isPopular && (
+                          <Trophy className="h-3 w-3 text-yellow-500 shrink-0" />
+                        )}
+                      </div>
+                      <div className="flex items-center gap-2 mt-1">
+                        <span className="text-xs text-gray-500">{league.country}</span>
+                        <span className="text-xs text-gray-400">•</span>
+                        <span className="text-xs text-gray-500">ID: {league.id}</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-3 w-3 text-gray-600" />
-                      <span>ID: {league.id}</span>
+                    <div className="flex items-center gap-1 ml-2">
+                      <span className="text-xs text-blue-600 font-medium">PRÉ-JOGO</span>
+                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            ))
+                </div>
+              ))}
+            </div>
           )}
         </div>
       </ScrollArea>
 
       {selectedLeagueId && (
         <div className="p-4 border-t border-gray-200 bg-blue-50">
-          <p className="text-blue-800 text-sm">
+          <p className="text-blue-900 text-sm font-medium">
             <strong>Liga selecionada:</strong> {leagues.find(l => l.id === selectedLeagueId)?.name}
           </p>
         </div>

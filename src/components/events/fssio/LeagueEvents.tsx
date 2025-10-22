@@ -1,11 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Card, CardContent } from '../../ui/card';
-import { Button } from '../../ui/button';
-import { Badge } from '../../ui/badge';
-import { Skeleton } from '../../ui/skeleton';
-import { Clock, Users, Calendar, ArrowRight } from 'lucide-react';
+import { Calendar, Star, RefreshCw, AlertCircle } from 'lucide-react';
 
 interface Team {
   id: string;
@@ -127,149 +123,118 @@ export default function LeagueEvents({ leagueId, onEventSelect, selectedEventId 
     onEventSelect(eventId);
   };
 
-  const formatDateTime = (dateString: string) => {
-    const date = new Date(dateString);
-    return {
-      date: date.toLocaleDateString('pt-BR'),
-      time: date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
-    };
-  };
-
-  if (loading) {
-    return (
+  return (
+    <div className="space-y-6">
+      {/* Events List */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold mb-4">Eventos da Liga</h3>
-        {[...Array(5)].map((_, i) => (
-          <Card key={i}>
-            <CardContent className="p-4">
-              <div className="space-y-3">
-                <Skeleton className="h-4 w-3/4" />
-                <div className="flex justify-between">
-                  <Skeleton className="h-3 w-1/3" />
-                  <Skeleton className="h-3 w-1/4" />
+        {/* Loading State */}
+        {loading && (
+          <div className="flex items-center justify-center py-12">
+            <div className="flex items-center gap-3">
+              <RefreshCw className="w-6 h-6 animate-spin text-blue-600" />
+              <span className="text-gray-600">Carregando eventos...</span>
+            </div>
+          </div>
+        )}
+
+        {/* Error State */}
+        {error && !loading && (
+          <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
+            <AlertCircle className="w-8 h-8 text-red-500 mx-auto mb-3" />
+            <h3 className="text-red-800 font-medium mb-2">Erro ao carregar eventos</h3>
+            <p className="text-red-600 text-sm mb-4">{error}</p>
+            <button
+              onClick={loadEvents}
+              className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+            >
+              Tentar Novamente
+            </button>
+          </div>
+        )}
+
+        {/* Events List */}
+        {!loading && !error && events.length === 0 && (
+          <div className="text-center py-12">
+            <Calendar className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+            <h3 className="text-gray-600 font-medium mb-2">Nenhum evento encontrado</h3>
+            <p className="text-gray-500 text-sm">Não há eventos disponíveis para esta liga no momento.</p>
+          </div>
+        )}
+
+        {/* Events */}
+        {!loading && !error && events.map((event) => {
+          // Converter data ISO para formato brasileiro
+          const eventDate = new Date(event.startTime);
+          const dateStr = `${eventDate.getDate().toString().padStart(2, '0')}/${(eventDate.getMonth() + 1).toString().padStart(2, '0')}`;
+          const timeStr = `${eventDate.getHours().toString().padStart(2, '0')}:${eventDate.getMinutes().toString().padStart(2, '0')}`;
+          
+          return (
+            <div 
+              key={event.id}
+              onClick={() => handleEventClick(event.id)}
+              className={`bg-white rounded-lg p-4 cursor-pointer hover:bg-gray-50 transition-colors border border-gray-200 shadow-sm ${
+                selectedEventId === event.id 
+                  ? 'ring-2 ring-blue-500 bg-blue-50' 
+                  : ''
+              }`}
+            >
+              {/* Event Header */}
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <span className="text-gray-500 text-sm">{dateStr} • {timeStr}</span>
+                  <Star className="w-4 h-4 text-gray-400" />
+                </div>
+                <div className="flex items-center gap-2">
+                  {event.isLive ? (
+                    <>
+                      <div className="flex items-center gap-2">
+                        <span className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">
+                          AO VIVO
+                        </span>
+                        {event.gameStatus && (
+                          <span className="text-green-600 text-sm font-mono font-bold">
+                            {event.gameStatus.clockRunning ? '90+' : '45+'}
+                          </span>
+                        )}
+                      </div>
+                      <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                    </>
+                  ) : (
+                    <>
+                      <span className="text-blue-600 text-sm font-medium">PRÉ-JOGO</span>
+                      <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                    </>
+                  )}
                 </div>
               </div>
-            </CardContent>
-          </Card>
-        ))}
+
+              {/* Teams */}
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex-1">
+                  <div className="text-gray-900 font-medium">{event.name}</div>
+                  {/* Mostrar placar para eventos ao vivo */}
+                  {event.isLive && event.gameStatus && (
+                    <div className="flex items-center gap-3 mt-2">
+                      <span className="text-sm text-gray-600 font-medium">Status:</span>
+                      <div className="flex items-center gap-2">
+                        <div className="bg-gray-800 text-white px-3 py-1 rounded-md text-sm font-bold min-w-[30px] text-center">
+                          {event.gameStatus.clockRunning ? '90+' : '45+'}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <div className="text-right">
+                  <div className="flex items-center gap-1 mb-1">
+                    <span className="text-sm text-gray-500">ID: {event.id}</span>
+                    <span className="text-sm text-gray-500">Código: {event.providerEventId}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <Card>
-        <CardContent className="p-6 text-center">
-          <p className="text-red-600">{error}</p>
-          <Button 
-            onClick={loadEvents} 
-            className="mt-4"
-            variant="outline"
-          >
-            Tentar Novamente
-          </Button>
-        </CardContent>
-      </Card>
-    );
-  }
-
-  return (
-    <div className="space-y-4">
-      <div className="flex items-center gap-2 mb-4">
-        <Users className="h-5 w-5 text-blue-500" />
-        <h3 className="text-lg font-semibold text-gray-800">Eventos da Liga</h3>
-        <Badge variant="secondary">{events.length} eventos</Badge>
-      </div>
-
-      {events.length === 0 ? (
-        <Card>
-          <CardContent className="p-6 text-center">
-            <p className="text-gray-700">Nenhum evento encontrado para esta liga.</p>
-          </CardContent>
-        </Card>
-      ) : (
-        <div className="space-y-3">
-          {events.map((event) => {
-            const { date, time } = formatDateTime(event.startTime);
-            
-            return (
-              <Card 
-                key={event.id}
-                className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
-                  selectedEventId === event.id 
-                    ? 'ring-2 ring-blue-500 bg-blue-50' 
-                    : 'hover:shadow-md'
-                }`}
-                onClick={() => handleEventClick(event.id)}
-              >
-                <CardContent className="p-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <h4 className="font-semibold text-gray-800">{event.name}</h4>
-                    <div className="flex items-center gap-2">
-                      {event.isLive && (
-                        <Badge variant="destructive" className="text-xs">
-                          AO VIVO
-                        </Badge>
-                      )}
-                      {event.isSuspended && (
-                        <Badge variant="secondary" className="text-xs">
-                          Suspenso
-                        </Badge>
-                      )}
-                      {event.isPostponed && (
-                        <Badge variant="outline" className="text-xs">
-                          Adiado
-                        </Badge>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-4">
-                      <div className="text-center">
-                        <div className="font-medium text-sm text-gray-800">{event.teams[0]?.name}</div>
-                        <div className="text-xs text-gray-600">Casa</div>
-                      </div>
-                      
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-gray-400">VS</div>
-                      </div>
-                      
-                      <div className="text-center">
-                        <div className="font-medium text-sm text-gray-800">{event.teams[1]?.name}</div>
-                        <div className="text-xs text-gray-600">Fora</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between text-sm text-gray-700">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-3 w-3" />
-                      <span>{date}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="h-3 w-3" />
-                      <span>{time}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <ArrowRight className="h-3 w-3" />
-                      <span>Ver detalhes</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-      )}
-
-      {selectedEventId && (
-        <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-          <p className="text-blue-800 text-sm">
-            <strong>Evento selecionado:</strong> {events.find(e => e.id === selectedEventId)?.name}
-          </p>
-        </div>
-      )}
     </div>
   );
 }

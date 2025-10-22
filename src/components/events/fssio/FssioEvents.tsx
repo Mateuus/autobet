@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { Card, CardContent } from '../../ui/card';
 import { Button } from '../../ui/button';
-import { Badge } from '../../ui/badge';
 import { List, Trophy, Users, Calendar } from 'lucide-react';
 import SportsList from './SportsList';
 import LeaguesSidebar from './LeaguesSidebar';
@@ -64,22 +63,8 @@ export default function FssioEvents({ className }: FssioEventsProps) {
 
   return (
     <div className={`space-y-6 ${className}`}>
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-800">Eventos FSSIO</h1>
-          <p className="text-gray-700">Explore eventos e apostas disponíveis</p>
-        </div>
-        
-        <div className="flex items-center gap-2">
-          <Badge variant="outline" className="text-xs">
-            Mock Data
-          </Badge>
-        </div>
-      </div>
-
       {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-sm text-gray-700">
+      <div className="flex items-center gap-2 text-sm text-gray-600">
         <Button
           variant="ghost"
           size="sm"
@@ -151,7 +136,7 @@ export default function FssioEvents({ className }: FssioEventsProps) {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4 text-sm text-gray-700">
+              <div className="flex items-center gap-4 text-sm text-gray-600">
                 <div className="flex items-center gap-1">
                   <Trophy className="h-4 w-4" />
                   <span>Esporte: {getCurrentSportName()}</span>
