@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { X, Trash2, Settings } from 'lucide-react';
 import { useBetting } from '@/contexts/BettingContext';
 
@@ -13,6 +14,7 @@ export default function BettingSlipModal({ isOpen, onClose }: BettingSlipModalPr
   const { selections, removeSelection, clearAllSelections } = useBetting();
   const [activeTab, setActiveTab] = useState<'simples' | 'multipla'>('simples');
   const [stakes, setStakes] = useState<Record<number, number>>({});
+  const router = useRouter();
 
   if (!isOpen) return null;
 
@@ -76,6 +78,84 @@ export default function BettingSlipModal({ isOpen, onClose }: BettingSlipModalPr
       delete newStakes[oddId];
       return newStakes;
     });
+  };
+
+  const prepareBettingPayload = () => {
+    // Agrupar seleções por evento
+    const eventsMap = new Map();
+    
+    selections.forEach(selection => {
+      const eventId = selection.event.id;
+      if (!eventsMap.has(eventId)) {
+        eventsMap.set(eventId, {
+          id: selection.event.id,
+          isBanker: selection.isBanker,
+          dbId: 10, // Valor fixo por enquanto
+          sportName: selection.sport.name,
+          rC: selection.event.rc,
+          eventName: selection.event.name,
+          catName: selection.category.name,
+          champName: selection.championship.name,
+          sportTypeId: selection.sport.typeId,
+          odds: []
+        });
+      }
+      
+      const event = eventsMap.get(eventId);
+      event.odds.push({
+        id: selection.odd.id,
+        marketId: selection.market.id,
+        price: selection.odd.price,
+        marketName: selection.market.name,
+        marketTypeId: selection.market.typeId,
+        mostBalanced: selection.market.isMB,
+        selectionTypeId: selection.odd.typeId,
+        selectionName: selection.odd.name,
+        widgetInfo: selection.widgetInfo
+      });
+    });
+
+    const betMarkets = Array.from(eventsMap.values());
+    const stakesArray = selections.map(selection => stakes[selection.odd.id] || 0);
+
+    return {
+      data: {
+        betMarkets,
+        stakes: stakesArray
+      }
+    };
+  };
+
+  const handlePlaceBet = async () => {
+    try {
+      const payload = prepareBettingPayload();
+      
+      console.log('🎯 Enviando aposta para o backend:', payload);
+      
+      const response = await fetch('/api/betting/place-bet', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log('✅ Resposta do backend:', result);
+        alert('Aposta enviada com sucesso!');
+      } else {
+        console.error('❌ Erro ao enviar aposta:', response.statusText);
+        alert('Erro ao enviar aposta. Tente novamente.');
+      }
+    } catch (error) {
+      console.error('❌ Erro na requisição:', error);
+      alert('Erro na conexão. Tente novamente.');
+    }
+  };
+
+  const handleNavigateToEvent = (eventId: number, sportId: number) => {
+    router.push(`/events?eventId=${eventId}&sportId=${sportId}`);
   };
 
   return (
@@ -149,7 +229,12 @@ export default function BettingSlipModal({ isOpen, onClose }: BettingSlipModalPr
                   <div className="flex items-center gap-2 mb-2">
                     <div className="text-lg">⚽</div>
                     <div>
-                      <div className="font-medium text-gray-900 text-sm">{selection.event.name}</div>
+                      <button
+                        onClick={() => handleNavigateToEvent(selection.event.id, selection.sport.id)}
+                        className="font-medium text-blue-600 hover:text-blue-800 text-sm text-left hover:underline"
+                      >
+                        {selection.event.name}
+                      </button>
                       <div className="text-xs text-gray-500">
                         {formatDate(selection.event.startDate)} • {formatTime(selection.event.startDate)}
                       </div>
@@ -220,7 +305,10 @@ export default function BettingSlipModal({ isOpen, onClose }: BettingSlipModalPr
             </div>
 
             {/* Place bet button */}
-            <button className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2.5 rounded transition-colors">
+            <button 
+              onClick={handlePlaceBet}
+              className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2.5 rounded transition-colors"
+            >
               Fazer aposta
             </button>
 
