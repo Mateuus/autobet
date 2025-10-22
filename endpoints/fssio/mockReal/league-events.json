@@ -1,0 +1,152 @@
+{
+    "data": [
+        [
+            "767580247343575040",
+            "667266257325993984",
+            "Venezuela - Primera",
+            "1",
+            "Futebol",
+            "232",
+            "VE",
+            "Venezuela",
+            [
+                [
+                    "16235",
+                    {
+                        "BR-PT": "Carabobo"
+                    },
+                    "Home"
+                ],
+                [
+                    "200639",
+                    {
+                        "BR-PT": "FC Metropolitanos"
+                    },
+                    "Away"
+                ]
+            ],
+            131,
+            "Carabobo vs FC Metropolitanos",
+            "2025-10-22T21:30:00.000Z",
+            [
+                "",
+                "",
+                null,
+                {}
+            ],
+            false,
+            false,
+            {
+                "ClockRunning": false,
+                "ClockDirection": 0,
+                "UpdateDate": "0001-01-01T00:00:00.000Z",
+                "GameTimeBFFGotAt": 1761161440435
+            },
+            false,
+            [],
+            "638967573510655688",
+            null,
+            "Carabobo-vs-FC-Metropolitanos",
+            "Venezuela-Primera",
+            "Venezuela",
+            "Futebol",
+            1,
+            91000019,
+            "Fixture",
+            53,
+            false,
+            null,
+            {
+                "IsBetBuilderEnabled": false,
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": null
+            },
+            "896",
+            "738736443320729600",
+            {
+                "HomeShirtColorPrimary": "#AE0000",
+                "HasVARCoverage": "true",
+                "HasIncidentCoverage": "true"
+            },
+            null,
+            null
+        ],
+        [
+            "766450814926794752",
+            "667266257325993984",
+            "Venezuela - Primera",
+            "1",
+            "Futebol",
+            "232",
+            "VE",
+            "Venezuela",
+            [
+                [
+                    "4028",
+                    {
+                        "BR-PT": "Deportivo Tachira"
+                    },
+                    "Home"
+                ],
+                [
+                    "2882",
+                    {
+                        "BR-PT": "Caracas"
+                    },
+                    "Away"
+                ]
+            ],
+            130,
+            "Deportivo Tachira vs Caracas",
+            "2025-10-22T23:30:00.000Z",
+            [
+                "",
+                "",
+                null,
+                {}
+            ],
+            false,
+            false,
+            {
+                "ClockRunning": false,
+                "ClockDirection": 0,
+                "UpdateDate": "0001-01-01T00:00:00.000Z",
+                "GameTimeBFFGotAt": 1761161440435
+            },
+            false,
+            [],
+            "638967570151541440",
+            null,
+            "Deportivo-Tachira-vs-Caracas",
+            "Venezuela-Primera",
+            "Venezuela",
+            "Futebol",
+            1,
+            91000019,
+            "Fixture",
+            54,
+            false,
+            null,
+            {
+                "IsBetBuilderEnabled": false,
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": null
+            },
+            "896",
+            "738736443320729600",
+            {
+                "HomeShirtColorPrimary": "#FFFF00",
+                "HasVARCoverage": "true",
+                "HasIncidentCoverage": "true"
+            },
+            null,
+            null
+        ]
+    ]
+}

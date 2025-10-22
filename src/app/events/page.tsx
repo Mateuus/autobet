@@ -7,6 +7,8 @@ import sportsConfig from '@/data/sports-config.json';
 import EventsTabs, { EventTabType } from '@/components/events/EventsTabs';
 import EventsList from '@/components/events/EventsList';
 import EventDetail from '@/components/events/EventDetail';
+import PlatformSelector from '@/components/events/PlatformSelector';
+import FssioEvents from '@/components/events/fssio/FssioEvents';
 import { Sport } from '@/types/events';
 import { useEvents, EventsFilters, UnifiedEvent } from '@/hooks/useEvents';
 import { useLiveEvents } from '@/hooks/useLiveEvents';
@@ -15,6 +17,23 @@ import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
 import FloatingBettingButton from '@/components/betting/FloatingBettingButton';
 import BettingSlipModal from '@/components/betting/BettingSlipModal';
 import { useBetting } from '@/contexts/BettingContext';
+
+interface Platform {
+  id: string;
+  name: string;
+  description: string;
+  defaultSite: string;
+  integration: string;
+  sites: Site[];
+}
+
+interface Site {
+  id: string;
+  name: string;
+  url: string;
+  integration: string;
+  isDefault: boolean;
+}
 
 function EventsContent() {
   const router = useRouter();
@@ -26,10 +45,29 @@ function EventsContent() {
     sortBy: 'date'
   });
   const [activeTab, setActiveTab] = useState<EventTabType>('prematch');
-  const { isOpen, setIsOpen, addSelection } = useBetting();
+  const { isOpen, setIsOpen } = useBetting();
+  
+  // Estados para seleção de plataforma
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
+  const [selectedSite, setSelectedSite] = useState<Site | null>(null);
+  const [showPlatformSelector, setShowPlatformSelector] = useState(true);
 
   // Criar uma data fixa para evitar recriação a cada render
   const [currentDate] = useState(() => new Date());
+
+  // Função para lidar com a seleção de plataforma
+  const handlePlatformSelect = (platform: Platform, site: Site) => {
+    setSelectedPlatform(platform);
+    setSelectedSite(site);
+    setShowPlatformSelector(false);
+  };
+
+  // Função para voltar à seleção de plataforma
+  const handleBackToPlatformSelector = () => {
+    setShowPlatformSelector(true);
+    setSelectedPlatform(null);
+    setSelectedSite(null);
+  };
 
   // Usar o hook para buscar eventos com filtros e paginação
   const { 
@@ -219,40 +257,129 @@ function EventsContent() {
     );
   }
 
+  // Renderizar seleção de plataforma se ainda não foi selecionada
+  if (showPlatformSelector) {
+    return (
+      <div className="space-y-6">
+        {/* Header */}
+        <div>
+          <div className="flex items-center gap-2 mb-2">
+            <Calendar className="w-5 h-5 text-gray-400" />
+            <span className="text-gray-400">23/10/2025</span>
+          </div>
+          <h1 className="text-2xl font-bold text-gray-900">Eventos</h1>
+          <p className="text-gray-600">Escolha uma plataforma para começar</p>
+        </div>
+
+        {/* Platform Selector */}
+        <PlatformSelector
+          onPlatformSelect={handlePlatformSelect}
+          selectedPlatform={selectedPlatform || undefined}
+          selectedSite={selectedSite || undefined}
+        />
+      </div>
+    );
+  }
+
+  // Renderizar componentes específicos da plataforma selecionada
+  if (selectedPlatform && selectedSite) {
+    if (selectedPlatform.id === 'fssio') {
+      return (
+        <div className="space-y-6">
+          {/* Header com opção de voltar */}
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <Calendar className="w-5 h-5 text-gray-400" />
+                <span className="text-gray-400">23/10/2025</span>
+              </div>
+              <h1 className="text-2xl font-bold text-gray-900">Eventos</h1>
+              <p className="text-gray-600">
+                {selectedPlatform.name} - {selectedSite.name}
+              </p>
+            </div>
+            
+            <button
+              onClick={handleBackToPlatformSelector}
+              className="px-4 py-2 text-sm text-gray-600 hover:text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+            >
+              Trocar Plataforma
+            </button>
+          </div>
+
+          {/* FSSIO Events Component */}
+          <FssioEvents />
+        </div>
+      );
+    } else if (selectedPlatform.id === 'biahosted') {
+      // Renderizar interface Biahosted existente
+      return (
+        <div className="space-y-6">
+          {/* Header com opção de voltar */}
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <Calendar className="w-5 h-5 text-gray-400" />
+                <span className="text-gray-400">23/10/2025</span>
+              </div>
+              <h1 className="text-2xl font-bold text-gray-900">Eventos</h1>
+              <p className="text-gray-600">
+                {selectedPlatform.name} - {selectedSite.name}
+              </p>
+            </div>
+            
+            <button
+              onClick={handleBackToPlatformSelector}
+              className="px-4 py-2 text-sm text-gray-600 hover:text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+            >
+              Trocar Plataforma
+            </button>
+          </div>
+
+          {/* Sports Grid para Biahosted */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {sportsConfig.map((sport, index) => (
+              <button
+                key={index}
+                onClick={() => handleSportSelect(sport)}
+                className="bg-white hover:bg-gray-50 rounded-lg p-6 text-center transition-colors border border-gray-200 shadow-sm"
+              >
+                <div className="text-3xl mb-3">
+                  {sport.sport === 'futebol' && '⚽'}
+                  {sport.sport === 'basquete' && '🏀'}
+                </div>
+                <div className="text-gray-900 font-medium capitalize">
+                  {sport.sport}
+                </div>
+              </button>
+            ))}
+          </div>
+
+          {/* Sistema de Apostas */}
+          <FloatingBettingButton />
+          <BettingSlipModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+        </div>
+      );
+    }
+  }
+
+  // Fallback - não deveria chegar aqui
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div>
-        <div className="flex items-center gap-2 mb-2">
-          <Calendar className="w-5 h-5 text-gray-400" />
-          <span className="text-gray-400">23/10/2025</span>
-        </div>
-        <h1 className="text-2xl font-bold text-gray-900">Eventos</h1>
-        <p className="text-gray-600">Escolha um esporte para ver os eventos disponíveis</p>
+      <div className="text-center p-8">
+        <h2 className="text-xl font-semibold text-gray-900 mb-2">
+          Erro na seleção de plataforma
+        </h2>
+        <p className="text-gray-600 mb-4">
+          Ocorreu um erro ao carregar a plataforma selecionada.
+        </p>
+        <button
+          onClick={handleBackToPlatformSelector}
+          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+        >
+          Voltar à Seleção
+        </button>
       </div>
-
-      {/* Sports Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {sportsConfig.map((sport, index) => (
-          <button
-            key={index}
-            onClick={() => handleSportSelect(sport)}
-            className="bg-white hover:bg-gray-50 rounded-lg p-6 text-center transition-colors border border-gray-200 shadow-sm"
-          >
-            <div className="text-3xl mb-3">
-              {sport.sport === 'futebol' && '⚽'}
-              {sport.sport === 'basquete' && '🏀'}
-            </div>
-            <div className="text-gray-900 font-medium capitalize">
-              {sport.sport}
-            </div>
-          </button>
-        ))}
-      </div>
-
-      {/* Sistema de Apostas - apenas na página de eventos */}
-      <FloatingBettingButton />
-      <BettingSlipModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </div>
   );
 }

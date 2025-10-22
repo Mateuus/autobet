@@ -1,0 +1,64 @@
+{
+  "platforms": [
+    {
+      "id": "biahosted",
+      "name": "Biahosted",
+      "description": "Plataforma Biahosted para casas de apostas",
+      "defaultSite": "mcgames",
+      "integration": "mcgames2",
+      "sites": [
+        {
+          "id": "mcgames",
+          "name": "McGames",
+          "url": "https://mcgames.com.br",
+          "integration": "mcgames2",
+          "isDefault": true
+        },
+        {
+          "id": "lotogreen",
+          "name": "LotoGreen",
+          "url": "https://lotogreen.com.br",
+          "integration": "lotogreen",
+          "isDefault": false
+        },
+        {
+          "id": "estrelabet",
+          "name": "EstrelaBet",
+          "url": "https://www.estrelabet.bet.br",
+          "integration": "estrelabet",
+          "isDefault": false
+        },
+        {
+          "id": "jogodeouro",
+          "name": "Jogo de Ouro",
+          "url": "https://jogodeouro.com.br",
+          "integration": "jogodeouro",
+          "isDefault": false
+        }
+      ]
+    },
+    {
+      "id": "fssio",
+      "name": "FSSIO",
+      "description": "Plataforma FSSIO para casas de apostas",
+      "defaultSite": "bet7k",
+      "integration": "bet7k",
+      "sites": [
+        {
+          "id": "bet7k",
+          "name": "Bet7K",
+          "url": "https://7k.bet.br",
+          "integration": "bet7k",
+          "isDefault": true
+        },
+        {
+          "id": "pixbet",
+          "name": "PixBet",
+          "url": "https://pix.bet.br",
+          "integration": "pixbet",
+          "isDefault": false
+        }
+      ]
+    }
+  ]
+}
