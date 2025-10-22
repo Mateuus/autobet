@@ -84,6 +84,7 @@ export interface BiaHostedEventDetail {
   competitors: BiaHostedCompetitor[];
   marketGroups: BiaHostedMarketGroup[];
   markets: BiaHostedMarket[];
+  odds: BiaHostedOdd[];
   boosts: unknown[];
   nonBoosts: unknown[];
   isParlay: boolean;
@@ -169,6 +170,8 @@ export interface MarketOption {
   odds: number;
   onClick?: () => void;
   isSelected?: boolean;
+  isDisabled?: boolean;
+  oddStatus?: number;
 }
 
 // Tipos adicionais para markets e odds baseados na estrutura real

@@ -53,6 +53,8 @@ export default function MarketCard({
                 odds={option.odds}
                 onClick={option.onClick}
                 isSelected={option.isSelected}
+                isDisabled={option.isDisabled}
+                oddStatus={option.oddStatus}
               />
             ))}
           </div>
