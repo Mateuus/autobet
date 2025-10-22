@@ -142,9 +142,9 @@ async function getBalance(
   try {
     console.log(`💰 Buscando saldo para conta ${account.id} (${account.site})`);  
     
-    // Para McGames, fazer login primeiro para obter cookies de sessão
-    if (account.site.toLowerCase() === 'mcgames') {
-      console.log(`🍪 McGames detectado - fazendo login para obter cookies de sessão`);
+    // Para McGames e EstrelaBet, fazer login primeiro para obter cookies de sessão
+    if (account.site.toLowerCase() === 'mcgames' || account.site.toLowerCase() === 'estrelabet') {
+      console.log(`🍪 ${account.site} detectado - fazendo login para obter cookies de sessão`);
       
       try {
         // Fazer login para obter cookies de sessão
@@ -155,16 +155,16 @@ async function getBalance(
 
         if (!loginResult.access_token) {
           return NextResponse.json({ 
-            error: 'Falha no login do McGames - credenciais inválidas' 
+            error: `Falha no login do ${account.site} - credenciais inválidas` 
           }, { status: 400 });
         }
 
-        console.log(`✅ Login do McGames realizado - cookies de sessão obtidos`);
+        console.log(`✅ Login do ${account.site} realizado - cookies de sessão obtidos`);
         
         // Usar o access_token do login para buscar saldo
         const balance = await platform.getBalance(loginResult.access_token);
 
-        console.log(`💰 Saldo obtido do McGames: ${balance} centavos`);
+        console.log(`💰 Saldo obtido do ${account.site}: ${balance} centavos`);
 
         // Atualizar saldo no banco (valor já vem em centavos da API)
         account.balance = balance;
@@ -180,14 +180,14 @@ async function getBalance(
             site: account.site,
             balance: balance / 100, // Converter centavos para reais
             lastBalanceUpdate: account.lastBalanceUpdate,
-            message: 'Login automático realizado para McGames'
+            message: `Login automático realizado para ${account.site}`
           }
         });
 
       } catch (loginError) {
-        console.error(`❌ Erro no login automático do McGames:`, loginError);
+        console.error(`❌ Erro no login automático do ${account.site}:`, loginError);
         return NextResponse.json({ 
-          error: 'Erro no login automático do McGames. Verifique as credenciais.' 
+          error: `Erro no login automático do ${account.site}. Verifique as credenciais.` 
         }, { status: 400 });
       }
     }

@@ -106,18 +106,19 @@ export async function POST(request: NextRequest) {
       }, { status: 400 });
     }
 
-    // Verificar se já existe uma conta com este email para este usuário
+    // Verificar se já existe uma conta com este email para este site específico
     const betAccountRepository = AppDataSource.getRepository(BetAccount);
     const existingAccount = await betAccountRepository.findOne({
       where: {
         accountId: user.id,
-        email: email
+        site: site,        // ✅ Verificar site específico
+        email: email       // ✅ Verificar email específico
       }
     });
 
     if (existingAccount) {
       return NextResponse.json({ 
-        error: 'Já existe uma conta com este email' 
+        error: `Já existe uma conta do ${site} com este email` 
       }, { status: 400 });
     }
 

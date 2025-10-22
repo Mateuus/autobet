@@ -1,6 +1,8 @@
 import { BasePlatform } from './BasePlatform';
 import { LoginCredentials, AccessToken, UserToken, PlatformToken, BetData, BetResult, UserProfile } from '@/types';
 import { AxiosRequestConfig } from 'axios';
+import { appendFileSync } from 'fs';
+import { join } from 'path';
 
 interface LoginPayload {
   email?: string;
@@ -26,6 +28,64 @@ export class BiahostedPlatform extends BasePlatform {
   }
 
   /**
+   * Salvar log em arquivo .txt
+   */
+  private saveLogToFile(message: string, data?: unknown) {
+    try {
+      const timestamp = new Date().toISOString();
+      const logMessage = `[${timestamp}] ${message}\n`;
+      
+      if (data) {
+        // Função para limpar objetos com referências circulares
+        const cleanData = this.cleanCircularReferences(data);
+        const dataString = typeof cleanData === 'string' ? cleanData : JSON.stringify(cleanData, null, 2);
+        const fullMessage = `${logMessage}${dataString}\n${'='.repeat(80)}\n\n`;
+        
+        const logPath = join(process.cwd(), 'logs', `${this.siteName}_debug.log`);
+        appendFileSync(logPath, fullMessage, 'utf8');
+      } else {
+        const logPath = join(process.cwd(), 'logs', `${this.siteName}_debug.log`);
+        appendFileSync(logPath, logMessage, 'utf8');
+      }
+    } catch (error) {
+      console.error('Erro ao salvar log:', error);
+    }
+  }
+
+  /**
+   * Limpar referências circulares de objetos para serialização JSON
+   */
+  private cleanCircularReferences(obj: unknown, seen = new WeakSet()): unknown {
+    if (obj === null || typeof obj !== 'object') {
+      return obj;
+    }
+
+    if (seen.has(obj)) {
+      return '[Circular Reference]';
+    }
+
+    seen.add(obj);
+
+    if (Array.isArray(obj)) {
+      return obj.map(item => this.cleanCircularReferences(item, seen));
+    }
+
+    const cleaned: Record<string, unknown> = {};
+    for (const key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        // Pular propriedades que podem causar problemas
+        if (key === 'request' || key === 'response' || key === 'config') {
+          cleaned[key] = '[Complex Object]';
+        } else {
+          cleaned[key] = this.cleanCircularReferences((obj as Record<string, unknown>)[key], seen);
+        }
+      }
+    }
+
+    return cleaned;
+  }
+
+  /**
    * Obter cookies de sessão antes do login
    */
   private async getSessionCookies(): Promise<void> {
@@ -35,8 +95,7 @@ export class BiahostedPlatform extends BasePlatform {
           'User-Agent': this.userAgent
         }
       });
-    } catch (error) {
-      console.log('Erro ao obter cookies de sessão:', error);
+    } catch {
       // Não falha o login se não conseguir obter cookies
     }
   }
@@ -45,50 +104,110 @@ export class BiahostedPlatform extends BasePlatform {
    * Método auxiliar para fazer requisições HTTP com captura de cookies
    */
   protected async makeRequest<T>(config: AxiosRequestConfig): Promise<T> {
+    const requestId = Math.random().toString(36).substr(2, 9);
+    const timestamp = new Date().toISOString();
+    
     try {
-      // Adicionar cookies se disponíveis (especialmente para McGames)
-      if (this.sessionCookies && this.siteName.toLowerCase() === 'mcgames') {
+      // Adicionar cookies se disponíveis (para McGames e EstrelaBet)
+      if (this.sessionCookies && (this.siteName.toLowerCase() === 'mcgames' || this.siteName.toLowerCase() === 'estrelabet')) {
         config.headers = {
           ...config.headers,
           'Cookie': this.sessionCookies
         };
       }
 
-      /*
-      console.log(`🚀 Requisição para ${this.integration}:`);
-      console.log(`📤 URL: ${config.url}`);
-      console.log(`📤 Method: ${config.method}`);
-      console.log(`📤 Headers:`, JSON.stringify(config.headers, null, 2));
-      console.log(`📤 Body:`, JSON.stringify(config.data, null, 2));
-      */
+      // Log detalhado da requisição
+      const requestLog = {
+        requestId,
+        timestamp,
+        siteName: this.siteName,
+        integration: this.integration,
+        url: config.url,
+        method: config.method,
+        headers: config.headers,
+        body: config.data,
+        sessionCookies: this.sessionCookies,
+        withCredentials: config.withCredentials,
+        maxBodyLength: config.maxBodyLength
+      };
+      
+      this.saveLogToFile(`🚀 [${requestId}] REQUISIÇÃO - ${this.integration}`, requestLog);
       
       const response = await this.httpClient.request(config);
       
-      // Capturar cookies da resposta (especialmente para McGames)
-      if (response.headers['set-cookie'] && this.siteName.toLowerCase() === 'mcgames') {
+      // Capturar cookies da resposta (para McGames e EstrelaBet)
+      if (response.headers['set-cookie'] && (this.siteName.toLowerCase() === 'mcgames' || this.siteName.toLowerCase() === 'estrelabet')) {
         this.sessionCookies = response.headers['set-cookie'].join('; ');
-        //console.log(`🍪 Cookies capturados: ${this.sessionCookies}`);
       }
       
-      /*
-      console.log(`✅ Resposta de ${this.integration}:`);
-      console.log(`📥 Status: ${response.status}`);
-      console.log(`📥 Headers:`, JSON.stringify(response.headers, null, 2));
-      console.log(`📥 Body:`, JSON.stringify(response.data, null, 2));
-      */
+      // Para EstrelaBet, também capturar cookies do cookieHeader na resposta
+      if (this.siteName.toLowerCase() === 'estrelabet' && response.data?.data?.cookieHeader) {
+        const cookieHeader = response.data.data.cookieHeader;
+        // Extrair apenas os valores dos cookies (sem Max-Age, Domain, etc.)
+        const cookieValues = cookieHeader.split(',').map((cookie: string) => {
+          const parts = cookie.split(';');
+          return parts[0].trim();
+        }).join('; ');
+        
+        if (cookieValues) {
+          this.sessionCookies = cookieValues;
+        }
+      }
+      
+      // Log detalhado da resposta
+      const responseLog = {
+        requestId,
+        timestamp: new Date().toISOString(),
+        siteName: this.siteName,
+        integration: this.integration,
+        status: response.status,
+        statusText: response.statusText,
+        headers: response.headers,
+        data: response.data,
+        cookies: response.headers['set-cookie'],
+        sessionCookies: this.sessionCookies,
+        responseTime: Date.now() - new Date(timestamp).getTime()
+      };
+      
+      this.saveLogToFile(`✅ [${requestId}] RESPOSTA - ${this.integration}`, responseLog);
       
       return response.data;
     } catch (error: unknown) {
-      console.error(`❌ Erro na requisição para ${this.integration}:`);
+      const errorLog = {
+        requestId,
+        timestamp: new Date().toISOString(),
+        siteName: this.siteName,
+        integration: this.integration,
+        url: config.url,
+        method: config.method,
+        error: error instanceof Error ? error.message : 'Erro desconhecido',
+        stack: error instanceof Error ? error.stack : undefined,
+        axiosError: null as Record<string, unknown> | null
+      };
+      
       if (error && typeof error === 'object' && 'response' in error) {
-        /*
-        const axiosError = error as { response?: { status?: number; headers?: unknown; data?: unknown } };
-        console.error(`📥 Status: ${axiosError.response?.status}`);
-        console.error(`📥 Headers:`, JSON.stringify(axiosError.response?.headers, null, 2));
-        console.error(`📥 Body:`, JSON.stringify(axiosError.response?.data, null, 2));
-        */
+        const axiosError = error as { 
+          response?: { 
+            status?: number; 
+            statusText?: string;
+            headers?: unknown; 
+            data?: unknown 
+          };
+          request?: unknown;
+          code?: string;
+        };
+        
+        errorLog.axiosError = {
+          status: axiosError.response?.status,
+          statusText: axiosError.response?.statusText,
+          headers: axiosError.response?.headers,
+          data: axiosError.response?.data,
+          code: axiosError.code
+        };
       }
-      console.error(`❌ Erro:`, error instanceof Error ? error.message : 'Erro desconhecido');
+      
+      this.saveLogToFile(`❌ [${requestId}] ERRO - ${this.integration}`, errorLog);
+      
       throw error;
     }
   }
@@ -115,10 +234,67 @@ export class BiahostedPlatform extends BasePlatform {
         maxBodyLength: Infinity
       };
 
-      //console.log('McGames login config:', config);
       const result = await this.makeRequest<AccessToken>(config);
-      //console.log('McGames login result:', result);
       return result;
+    }
+
+    // EstrelaBet usa configuração específica
+    if (this.siteName.toLowerCase() === 'estrelabet') {
+      const data = {
+        login: credentials.email,
+        domain: 'www.estrelabet.bet.br',
+        lnSessionId: 'dd8a1dbe-f571-403b-9722-c1540018f8e7', // Session ID fixo
+        password: credentials.password
+      };
+
+      const config = {
+        method: 'post',
+        url: `${this.baseUrl}/next/pb/api/login`,
+        headers: {
+          'Content-Type': 'application/json',
+          'Origin': this.baseUrl,
+          'Referer': `${this.baseUrl}/`,
+          'User-Agent': this.userAgent,
+          'Accept': 'application/json',
+          'Accept-Language': 'pt-BR,pt;q=0.9,en;q=0.8',
+          'Accept-Encoding': 'gzip, deflate, br',
+          'Connection': 'keep-alive',
+          'Sec-Fetch-Dest': 'empty',
+          'Sec-Fetch-Mode': 'cors',
+          'Sec-Fetch-Site': 'same-origin'
+        },
+        data,
+        withCredentials: true,
+        maxBodyLength: Infinity
+      };
+
+      const result = await this.makeRequest<{
+        data: {
+          success: boolean;
+          id: string;
+          token: string;
+          cookieHeader: string;
+          user: {
+            id: string;
+            partnerId: string;
+          };
+        };
+        error: null;
+      }>(config);
+      
+      // Converter resposta do EstrelaBet para formato AccessToken padrão
+      return {
+        access_token: result.data.token, // EstrelaBet usa 'token' ao invés de 'access_token'
+        token_type: 'bearer',
+        expires_in: 3600, // 1 hora padrão
+        user: {
+          id: parseInt(result.data.user.id.replace('EST', '')), // Converter EST2022099960136 para número
+          name: credentials.email, // Usar email como nome temporário
+          email: credentials.email,
+          username: result.data.id,
+          token: result.data.token
+        }
+      };
     }
 
     // Outros sites usam configuração padrão
@@ -185,15 +361,53 @@ export class BiahostedPlatform extends BasePlatform {
         }
       };
 
-      //console.log('McGames generateToken config:', config);
-
       const response = await this.makeRequest<{ token: string }>(config);
-      //console.log('McGames generateToken response:', response);
       
       return {
         user_id: '', // Será preenchido dinamicamente
         token: response.token,
         expires_at: new Date(Date.now() + 3600000).toISOString() // 1 hora
+      };
+    }
+
+    // EstrelaBet usa endpoint específico
+    if (this.siteName.toLowerCase() === 'estrelabet') {
+      // Extrair sessionid dos cookies capturados
+      let sessionid = '';
+      if (this.sessionCookies) {
+        const sessionMatch = this.sessionCookies.match(/ci_session=([^;]+)/);
+        if (sessionMatch) {
+          sessionid = sessionMatch[1];
+        }
+      }
+
+      const config = {
+        method: 'get',
+        url: 'https://bff-estrelabet.estrelabet.bet.br/sports/openSportsBook?vendorId=altenar',
+        headers: {
+          'User-Agent': this.userAgent,
+          'SessionId': sessionid
+        }
+      };
+
+      // Adicionar cookies se disponíveis
+      if (this.sessionCookies) {
+        (config.headers as Record<string, string>)['Cookie'] = this.sessionCookies;
+      }
+
+      const response = await this.makeRequest<{
+        data: {
+          authToken: string;
+          status: string;
+          tokenExpiry: string;
+          [key: string]: unknown;
+        };
+      }>(config);
+      
+      return {
+        user_id: '', // Será preenchido dinamicamente
+        token: response.data.authToken, // EstrelaBet usa 'authToken' ao invés de 'token'
+        expires_at: new Date(parseInt(response.data.tokenExpiry) * 1000).toISOString() // Converter timestamp Unix para ISO
       };
     }
 
@@ -305,6 +519,49 @@ export class BiahostedPlatform extends BasePlatform {
              response.user_profile?.wallet?.credit || 
              response.user_profile?._cached?.['get-credits']?.credit || 
              0;
+    }
+
+    // EstrelaBet usa endpoint específico para buscar saldo
+    if (this.siteName.toLowerCase() === 'estrelabet') {
+      // Extrair sessionid dos cookies capturados
+      let sessionid = '';
+      if (this.sessionCookies) {
+        const sessionMatch = this.sessionCookies.match(/ci_session=([^;]+)/);
+        if (sessionMatch) {
+          sessionid = sessionMatch[1];
+        }
+      }
+
+      const config = {
+        method: 'get',
+        url: 'https://bff-estrelabet.estrelabet.bet.br/profile/getProfileBalanceCurrency',
+        headers: {
+          'sessionid': sessionid,
+          'User-Agent': this.userAgent
+        }
+      };
+
+      // Adicionar cookies se disponíveis
+      if (this.sessionCookies) {
+        (config.headers as Record<string, string>)['Cookie'] = this.sessionCookies;
+      }
+
+      const response = await this.makeRequest<{
+        data: {
+          profile: {
+            balanceDetails: {
+              cash: number; // EstrelaBet retorna em reais (1.25 = R$ 1,25)
+              bonus: number;
+              withdrawableBalance: number;
+            };
+          };
+          token: string;
+        };
+      }>(config);
+
+      // EstrelaBet retorna o saldo em reais, converter para centavos
+      const cashInReais = response.data.profile.balanceDetails.cash || 0;
+      return Math.round(cashInReais * 100); // Converter reais para centavos
     }
 
     // Outros sites usam o endpoint padrão
