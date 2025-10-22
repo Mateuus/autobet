@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import MarketCard from './MarketCard';
 import { BiaHostedEventDetail, BiaHostedMarket, BiaHostedOdd } from '@/types/events';
+import { shouldRemoveDuplicates } from '@/config/market-config';
 
 interface EventDetailProps {
   event: BiaHostedEventDetail;
@@ -128,6 +129,44 @@ export default function EventDetail({ event, onBackToList, loading = false, erro
     let filteredMarkets = event.markets.filter(market => 
       marketIds.includes(market.id)
     );
+
+    // Processar mercados duplicados - mercado de índice maior ocupa a posição do menor
+    const finalMarkets: BiaHostedMarket[] = [];
+    const processedIds = new Set<number>();
+    
+    // Processar todos os mercados na ordem original para manter posições
+    event.markets.forEach(market => {
+      if (marketIds.includes(market.id)) {
+        if (shouldRemoveDuplicates(market.sportMarketId)) {
+          // Para mercados especiais, verificar se já foi processado
+          if (!processedIds.has(market.id)) {
+            // Primeira vez vendo este ID - adicionar na posição atual
+            finalMarkets.push(market);
+            processedIds.add(market.id);
+          } else {
+            // ID já existe - substituir o mercado anterior na mesma posição
+            const existingIndex = finalMarkets.findIndex(m => m.id === market.id);
+            if (existingIndex !== -1) {
+              finalMarkets[existingIndex] = market; // Substitui na mesma posição
+            }
+          }
+        } else {
+          // Para mercados normais, manter como estão
+          finalMarkets.push(market);
+        }
+      }
+    });
+    
+    filteredMarkets = finalMarkets;
+
+    // Debug: verificar se há mercados duplicados processados
+    const originalCount = event.markets.filter(m => marketIds.includes(m.id)).length;
+    const finalCount = filteredMarkets.length;
+    if (originalCount > finalCount) {
+      console.log('🔄 Mercados duplicados processados:', originalCount - finalCount);
+      console.log('📊 Total original:', originalCount, '→ Total final:', finalCount);
+      console.log('📍 Mercados mantiveram suas posições originais');
+    }
 
     // Filtrar mercados que não tenham desktopOddIds ou que tenham desktopOddIds vazio
     filteredMarkets = filteredMarkets.filter(market => 
