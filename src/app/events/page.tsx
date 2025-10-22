@@ -7,100 +7,17 @@ import sportsConfig from '@/data/sports-config.json';
 import EventsTabs, { EventTabType } from '@/components/events/EventsTabs';
 import EventsList from '@/components/events/EventsList';
 import EventDetail from '@/components/events/EventDetail';
-import { Sport, BiaHostedEventDetail } from '@/types/events';
+import { Sport } from '@/types/events';
 import { useEvents, EventsFilters, UnifiedEvent } from '@/hooks/useEvents';
 import { useLiveEvents } from '@/hooks/useLiveEvents';
-
-// Mock temporário para detalhes do evento (até implementarmos o endpoint)
-const mockEventDetail: BiaHostedEventDetail = {
-  id: 13087565,
-  feedEventId: 15747275,
-  name: "Atlas vs. Club Leon",
-  et: 0,
-  sport: {
-    typeId: 1,
-    iconName: "soccer",
-    hasLiveEvents: false,
-    id: 66,
-    name: "Futebol"
-  },
-  champ: {
-    hasLiveEvents: false,
-    id: 10009,
-    name: "Liga MX"
-  },
-  category: {
-    iso: "MEX",
-    hasLiveEvents: false,
-    id: 560,
-    name: "México"
-  },
-  competitors: [
-    {
-      jerseySource: 2,
-      jerseyChamps: [10009],
-      id: 46433,
-      name: "Atlas"
-    },
-    {
-      jerseySource: 2,
-      jerseyChamps: [10009],
-      id: 47213,
-      name: "Club Leon"
-    }
-  ],
-  marketGroups: [
-    {
-      type: 0,
-      marketIds: [31046, 1211514334],
-      isBundle: false,
-      sortOrder: 0,
-      id: 1,
-      name: "Popular"
-    }
-  ],
-  markets: [
-    {
-      desktopOddIds: [[2972253896], [2972253898], [2972253901]],
-      mobileOddIds: [[2972253896], [2972253898], [2972253901]],
-      childMarketIds: [],
-      isBB: false,
-      variant: 7,
-      so: 0,
-      typeId: 1,
-      isMB: false,
-      sportMarketId: 70472,
-      hint: "Club Leon perdeu 10 das suas 14 últimas partidas fora de casa",
-      id: 1211514334,
-      name: "Vencedor do encontro",
-      selections: [
-        {
-          typeId: 1,
-          mst: 0,
-          odds: [
-            { id: 2972253896, name: "Atlas", price: 2.83, competitorId: 46433 },
-            { id: 2972253898, name: "Empate", price: 3.40 },
-            { id: 2972253901, name: "Club Leon", price: 2.28, competitorId: 47213 }
-          ]
-        }
-      ]
-    }
-  ],
-  boosts: [],
-  nonBoosts: [],
-  isParlay: false,
-  eventCode: 2724,
-  rc: false,
-  startDate: "2025-10-23T03:00:00Z",
-  showAll: true
-};
+import { useEventDetail } from '@/hooks/useEventDetail';
 
 export default function EventsPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [selectedSport, setSelectedSport] = useState<Sport | null>(null);
   const [showEventsModal, setShowEventsModal] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState<BiaHostedEventDetail | null>(null);
+  const [selectedEventId, setSelectedEventId] = useState<number | null>(null);
   const [filters, setFilters] = useState<EventsFilters>({
     sortBy: 'date'
   });
@@ -134,7 +51,15 @@ export default function EventsPage() {
     isRefreshing: isLiveRefreshing,
     lastUpdate: lastLiveUpdate,
     refetch: refetchLive
-  } = useLiveEvents(selectedSport?.sportId || 0, currentDate);
+  } = useLiveEvents(selectedSport?.sportId || 0, currentDate, activeTab === 'live');
+
+  // Hook para detalhes do evento
+  const {
+    eventDetail,
+    loading: eventDetailLoading,
+    error: eventDetailError,
+    refetch: refetchEventDetail
+  } = useEventDetail(selectedEventId);
 
   // Verificar se há parâmetros na URL ao carregar a página
   useEffect(() => {
@@ -148,8 +73,7 @@ export default function EventsPage() {
       
       if (sport) {
         setSelectedSport(sport);
-        // Para simplificar, usar o mockEventDetail para todos os eventos
-        setSelectedEvent(mockEventDetail);
+        setSelectedEventId(parseInt(eventId));
         setShowEventsModal(false);
       }
     } else if (sportId && !eventId) {
@@ -158,7 +82,7 @@ export default function EventsPage() {
       if (sport) {
         setSelectedSport(sport);
         setShowEventsModal(true);
-        setSelectedEvent(null);
+        setSelectedEventId(null);
         
         // Se há parâmetro page na URL, usar ele
         if (page && parseInt(page) > 1) {
@@ -169,7 +93,7 @@ export default function EventsPage() {
       // Cenário 3: URL sem parâmetros - mostrar seleção de esportes
       setSelectedSport(null);
       setShowEventsModal(false);
-      setSelectedEvent(null);
+      setSelectedEventId(null);
     }
   }, [searchParams, onPageChange]);
 
@@ -190,9 +114,7 @@ export default function EventsPage() {
   };
 
   const handleEventSelect = (event: UnifiedEvent) => {
-    // TODO: Implementar busca de detalhes do evento quando o endpoint estiver disponível
-    // Por enquanto, usar o mockEventDetail
-    setSelectedEvent(mockEventDetail);
+    setSelectedEventId(event.id);
     setShowEventsModal(false);
     // Atualizar URL com eventId e sportId
     if (selectedSport) {
@@ -201,7 +123,7 @@ export default function EventsPage() {
   };
 
   const handleBackToList = () => {
-    setSelectedEvent(null);
+    setSelectedEventId(null);
     setShowEventsModal(true);
     // Atualizar URL para mostrar apenas o esporte
     if (selectedSport) {
@@ -210,7 +132,7 @@ export default function EventsPage() {
   };
 
   const handleBackToSports = () => {
-    setSelectedEvent(null);
+    setSelectedEventId(null);
     setShowEventsModal(false);
     setSelectedSport(null);
     // Limpar parâmetros da URL
@@ -226,11 +148,14 @@ export default function EventsPage() {
     setFilters(prev => ({ ...prev, searchTerm }));
   };
 
-  if (selectedEvent) {
+  if (selectedEventId && eventDetail) {
     return (
       <EventDetail 
-        event={selectedEvent}
+        event={eventDetail}
         onBackToList={handleBackToList}
+        loading={eventDetailLoading}
+        error={eventDetailError}
+        onRetry={refetchEventDetail}
       />
     );
   }

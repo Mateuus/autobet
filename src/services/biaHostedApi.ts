@@ -2,6 +2,16 @@ import { BiaHostedEventsList, BiaHostedEventDetail, BiaHostedLiveEventsList } fr
 
 const BIA_HOSTED_BASE_URL = 'https://sb2frontend-altenar2.biahosted.com/api/widget';
 
+export interface EventDetailParams {
+  eventId: number;
+  culture?: string;
+  timezoneOffset?: number;
+  integration?: string;
+  deviceType?: number;
+  numFormat?: string;
+  countryCode?: string;
+}
+
 export interface EventsListParams {
   sportId: number;
   date?: Date;
@@ -14,16 +24,6 @@ export interface EventsListParams {
   eventCount?: number;
   couponType?: number;
   playerRegDate?: string; // Campo específico para eventos ao vivo
-}
-
-export interface EventDetailParams {
-  eventId: number;
-  culture?: string;
-  timezoneOffset?: number;
-  integration?: string;
-  deviceType?: number;
-  numFormat?: string;
-  countryCode?: string;
 }
 
 /**
@@ -159,12 +159,52 @@ export class BiaHostedApiService {
   }
 
   /**
-   * Busca detalhes de um evento específico
-   * (Implementaremos quando você passar o endpoint)
+   * Buscar detalhes de um evento específico
    */
-  async getEventDetail(): Promise<BiaHostedEventDetail> {
-    // TODO: Implementar quando o endpoint for fornecido
-    throw new Error('Endpoint de detalhes do evento ainda não implementado');
+  async getEventDetail(params: EventDetailParams): Promise<BiaHostedEventDetail> {
+    const {
+      eventId,
+      culture = 'pt-BR',
+      timezoneOffset = 180,
+      integration = 'estrelabet',
+      deviceType = 1,
+      numFormat = 'en-GB',
+      countryCode = 'BR',
+    } = params;
+
+    const url = new URL(`${BIA_HOSTED_BASE_URL}/GetEventDetails`);
+    url.searchParams.append('culture', culture);
+    url.searchParams.append('timezoneOffset', timezoneOffset.toString());
+    url.searchParams.append('integration', integration);
+    url.searchParams.append('deviceType', deviceType.toString());
+    url.searchParams.append('numFormat', numFormat);
+    url.searchParams.append('countryCode', countryCode);
+    url.searchParams.append('eventId', eventId.toString());
+
+    try {
+      const response = await fetch(url.toString(), {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Origin': 'https://www.estrelabet.bet.br',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
+          'Referer': 'https://www.estrelabet.bet.br/',
+        },
+        mode: 'cors',
+        credentials: 'omit',
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data: BiaHostedEventDetail = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Erro ao buscar detalhes do evento:', error);
+      throw new Error(`Falha ao buscar detalhes do evento: ${error instanceof Error ? error.message : 'Erro desconhecido'}`);
+    }
   }
 
   /**
