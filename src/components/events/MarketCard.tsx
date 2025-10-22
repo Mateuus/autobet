@@ -10,6 +10,7 @@ interface MarketCardProps {
   onToggleCollapse?: () => void;
   additionalIcons?: ReactNode;
   children?: ReactNode;
+  isBB?: boolean;
 }
 
 export default function MarketCard({ 
@@ -19,12 +20,20 @@ export default function MarketCard({
   isCollapsed = false,
   onToggleCollapse,
   additionalIcons,
-  children 
+  children,
+  isBB = false
 }: MarketCardProps) {
   return (
     <div className="bg-white rounded-lg p-4 border border-gray-200 shadow-sm">
       <div className="flex justify-between items-center mb-3">
-        <h3 className="text-gray-900 font-medium">{title}</h3>
+        <div className="flex items-center gap-2">
+          <h3 className="text-gray-900 font-medium">{title}</h3>
+          {isBB && (
+            <div className="bg-gray-800 text-white text-xs font-bold px-1 py-0.5 rounded border border-white">
+              PA
+            </div>
+          )}
+        </div>
         <div className="flex items-center gap-2">
           {additionalIcons}
           {isCollapsible && (

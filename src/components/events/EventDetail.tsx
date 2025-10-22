@@ -187,6 +187,7 @@ export default function EventDetail({ event, onBackToList, loading = false, erro
           options={marketOptions}
           isCollapsed={collapsedMarkets.has(market.id)}
           onToggleCollapse={() => toggleMarketCollapse(market.id)}
+          isBB={market.isBB}
         />
       );
     }
@@ -457,27 +458,6 @@ export default function EventDetail({ event, onBackToList, loading = false, erro
     );
   };
 
-  // Encontrar mercados populares
-  const popularMarkets = event.markets.filter(market => 
-    event.marketGroups.find(group => group.name === 'Popular')?.marketIds.includes(market.id)
-  );
-
-  // Criar opções para mercados básicos
-  const matchWinnerMarket = popularMarkets.find(m => m.name === 'Vencedor do encontro');
-  const matchWinnerOptions = matchWinnerMarket?.selections?.flatMap(s => s.odds).map(odd => ({
-    label: odd.name,
-    odds: odd.price || 1.0,
-    onClick: () => handleOddsClick(`match-${odd.id}`),
-    isSelected: selectedOdds === `match-${odd.id}`
-  })) || [];
-
-  const totalGoalsMarket = popularMarkets.find(m => m.name.includes('Total de Gols'));
-  const totalGoalsOptions = totalGoalsMarket?.selections?.flatMap(s => s.odds).map(odd => ({
-    label: odd.name,
-    odds: odd.price || 1.0,
-    onClick: () => handleOddsClick(`total-${odd.id}`),
-    isSelected: selectedOdds === `total-${odd.id}`
-  })) || [];
 
   return (
     <div className="space-y-6">
@@ -608,32 +588,6 @@ export default function EventDetail({ event, onBackToList, loading = false, erro
 
       {/* Market Cards */}
       <div className="space-y-4">
-        {/* Match Winner */}
-        {matchWinnerOptions.length > 0 && (
-        <MarketCard
-          title="Vencedor do encontro"
-          options={matchWinnerOptions}
-            isCollapsed={collapsedMarkets.has(1211514334)}
-            onToggleCollapse={() => toggleMarketCollapse(1211514334)}
-        />
-        )}
-
-        {/* Total Goals */}
-        {totalGoalsOptions.length > 0 && (
-        <MarketCard
-          title="Total de Gols (incluindo linhas Asiáticas)"
-          options={totalGoalsOptions}
-            isCollapsed={collapsedMarkets.has(1211514279)}
-            onToggleCollapse={() => toggleMarketCollapse(1211514279)}
-          additionalIcons={
-            <>
-              <button className="text-gray-400">⊞</button>
-              <button className="text-gray-400">📊</button>
-            </>
-          }
-        />
-        )}
-
         {/* Renderizar mercados filtrados */}
         {filteredMarkets.length > 0 ? (
           filteredMarkets.map((market, index) => {
@@ -677,6 +631,7 @@ export default function EventDetail({ event, onBackToList, loading = false, erro
                   options={marketOptions}
                   isCollapsed={collapsedMarkets.has(market.id)}
                   onToggleCollapse={() => toggleMarketCollapse(market.id)}
+                  isBB={market.isBB}
                 />
               );
             }
