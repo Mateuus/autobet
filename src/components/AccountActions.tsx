@@ -1,17 +1,20 @@
 'use client';
 
 import { useState } from 'react';
-import { RefreshCw, DollarSign, User, Loader2 } from 'lucide-react';
+import { RefreshCw, DollarSign, User, Loader2, Power } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 
 interface AccountActionsProps {
   accountId: string;
   site: string;
+  platform?: string;
+  email?: string;
+  status?: string;
   onSuccess?: (message: string) => void;
   onError?: (error: string) => void;
 }
 
-export function AccountActions({ accountId, site, onSuccess, onError }: AccountActionsProps) {
+export function AccountActions({ accountId, site, platform, email, status, onSuccess, onError }: AccountActionsProps) {
   const { token } = useAuth();
   const [isLoading, setIsLoading] = useState<string | null>(null);
 
@@ -53,6 +56,8 @@ export function AccountActions({ accountId, site, onSuccess, onError }: AccountA
         return `Saldo atualizado: R$ ${(dataObj.balance as number)?.toFixed(2) || '0.00'} para ${site}`;
       case 'get_profile':
         return `Perfil obtido com sucesso para ${site}`;
+      case 'toggle_status':
+        return `${site} ${dataObj.isActive ? 'ativada' : 'desativada'} com sucesso`;
       default:
         return 'Ação executada com sucesso';
     }
@@ -66,6 +71,8 @@ export function AccountActions({ accountId, site, onSuccess, onError }: AccountA
         return 'Atualizar Saldo';
       case 'get_profile':
         return 'Buscar Perfil';
+      case 'toggle_status':
+        return status === 'Ativo' ? 'Desativar' : 'Ativar';
       default:
         return 'Executar';
     }
@@ -74,11 +81,13 @@ export function AccountActions({ accountId, site, onSuccess, onError }: AccountA
   const getButtonIcon = (action: string) => {
     switch (action) {
       case 'refresh_tokens':
-        return <RefreshCw className="w-4 h-4" />;
+        return <RefreshCw className="w-4 h-4 text-blue-600" />;
       case 'get_balance':
-        return <DollarSign className="w-4 h-4" />;
+        return <DollarSign className="w-4 h-4 text-green-600" />;
       case 'get_profile':
-        return <User className="w-4 h-4" />;
+        return <User className="w-4 h-4 text-purple-600" />;
+      case 'toggle_status':
+        return <Power className="w-4 h-4 text-orange-600" />;
       default:
         return null;
     }
@@ -87,12 +96,39 @@ export function AccountActions({ accountId, site, onSuccess, onError }: AccountA
   const actions = [
     { id: 'refresh_tokens', label: 'Renovar Tokens', description: 'Faz login e gera novos tokens' },
     { id: 'get_balance', label: 'Atualizar Saldo', description: 'Busca saldo atual da conta' },
-    { id: 'get_profile', label: 'Buscar Perfil', description: 'Obtém dados completos da conta' }
+    { id: 'get_profile', label: 'Buscar Perfil', description: 'Obtém dados completos da conta' },
+    { 
+      id: 'toggle_status', 
+      label: status === 'Ativo' ? 'Desativar Conta' : 'Ativar Conta', 
+      description: status === 'Ativo' ? 'Desativa a conta para parar operações' : 'Ativa a conta para operações'
+    }
   ];
 
   return (
     <div className="space-y-3">
       <h3 className="text-sm font-medium text-gray-700">Ações da Conta</h3>
+      
+      {/* Informações da Conta */}
+      <div className="bg-gray-50 rounded-lg p-3 space-y-2">
+        <div className="text-xs font-medium text-gray-500 mb-2">Informações da Conta</div>
+        
+        <div className="space-y-1">
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-600">Plataforma:</span>
+            <span className="text-xs font-medium text-gray-900">{platform || 'N/A'}</span>
+          </div>
+          
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-600">Site:</span>
+            <span className="text-xs font-medium text-gray-900">{site}</span>
+          </div>
+          
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-600">Login:</span>
+            <span className="text-xs font-medium text-gray-900">{email || 'N/A'}</span>
+          </div>
+        </div>
+      </div>
       
       <div className="grid grid-cols-1 gap-2">
         {actions.map((action) => (
@@ -111,7 +147,11 @@ export function AccountActions({ accountId, site, onSuccess, onError }: AccountA
               className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
                 isLoading === action.id
                   ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  : 'bg-blue-600 text-white hover:bg-blue-700'
+                  : action.id === 'toggle_status'
+                    ? status === 'Ativo'
+                      ? 'bg-red-600 text-white hover:bg-red-700'
+                      : 'bg-green-600 text-white hover:bg-green-700'
+                    : 'bg-blue-600 text-white hover:bg-blue-700'
               }`}
             >
               {isLoading === action.id ? (

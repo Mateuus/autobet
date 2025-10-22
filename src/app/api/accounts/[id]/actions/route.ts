@@ -58,6 +58,9 @@ export async function POST(
       case 'get_profile':
         return await getProfile(account, platform);
       
+      case 'toggle_status':
+        return await toggleAccountStatus(account, betAccountRepository);
+      
       default:
         return NextResponse.json({ error: 'Ação não reconhecida' }, { status: 400 });
     }
@@ -278,6 +281,43 @@ async function getProfile(account: BetAccount, platform: BiahostedPlatform) {
 
     return NextResponse.json({ 
       error: 'Erro ao buscar perfil' 
+    }, { status: 400 });
+  }
+}
+
+// Função para ativar/desativar conta
+async function toggleAccountStatus(
+  account: BetAccount, 
+  repository: Repository<BetAccount>
+) {
+  try {
+    console.log(`🔄 Alternando status da conta ${account.id} (${account.site})`);
+    
+    // Alternar o status atual
+    const newStatus = !account.isActive;
+    
+    // Atualizar no banco
+    account.isActive = newStatus;
+    await repository.save(account);
+
+    const statusText = newStatus ? 'ativada' : 'desativada';
+    console.log(`✅ Conta ${account.site} ${statusText} com sucesso`);
+
+    return NextResponse.json({
+      success: true,
+      data: {
+        message: `Conta ${statusText} com sucesso`,
+        accountId: account.id,
+        site: account.site,
+        isActive: newStatus,
+        status: newStatus ? 'Ativo' : 'Inativo'
+      }
+    });
+
+  } catch (error) {
+    console.error(`❌ Erro ao alternar status da conta ${account.site}:`, error);
+    return NextResponse.json({ 
+      error: 'Erro ao alterar status da conta' 
     }, { status: 400 });
   }
 }

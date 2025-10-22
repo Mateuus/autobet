@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { verifyToken } from '@/lib/auth';
+import { verifyJWTToken } from '@/lib/auth/jwt';
 import { BiahostedPlatform } from '@/lib/platforms/BiahostedPlatform';
 import { AppDataSource } from '@/database/data-source';
 import { BetAccount } from '@/database/entities/BetAccount';
@@ -15,13 +15,16 @@ interface UpdateResult {
 
 export async function POST(request: NextRequest) {
   try {
-    // Verificar autenticação
-    const authResult = verifyToken(request);
-    if (!authResult) {
-      return NextResponse.json({ success: false, error: 'Token inválido' }, { status: 401 });
+    const authHeader = request.headers.get('authorization');
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return NextResponse.json({ error: 'Token de autorização necessário' }, { status: 401 });
     }
 
-    const userId = authResult.userId;
+    // Verificar JWT e extrair userId
+    const userId = verifyJWTToken(request);
+    if (!userId) {
+      return NextResponse.json({ error: 'Token inválido ou expirado' }, { status: 401 });
+    }
 
     // Inicializar conexão com o banco
     if (!AppDataSource.isInitialized) {
@@ -49,17 +52,66 @@ export async function POST(request: NextRequest) {
       try {
         const platform = new BiahostedPlatform(account.site, account.siteUrl);
         
+        // Para McGames e EstrelaBet, fazer login primeiro para obter cookies de sessão
+        if (account.site.toLowerCase() === 'mcgames' || account.site.toLowerCase() === 'estrelabet') {
+          console.log(`🍪 ${account.site} detectado - fazendo login para obter cookies de sessão`);
+          
+          try {
+            // Fazer login para obter cookies de sessão
+            const loginResult = await platform.login({ 
+              email: account.email, 
+              password: account.password 
+            });
+
+            if (!loginResult.access_token) {
+              throw new Error(`Falha no login do ${account.site} - credenciais inválidas`);
+            }
+
+            console.log(`✅ Login do ${account.site} realizado - cookies de sessão obtidos`);
+            
+            // Usar o access_token do login para buscar saldo
+            const balance = await platform.getBalance(loginResult.access_token);
+
+            console.log(`💰 Saldo obtido do ${account.site}: ${balance} centavos`);
+
+            // Atualizar conta no banco
+            await betAccountRepository.update(account.id, {
+              accessToken: loginResult.access_token,
+              balance: balance,
+              lastBalanceUpdate: new Date(),
+              lastTokenRefresh: new Date()
+            });
+
+            return {
+              id: account.id,
+              name: account.site,
+              success: true,
+              balance: balance,
+              message: `Login automático realizado para ${account.site}`
+            };
+
+          } catch (loginError) {
+            console.error(`❌ Erro no login automático do ${account.site}:`, loginError);
+            throw new Error(`Erro no login automático do ${account.site}. Verifique as credenciais.`);
+          }
+        }
+
+        // Para outros sites, usar o fluxo normal
         // Fazer login para obter novo token
         const loginResult = await platform.login({
           email: account.email,
           password: account.password
         });
 
+        if (!loginResult.access_token) {
+          throw new Error('Falha no login - credenciais inválidas');
+        }
+
         // Gerar novo token de usuário
-        const userToken = await platform.generateToken(loginResult.access_token, account.userToken || '');
+        const userToken = await platform.generateToken(loginResult.access_token, loginResult.access_token);
 
         // Obter saldo atualizado
-        const balance = await platform.getBalance(userToken.token);
+        const balance = await platform.getBalance(loginResult.access_token);
 
         // Atualizar conta no banco
         await betAccountRepository.update(account.id, {

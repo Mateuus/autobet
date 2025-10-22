@@ -100,18 +100,17 @@ function AccountsContent() {
     setClickedAccount(prev => prev === accountId ? null : accountId);
   };
 
-  // Fechar tooltip quando clicar fora
+  // Fechar modal quando pressionar ESC
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-      if (!target.closest('.account-actions-container')) {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
         setClickedAccount(null);
       }
     };
 
     if (clickedAccount) {
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => document.removeEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleKeyDown);
+      return () => document.removeEventListener('keydown', handleKeyDown);
     }
   }, [clickedAccount]);
 
@@ -366,21 +365,39 @@ function AccountsContent() {
                     <div className="relative account-actions-container">
                       <button 
                         onClick={() => toggleAccountActions(account.id)}
-                        className="text-gray-400 hover:text-gray-600 transition-colors"
+                        className="text-gray-400 hover:text-gray-600 transition-colors p-1 rounded-md hover:bg-gray-100"
                       >
-                        <MoreHorizontal className="w-5 h-5" />
+                        <MoreHorizontal className="w-4 h-4" />
                       </button>
                       
                       {/* Tooltip */}
                       {clickedAccount === account.id && (
-                        <div className="absolute right-0 top-0 z-50 bg-white border border-gray-200 rounded-lg shadow-lg p-2 min-w-[200px]">
-                          <AccountActions
-                            accountId={account.id}
-                            site={account.name}
-                            onSuccess={handleActionSuccess}
-                            onError={handleActionError}
-                          />
-                        </div>
+                        <>
+                          {/* Overlay escuro */}
+                          <div className="fixed inset-0 bg-black bg-opacity-25 z-40" 
+                               onClick={() => setClickedAccount(null)}></div>
+                          
+                          {/* Modal de ações */}
+                          <div className="fixed z-50 bg-white border border-gray-200 rounded-lg shadow-xl p-3 min-w-[280px]"
+                               style={{
+                                 top: '50%',
+                                 left: '50%',
+                                 transform: 'translate(-50%, -50%)'
+                               }}>
+                            <div className="space-y-2">
+                              <div className="text-xs font-medium text-gray-500 mb-2">Ações da Conta</div>
+                              <AccountActions
+                                accountId={account.id}
+                                site={account.name}
+                                platform={account.platform}
+                                email={account.email}
+                                status={account.status}
+                                onSuccess={handleActionSuccess}
+                                onError={handleActionError}
+                              />
+                            </div>
+                          </div>
+                        </>
                       )}
                     </div>
                   </td>
