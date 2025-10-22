@@ -3,6 +3,7 @@ import { AppDataSource } from '@/database/data-source';
 import { BetAccount } from '@/database/entities/BetAccount';
 import { BiahostedPlatform } from '@/lib/platforms/BiahostedPlatform';
 import { BetData, LoginCredentials } from '@/types';
+import { OddsStateResponse, OddsStatesApiResponse } from '@/services/biaHostedApi';
 
 interface BettingOdd {
   id: number;
@@ -100,6 +101,70 @@ function generateRandomRequestId(): string {
     result += chars.charAt(Math.floor(Math.random() * chars.length));
   }
   return result;
+}
+
+/**
+ * Atualiza as odds do betData com os valores mais recentes da API
+ * @param betData - Dados da aposta
+ * @param integration - Integration da plataforma
+ * @returns Promise<boolean> - true se odds foram atualizadas, false caso contrário
+ */
+async function updateOddsInBetData(betData: BetData, integration: string): Promise<boolean> {
+  try {
+    console.log(`📊 Atualizando odds para integration: ${integration}`);
+    
+    // Extrair odds do betData para verificação
+    const oddsToCheck = betData.betMarkets.flatMap(market => 
+      market.odds.map(odd => ({
+        oddId: odd.id,
+        price: odd.price,
+        eventId: market.id,
+        marketTypeId: odd.marketTypeId,
+        selectionTypeId: odd.selectionTypeId,
+        sportTypeId: market.sportTypeId,
+        isBoost: false,
+        marketSliceType: 0
+      }))
+    );
+    
+    const { biaHostedApi } = await import('@/services/biaHostedApi');
+    const response: OddsStatesApiResponse = await biaHostedApi.getOddsStates({
+      integration: integration,
+      odds: oddsToCheck
+    });
+    
+    console.log(`✅ Odds atualizadas para ${integration}:`, response);
+    
+    // A API retorna { oddStates: [] }, então precisamos extrair o array
+    const oddsStates: OddsStateResponse[] = response.oddStates || [];
+    
+    // Verificar se alguma odd mudou significativamente
+    const oddsChanged = oddsStates.some((state: OddsStateResponse) => {
+      const originalOdd = oddsToCheck.find(odd => odd.oddId === state.id); // API usa 'id' ao invés de 'oddId'
+      return originalOdd && Math.abs(state.price - originalOdd.price) > 0.01;
+    });
+    
+    if (oddsChanged) {
+      console.log(`⚠️ Odds mudaram para ${integration}, atualizando betData...`);
+      // Atualizar preços no betData com as odds mais recentes
+      betData.betMarkets.forEach(market => {
+        market.odds.forEach(odd => {
+          const updatedOdd = oddsStates.find((state: OddsStateResponse) => state.id === odd.id); // API usa 'id' ao invés de 'oddId'
+          if (updatedOdd) {
+            console.log(`🔄 Atualizando odd ${odd.id}: ${odd.price} → ${updatedOdd.price}`);
+            odd.price = updatedOdd.price;
+          }
+        });
+      });
+      return true;
+    }
+    
+    return false;
+    
+  } catch (oddsError) {
+    console.warn(`⚠️ Erro ao atualizar odds para ${integration}:`, oddsError);
+    return false;
+  }
 }
 
 /**
@@ -211,15 +276,18 @@ async function processBetForAccount(account: BetAccount, betData: BetData, stake
 
     console.log(platformToken); //platformToken.accessToken
     
-    // 5. Preparar dados da aposta
-    const stakeInCents = Math.round(stake * 100);
-    
-    // Verificar se é mcgames para usar integration correto
+    // 4. Atualizar odds para cada integration
     const integration = account.site.toLowerCase() === 'mcgames' ? 'mcgames2' : platform.getSiteInfo().integration;
+    const oddsUpdated = await updateOddsInBetData(betData, integration);
+    
+    if (oddsUpdated) {
+      console.log(`✅ Odds atualizadas com sucesso para ${account.site}`);
+    } else {
+      console.log(`ℹ️ Odds mantidas (sem mudanças significativas) para ${account.site}`);
+    }
     
     const betPayload: BetData = {
       ...betData,
-      stakes: [stakeInCents],
       culture: 'pt-BR',
       timezoneOffset: 180,
       integration: integration,
@@ -427,7 +495,7 @@ export async function POST(request: NextRequest) {
       //betType: (betMarkets.length === 1 && stakes.length === 1) || (betMarkets.length > 1 && stakes.length > 1) ? 1 : 2, // 1 = simples, 2 = múltipla
       betType: 0, // 0 = simples, 1 = múltipla
       isAutoCharge: false,
-      stakes: stakes.map(stake => Math.round(stake * 100)), // Converter para centavos
+      stakes: stakes,
       oddsChangeAction: 1,
       betMarkets: betMarkets.map(event => ({
         id: event.id,

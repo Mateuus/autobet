@@ -12,6 +12,37 @@ export interface EventDetailParams {
   countryCode?: string;
 }
 
+export interface OddsStateParams {
+  culture?: string;
+  timezoneOffset?: number;
+  integration: string; // Obrigatório
+  deviceType?: number;
+  numFormat?: string;
+  countryCode?: string;
+  odds: Array<{
+    oddId: number;
+    price: number;
+    eventId: number;
+    marketTypeId: number;
+    selectionTypeId: number;
+    sportTypeId: number;
+    isBoost?: boolean;
+    marketSliceType?: number;
+  }>;
+}
+
+export interface OddsStateResponse {
+  id: number; // API usa 'id' ao invés de 'oddId'
+  intSelectionId: number;
+  price: number;
+  oddStatus: number;
+  isLive: boolean;
+}
+
+export interface OddsStatesApiResponse {
+  oddStates: OddsStateResponse[];
+}
+
 export interface EventsListParams {
   sportId: number;
   date?: Date;
@@ -155,6 +186,64 @@ export class BiaHostedApiService {
     } catch (error) {
       console.error('Erro ao buscar eventos ao vivo:', error);
       throw new Error(`Falha ao buscar eventos ao vivo: ${error instanceof Error ? error.message : 'Erro desconhecido'}`);
+    }
+  }
+
+  /**
+   * Verificar estado atual das odds
+   */
+  async getOddsStates(params: OddsStateParams): Promise<OddsStatesApiResponse> {
+    const {
+      culture = 'pt-BR',
+      timezoneOffset = 180,
+      integration,
+      deviceType = 1,
+      numFormat = 'en-GB',
+      countryCode = 'BR',
+      odds
+    } = params;
+
+    if (!integration) {
+      throw new Error('Integration é obrigatório para getOddsStates');
+    }
+
+    const url = `${BIA_HOSTED_BASE_URL}/GetOddsStates`;
+    
+    const requestData = {
+      culture,
+      timezoneOffset,
+      integration,
+      deviceType,
+      numFormat,
+      countryCode,
+      odds
+    };
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Origin': 'https://www.estrelabet.bet.br',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
+          'Referer': 'https://www.estrelabet.bet.br/',
+        },
+        mode: 'cors',
+        credentials: 'omit',
+        body: JSON.stringify(requestData)
+      });
+      console.log(response);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Erro ao verificar estado das odds:', error);
+      throw new Error(`Falha ao verificar odds: ${error instanceof Error ? error.message : 'Erro desconhecido'}`);
     }
   }
 

@@ -1,7 +1,7 @@
-[2025-10-22T09:10:43.039Z] 🚀 [rw6pp1aq2] REQUISIÇÃO - mcgames
+[2025-10-22T10:04:30.872Z] 🚀 [d8fe8luix] REQUISIÇÃO - mcgames
 {
-  "requestId": "rw6pp1aq2",
-  "timestamp": "2025-10-22T09:10:43.039Z",
+  "requestId": "d8fe8luix",
+  "timestamp": "2025-10-22T10:04:30.872Z",
   "siteName": "mcgames",
   "integration": "mcgames",
   "url": "https://mcgames.bet.br/api/auth/login",
@@ -22,43 +22,43 @@
 }
 ================================================================================
 
-[2025-10-22T09:10:45.121Z] ✅ [rw6pp1aq2] RESPOSTA - mcgames
+[2025-10-22T10:04:32.682Z] ✅ [d8fe8luix] RESPOSTA - mcgames
 {
-  "requestId": "rw6pp1aq2",
-  "timestamp": "2025-10-22T09:10:45.121Z",
+  "requestId": "d8fe8luix",
+  "timestamp": "2025-10-22T10:04:32.682Z",
   "siteName": "mcgames",
   "integration": "mcgames",
   "status": 200,
   "statusText": "OK",
   "headers": {
-    "date": "Wed, 22 Oct 2025 09:10:44 GMT",
+    "date": "Wed, 22 Oct 2025 10:04:30 GMT",
     "content-type": "application/json",
     "transfer-encoding": "chunked",
     "connection": "keep-alive",
     "server": "cloudflare",
-    "cf-ray": "9927dcf19aa6f2e4-GRU",
+    "cf-ray": "99282bbb09301433-GRU",
     "cf-cache-status": "DYNAMIC",
     "access-control-allow-origin": "*",
     "cache-control": "max-age=0, no-cache, must-revalidate",
     "set-cookie": [
-      "__Host-jwt_token_strict=eyJpdiI6ImVyRVdsbUVPUlpENndYQkFoblZoL0E9PSIsInZhbHVlIjoiS0FUcVRYNFRLU2FUM1RlT1dKN3dGNHRBUGI4UTVEaDRTSzlZUlp0S1ZNbWhqRnAvQzBwTHUvOFZBTkFzTnZnV0xZNFVJTXc2cHhGTmxqOC92YzRrSFhWR1o4bTM5WDR0b2daZ2FXSmJVRGM9IiwibWFjIjoiZTVmOTZjM2JlMWQ5ZjcwMjUzMTBjYmZiOTYzOTM1NmEwZTU1OWNjM2I3YWUxYzU5ZGI4ZTY1MjViZmU2YmE5NyIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:44 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict",
-      "__Host-jwt_token_lax=eyJpdiI6ImJhQmM3TkR0S0NzUHRUWVJuUmdLdEE9PSIsInZhbHVlIjoicjBOOE5EMjRQOWg3MTczUUJPUXdtUHZ5MndXQWRNTml6aG9aWW5rbWJQc3pXNjRmdXNaSld4eHpaend4WDRPTitKU1BkTzlObEZBZkZlVVRnZ2FFUDNMQUZGNW1MM1dRRzNzZW9xYldpaFU9IiwibWFjIjoiMzUxYjkyZTk1NjBiYjVmMDFiZjBhZDNjY2MxMmZmYjhmNjJhMGYzOTg3NTFhOWNlMjcxZTExMThiMGZkZGZlNSIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:44 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax",
-      "__Host-jwt_token_none=eyJpdiI6ImxPc01WOTJ5alZSYk5GZkhESlMwa3c9PSIsInZhbHVlIjoia0RzcTk3VHlOc3hCYjlySkFualFoeHpOMEdDaTdSdGtvN1k4ejM0NWNIZ2RkdEpOVC9aWktySFpGS1VpVnJ2bG5oZjYyU0syczBFRWY5ZTAzNWZ4aVFUUkhleGxFUXlWcUdlaTB0K1RPVFk9IiwibWFjIjoiYTBiOTk1MThkZWY3ZDZmZjE0OTdlN2M0NTliN2JiMDNjMTBhNjZkYTM3ZmJjNDhiMWE0ZmZkYmUzZjRmMDA0NyIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:44 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none",
-      "bet7k_session=eyJpdiI6ImkvQkJzMlFCcTZocFdhUm9OT0NicHc9PSIsInZhbHVlIjoiWlBzVW5aVjdHSTM0cGU2clVBYy9EK3RheFdPMlJmNFBrY1RhM3MvamtkSnFyNXpNRDFPUURadlQyT0JUa29zTmtoTExFdlpPZG5KWFk4Qk85WUtLU3N3WFFCNmRmVDJVOVNxb2ZRWXJQVHFoWFE2ajFQZmtyVFlqaitJM2NTWDEiLCJtYWMiOiIwODYyODY4M2ZlMGYzYTg2Y2UwZWZiMDllNDE4NGEyMmNiNzhkMTM5MzU0YTVlNGFhYmMyZTBlYzBiNDExM2NmIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 09:10:44 GMT; Max-Age=31536000; path=/; httponly; samesite=lax",
-      "__cf_bm=XMmBpq1uIn4J9SGugTqV6.5mIrWAB3IPJscEl0TnhAw-1761124244-1.0.1.1-GkYA0SHvq.yBVRP.3TBpkNG.cepSKCY3Fd5EwPTxVSXRovHaKCkCW4v7WBo8VOfxw0c7EZQ8W.nFyH4wNiucDsRDEmWPgNWuVKvN2mSChgk; path=/; expires=Wed, 22-Oct-25 09:40:44 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None",
-      "__cf_bm=0QOmMnkHKb7fXyG1dgJJw6ECzIfYftD9W27K5XVAWU0-1761124244-1.0.1.1-mHACqnn2M5NRO7nTlKXx4GOOnfyBBwnnmaLnx0Ri4BTN4kaGNWXoA.KNaHVtMCN1zyjr6xROWR8m8fmmi1Q0GS.0cXk56v4N_ti1UQ_l18g; path=/; expires=Wed, 22-Oct-25 09:40:44 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
-      "_cfuvid=6er2e7iVxtLB4GGpx8QJm8JA4K34EY2QkpyKuUUBlds-1761124244096-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+      "__Host-jwt_token_strict=eyJpdiI6IjBISXZENHdFU3RMNXVSaDBpUlpzTFE9PSIsInZhbHVlIjoiekppOTlaWGZwa2tXUXlCUkhzdWNGdnpJYjJKQ3VGcTJXN05tajJVOHRNWkEzZGdZQS9ROURCRm5sS0hjMEppbERlZi9MV2pLeitKWHd1a0pBTDNvVk9YbWh4NFVPSmV6QksxWlFwdFFBaEk9IiwibWFjIjoiMjNiNmUyMTdiOTBmNTkzMGQ2ZTc5NTA5NjFiNTBkZWU3N2FlZTMxZDIyYjc3YzQwYzg4MDBmN2ZkYzQyM2VkMCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:30 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict",
+      "__Host-jwt_token_lax=eyJpdiI6Im8yQW9SalpUZTVFQlpUVndNOWg2c0E9PSIsInZhbHVlIjoibjlQaUlXdG9DU2tObVdDekNLcGkzQ1FyRVRXbTNUbEdsV0wvRnRKWFc3Y0cyOFU2QlhicnlyRC9ScGkzUE5mYkRwMmg4d1VEU0JlVFNWYjExNExtTnI4TzFBOUFyaGE0VDVIanZ5NEFmK0E9IiwibWFjIjoiNGNjZGExODAzNmUxYWQ0MjRiNmFiZjA0ZDM1ZjFhYjJmNmY3ZWFhY2JkYzhlMGNlODVlNTA3OWZjNDJmNDVhNyIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:30 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax",
+      "__Host-jwt_token_none=eyJpdiI6InBqbS9jVUlzN1Z4RGFOVnpKMWpIeFE9PSIsInZhbHVlIjoiTXlWVVpaMWoxam9rbXVobi83djA3cGhrQU5GbVEwUis0bUtVamd5c0ErSjRqM0pkSE5lOHhIWTVHd2lSQXN2K0liNjVTUGlFYXB6dXM2TE9uZ093ZHJkRXV3TkFPOExDYmJ4VnFSY1A1eXM9IiwibWFjIjoiOTMzNmJjNzEzMTUyODFhZTE5M2M0ODk0ZjBkM2IzMDViZDA3NTk5MWUzY2FlOGVhNzgyYzAxMWY1YjA1MDQ4YiIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:30 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none",
+      "bet7k_session=eyJpdiI6Ill0TnFqRVp1UEQxc0JtS0JpUHlrZ0E9PSIsInZhbHVlIjoiRzZKbFRtM0lJcnZDaCtIMFZKOEpzSDBpMW83K0NXV2dpb0tGblZxTHRRMUhnd3NaT2t5bXhuMFh5a0hDYkc3a2lScSsyQk56b0I5OStkN1lmcy83blFHRmZYcTk3V0NBZHBna0ZuVWxxMGRwVTFzK1dxTThUeC9rUzY2MTVtRysiLCJtYWMiOiIxMmYzOTk2MmI0ZDNmM2Q4NmY2MWFhZDFiZDRhNDNkZWRkM2Q4M2M3ZmM5ZTU1ODBmOWZmZTRhZDAzNzQ2YThlIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:04:30 GMT; Max-Age=31536000; path=/; httponly; samesite=lax",
+      "__cf_bm=FVpvdyJQK8V8a4R204hGTTloPfS5uKniKyjlZS1bkS8-1761127470-1.0.1.1-3AvCQqlZJFDhFpEa.Tbs5BA46rrHCR0VhN2bpLHMDsOv4S29M_Cnrs0Ws5DsTgysBro3vhskPdlJohvMXfhS.dw0zJnsS6TrZgHPDnUEWmU; path=/; expires=Wed, 22-Oct-25 10:34:30 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None",
+      "__cf_bm=L5hZYzccRrxJnCqCEUzE8tkbURFFoPD3nxQXiTn3esY-1761127470-1.0.1.1-v1gnYL31.mmUpR7K9xP6MF22vrGLyDKqj7Ve.1kDJ6TwwpgVeCmqiJPeC.Kzhe0nxeUcRdy4rCJghaPbbUXAN4.HLXcSjTeGMCD4hn1T7ME; path=/; expires=Wed, 22-Oct-25 10:34:30 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
+      "_cfuvid=lhNN1ne2CnyZ_1wtjXn2udOphgE9rZXmqG9HJIkBJnA-1761127470949-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
     ],
     "strict-transport-security": "max-age=15768000;",
     "vary": "Accept-Encoding",
-    "cf-placement": "local-",
+    "cf-placement": "local-GRU",
     "protected": "by MS23041901",
     "srv": "ip-172-16-60-179",
     "x-ratelimit-limit": "999999999",
-    "x-ratelimit-remaining": "999999848"
+    "x-ratelimit-remaining": "999999952"
   },
   "data": {
-    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS1tY2dhbWVzLWJldGJyLmJzMmJldC5jb20vdjIvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTEyNDI0NCwiZXhwIjoxNzYxNzI5MDQ0LCJuYmYiOjE3NjExMjQyNDQsImp0aSI6InRnQVc0UDlsb1U4ZjNmcmIiLCJzdWIiOiIyOTk4MTAxNCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJoYSI6IjUiLCJoYiI6IjAwZWE1NDE0MzYwM2RlYzlmNjFkOTdmZmY2YmQ3ZTU1IiwiaGMiOiI3MDA2YTExYzY2NzViODcwMTAwNDRjMGQ3YmIxMjY4OSIsImhpIjoiYWIyY2M3Y2Q5NzY5YmZkNzBjN2Y2ZGY2NzdhZjMzNGMiLCJoZCI6IjY4NDk1N2ZkZGE1YTIwMzI3YjY3NTYzYjlkZjdmMDMyIiwiaGwiOiI4N2YzMWUzNjVlNWNkMDcyYjA1MTE1ZDRkMWJkZTc0YSIsImhmIjoiMV9mMzg5ZGUwN2JmNmI1NzY4YTU4OWQ2NDZlYzliYzIwNl8xNzYxMTI0MjQyIn0.M0sKD2ypACu1dce7D7yNR74sOT5xG0quPX08_u-kgSg",
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS1tY2dhbWVzLWJldGJyLmJzMmJldC5jb20vdjIvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTEyNzQ3MCwiZXhwIjoxNzYxNzMyMjcwLCJuYmYiOjE3NjExMjc0NzAsImp0aSI6IktNcHFhamp4ZDNWUHBrWnEiLCJzdWIiOiIyOTk4MTAxNCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJoYSI6IjUiLCJoYiI6IjRhN2Y2NjVlYTAzYjI3ODFkYzc0Y2UzMDJiMGUzNjUyIiwiaGMiOiI3MDA2YTExYzY2NzViODcwMTAwNDRjMGQ3YmIxMjY4OSIsImhpIjoiYWIyY2M3Y2Q5NzY5YmZkNzBjN2Y2ZGY2NzdhZjMzNGMiLCJoZCI6IjY4NDk1N2ZkZGE1YTIwMzI3YjY3NTYzYjlkZjdmMDMyIiwiaGwiOiI4N2YzMWUzNjVlNWNkMDcyYjA1MTE1ZDRkMWJkZTc0YSIsImhmIjoiMV83NGEyZDJhODQ4NmYwOTk5MTkxYzcwYjAxOTJkYTRhOV8xNzYxMTI3NDY5In0.4fAX9SLyzdCFu11GyAEjY4CJM9nVsxYp8cjJqL2tGfY",
     "token_type": "bearer",
     "expires_in": 604800,
     "user": {
@@ -71,7 +71,7 @@
       "ftd_value": 650,
       "ftd_date": "2025-05-29 21:23:21",
       "created_at": "2025-05-30T00:18:43.000000Z",
-      "updated_at": "2025-10-22T09:10:42.000000Z",
+      "updated_at": "2025-10-22T10:04:29.000000Z",
       "is_active": 1,
       "phone": "13974198830",
       "commission": null,
@@ -142,7 +142,7 @@
         "user_limit_withdrawal": null,
         "user_limit_last_change": null,
         "last_verification_at": null,
-        "login_at": "2025-10-22 06:10:42",
+        "login_at": "2025-10-22 07:04:29",
         "login_attempt_qty": 3,
         "login_city": "Campinas",
         "login_state": "SP",
@@ -156,7 +156,7 @@
         "location_at": null,
         "nationalities": "[{\"id\": 1, \"value\": \"Brasileiro (a)\"}]",
         "created_at": "2025-05-30T00:18:43.000000Z",
-        "updated_at": "2025-10-22T09:10:42.000000Z",
+        "updated_at": "2025-10-22T10:04:29.000000Z",
         "id": 1979828,
         "two_factor_enabled": 0,
         "two_factor_type": null,
@@ -220,7 +220,7 @@
       "user_limit_withdrawal": null,
       "user_limit_last_change": null,
       "last_verification_at": null,
-      "login_at": "2025-10-22 06:10:42",
+      "login_at": "2025-10-22 07:04:29",
       "login_attempt_qty": 3,
       "login_city": "Campinas",
       "login_state": "SP",
@@ -234,7 +234,7 @@
       "location_at": null,
       "nationalities": "[{\"id\": 1, \"value\": \"Brasileiro (a)\"}]",
       "created_at": "2025-05-30T00:18:43.000000Z",
-      "updated_at": "2025-10-22T09:10:42.000000Z",
+      "updated_at": "2025-10-22T10:04:29.000000Z",
       "id": 1979828,
       "two_factor_enabled": 0,
       "two_factor_type": null,
@@ -244,70 +244,70 @@
     "need_change_password": false
   },
   "cookies": "[Circular Reference]",
-  "sessionCookies": "__Host-jwt_token_strict=eyJpdiI6ImVyRVdsbUVPUlpENndYQkFoblZoL0E9PSIsInZhbHVlIjoiS0FUcVRYNFRLU2FUM1RlT1dKN3dGNHRBUGI4UTVEaDRTSzlZUlp0S1ZNbWhqRnAvQzBwTHUvOFZBTkFzTnZnV0xZNFVJTXc2cHhGTmxqOC92YzRrSFhWR1o4bTM5WDR0b2daZ2FXSmJVRGM9IiwibWFjIjoiZTVmOTZjM2JlMWQ5ZjcwMjUzMTBjYmZiOTYzOTM1NmEwZTU1OWNjM2I3YWUxYzU5ZGI4ZTY1MjViZmU2YmE5NyIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:44 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict; __Host-jwt_token_lax=eyJpdiI6ImJhQmM3TkR0S0NzUHRUWVJuUmdLdEE9PSIsInZhbHVlIjoicjBOOE5EMjRQOWg3MTczUUJPUXdtUHZ5MndXQWRNTml6aG9aWW5rbWJQc3pXNjRmdXNaSld4eHpaend4WDRPTitKU1BkTzlObEZBZkZlVVRnZ2FFUDNMQUZGNW1MM1dRRzNzZW9xYldpaFU9IiwibWFjIjoiMzUxYjkyZTk1NjBiYjVmMDFiZjBhZDNjY2MxMmZmYjhmNjJhMGYzOTg3NTFhOWNlMjcxZTExMThiMGZkZGZlNSIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:44 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax; __Host-jwt_token_none=eyJpdiI6ImxPc01WOTJ5alZSYk5GZkhESlMwa3c9PSIsInZhbHVlIjoia0RzcTk3VHlOc3hCYjlySkFualFoeHpOMEdDaTdSdGtvN1k4ejM0NWNIZ2RkdEpOVC9aWktySFpGS1VpVnJ2bG5oZjYyU0syczBFRWY5ZTAzNWZ4aVFUUkhleGxFUXlWcUdlaTB0K1RPVFk9IiwibWFjIjoiYTBiOTk1MThkZWY3ZDZmZjE0OTdlN2M0NTliN2JiMDNjMTBhNjZkYTM3ZmJjNDhiMWE0ZmZkYmUzZjRmMDA0NyIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:44 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none; bet7k_session=eyJpdiI6ImkvQkJzMlFCcTZocFdhUm9OT0NicHc9PSIsInZhbHVlIjoiWlBzVW5aVjdHSTM0cGU2clVBYy9EK3RheFdPMlJmNFBrY1RhM3MvamtkSnFyNXpNRDFPUURadlQyT0JUa29zTmtoTExFdlpPZG5KWFk4Qk85WUtLU3N3WFFCNmRmVDJVOVNxb2ZRWXJQVHFoWFE2ajFQZmtyVFlqaitJM2NTWDEiLCJtYWMiOiIwODYyODY4M2ZlMGYzYTg2Y2UwZWZiMDllNDE4NGEyMmNiNzhkMTM5MzU0YTVlNGFhYmMyZTBlYzBiNDExM2NmIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 09:10:44 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=XMmBpq1uIn4J9SGugTqV6.5mIrWAB3IPJscEl0TnhAw-1761124244-1.0.1.1-GkYA0SHvq.yBVRP.3TBpkNG.cepSKCY3Fd5EwPTxVSXRovHaKCkCW4v7WBo8VOfxw0c7EZQ8W.nFyH4wNiucDsRDEmWPgNWuVKvN2mSChgk; path=/; expires=Wed, 22-Oct-25 09:40:44 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None; __cf_bm=0QOmMnkHKb7fXyG1dgJJw6ECzIfYftD9W27K5XVAWU0-1761124244-1.0.1.1-mHACqnn2M5NRO7nTlKXx4GOOnfyBBwnnmaLnx0Ri4BTN4kaGNWXoA.KNaHVtMCN1zyjr6xROWR8m8fmmi1Q0GS.0cXk56v4N_ti1UQ_l18g; path=/; expires=Wed, 22-Oct-25 09:40:44 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=6er2e7iVxtLB4GGpx8QJm8JA4K34EY2QkpyKuUUBlds-1761124244096-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
-  "responseTime": 2082
+  "sessionCookies": "__Host-jwt_token_strict=eyJpdiI6IjBISXZENHdFU3RMNXVSaDBpUlpzTFE9PSIsInZhbHVlIjoiekppOTlaWGZwa2tXUXlCUkhzdWNGdnpJYjJKQ3VGcTJXN05tajJVOHRNWkEzZGdZQS9ROURCRm5sS0hjMEppbERlZi9MV2pLeitKWHd1a0pBTDNvVk9YbWh4NFVPSmV6QksxWlFwdFFBaEk9IiwibWFjIjoiMjNiNmUyMTdiOTBmNTkzMGQ2ZTc5NTA5NjFiNTBkZWU3N2FlZTMxZDIyYjc3YzQwYzg4MDBmN2ZkYzQyM2VkMCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:30 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict; __Host-jwt_token_lax=eyJpdiI6Im8yQW9SalpUZTVFQlpUVndNOWg2c0E9PSIsInZhbHVlIjoibjlQaUlXdG9DU2tObVdDekNLcGkzQ1FyRVRXbTNUbEdsV0wvRnRKWFc3Y0cyOFU2QlhicnlyRC9ScGkzUE5mYkRwMmg4d1VEU0JlVFNWYjExNExtTnI4TzFBOUFyaGE0VDVIanZ5NEFmK0E9IiwibWFjIjoiNGNjZGExODAzNmUxYWQ0MjRiNmFiZjA0ZDM1ZjFhYjJmNmY3ZWFhY2JkYzhlMGNlODVlNTA3OWZjNDJmNDVhNyIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:30 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax; __Host-jwt_token_none=eyJpdiI6InBqbS9jVUlzN1Z4RGFOVnpKMWpIeFE9PSIsInZhbHVlIjoiTXlWVVpaMWoxam9rbXVobi83djA3cGhrQU5GbVEwUis0bUtVamd5c0ErSjRqM0pkSE5lOHhIWTVHd2lSQXN2K0liNjVTUGlFYXB6dXM2TE9uZ093ZHJkRXV3TkFPOExDYmJ4VnFSY1A1eXM9IiwibWFjIjoiOTMzNmJjNzEzMTUyODFhZTE5M2M0ODk0ZjBkM2IzMDViZDA3NTk5MWUzY2FlOGVhNzgyYzAxMWY1YjA1MDQ4YiIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:30 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none; bet7k_session=eyJpdiI6Ill0TnFqRVp1UEQxc0JtS0JpUHlrZ0E9PSIsInZhbHVlIjoiRzZKbFRtM0lJcnZDaCtIMFZKOEpzSDBpMW83K0NXV2dpb0tGblZxTHRRMUhnd3NaT2t5bXhuMFh5a0hDYkc3a2lScSsyQk56b0I5OStkN1lmcy83blFHRmZYcTk3V0NBZHBna0ZuVWxxMGRwVTFzK1dxTThUeC9rUzY2MTVtRysiLCJtYWMiOiIxMmYzOTk2MmI0ZDNmM2Q4NmY2MWFhZDFiZDRhNDNkZWRkM2Q4M2M3ZmM5ZTU1ODBmOWZmZTRhZDAzNzQ2YThlIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:04:30 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=FVpvdyJQK8V8a4R204hGTTloPfS5uKniKyjlZS1bkS8-1761127470-1.0.1.1-3AvCQqlZJFDhFpEa.Tbs5BA46rrHCR0VhN2bpLHMDsOv4S29M_Cnrs0Ws5DsTgysBro3vhskPdlJohvMXfhS.dw0zJnsS6TrZgHPDnUEWmU; path=/; expires=Wed, 22-Oct-25 10:34:30 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None; __cf_bm=L5hZYzccRrxJnCqCEUzE8tkbURFFoPD3nxQXiTn3esY-1761127470-1.0.1.1-v1gnYL31.mmUpR7K9xP6MF22vrGLyDKqj7Ve.1kDJ6TwwpgVeCmqiJPeC.Kzhe0nxeUcRdy4rCJghaPbbUXAN4.HLXcSjTeGMCD4hn1T7ME; path=/; expires=Wed, 22-Oct-25 10:34:30 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=lhNN1ne2CnyZ_1wtjXn2udOphgE9rZXmqG9HJIkBJnA-1761127470949-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 1810
 }
 ================================================================================
 
-[2025-10-22T09:10:45.122Z] 🚀 [zcwrg2761] REQUISIÇÃO - mcgames
+[2025-10-22T10:04:32.684Z] 🚀 [a74blxm5b] REQUISIÇÃO - mcgames
 {
-  "requestId": "zcwrg2761",
-  "timestamp": "2025-10-22T09:10:45.122Z",
+  "requestId": "a74blxm5b",
+  "timestamp": "2025-10-22T10:04:32.684Z",
   "siteName": "mcgames",
   "integration": "mcgames",
   "url": "https://mcgames.bet.br/api/alternar/token",
   "method": "get",
   "headers": {
-    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS1tY2dhbWVzLWJldGJyLmJzMmJldC5jb20vdjIvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTEyNDI0NCwiZXhwIjoxNzYxNzI5MDQ0LCJuYmYiOjE3NjExMjQyNDQsImp0aSI6InRnQVc0UDlsb1U4ZjNmcmIiLCJzdWIiOiIyOTk4MTAxNCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJoYSI6IjUiLCJoYiI6IjAwZWE1NDE0MzYwM2RlYzlmNjFkOTdmZmY2YmQ3ZTU1IiwiaGMiOiI3MDA2YTExYzY2NzViODcwMTAwNDRjMGQ3YmIxMjY4OSIsImhpIjoiYWIyY2M3Y2Q5NzY5YmZkNzBjN2Y2ZGY2NzdhZjMzNGMiLCJoZCI6IjY4NDk1N2ZkZGE1YTIwMzI3YjY3NTYzYjlkZjdmMDMyIiwiaGwiOiI4N2YzMWUzNjVlNWNkMDcyYjA1MTE1ZDRkMWJkZTc0YSIsImhmIjoiMV9mMzg5ZGUwN2JmNmI1NzY4YTU4OWQ2NDZlYzliYzIwNl8xNzYxMTI0MjQyIn0.M0sKD2ypACu1dce7D7yNR74sOT5xG0quPX08_u-kgSg",
-    "Cookie": "__Host-jwt_token_strict=eyJpdiI6ImVyRVdsbUVPUlpENndYQkFoblZoL0E9PSIsInZhbHVlIjoiS0FUcVRYNFRLU2FUM1RlT1dKN3dGNHRBUGI4UTVEaDRTSzlZUlp0S1ZNbWhqRnAvQzBwTHUvOFZBTkFzTnZnV0xZNFVJTXc2cHhGTmxqOC92YzRrSFhWR1o4bTM5WDR0b2daZ2FXSmJVRGM9IiwibWFjIjoiZTVmOTZjM2JlMWQ5ZjcwMjUzMTBjYmZiOTYzOTM1NmEwZTU1OWNjM2I3YWUxYzU5ZGI4ZTY1MjViZmU2YmE5NyIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:44 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict; __Host-jwt_token_lax=eyJpdiI6ImJhQmM3TkR0S0NzUHRUWVJuUmdLdEE9PSIsInZhbHVlIjoicjBOOE5EMjRQOWg3MTczUUJPUXdtUHZ5MndXQWRNTml6aG9aWW5rbWJQc3pXNjRmdXNaSld4eHpaend4WDRPTitKU1BkTzlObEZBZkZlVVRnZ2FFUDNMQUZGNW1MM1dRRzNzZW9xYldpaFU9IiwibWFjIjoiMzUxYjkyZTk1NjBiYjVmMDFiZjBhZDNjY2MxMmZmYjhmNjJhMGYzOTg3NTFhOWNlMjcxZTExMThiMGZkZGZlNSIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:44 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax; __Host-jwt_token_none=eyJpdiI6ImxPc01WOTJ5alZSYk5GZkhESlMwa3c9PSIsInZhbHVlIjoia0RzcTk3VHlOc3hCYjlySkFualFoeHpOMEdDaTdSdGtvN1k4ejM0NWNIZ2RkdEpOVC9aWktySFpGS1VpVnJ2bG5oZjYyU0syczBFRWY5ZTAzNWZ4aVFUUkhleGxFUXlWcUdlaTB0K1RPVFk9IiwibWFjIjoiYTBiOTk1MThkZWY3ZDZmZjE0OTdlN2M0NTliN2JiMDNjMTBhNjZkYTM3ZmJjNDhiMWE0ZmZkYmUzZjRmMDA0NyIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:44 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none; bet7k_session=eyJpdiI6ImkvQkJzMlFCcTZocFdhUm9OT0NicHc9PSIsInZhbHVlIjoiWlBzVW5aVjdHSTM0cGU2clVBYy9EK3RheFdPMlJmNFBrY1RhM3MvamtkSnFyNXpNRDFPUURadlQyT0JUa29zTmtoTExFdlpPZG5KWFk4Qk85WUtLU3N3WFFCNmRmVDJVOVNxb2ZRWXJQVHFoWFE2ajFQZmtyVFlqaitJM2NTWDEiLCJtYWMiOiIwODYyODY4M2ZlMGYzYTg2Y2UwZWZiMDllNDE4NGEyMmNiNzhkMTM5MzU0YTVlNGFhYmMyZTBlYzBiNDExM2NmIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 09:10:44 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=XMmBpq1uIn4J9SGugTqV6.5mIrWAB3IPJscEl0TnhAw-1761124244-1.0.1.1-GkYA0SHvq.yBVRP.3TBpkNG.cepSKCY3Fd5EwPTxVSXRovHaKCkCW4v7WBo8VOfxw0c7EZQ8W.nFyH4wNiucDsRDEmWPgNWuVKvN2mSChgk; path=/; expires=Wed, 22-Oct-25 09:40:44 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None; __cf_bm=0QOmMnkHKb7fXyG1dgJJw6ECzIfYftD9W27K5XVAWU0-1761124244-1.0.1.1-mHACqnn2M5NRO7nTlKXx4GOOnfyBBwnnmaLnx0Ri4BTN4kaGNWXoA.KNaHVtMCN1zyjr6xROWR8m8fmmi1Q0GS.0cXk56v4N_ti1UQ_l18g; path=/; expires=Wed, 22-Oct-25 09:40:44 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=6er2e7iVxtLB4GGpx8QJm8JA4K34EY2QkpyKuUUBlds-1761124244096-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS1tY2dhbWVzLWJldGJyLmJzMmJldC5jb20vdjIvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTEyNzQ3MCwiZXhwIjoxNzYxNzMyMjcwLCJuYmYiOjE3NjExMjc0NzAsImp0aSI6IktNcHFhamp4ZDNWUHBrWnEiLCJzdWIiOiIyOTk4MTAxNCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJoYSI6IjUiLCJoYiI6IjRhN2Y2NjVlYTAzYjI3ODFkYzc0Y2UzMDJiMGUzNjUyIiwiaGMiOiI3MDA2YTExYzY2NzViODcwMTAwNDRjMGQ3YmIxMjY4OSIsImhpIjoiYWIyY2M3Y2Q5NzY5YmZkNzBjN2Y2ZGY2NzdhZjMzNGMiLCJoZCI6IjY4NDk1N2ZkZGE1YTIwMzI3YjY3NTYzYjlkZjdmMDMyIiwiaGwiOiI4N2YzMWUzNjVlNWNkMDcyYjA1MTE1ZDRkMWJkZTc0YSIsImhmIjoiMV83NGEyZDJhODQ4NmYwOTk5MTkxYzcwYjAxOTJkYTRhOV8xNzYxMTI3NDY5In0.4fAX9SLyzdCFu11GyAEjY4CJM9nVsxYp8cjJqL2tGfY",
+    "Cookie": "__Host-jwt_token_strict=eyJpdiI6IjBISXZENHdFU3RMNXVSaDBpUlpzTFE9PSIsInZhbHVlIjoiekppOTlaWGZwa2tXUXlCUkhzdWNGdnpJYjJKQ3VGcTJXN05tajJVOHRNWkEzZGdZQS9ROURCRm5sS0hjMEppbERlZi9MV2pLeitKWHd1a0pBTDNvVk9YbWh4NFVPSmV6QksxWlFwdFFBaEk9IiwibWFjIjoiMjNiNmUyMTdiOTBmNTkzMGQ2ZTc5NTA5NjFiNTBkZWU3N2FlZTMxZDIyYjc3YzQwYzg4MDBmN2ZkYzQyM2VkMCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:30 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict; __Host-jwt_token_lax=eyJpdiI6Im8yQW9SalpUZTVFQlpUVndNOWg2c0E9PSIsInZhbHVlIjoibjlQaUlXdG9DU2tObVdDekNLcGkzQ1FyRVRXbTNUbEdsV0wvRnRKWFc3Y0cyOFU2QlhicnlyRC9ScGkzUE5mYkRwMmg4d1VEU0JlVFNWYjExNExtTnI4TzFBOUFyaGE0VDVIanZ5NEFmK0E9IiwibWFjIjoiNGNjZGExODAzNmUxYWQ0MjRiNmFiZjA0ZDM1ZjFhYjJmNmY3ZWFhY2JkYzhlMGNlODVlNTA3OWZjNDJmNDVhNyIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:30 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax; __Host-jwt_token_none=eyJpdiI6InBqbS9jVUlzN1Z4RGFOVnpKMWpIeFE9PSIsInZhbHVlIjoiTXlWVVpaMWoxam9rbXVobi83djA3cGhrQU5GbVEwUis0bUtVamd5c0ErSjRqM0pkSE5lOHhIWTVHd2lSQXN2K0liNjVTUGlFYXB6dXM2TE9uZ093ZHJkRXV3TkFPOExDYmJ4VnFSY1A1eXM9IiwibWFjIjoiOTMzNmJjNzEzMTUyODFhZTE5M2M0ODk0ZjBkM2IzMDViZDA3NTk5MWUzY2FlOGVhNzgyYzAxMWY1YjA1MDQ4YiIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:30 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none; bet7k_session=eyJpdiI6Ill0TnFqRVp1UEQxc0JtS0JpUHlrZ0E9PSIsInZhbHVlIjoiRzZKbFRtM0lJcnZDaCtIMFZKOEpzSDBpMW83K0NXV2dpb0tGblZxTHRRMUhnd3NaT2t5bXhuMFh5a0hDYkc3a2lScSsyQk56b0I5OStkN1lmcy83blFHRmZYcTk3V0NBZHBna0ZuVWxxMGRwVTFzK1dxTThUeC9rUzY2MTVtRysiLCJtYWMiOiIxMmYzOTk2MmI0ZDNmM2Q4NmY2MWFhZDFiZDRhNDNkZWRkM2Q4M2M3ZmM5ZTU1ODBmOWZmZTRhZDAzNzQ2YThlIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:04:30 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=FVpvdyJQK8V8a4R204hGTTloPfS5uKniKyjlZS1bkS8-1761127470-1.0.1.1-3AvCQqlZJFDhFpEa.Tbs5BA46rrHCR0VhN2bpLHMDsOv4S29M_Cnrs0Ws5DsTgysBro3vhskPdlJohvMXfhS.dw0zJnsS6TrZgHPDnUEWmU; path=/; expires=Wed, 22-Oct-25 10:34:30 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None; __cf_bm=L5hZYzccRrxJnCqCEUzE8tkbURFFoPD3nxQXiTn3esY-1761127470-1.0.1.1-v1gnYL31.mmUpR7K9xP6MF22vrGLyDKqj7Ve.1kDJ6TwwpgVeCmqiJPeC.Kzhe0nxeUcRdy4rCJghaPbbUXAN4.HLXcSjTeGMCD4hn1T7ME; path=/; expires=Wed, 22-Oct-25 10:34:30 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=lhNN1ne2CnyZ_1wtjXn2udOphgE9rZXmqG9HJIkBJnA-1761127470949-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
   },
-  "sessionCookies": "__Host-jwt_token_strict=eyJpdiI6ImVyRVdsbUVPUlpENndYQkFoblZoL0E9PSIsInZhbHVlIjoiS0FUcVRYNFRLU2FUM1RlT1dKN3dGNHRBUGI4UTVEaDRTSzlZUlp0S1ZNbWhqRnAvQzBwTHUvOFZBTkFzTnZnV0xZNFVJTXc2cHhGTmxqOC92YzRrSFhWR1o4bTM5WDR0b2daZ2FXSmJVRGM9IiwibWFjIjoiZTVmOTZjM2JlMWQ5ZjcwMjUzMTBjYmZiOTYzOTM1NmEwZTU1OWNjM2I3YWUxYzU5ZGI4ZTY1MjViZmU2YmE5NyIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:44 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict; __Host-jwt_token_lax=eyJpdiI6ImJhQmM3TkR0S0NzUHRUWVJuUmdLdEE9PSIsInZhbHVlIjoicjBOOE5EMjRQOWg3MTczUUJPUXdtUHZ5MndXQWRNTml6aG9aWW5rbWJQc3pXNjRmdXNaSld4eHpaend4WDRPTitKU1BkTzlObEZBZkZlVVRnZ2FFUDNMQUZGNW1MM1dRRzNzZW9xYldpaFU9IiwibWFjIjoiMzUxYjkyZTk1NjBiYjVmMDFiZjBhZDNjY2MxMmZmYjhmNjJhMGYzOTg3NTFhOWNlMjcxZTExMThiMGZkZGZlNSIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:44 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax; __Host-jwt_token_none=eyJpdiI6ImxPc01WOTJ5alZSYk5GZkhESlMwa3c9PSIsInZhbHVlIjoia0RzcTk3VHlOc3hCYjlySkFualFoeHpOMEdDaTdSdGtvN1k4ejM0NWNIZ2RkdEpOVC9aWktySFpGS1VpVnJ2bG5oZjYyU0syczBFRWY5ZTAzNWZ4aVFUUkhleGxFUXlWcUdlaTB0K1RPVFk9IiwibWFjIjoiYTBiOTk1MThkZWY3ZDZmZjE0OTdlN2M0NTliN2JiMDNjMTBhNjZkYTM3ZmJjNDhiMWE0ZmZkYmUzZjRmMDA0NyIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:44 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none; bet7k_session=eyJpdiI6ImkvQkJzMlFCcTZocFdhUm9OT0NicHc9PSIsInZhbHVlIjoiWlBzVW5aVjdHSTM0cGU2clVBYy9EK3RheFdPMlJmNFBrY1RhM3MvamtkSnFyNXpNRDFPUURadlQyT0JUa29zTmtoTExFdlpPZG5KWFk4Qk85WUtLU3N3WFFCNmRmVDJVOVNxb2ZRWXJQVHFoWFE2ajFQZmtyVFlqaitJM2NTWDEiLCJtYWMiOiIwODYyODY4M2ZlMGYzYTg2Y2UwZWZiMDllNDE4NGEyMmNiNzhkMTM5MzU0YTVlNGFhYmMyZTBlYzBiNDExM2NmIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 09:10:44 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=XMmBpq1uIn4J9SGugTqV6.5mIrWAB3IPJscEl0TnhAw-1761124244-1.0.1.1-GkYA0SHvq.yBVRP.3TBpkNG.cepSKCY3Fd5EwPTxVSXRovHaKCkCW4v7WBo8VOfxw0c7EZQ8W.nFyH4wNiucDsRDEmWPgNWuVKvN2mSChgk; path=/; expires=Wed, 22-Oct-25 09:40:44 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None; __cf_bm=0QOmMnkHKb7fXyG1dgJJw6ECzIfYftD9W27K5XVAWU0-1761124244-1.0.1.1-mHACqnn2M5NRO7nTlKXx4GOOnfyBBwnnmaLnx0Ri4BTN4kaGNWXoA.KNaHVtMCN1zyjr6xROWR8m8fmmi1Q0GS.0cXk56v4N_ti1UQ_l18g; path=/; expires=Wed, 22-Oct-25 09:40:44 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=6er2e7iVxtLB4GGpx8QJm8JA4K34EY2QkpyKuUUBlds-1761124244096-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+  "sessionCookies": "__Host-jwt_token_strict=eyJpdiI6IjBISXZENHdFU3RMNXVSaDBpUlpzTFE9PSIsInZhbHVlIjoiekppOTlaWGZwa2tXUXlCUkhzdWNGdnpJYjJKQ3VGcTJXN05tajJVOHRNWkEzZGdZQS9ROURCRm5sS0hjMEppbERlZi9MV2pLeitKWHd1a0pBTDNvVk9YbWh4NFVPSmV6QksxWlFwdFFBaEk9IiwibWFjIjoiMjNiNmUyMTdiOTBmNTkzMGQ2ZTc5NTA5NjFiNTBkZWU3N2FlZTMxZDIyYjc3YzQwYzg4MDBmN2ZkYzQyM2VkMCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:30 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict; __Host-jwt_token_lax=eyJpdiI6Im8yQW9SalpUZTVFQlpUVndNOWg2c0E9PSIsInZhbHVlIjoibjlQaUlXdG9DU2tObVdDekNLcGkzQ1FyRVRXbTNUbEdsV0wvRnRKWFc3Y0cyOFU2QlhicnlyRC9ScGkzUE5mYkRwMmg4d1VEU0JlVFNWYjExNExtTnI4TzFBOUFyaGE0VDVIanZ5NEFmK0E9IiwibWFjIjoiNGNjZGExODAzNmUxYWQ0MjRiNmFiZjA0ZDM1ZjFhYjJmNmY3ZWFhY2JkYzhlMGNlODVlNTA3OWZjNDJmNDVhNyIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:30 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax; __Host-jwt_token_none=eyJpdiI6InBqbS9jVUlzN1Z4RGFOVnpKMWpIeFE9PSIsInZhbHVlIjoiTXlWVVpaMWoxam9rbXVobi83djA3cGhrQU5GbVEwUis0bUtVamd5c0ErSjRqM0pkSE5lOHhIWTVHd2lSQXN2K0liNjVTUGlFYXB6dXM2TE9uZ093ZHJkRXV3TkFPOExDYmJ4VnFSY1A1eXM9IiwibWFjIjoiOTMzNmJjNzEzMTUyODFhZTE5M2M0ODk0ZjBkM2IzMDViZDA3NTk5MWUzY2FlOGVhNzgyYzAxMWY1YjA1MDQ4YiIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:30 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none; bet7k_session=eyJpdiI6Ill0TnFqRVp1UEQxc0JtS0JpUHlrZ0E9PSIsInZhbHVlIjoiRzZKbFRtM0lJcnZDaCtIMFZKOEpzSDBpMW83K0NXV2dpb0tGblZxTHRRMUhnd3NaT2t5bXhuMFh5a0hDYkc3a2lScSsyQk56b0I5OStkN1lmcy83blFHRmZYcTk3V0NBZHBna0ZuVWxxMGRwVTFzK1dxTThUeC9rUzY2MTVtRysiLCJtYWMiOiIxMmYzOTk2MmI0ZDNmM2Q4NmY2MWFhZDFiZDRhNDNkZWRkM2Q4M2M3ZmM5ZTU1ODBmOWZmZTRhZDAzNzQ2YThlIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:04:30 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=FVpvdyJQK8V8a4R204hGTTloPfS5uKniKyjlZS1bkS8-1761127470-1.0.1.1-3AvCQqlZJFDhFpEa.Tbs5BA46rrHCR0VhN2bpLHMDsOv4S29M_Cnrs0Ws5DsTgysBro3vhskPdlJohvMXfhS.dw0zJnsS6TrZgHPDnUEWmU; path=/; expires=Wed, 22-Oct-25 10:34:30 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None; __cf_bm=L5hZYzccRrxJnCqCEUzE8tkbURFFoPD3nxQXiTn3esY-1761127470-1.0.1.1-v1gnYL31.mmUpR7K9xP6MF22vrGLyDKqj7Ve.1kDJ6TwwpgVeCmqiJPeC.Kzhe0nxeUcRdy4rCJghaPbbUXAN4.HLXcSjTeGMCD4hn1T7ME; path=/; expires=Wed, 22-Oct-25 10:34:30 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=lhNN1ne2CnyZ_1wtjXn2udOphgE9rZXmqG9HJIkBJnA-1761127470949-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
 }
 ================================================================================
 
-[2025-10-22T09:10:46.690Z] ✅ [zcwrg2761] RESPOSTA - mcgames
+[2025-10-22T10:04:32.371Z] ✅ [a74blxm5b] RESPOSTA - mcgames
 {
-  "requestId": "zcwrg2761",
-  "timestamp": "2025-10-22T09:10:46.690Z",
+  "requestId": "a74blxm5b",
+  "timestamp": "2025-10-22T10:04:32.371Z",
   "siteName": "mcgames",
   "integration": "mcgames",
   "status": 200,
   "statusText": "OK",
   "headers": {
-    "date": "Wed, 22 Oct 2025 09:10:45 GMT",
+    "date": "Wed, 22 Oct 2025 10:04:32 GMT",
     "content-type": "application/json",
     "transfer-encoding": "chunked",
     "connection": "keep-alive",
     "server": "cloudflare",
-    "cf-ray": "9927dcfdbd0df2e4-GRU",
+    "cf-ray": "99282bc58dbf1433-GRU",
     "cf-cache-status": "DYNAMIC",
     "access-control-allow-origin": "*",
     "cache-control": "max-age=0, no-cache, must-revalidate",
     "set-cookie": [
-      "bet7k_session=eyJpdiI6IjVZRG9QRDZSZmUyU3ZGbGphVjJvc0E9PSIsInZhbHVlIjoia1RUMDFLc25OZ2l5QS9pOEp6RVZBNGpRZkc4L1dNYXZDODZneDVHZExOT0xhdk5YRzFQdERDcVp5dDRud0dDcHpQRFFqcVdzQkxCSFY3YWFIVnZFYTNaY3lZa1BLcEE3ZFVZWWhkSStFaTZRR3BvODFISlZWWS9oOURYR0dON0QiLCJtYWMiOiIyNTgzZTA1ZWZhMWMyYzJlOWUzNWY5NDY5NDhhNGY3ZjBkODQ4MGZhNjIwOGQ3ZWM3MzFjZDQ5ODNiMGYzMWFhIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 09:10:45 GMT; Max-Age=31536000; path=/; httponly; samesite=lax",
-      "__cf_bm=ZTmkjJIv4xKZlo96fUcpvS8u3aLnXNjp8TFCg5Etdyk-1761124245-1.0.1.1-CDppQPQdIv64TOJ.D6N.Q2bl.KUcWI5u9w0enoLlNjov7WtPP9N58DZJfMxtyFGagBqwtOiaZFsmun1rAPFuGff8xVOxUiiW.IBcG1acNlA; path=/; expires=Wed, 22-Oct-25 09:40:45 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+      "bet7k_session=eyJpdiI6ImRQcmNtU0tTN2hJa0JXVHpZYU8zR2c9PSIsInZhbHVlIjoiWDR6eFlQQitleG16KzZWWHhKMlM4QTE5V0VFNWZrcGxJcVFwSmdBbS90TzdRazJhZTI4UXVHQkxoZmxCV3o4R09NY1VYUFBZdmtEcXNzM1E3RFl0dS9WVWdEai9xRXBwYjhjS2JKaTVzQy9ROXFCRzIwMTM3UVRBRjgxUFdTNU4iLCJtYWMiOiI1ZDQzMzM2YzM2NzI4OTFjYWZmYjk2YjE4ZGE2YmMyYjMzM2JmYzBlMmI3MjMyZjFlZWRkMDJjOWExMjc4NmU0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:04:32 GMT; Max-Age=31536000; path=/; httponly; samesite=lax",
+      "__cf_bm=LtFG01of5LEgQP..O8SssJCeWuR9favJvX547kS3W7s-1761127472-1.0.1.1-LGebojCJEbJJraDhsz_VLmxWR9eIn9XPAdkq6wnh3tNCmrXUTtpd1xGpZSHMB4qPSgiq.90SoeMSN_DAqYXmh_hY8L_xB5hnDxBq_c1Wr10; path=/; expires=Wed, 22-Oct-25 10:34:32 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
     ],
     "strict-transport-security": "max-age=15768000;",
     "vary": "Accept-Encoding",
-    "cf-placement": "local-",
+    "cf-placement": "local-GRU",
     "protected": "by MS23041901",
-    "srv": "ip-172-16-60-179",
+    "srv": "ip-172-16-61-15",
     "x-ratelimit-limit": "999999999",
-    "x-ratelimit-remaining": "999999999"
+    "x-ratelimit-remaining": "999999950"
   },
   "data": {
-    "token": "mcgamesbetbr-933490fea51cf9d1f1844a7b75a24300b56d6618d9e02b4715df75f2031ebed0"
+    "token": "mcgamesbetbr-834a6c709d60c6d8b1e869072d2158d458d20618b9d49dbb3a4ecfedd9abbe2b"
   },
   "cookies": "[Circular Reference]",
-  "sessionCookies": "bet7k_session=eyJpdiI6IjVZRG9QRDZSZmUyU3ZGbGphVjJvc0E9PSIsInZhbHVlIjoia1RUMDFLc25OZ2l5QS9pOEp6RVZBNGpRZkc4L1dNYXZDODZneDVHZExOT0xhdk5YRzFQdERDcVp5dDRud0dDcHpQRFFqcVdzQkxCSFY3YWFIVnZFYTNaY3lZa1BLcEE3ZFVZWWhkSStFaTZRR3BvODFISlZWWS9oOURYR0dON0QiLCJtYWMiOiIyNTgzZTA1ZWZhMWMyYzJlOWUzNWY5NDY5NDhhNGY3ZjBkODQ4MGZhNjIwOGQ3ZWM3MzFjZDQ5ODNiMGYzMWFhIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 09:10:45 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=ZTmkjJIv4xKZlo96fUcpvS8u3aLnXNjp8TFCg5Etdyk-1761124245-1.0.1.1-CDppQPQdIv64TOJ.D6N.Q2bl.KUcWI5u9w0enoLlNjov7WtPP9N58DZJfMxtyFGagBqwtOiaZFsmun1rAPFuGff8xVOxUiiW.IBcG1acNlA; path=/; expires=Wed, 22-Oct-25 09:40:45 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
-  "responseTime": 1568
+  "sessionCookies": "bet7k_session=eyJpdiI6ImRQcmNtU0tTN2hJa0JXVHpZYU8zR2c9PSIsInZhbHVlIjoiWDR6eFlQQitleG16KzZWWHhKMlM4QTE5V0VFNWZrcGxJcVFwSmdBbS90TzdRazJhZTI4UXVHQkxoZmxCV3o4R09NY1VYUFBZdmtEcXNzM1E3RFl0dS9WVWdEai9xRXBwYjhjS2JKaTVzQy9ROXFCRzIwMTM3UVRBRjgxUFdTNU4iLCJtYWMiOiI1ZDQzMzM2YzM2NzI4OTFjYWZmYjk2YjE4ZGE2YmMyYjMzM2JmYzBlMmI3MjMyZjFlZWRkMDJjOWExMjc4NmU0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:04:32 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=LtFG01of5LEgQP..O8SssJCeWuR9favJvX547kS3W7s-1761127472-1.0.1.1-LGebojCJEbJJraDhsz_VLmxWR9eIn9XPAdkq6wnh3tNCmrXUTtpd1xGpZSHMB4qPSgiq.90SoeMSN_DAqYXmh_hY8L_xB5hnDxBq_c1Wr10; path=/; expires=Wed, 22-Oct-25 10:34:32 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": -313
 }
 ================================================================================
 
-[2025-10-22T09:10:46.690Z] 🚀 [k7lbq6z4d] REQUISIÇÃO - mcgames
+[2025-10-22T10:04:32.371Z] 🚀 [d88eqn4k7] REQUISIÇÃO - mcgames
 {
-  "requestId": "k7lbq6z4d",
-  "timestamp": "2025-10-22T09:10:46.690Z",
+  "requestId": "d88eqn4k7",
+  "timestamp": "2025-10-22T10:04:32.371Z",
   "siteName": "mcgames",
   "integration": "mcgames",
   "url": "https://sb2auth-altenar2.biahosted.com/api/WidgetAuth/SignIn",
@@ -316,7 +316,7 @@
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
     "Content-Type": "application/json",
     "Accept": "application/json",
-    "Cookie": "bet7k_session=eyJpdiI6IjVZRG9QRDZSZmUyU3ZGbGphVjJvc0E9PSIsInZhbHVlIjoia1RUMDFLc25OZ2l5QS9pOEp6RVZBNGpRZkc4L1dNYXZDODZneDVHZExOT0xhdk5YRzFQdERDcVp5dDRud0dDcHpQRFFqcVdzQkxCSFY3YWFIVnZFYTNaY3lZa1BLcEE3ZFVZWWhkSStFaTZRR3BvODFISlZWWS9oOURYR0dON0QiLCJtYWMiOiIyNTgzZTA1ZWZhMWMyYzJlOWUzNWY5NDY5NDhhNGY3ZjBkODQ4MGZhNjIwOGQ3ZWM3MzFjZDQ5ODNiMGYzMWFhIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 09:10:45 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=ZTmkjJIv4xKZlo96fUcpvS8u3aLnXNjp8TFCg5Etdyk-1761124245-1.0.1.1-CDppQPQdIv64TOJ.D6N.Q2bl.KUcWI5u9w0enoLlNjov7WtPP9N58DZJfMxtyFGagBqwtOiaZFsmun1rAPFuGff8xVOxUiiW.IBcG1acNlA; path=/; expires=Wed, 22-Oct-25 09:40:45 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+    "Cookie": "bet7k_session=eyJpdiI6ImRQcmNtU0tTN2hJa0JXVHpZYU8zR2c9PSIsInZhbHVlIjoiWDR6eFlQQitleG16KzZWWHhKMlM4QTE5V0VFNWZrcGxJcVFwSmdBbS90TzdRazJhZTI4UXVHQkxoZmxCV3o4R09NY1VYUFBZdmtEcXNzM1E3RFl0dS9WVWdEai9xRXBwYjhjS2JKaTVzQy9ROXFCRzIwMTM3UVRBRjgxUFdTNU4iLCJtYWMiOiI1ZDQzMzM2YzM2NzI4OTFjYWZmYjk2YjE4ZGE2YmMyYjMzM2JmYzBlMmI3MjMyZjFlZWRkMDJjOWExMjc4NmU0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:04:32 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=LtFG01of5LEgQP..O8SssJCeWuR9favJvX547kS3W7s-1761127472-1.0.1.1-LGebojCJEbJJraDhsz_VLmxWR9eIn9XPAdkq6wnh3tNCmrXUTtpd1xGpZSHMB4qPSgiq.90SoeMSN_DAqYXmh_hY8L_xB5hnDxBq_c1Wr10; path=/; expires=Wed, 22-Oct-25 10:34:32 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
   },
   "body": {
     "culture": "pt-BR",
@@ -325,23 +325,23 @@
     "deviceType": 1,
     "numFormat": "en-GB",
     "countryCode": "BR",
-    "token": "mcgamesbetbr-933490fea51cf9d1f1844a7b75a24300b56d6618d9e02b4715df75f2031ebed0"
+    "token": "mcgamesbetbr-834a6c709d60c6d8b1e869072d2158d458d20618b9d49dbb3a4ecfedd9abbe2b"
   },
-  "sessionCookies": "bet7k_session=eyJpdiI6IjVZRG9QRDZSZmUyU3ZGbGphVjJvc0E9PSIsInZhbHVlIjoia1RUMDFLc25OZ2l5QS9pOEp6RVZBNGpRZkc4L1dNYXZDODZneDVHZExOT0xhdk5YRzFQdERDcVp5dDRud0dDcHpQRFFqcVdzQkxCSFY3YWFIVnZFYTNaY3lZa1BLcEE3ZFVZWWhkSStFaTZRR3BvODFISlZWWS9oOURYR0dON0QiLCJtYWMiOiIyNTgzZTA1ZWZhMWMyYzJlOWUzNWY5NDY5NDhhNGY3ZjBkODQ4MGZhNjIwOGQ3ZWM3MzFjZDQ5ODNiMGYzMWFhIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 09:10:45 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=ZTmkjJIv4xKZlo96fUcpvS8u3aLnXNjp8TFCg5Etdyk-1761124245-1.0.1.1-CDppQPQdIv64TOJ.D6N.Q2bl.KUcWI5u9w0enoLlNjov7WtPP9N58DZJfMxtyFGagBqwtOiaZFsmun1rAPFuGff8xVOxUiiW.IBcG1acNlA; path=/; expires=Wed, 22-Oct-25 09:40:45 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+  "sessionCookies": "bet7k_session=eyJpdiI6ImRQcmNtU0tTN2hJa0JXVHpZYU8zR2c9PSIsInZhbHVlIjoiWDR6eFlQQitleG16KzZWWHhKMlM4QTE5V0VFNWZrcGxJcVFwSmdBbS90TzdRazJhZTI4UXVHQkxoZmxCV3o4R09NY1VYUFBZdmtEcXNzM1E3RFl0dS9WVWdEai9xRXBwYjhjS2JKaTVzQy9ROXFCRzIwMTM3UVRBRjgxUFdTNU4iLCJtYWMiOiI1ZDQzMzM2YzM2NzI4OTFjYWZmYjk2YjE4ZGE2YmMyYjMzM2JmYzBlMmI3MjMyZjFlZWRkMDJjOWExMjc4NmU0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:04:32 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=LtFG01of5LEgQP..O8SssJCeWuR9favJvX547kS3W7s-1761127472-1.0.1.1-LGebojCJEbJJraDhsz_VLmxWR9eIn9XPAdkq6wnh3tNCmrXUTtpd1xGpZSHMB4qPSgiq.90SoeMSN_DAqYXmh_hY8L_xB5hnDxBq_c1Wr10; path=/; expires=Wed, 22-Oct-25 10:34:32 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
 }
 ================================================================================
 
-[2025-10-22T09:10:47.099Z] ✅ [k7lbq6z4d] RESPOSTA - mcgames
+[2025-10-22T10:04:32.807Z] ✅ [d88eqn4k7] RESPOSTA - mcgames
 {
-  "requestId": "k7lbq6z4d",
-  "timestamp": "2025-10-22T09:10:47.099Z",
+  "requestId": "d88eqn4k7",
+  "timestamp": "2025-10-22T10:04:32.807Z",
   "siteName": "mcgames",
   "integration": "mcgames",
   "status": 200,
   "statusText": "OK",
   "headers": {
     "server": "nginx",
-    "date": "Wed, 22 Oct 2025 09:10:45 GMT",
+    "date": "Wed, 22 Oct 2025 10:04:32 GMT",
     "content-type": "application/json; charset=utf-8",
     "content-length": "733",
     "access-control-allow-origin": "*",
@@ -350,7 +350,7 @@
     "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
   },
   "data": {
-    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb25maWd1cmF0aW9uSWQiOiIxMiIsIlBlcnNvblR5cGUiOiIzIiwiUGVyc29uSWQiOiI1NDk3NTgzOCIsIlVzZXJOYW1lIjoibWNnYW1lc2JldGJyXzI5OTgxMDE0IiwiTG9naW5JZCI6IjYyOTcxNzAyIiwiQ3VycmVuY3lTaWduIjoiUiQiLCJNaW5Cb251c1ByaWNlIjoiMS4zIiwiQm9udXNUZW1wbGF0ZUlkIjoiMzAxIiwiQ3VycmVuY3lJZCI6Ijk4NiIsIkN1cnJlbmN5Q29kZSI6IkJSTCIsIkNvdW50cnlDb2RlIjoiQlIiLCJCcmFuZElkIjoiNzgwIiwiQ2xpZW50SVAiOiIxNzkuMTI1LjIxMS4xMzkiLCJleHAiOjE3NjExMjUxNDUsImlzcyI6IlNCMiIsImF1ZCI6IlNCMiJ9.mApvE9soS_wZ3pgZUWSKabZT9P2B8MSoKfLMfH2vVbo",
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb25maWd1cmF0aW9uSWQiOiIxMiIsIlBlcnNvblR5cGUiOiIzIiwiUGVyc29uSWQiOiI1NDk3NTgzOCIsIlVzZXJOYW1lIjoibWNnYW1lc2JldGJyXzI5OTgxMDE0IiwiTG9naW5JZCI6IjYyOTcxNzAyIiwiQ3VycmVuY3lTaWduIjoiUiQiLCJNaW5Cb251c1ByaWNlIjoiMS4zIiwiQm9udXNUZW1wbGF0ZUlkIjoiMzAxIiwiQ3VycmVuY3lJZCI6Ijk4NiIsIkN1cnJlbmN5Q29kZSI6IkJSTCIsIkNvdW50cnlDb2RlIjoiQlIiLCJCcmFuZElkIjoiNzgwIiwiQ2xpZW50SVAiOiIxNzkuMTI1LjIxMS4xMzkiLCJleHAiOjE3NjExMjgzNzIsImlzcyI6IlNCMiIsImF1ZCI6IlNCMiJ9.jVEP7SD0rmo3FqhGFUI14E50G_YinVBvVT4gw6sRA7o",
     "currency": "BRL",
     "isUserLocked": false,
     "isAgency": false,
@@ -360,25 +360,25 @@
     "encryptedPlayerId": "e+ja10+xFoEs+4/cDvJNwg==",
     "regDate": "2025-05-30T00:22:00.21"
   },
-  "sessionCookies": "bet7k_session=eyJpdiI6IjVZRG9QRDZSZmUyU3ZGbGphVjJvc0E9PSIsInZhbHVlIjoia1RUMDFLc25OZ2l5QS9pOEp6RVZBNGpRZkc4L1dNYXZDODZneDVHZExOT0xhdk5YRzFQdERDcVp5dDRud0dDcHpQRFFqcVdzQkxCSFY3YWFIVnZFYTNaY3lZa1BLcEE3ZFVZWWhkSStFaTZRR3BvODFISlZWWS9oOURYR0dON0QiLCJtYWMiOiIyNTgzZTA1ZWZhMWMyYzJlOWUzNWY5NDY5NDhhNGY3ZjBkODQ4MGZhNjIwOGQ3ZWM3MzFjZDQ5ODNiMGYzMWFhIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 09:10:45 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=ZTmkjJIv4xKZlo96fUcpvS8u3aLnXNjp8TFCg5Etdyk-1761124245-1.0.1.1-CDppQPQdIv64TOJ.D6N.Q2bl.KUcWI5u9w0enoLlNjov7WtPP9N58DZJfMxtyFGagBqwtOiaZFsmun1rAPFuGff8xVOxUiiW.IBcG1acNlA; path=/; expires=Wed, 22-Oct-25 09:40:45 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
-  "responseTime": 409
+  "sessionCookies": "bet7k_session=eyJpdiI6ImRQcmNtU0tTN2hJa0JXVHpZYU8zR2c9PSIsInZhbHVlIjoiWDR6eFlQQitleG16KzZWWHhKMlM4QTE5V0VFNWZrcGxJcVFwSmdBbS90TzdRazJhZTI4UXVHQkxoZmxCV3o4R09NY1VYUFBZdmtEcXNzM1E3RFl0dS9WVWdEai9xRXBwYjhjS2JKaTVzQy9ROXFCRzIwMTM3UVRBRjgxUFdTNU4iLCJtYWMiOiI1ZDQzMzM2YzM2NzI4OTFjYWZmYjk2YjE4ZGE2YmMyYjMzM2JmYzBlMmI3MjMyZjFlZWRkMDJjOWExMjc4NmU0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:04:32 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=LtFG01of5LEgQP..O8SssJCeWuR9favJvX547kS3W7s-1761127472-1.0.1.1-LGebojCJEbJJraDhsz_VLmxWR9eIn9XPAdkq6wnh3tNCmrXUTtpd1xGpZSHMB4qPSgiq.90SoeMSN_DAqYXmh_hY8L_xB5hnDxBq_c1Wr10; path=/; expires=Wed, 22-Oct-25 10:34:32 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 436
 }
 ================================================================================
 
-[2025-10-22T09:10:47.100Z] 🚀 [cmiyy3n6q] REQUISIÇÃO - mcgames
+[2025-10-22T10:04:32.832Z] 🚀 [hpj6u36jj] REQUISIÇÃO - mcgames
 {
-  "requestId": "cmiyy3n6q",
-  "timestamp": "2025-10-22T09:10:47.100Z",
+  "requestId": "hpj6u36jj",
+  "timestamp": "2025-10-22T10:04:32.832Z",
   "siteName": "mcgames",
   "integration": "mcgames",
   "url": "https://sb2betgateway-altenar2.biahosted.com/api/widget/placeWidget",
   "method": "post",
   "headers": {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
-    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb25maWd1cmF0aW9uSWQiOiIxMiIsIlBlcnNvblR5cGUiOiIzIiwiUGVyc29uSWQiOiI1NDk3NTgzOCIsIlVzZXJOYW1lIjoibWNnYW1lc2JldGJyXzI5OTgxMDE0IiwiTG9naW5JZCI6IjYyOTcxNzAyIiwiQ3VycmVuY3lTaWduIjoiUiQiLCJNaW5Cb251c1ByaWNlIjoiMS4zIiwiQm9udXNUZW1wbGF0ZUlkIjoiMzAxIiwiQ3VycmVuY3lJZCI6Ijk4NiIsIkN1cnJlbmN5Q29kZSI6IkJSTCIsIkNvdW50cnlDb2RlIjoiQlIiLCJCcmFuZElkIjoiNzgwIiwiQ2xpZW50SVAiOiIxNzkuMTI1LjIxMS4xMzkiLCJleHAiOjE3NjExMjUxNDUsImlzcyI6IlNCMiIsImF1ZCI6IlNCMiJ9.mApvE9soS_wZ3pgZUWSKabZT9P2B8MSoKfLMfH2vVbo",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb25maWd1cmF0aW9uSWQiOiIxMiIsIlBlcnNvblR5cGUiOiIzIiwiUGVyc29uSWQiOiI1NDk3NTgzOCIsIlVzZXJOYW1lIjoibWNnYW1lc2JldGJyXzI5OTgxMDE0IiwiTG9naW5JZCI6IjYyOTcxNzAyIiwiQ3VycmVuY3lTaWduIjoiUiQiLCJNaW5Cb251c1ByaWNlIjoiMS4zIiwiQm9udXNUZW1wbGF0ZUlkIjoiMzAxIiwiQ3VycmVuY3lJZCI6Ijk4NiIsIkN1cnJlbmN5Q29kZSI6IkJSTCIsIkNvdW50cnlDb2RlIjoiQlIiLCJCcmFuZElkIjoiNzgwIiwiQ2xpZW50SVAiOiIxNzkuMTI1LjIxMS4xMzkiLCJleHAiOjE3NjExMjgzNzIsImlzcyI6IlNCMiIsImF1ZCI6IlNCMiJ9.jVEP7SD0rmo3FqhGFUI14E50G_YinVBvVT4gw6sRA7o",
     "Content-Type": "application/json",
     "Accept": "application/json",
-    "Cookie": "bet7k_session=eyJpdiI6IjVZRG9QRDZSZmUyU3ZGbGphVjJvc0E9PSIsInZhbHVlIjoia1RUMDFLc25OZ2l5QS9pOEp6RVZBNGpRZkc4L1dNYXZDODZneDVHZExOT0xhdk5YRzFQdERDcVp5dDRud0dDcHpQRFFqcVdzQkxCSFY3YWFIVnZFYTNaY3lZa1BLcEE3ZFVZWWhkSStFaTZRR3BvODFISlZWWS9oOURYR0dON0QiLCJtYWMiOiIyNTgzZTA1ZWZhMWMyYzJlOWUzNWY5NDY5NDhhNGY3ZjBkODQ4MGZhNjIwOGQ3ZWM3MzFjZDQ5ODNiMGYzMWFhIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 09:10:45 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=ZTmkjJIv4xKZlo96fUcpvS8u3aLnXNjp8TFCg5Etdyk-1761124245-1.0.1.1-CDppQPQdIv64TOJ.D6N.Q2bl.KUcWI5u9w0enoLlNjov7WtPP9N58DZJfMxtyFGagBqwtOiaZFsmun1rAPFuGff8xVOxUiiW.IBcG1acNlA; path=/; expires=Wed, 22-Oct-25 09:40:45 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+    "Cookie": "bet7k_session=eyJpdiI6ImRQcmNtU0tTN2hJa0JXVHpZYU8zR2c9PSIsInZhbHVlIjoiWDR6eFlQQitleG16KzZWWHhKMlM4QTE5V0VFNWZrcGxJcVFwSmdBbS90TzdRazJhZTI4UXVHQkxoZmxCV3o4R09NY1VYUFBZdmtEcXNzM1E3RFl0dS9WVWdEai9xRXBwYjhjS2JKaTVzQy9ROXFCRzIwMTM3UVRBRjgxUFdTNU4iLCJtYWMiOiI1ZDQzMzM2YzM2NzI4OTFjYWZmYjk2YjE4ZGE2YmMyYjMzM2JmYzBlMmI3MjMyZjFlZWRkMDJjOWExMjc4NmU0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:04:32 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=LtFG01of5LEgQP..O8SssJCeWuR9favJvX547kS3W7s-1761127472-1.0.1.1-LGebojCJEbJJraDhsz_VLmxWR9eIn9XPAdkq6wnh3tNCmrXUTtpd1xGpZSHMB4qPSgiq.90SoeMSN_DAqYXmh_hY8L_xB5hnDxBq_c1Wr10; path=/; expires=Wed, 22-Oct-25 10:34:32 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
   },
   "body": {
     "culture": "pt-BR",
@@ -390,7 +390,7 @@
     "betType": 0,
     "isAutoCharge": false,
     "stakes": [
-      100
+      15
     ],
     "oddsChangeAction": 1,
     "betMarkets": [
@@ -406,14 +406,14 @@
         "sportTypeId": 1,
         "odds": [
           {
-            "id": 2911669707,
+            "id": 2911669708,
             "marketId": 1189183450,
-            "price": 1.4167,
+            "price": 4.3334,
             "marketName": "Vencedor do encontro",
             "marketTypeId": 1,
             "mostBalanced": false,
             "selectionTypeId": 1,
-            "selectionName": "Flamengo",
+            "selectionName": "Empate",
             "widgetInfo": {
               "widget": 12,
               "page": 3,
@@ -426,27 +426,27 @@
     "eachWays": [
       false
     ],
-    "requestId": "cfQRR3flevnsiVou7TEh",
+    "requestId": "SqhDcvGoB40SMB8O2hFCuE",
     "confirmedByClient": false,
     "device": 0
   },
-  "sessionCookies": "bet7k_session=eyJpdiI6IjVZRG9QRDZSZmUyU3ZGbGphVjJvc0E9PSIsInZhbHVlIjoia1RUMDFLc25OZ2l5QS9pOEp6RVZBNGpRZkc4L1dNYXZDODZneDVHZExOT0xhdk5YRzFQdERDcVp5dDRud0dDcHpQRFFqcVdzQkxCSFY3YWFIVnZFYTNaY3lZa1BLcEE3ZFVZWWhkSStFaTZRR3BvODFISlZWWS9oOURYR0dON0QiLCJtYWMiOiIyNTgzZTA1ZWZhMWMyYzJlOWUzNWY5NDY5NDhhNGY3ZjBkODQ4MGZhNjIwOGQ3ZWM3MzFjZDQ5ODNiMGYzMWFhIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 09:10:45 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=ZTmkjJIv4xKZlo96fUcpvS8u3aLnXNjp8TFCg5Etdyk-1761124245-1.0.1.1-CDppQPQdIv64TOJ.D6N.Q2bl.KUcWI5u9w0enoLlNjov7WtPP9N58DZJfMxtyFGagBqwtOiaZFsmun1rAPFuGff8xVOxUiiW.IBcG1acNlA; path=/; expires=Wed, 22-Oct-25 09:40:45 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+  "sessionCookies": "bet7k_session=eyJpdiI6ImRQcmNtU0tTN2hJa0JXVHpZYU8zR2c9PSIsInZhbHVlIjoiWDR6eFlQQitleG16KzZWWHhKMlM4QTE5V0VFNWZrcGxJcVFwSmdBbS90TzdRazJhZTI4UXVHQkxoZmxCV3o4R09NY1VYUFBZdmtEcXNzM1E3RFl0dS9WVWdEai9xRXBwYjhjS2JKaTVzQy9ROXFCRzIwMTM3UVRBRjgxUFdTNU4iLCJtYWMiOiI1ZDQzMzM2YzM2NzI4OTFjYWZmYjk2YjE4ZGE2YmMyYjMzM2JmYzBlMmI3MjMyZjFlZWRkMDJjOWExMjc4NmU0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:04:32 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=LtFG01of5LEgQP..O8SssJCeWuR9favJvX547kS3W7s-1761127472-1.0.1.1-LGebojCJEbJJraDhsz_VLmxWR9eIn9XPAdkq6wnh3tNCmrXUTtpd1xGpZSHMB4qPSgiq.90SoeMSN_DAqYXmh_hY8L_xB5hnDxBq_c1Wr10; path=/; expires=Wed, 22-Oct-25 10:34:32 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
 }
 ================================================================================
 
-[2025-10-22T09:10:47.802Z] ✅ [cmiyy3n6q] RESPOSTA - mcgames
+[2025-10-22T10:04:33.119Z] ✅ [hpj6u36jj] RESPOSTA - mcgames
 {
-  "requestId": "cmiyy3n6q",
-  "timestamp": "2025-10-22T09:10:47.802Z",
+  "requestId": "hpj6u36jj",
+  "timestamp": "2025-10-22T10:04:33.118Z",
   "siteName": "mcgames",
   "integration": "mcgames",
   "status": 200,
   "statusText": "OK",
   "headers": {
     "server": "nginx",
-    "date": "Wed, 22 Oct 2025 09:10:46 GMT",
+    "date": "Wed, 22 Oct 2025 10:04:32 GMT",
     "content-type": "application/json; charset=utf-8",
-    "content-length": "186",
+    "content-length": "214",
     "access-control-allow-origin": "*",
     "strict-transport-security": "max-age=15552000",
     "via": "1.1 google",
@@ -454,37 +454,39 @@
   },
   "data": {
     "error": {
-      "changedOdds": [
-        {
-          "selectionId": 2911669707,
-          "price": 1.3847
-        }
+      "totalPotentialWin": 5.98,
+      "totalStake": 1.38,
+      "stakesFormatted": [
+        1.38
+      ],
+      "winFormatted": [
+        5.98
       ],
       "betslipResult": {
-        "totalPotentialWin": 138.47,
-        "minPotentialWin": 138.47,
-        "maxOdds": 1.3847,
+        "totalPotentialWin": 5.98,
+        "minPotentialWin": 5.98,
+        "maxOdds": 4.3334,
         "maxBonus": 0
       },
-      "errorType": 6
+      "errorType": 1
     }
   },
-  "sessionCookies": "bet7k_session=eyJpdiI6IjVZRG9QRDZSZmUyU3ZGbGphVjJvc0E9PSIsInZhbHVlIjoia1RUMDFLc25OZ2l5QS9pOEp6RVZBNGpRZkc4L1dNYXZDODZneDVHZExOT0xhdk5YRzFQdERDcVp5dDRud0dDcHpQRFFqcVdzQkxCSFY3YWFIVnZFYTNaY3lZa1BLcEE3ZFVZWWhkSStFaTZRR3BvODFISlZWWS9oOURYR0dON0QiLCJtYWMiOiIyNTgzZTA1ZWZhMWMyYzJlOWUzNWY5NDY5NDhhNGY3ZjBkODQ4MGZhNjIwOGQ3ZWM3MzFjZDQ5ODNiMGYzMWFhIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 09:10:45 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=ZTmkjJIv4xKZlo96fUcpvS8u3aLnXNjp8TFCg5Etdyk-1761124245-1.0.1.1-CDppQPQdIv64TOJ.D6N.Q2bl.KUcWI5u9w0enoLlNjov7WtPP9N58DZJfMxtyFGagBqwtOiaZFsmun1rAPFuGff8xVOxUiiW.IBcG1acNlA; path=/; expires=Wed, 22-Oct-25 09:40:45 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
-  "responseTime": 702
+  "sessionCookies": "bet7k_session=eyJpdiI6ImRQcmNtU0tTN2hJa0JXVHpZYU8zR2c9PSIsInZhbHVlIjoiWDR6eFlQQitleG16KzZWWHhKMlM4QTE5V0VFNWZrcGxJcVFwSmdBbS90TzdRazJhZTI4UXVHQkxoZmxCV3o4R09NY1VYUFBZdmtEcXNzM1E3RFl0dS9WVWdEai9xRXBwYjhjS2JKaTVzQy9ROXFCRzIwMTM3UVRBRjgxUFdTNU4iLCJtYWMiOiI1ZDQzMzM2YzM2NzI4OTFjYWZmYjk2YjE4ZGE2YmMyYjMzM2JmYzBlMmI3MjMyZjFlZWRkMDJjOWExMjc4NmU0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:04:32 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=LtFG01of5LEgQP..O8SssJCeWuR9favJvX547kS3W7s-1761127472-1.0.1.1-LGebojCJEbJJraDhsz_VLmxWR9eIn9XPAdkq6wnh3tNCmrXUTtpd1xGpZSHMB4qPSgiq.90SoeMSN_DAqYXmh_hY8L_xB5hnDxBq_c1Wr10; path=/; expires=Wed, 22-Oct-25 10:34:32 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 287
 }
 ================================================================================
 
-[2025-10-22T09:10:47.803Z] 🚀 [3hwy0ev53] REQUISIÇÃO - mcgames
+[2025-10-22T10:04:33.119Z] 🚀 [5imksqckv] REQUISIÇÃO - mcgames
 {
-  "requestId": "3hwy0ev53",
-  "timestamp": "2025-10-22T09:10:47.803Z",
+  "requestId": "5imksqckv",
+  "timestamp": "2025-10-22T10:04:33.119Z",
   "siteName": "mcgames",
   "integration": "mcgames",
   "url": "https://mcgames.bet.br/api/auth/login",
   "method": "post",
   "headers": {
     "Content-Type": "application/json",
-    "Cookie": "bet7k_session=eyJpdiI6IjVZRG9QRDZSZmUyU3ZGbGphVjJvc0E9PSIsInZhbHVlIjoia1RUMDFLc25OZ2l5QS9pOEp6RVZBNGpRZkc4L1dNYXZDODZneDVHZExOT0xhdk5YRzFQdERDcVp5dDRud0dDcHpQRFFqcVdzQkxCSFY3YWFIVnZFYTNaY3lZa1BLcEE3ZFVZWWhkSStFaTZRR3BvODFISlZWWS9oOURYR0dON0QiLCJtYWMiOiIyNTgzZTA1ZWZhMWMyYzJlOWUzNWY5NDY5NDhhNGY3ZjBkODQ4MGZhNjIwOGQ3ZWM3MzFjZDQ5ODNiMGYzMWFhIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 09:10:45 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=ZTmkjJIv4xKZlo96fUcpvS8u3aLnXNjp8TFCg5Etdyk-1761124245-1.0.1.1-CDppQPQdIv64TOJ.D6N.Q2bl.KUcWI5u9w0enoLlNjov7WtPP9N58DZJfMxtyFGagBqwtOiaZFsmun1rAPFuGff8xVOxUiiW.IBcG1acNlA; path=/; expires=Wed, 22-Oct-25 09:40:45 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+    "Cookie": "bet7k_session=eyJpdiI6ImRQcmNtU0tTN2hJa0JXVHpZYU8zR2c9PSIsInZhbHVlIjoiWDR6eFlQQitleG16KzZWWHhKMlM4QTE5V0VFNWZrcGxJcVFwSmdBbS90TzdRazJhZTI4UXVHQkxoZmxCV3o4R09NY1VYUFBZdmtEcXNzM1E3RFl0dS9WVWdEai9xRXBwYjhjS2JKaTVzQy9ROXFCRzIwMTM3UVRBRjgxUFdTNU4iLCJtYWMiOiI1ZDQzMzM2YzM2NzI4OTFjYWZmYjk2YjE4ZGE2YmMyYjMzM2JmYzBlMmI3MjMyZjFlZWRkMDJjOWExMjc4NmU0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:04:32 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=LtFG01of5LEgQP..O8SssJCeWuR9favJvX547kS3W7s-1761127472-1.0.1.1-LGebojCJEbJJraDhsz_VLmxWR9eIn9XPAdkq6wnh3tNCmrXUTtpd1xGpZSHMB4qPSgiq.90SoeMSN_DAqYXmh_hY8L_xB5hnDxBq_c1Wr10; path=/; expires=Wed, 22-Oct-25 10:34:32 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
   },
   "body": {
     "login": "23597998860",
@@ -493,48 +495,48 @@
     "app_source": "web",
     "captcha_token": ""
   },
-  "sessionCookies": "bet7k_session=eyJpdiI6IjVZRG9QRDZSZmUyU3ZGbGphVjJvc0E9PSIsInZhbHVlIjoia1RUMDFLc25OZ2l5QS9pOEp6RVZBNGpRZkc4L1dNYXZDODZneDVHZExOT0xhdk5YRzFQdERDcVp5dDRud0dDcHpQRFFqcVdzQkxCSFY3YWFIVnZFYTNaY3lZa1BLcEE3ZFVZWWhkSStFaTZRR3BvODFISlZWWS9oOURYR0dON0QiLCJtYWMiOiIyNTgzZTA1ZWZhMWMyYzJlOWUzNWY5NDY5NDhhNGY3ZjBkODQ4MGZhNjIwOGQ3ZWM3MzFjZDQ5ODNiMGYzMWFhIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 09:10:45 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=ZTmkjJIv4xKZlo96fUcpvS8u3aLnXNjp8TFCg5Etdyk-1761124245-1.0.1.1-CDppQPQdIv64TOJ.D6N.Q2bl.KUcWI5u9w0enoLlNjov7WtPP9N58DZJfMxtyFGagBqwtOiaZFsmun1rAPFuGff8xVOxUiiW.IBcG1acNlA; path=/; expires=Wed, 22-Oct-25 09:40:45 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
+  "sessionCookies": "bet7k_session=eyJpdiI6ImRQcmNtU0tTN2hJa0JXVHpZYU8zR2c9PSIsInZhbHVlIjoiWDR6eFlQQitleG16KzZWWHhKMlM4QTE5V0VFNWZrcGxJcVFwSmdBbS90TzdRazJhZTI4UXVHQkxoZmxCV3o4R09NY1VYUFBZdmtEcXNzM1E3RFl0dS9WVWdEai9xRXBwYjhjS2JKaTVzQy9ROXFCRzIwMTM3UVRBRjgxUFdTNU4iLCJtYWMiOiI1ZDQzMzM2YzM2NzI4OTFjYWZmYjk2YjE4ZGE2YmMyYjMzM2JmYzBlMmI3MjMyZjFlZWRkMDJjOWExMjc4NmU0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:04:32 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=LtFG01of5LEgQP..O8SssJCeWuR9favJvX547kS3W7s-1761127472-1.0.1.1-LGebojCJEbJJraDhsz_VLmxWR9eIn9XPAdkq6wnh3tNCmrXUTtpd1xGpZSHMB4qPSgiq.90SoeMSN_DAqYXmh_hY8L_xB5hnDxBq_c1Wr10; path=/; expires=Wed, 22-Oct-25 10:34:32 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
   "withCredentials": true,
   "maxBodyLength": null
 }
 ================================================================================
 
-[2025-10-22T09:10:49.567Z] ✅ [3hwy0ev53] RESPOSTA - mcgames
+[2025-10-22T10:04:34.839Z] ✅ [5imksqckv] RESPOSTA - mcgames
 {
-  "requestId": "3hwy0ev53",
-  "timestamp": "2025-10-22T09:10:49.567Z",
+  "requestId": "5imksqckv",
+  "timestamp": "2025-10-22T10:04:34.839Z",
   "siteName": "mcgames",
   "integration": "mcgames",
   "status": 200,
   "statusText": "OK",
   "headers": {
-    "date": "Wed, 22 Oct 2025 09:10:48 GMT",
+    "date": "Wed, 22 Oct 2025 10:04:34 GMT",
     "content-type": "application/json",
     "transfer-encoding": "chunked",
     "connection": "keep-alive",
     "server": "cloudflare",
-    "cf-ray": "9927dd0d7ab5f2e4-GRU",
+    "cf-ray": "99282bd2abe61433-GRU",
     "cf-cache-status": "DYNAMIC",
     "access-control-allow-origin": "*",
     "cache-control": "max-age=0, no-cache, must-revalidate",
     "set-cookie": [
-      "__Host-jwt_token_strict=eyJpdiI6Ikwrekl0endvWTBkb1UyNURqZ1FrMEE9PSIsInZhbHVlIjoiYzAyU2RWY085eU1mUStJVkhkZUxSV2RsM3lFaDlpRVhqVTVoU2F6aHRQMWswYXZTNGJQYnFYQzB6WDJRMDZVRE5ncDZQWmJibFYxditBZk9mZmVaQ1ZsTkVvQU90Q1R1MENxM2lUYW9paVk9IiwibWFjIjoiNTE5Y2RmNGVkMzQxZWVjNmMyZDU2YWM4MmYxNWY4NGM0ZjIzMjkxYTMwODY4ODFiNTY3MjZiYWZlYWZlNDljNCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:48 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict",
-      "__Host-jwt_token_lax=eyJpdiI6Imd3eEJkWFExWGNlcjB3R3VJd2prdmc9PSIsInZhbHVlIjoib3g5WTVmTW91V3VYZ0JOeDlNRjl2enJTeUNiUFZnNFJCeWV2Nnp6TGowQWRaQVZJaGNkcjNJczZuMFdzU1dUVXNpZjltWlhpcy9YamNQT2lYVEpESlVHS0s1cWxnSEtXbE9jaXNpSDZkUjg9IiwibWFjIjoiNmUyYjRmNzUwMWRlNGQ1ZDQyNGQyNDFlNmVkMjY2ZGI3MGZkOWNmMjRjYzkxOTkyZjdlNmQ3NDI1YWRiYzQ0OCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:48 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax",
-      "__Host-jwt_token_none=eyJpdiI6ImhlMTVuWDNzNDBjd0xLZ1NucDBjbWc9PSIsInZhbHVlIjoicFNkV1dCdXBsT1BYSG5JbEhjNm5jVEcyNDFweWQxdEFtVXVNUnJuSUYweCs4UlFYRVI2MjhuUHBtSXk1VGU4YWd4bHlpWmlrcG5HVHpSY0dzc2laZVdsWUJHRDQ4TDY1RFk2UjVPT3dVVjQ9IiwibWFjIjoiMjI0Zjg5NWI4NDcxMDZiMjNhMWM2Y2YxNGQwMzJiZTVlM2ZhNTZhZTRjZGIxMDg2MTBjMGZlMjE0N2E0N2Y0NCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:48 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none",
-      "bet7k_session=eyJpdiI6ImhwTmd2bEZKSXlZbk82SGxaSE1QRmc9PSIsInZhbHVlIjoidStybC9rK1JoVWFkSCt3aTJPUzluM0wzTnRwMHB6MlA5ZTJyemhreUc1UzFHUnIzZEVhM3Y0QnFXV3Z0SUVUMnB1WVFKVjlKQ3VkZlM5RUg1blRPRVhCcEIxbXRCMEE3U2l0ZkJzQkQyVzdXVE43eVVsL2YzZ2xSZXVsWmR2ZjAiLCJtYWMiOiIzNjJiODU5MTRmNTIyMTk2M2RhMjE1YTc4NmIyZGMzZDYxOGMyMGVlODc5ZDAyZTg4YjM3NThlODhkMTE2NTk1IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 09:10:48 GMT; Max-Age=31536000; path=/; httponly; samesite=lax",
-      "__cf_bm=zF4Q8RSKQkCZgir9ej.WPZOtmopl4vJ2v4GnGvmRdGM-1761124248-1.0.1.1-_7C99hY_cJnC4wsZWUbp6jxmSPr7.mvMlIzMnAfvhVOSV346I5KnsGi5agxynofb6CJNN7LdqnTF_sxdLCnpZJGdrnB8s9AiVaNy_xKcWOc; path=/; expires=Wed, 22-Oct-25 09:40:48 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None",
-      "_cfuvid=psDTGqPvDbOCyZXDaM_LfChry4eOpQl9InDgq5ZR.W8-1761124248279-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+      "__Host-jwt_token_strict=eyJpdiI6IjdZWGUxZ0YwWmQwK2VZLzBBZ2hVVHc9PSIsInZhbHVlIjoiUHpYZ3RqMGJRd1pEaTR6ZUEvN0JVVjI1RnJIRk4zWHZtV1Z5UWF0MWQvVmRGdURKYldzTldGY2NucUZYNkFhak9NdlVJU0ZFVm5RK3Iya2RxVnlobnRyNHNoSTBpN1YzQkRlQU1sVlFrSkk9IiwibWFjIjoiMGE2Zjk5YTA1OWRhNjlhZWEwNTIxZjQ4ZmQ0NzUyYzdiZjdkYWFlOGIxY2NmMDliZDFlOTQ3MTM0MmIxMWUzMCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:34 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict",
+      "__Host-jwt_token_lax=eyJpdiI6ImM2RGovNm0xNDZYQk5vV3V3SjFNU2c9PSIsInZhbHVlIjoiSkQ4ZURuVk10ZkJoUkpNL1MwVjkyK21BYnk1ZUk5WHRWRFNNZHF0VmNnbS9mMzdQcTJ4TDRmdm0yQTU1TEY3Nzh6R3ZCbDVZcGVIUUZ4Y3hjcXNWemNVUHU1TnQzUFEveW9HYlk4RUJvWTA9IiwibWFjIjoiYTNlYjY1ZDlhYzZjYjYxZDZkZTA1YTA3NDY1NzJhY2U0N2U2NWFkYTM4MzAzZmY2ZjJiMTljNjk5MWYwZGY0NyIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:34 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax",
+      "__Host-jwt_token_none=eyJpdiI6IlFyczhUNExDdVBRaWliYU9RTmQrdkE9PSIsInZhbHVlIjoibVVKQndVSDhTS2IrM25EaU95WFRsQ2ZkODAvS3hhcEZRa2h0eUZVblRROVJScUs4K2lnYTRlUEFqeE95Z2JpT0JsNDhrQWNEUTBsNURnRmtCeER6WFd1QmlURm44SFRrOG9BR3dBV0xSNms9IiwibWFjIjoiMDFkNzUwYjYwMjVjNWY5YjFmMzJhZTgyYjI2ZTdmMWU3NzhiM2RlZjQ0OTQ3NmRlNTgzYjQyNTZhZTg1MTNhNyIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:34 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none",
+      "bet7k_session=eyJpdiI6Ik5aTEZaaEFqbUJCTVZZOEFVRWZqbEE9PSIsInZhbHVlIjoiWmFEWkZTeFduTFU1OVZvb1hGVWtVemRWbFZjZzdETHlIUWticWpRSVZQNVRmakdRUmM1ZG5pdkM2bFI4ay9EVk1WTWl0ck9vYjBPNXpmYjJXVkl6Uk8xamVoeTRZZmM5Sy9lWmJzOGpnUHlUQTFxck16M2dIS3Z0dk1IZ2o5SnIiLCJtYWMiOiJkZjU2OTQ1NmMyY2RjZTA5NWU5ZTIwZDcwMDBhZjg3MTRhNTAwMDY2Nzk5MjEwMmEzNDA3NDQ2OGIzMTU2NmNhIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:04:34 GMT; Max-Age=31536000; path=/; httponly; samesite=lax",
+      "__cf_bm=Ia0CtjTKDYpX21XNk_j6hyf0Hi9BIlgiZelY.BFkHCA-1761127474-1.0.1.1-FLbjEOSunpXoR03ruT7MTcMTMk28uCMb_Lu5mjXqihnLgybo1bYuy8mqIVjNlfpahYNJ5XMkszjym0ZYvwMEqpa05XPNsVFCVIJ.UvB_veo; path=/; expires=Wed, 22-Oct-25 10:34:34 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None",
+      "_cfuvid=2oAnUncnVxccXvb8Dv5zFTMqMoRJDdMHQctY5zTPVUc-1761127474679-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
     ],
     "strict-transport-security": "max-age=15768000;",
     "vary": "Accept-Encoding",
-    "cf-placement": "local-",
+    "cf-placement": "local-GRU",
     "protected": "by MS23041901",
     "srv": "ip-172-16-60-179",
     "x-ratelimit-limit": "999999999",
-    "x-ratelimit-remaining": "999999984"
+    "x-ratelimit-remaining": "999999940"
   },
   "data": {
-    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS1tY2dhbWVzLWJldGJyLmJzMmJldC5jb20vdjIvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTEyNDI0OCwiZXhwIjoxNzYxNzI5MDQ4LCJuYmYiOjE3NjExMjQyNDgsImp0aSI6ImxKZmpXaWV4WmJXSDBEczAiLCJzdWIiOiIyOTk4MTAxNCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJoYSI6IjUiLCJoYiI6IjFjN2NiOGFlNzEyODAyZDM0OWM3OWYzMGEzMzdiMzVkIiwiaGMiOiI3MDA2YTExYzY2NzViODcwMTAwNDRjMGQ3YmIxMjY4OSIsImhpIjoiYWIyY2M3Y2Q5NzY5YmZkNzBjN2Y2ZGY2NzdhZjMzNGMiLCJoZCI6IjY4NDk1N2ZkZGE1YTIwMzI3YjY3NTYzYjlkZjdmMDMyIiwiaGwiOiI4N2YzMWUzNjVlNWNkMDcyYjA1MTE1ZDRkMWJkZTc0YSIsImhmIjoiMV81MTI2ZDI1MWRmNzhiMjU1MTI0NThkMTMwYTZhYmE1Yl8xNzYxMTI0MjQ2In0.MP5OcVCVyu33h4qu0ID-nXGnPOfFZ-XtjiDVw_xj4Tk",
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS1tY2dhbWVzLWJldGJyLmJzMmJldC5jb20vdjIvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTEyNzQ3NCwiZXhwIjoxNzYxNzMyMjc0LCJuYmYiOjE3NjExMjc0NzQsImp0aSI6Im9tYjRUODhGMXh6TzBZMFQiLCJzdWIiOiIyOTk4MTAxNCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJoYSI6IjUiLCJoYiI6IjJhNjlkNTI0ZDMyNDJlZDY2N2M0NDRhZmRlYWViZWZkIiwiaGMiOiI3MDA2YTExYzY2NzViODcwMTAwNDRjMGQ3YmIxMjY4OSIsImhpIjoiYWIyY2M3Y2Q5NzY5YmZkNzBjN2Y2ZGY2NzdhZjMzNGMiLCJoZCI6IjY4NDk1N2ZkZGE1YTIwMzI3YjY3NTYzYjlkZjdmMDMyIiwiaGwiOiI4N2YzMWUzNjVlNWNkMDcyYjA1MTE1ZDRkMWJkZTc0YSIsImhmIjoiMV82ZDM1NmU0ZDQ1MzQ1NDM5ZDM1NjdiYTcwMGE2ODY4Ml8xNzYxMTI3NDczIn0.8umMQkR8Lp3N4OmlvEIWpQPXNNBwVaS6EIa-rtwtfEs",
     "token_type": "bearer",
     "expires_in": 604800,
     "user": {
@@ -547,7 +549,7 @@
       "ftd_value": 650,
       "ftd_date": "2025-05-29 21:23:21",
       "created_at": "2025-05-30T00:18:43.000000Z",
-      "updated_at": "2025-10-22T09:10:47.000000Z",
+      "updated_at": "2025-10-22T10:04:33.000000Z",
       "is_active": 1,
       "phone": "13974198830",
       "commission": null,
@@ -618,7 +620,7 @@
         "user_limit_withdrawal": null,
         "user_limit_last_change": null,
         "last_verification_at": null,
-        "login_at": "2025-10-22 06:10:47",
+        "login_at": "2025-10-22 07:04:33",
         "login_attempt_qty": 3,
         "login_city": "Campinas",
         "login_state": "SP",
@@ -632,7 +634,7 @@
         "location_at": null,
         "nationalities": "[{\"id\": 1, \"value\": \"Brasileiro (a)\"}]",
         "created_at": "2025-05-30T00:18:43.000000Z",
-        "updated_at": "2025-10-22T09:10:47.000000Z",
+        "updated_at": "2025-10-22T10:04:33.000000Z",
         "id": 1979828,
         "two_factor_enabled": 0,
         "two_factor_type": null,
@@ -696,7 +698,7 @@
       "user_limit_withdrawal": null,
       "user_limit_last_change": null,
       "last_verification_at": null,
-      "login_at": "2025-10-22 06:10:47",
+      "login_at": "2025-10-22 07:04:33",
       "login_attempt_qty": 3,
       "login_city": "Campinas",
       "login_state": "SP",
@@ -710,7 +712,7 @@
       "location_at": null,
       "nationalities": "[{\"id\": 1, \"value\": \"Brasileiro (a)\"}]",
       "created_at": "2025-05-30T00:18:43.000000Z",
-      "updated_at": "2025-10-22T09:10:47.000000Z",
+      "updated_at": "2025-10-22T10:04:33.000000Z",
       "id": 1979828,
       "two_factor_enabled": 0,
       "two_factor_type": null,
@@ -720,56 +722,56 @@
     "need_change_password": false
   },
   "cookies": "[Circular Reference]",
-  "sessionCookies": "__Host-jwt_token_strict=eyJpdiI6Ikwrekl0endvWTBkb1UyNURqZ1FrMEE9PSIsInZhbHVlIjoiYzAyU2RWY085eU1mUStJVkhkZUxSV2RsM3lFaDlpRVhqVTVoU2F6aHRQMWswYXZTNGJQYnFYQzB6WDJRMDZVRE5ncDZQWmJibFYxditBZk9mZmVaQ1ZsTkVvQU90Q1R1MENxM2lUYW9paVk9IiwibWFjIjoiNTE5Y2RmNGVkMzQxZWVjNmMyZDU2YWM4MmYxNWY4NGM0ZjIzMjkxYTMwODY4ODFiNTY3MjZiYWZlYWZlNDljNCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:48 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict; __Host-jwt_token_lax=eyJpdiI6Imd3eEJkWFExWGNlcjB3R3VJd2prdmc9PSIsInZhbHVlIjoib3g5WTVmTW91V3VYZ0JOeDlNRjl2enJTeUNiUFZnNFJCeWV2Nnp6TGowQWRaQVZJaGNkcjNJczZuMFdzU1dUVXNpZjltWlhpcy9YamNQT2lYVEpESlVHS0s1cWxnSEtXbE9jaXNpSDZkUjg9IiwibWFjIjoiNmUyYjRmNzUwMWRlNGQ1ZDQyNGQyNDFlNmVkMjY2ZGI3MGZkOWNmMjRjYzkxOTkyZjdlNmQ3NDI1YWRiYzQ0OCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:48 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax; __Host-jwt_token_none=eyJpdiI6ImhlMTVuWDNzNDBjd0xLZ1NucDBjbWc9PSIsInZhbHVlIjoicFNkV1dCdXBsT1BYSG5JbEhjNm5jVEcyNDFweWQxdEFtVXVNUnJuSUYweCs4UlFYRVI2MjhuUHBtSXk1VGU4YWd4bHlpWmlrcG5HVHpSY0dzc2laZVdsWUJHRDQ4TDY1RFk2UjVPT3dVVjQ9IiwibWFjIjoiMjI0Zjg5NWI4NDcxMDZiMjNhMWM2Y2YxNGQwMzJiZTVlM2ZhNTZhZTRjZGIxMDg2MTBjMGZlMjE0N2E0N2Y0NCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:48 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none; bet7k_session=eyJpdiI6ImhwTmd2bEZKSXlZbk82SGxaSE1QRmc9PSIsInZhbHVlIjoidStybC9rK1JoVWFkSCt3aTJPUzluM0wzTnRwMHB6MlA5ZTJyemhreUc1UzFHUnIzZEVhM3Y0QnFXV3Z0SUVUMnB1WVFKVjlKQ3VkZlM5RUg1blRPRVhCcEIxbXRCMEE3U2l0ZkJzQkQyVzdXVE43eVVsL2YzZ2xSZXVsWmR2ZjAiLCJtYWMiOiIzNjJiODU5MTRmNTIyMTk2M2RhMjE1YTc4NmIyZGMzZDYxOGMyMGVlODc5ZDAyZTg4YjM3NThlODhkMTE2NTk1IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 09:10:48 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=zF4Q8RSKQkCZgir9ej.WPZOtmopl4vJ2v4GnGvmRdGM-1761124248-1.0.1.1-_7C99hY_cJnC4wsZWUbp6jxmSPr7.mvMlIzMnAfvhVOSV346I5KnsGi5agxynofb6CJNN7LdqnTF_sxdLCnpZJGdrnB8s9AiVaNy_xKcWOc; path=/; expires=Wed, 22-Oct-25 09:40:48 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None; _cfuvid=psDTGqPvDbOCyZXDaM_LfChry4eOpQl9InDgq5ZR.W8-1761124248279-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
-  "responseTime": 1764
+  "sessionCookies": "__Host-jwt_token_strict=eyJpdiI6IjdZWGUxZ0YwWmQwK2VZLzBBZ2hVVHc9PSIsInZhbHVlIjoiUHpYZ3RqMGJRd1pEaTR6ZUEvN0JVVjI1RnJIRk4zWHZtV1Z5UWF0MWQvVmRGdURKYldzTldGY2NucUZYNkFhak9NdlVJU0ZFVm5RK3Iya2RxVnlobnRyNHNoSTBpN1YzQkRlQU1sVlFrSkk9IiwibWFjIjoiMGE2Zjk5YTA1OWRhNjlhZWEwNTIxZjQ4ZmQ0NzUyYzdiZjdkYWFlOGIxY2NmMDliZDFlOTQ3MTM0MmIxMWUzMCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:34 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict; __Host-jwt_token_lax=eyJpdiI6ImM2RGovNm0xNDZYQk5vV3V3SjFNU2c9PSIsInZhbHVlIjoiSkQ4ZURuVk10ZkJoUkpNL1MwVjkyK21BYnk1ZUk5WHRWRFNNZHF0VmNnbS9mMzdQcTJ4TDRmdm0yQTU1TEY3Nzh6R3ZCbDVZcGVIUUZ4Y3hjcXNWemNVUHU1TnQzUFEveW9HYlk4RUJvWTA9IiwibWFjIjoiYTNlYjY1ZDlhYzZjYjYxZDZkZTA1YTA3NDY1NzJhY2U0N2U2NWFkYTM4MzAzZmY2ZjJiMTljNjk5MWYwZGY0NyIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:34 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax; __Host-jwt_token_none=eyJpdiI6IlFyczhUNExDdVBRaWliYU9RTmQrdkE9PSIsInZhbHVlIjoibVVKQndVSDhTS2IrM25EaU95WFRsQ2ZkODAvS3hhcEZRa2h0eUZVblRROVJScUs4K2lnYTRlUEFqeE95Z2JpT0JsNDhrQWNEUTBsNURnRmtCeER6WFd1QmlURm44SFRrOG9BR3dBV0xSNms9IiwibWFjIjoiMDFkNzUwYjYwMjVjNWY5YjFmMzJhZTgyYjI2ZTdmMWU3NzhiM2RlZjQ0OTQ3NmRlNTgzYjQyNTZhZTg1MTNhNyIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:34 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none; bet7k_session=eyJpdiI6Ik5aTEZaaEFqbUJCTVZZOEFVRWZqbEE9PSIsInZhbHVlIjoiWmFEWkZTeFduTFU1OVZvb1hGVWtVemRWbFZjZzdETHlIUWticWpRSVZQNVRmakdRUmM1ZG5pdkM2bFI4ay9EVk1WTWl0ck9vYjBPNXpmYjJXVkl6Uk8xamVoeTRZZmM5Sy9lWmJzOGpnUHlUQTFxck16M2dIS3Z0dk1IZ2o5SnIiLCJtYWMiOiJkZjU2OTQ1NmMyY2RjZTA5NWU5ZTIwZDcwMDBhZjg3MTRhNTAwMDY2Nzk5MjEwMmEzNDA3NDQ2OGIzMTU2NmNhIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:04:34 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=Ia0CtjTKDYpX21XNk_j6hyf0Hi9BIlgiZelY.BFkHCA-1761127474-1.0.1.1-FLbjEOSunpXoR03ruT7MTcMTMk28uCMb_Lu5mjXqihnLgybo1bYuy8mqIVjNlfpahYNJ5XMkszjym0ZYvwMEqpa05XPNsVFCVIJ.UvB_veo; path=/; expires=Wed, 22-Oct-25 10:34:34 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None; _cfuvid=2oAnUncnVxccXvb8Dv5zFTMqMoRJDdMHQctY5zTPVUc-1761127474679-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 1720
 }
 ================================================================================
 
-[2025-10-22T09:10:49.568Z] 🚀 [qtkvtd0om] REQUISIÇÃO - mcgames
+[2025-10-22T10:04:34.839Z] 🚀 [pz1qrhr78] REQUISIÇÃO - mcgames
 {
-  "requestId": "qtkvtd0om",
-  "timestamp": "2025-10-22T09:10:49.568Z",
+  "requestId": "pz1qrhr78",
+  "timestamp": "2025-10-22T10:04:34.839Z",
   "siteName": "mcgames",
   "integration": "mcgames",
   "url": "https://mcgames.bet.br/api/users/wallet?withCurrentUser=true",
   "method": "get",
   "headers": {
-    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS1tY2dhbWVzLWJldGJyLmJzMmJldC5jb20vdjIvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTEyNDI0OCwiZXhwIjoxNzYxNzI5MDQ4LCJuYmYiOjE3NjExMjQyNDgsImp0aSI6ImxKZmpXaWV4WmJXSDBEczAiLCJzdWIiOiIyOTk4MTAxNCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJoYSI6IjUiLCJoYiI6IjFjN2NiOGFlNzEyODAyZDM0OWM3OWYzMGEzMzdiMzVkIiwiaGMiOiI3MDA2YTExYzY2NzViODcwMTAwNDRjMGQ3YmIxMjY4OSIsImhpIjoiYWIyY2M3Y2Q5NzY5YmZkNzBjN2Y2ZGY2NzdhZjMzNGMiLCJoZCI6IjY4NDk1N2ZkZGE1YTIwMzI3YjY3NTYzYjlkZjdmMDMyIiwiaGwiOiI4N2YzMWUzNjVlNWNkMDcyYjA1MTE1ZDRkMWJkZTc0YSIsImhmIjoiMV81MTI2ZDI1MWRmNzhiMjU1MTI0NThkMTMwYTZhYmE1Yl8xNzYxMTI0MjQ2In0.MP5OcVCVyu33h4qu0ID-nXGnPOfFZ-XtjiDVw_xj4Tk",
-    "Cookie": "__Host-jwt_token_strict=eyJpdiI6Ikwrekl0endvWTBkb1UyNURqZ1FrMEE9PSIsInZhbHVlIjoiYzAyU2RWY085eU1mUStJVkhkZUxSV2RsM3lFaDlpRVhqVTVoU2F6aHRQMWswYXZTNGJQYnFYQzB6WDJRMDZVRE5ncDZQWmJibFYxditBZk9mZmVaQ1ZsTkVvQU90Q1R1MENxM2lUYW9paVk9IiwibWFjIjoiNTE5Y2RmNGVkMzQxZWVjNmMyZDU2YWM4MmYxNWY4NGM0ZjIzMjkxYTMwODY4ODFiNTY3MjZiYWZlYWZlNDljNCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:48 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict; __Host-jwt_token_lax=eyJpdiI6Imd3eEJkWFExWGNlcjB3R3VJd2prdmc9PSIsInZhbHVlIjoib3g5WTVmTW91V3VYZ0JOeDlNRjl2enJTeUNiUFZnNFJCeWV2Nnp6TGowQWRaQVZJaGNkcjNJczZuMFdzU1dUVXNpZjltWlhpcy9YamNQT2lYVEpESlVHS0s1cWxnSEtXbE9jaXNpSDZkUjg9IiwibWFjIjoiNmUyYjRmNzUwMWRlNGQ1ZDQyNGQyNDFlNmVkMjY2ZGI3MGZkOWNmMjRjYzkxOTkyZjdlNmQ3NDI1YWRiYzQ0OCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:48 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax; __Host-jwt_token_none=eyJpdiI6ImhlMTVuWDNzNDBjd0xLZ1NucDBjbWc9PSIsInZhbHVlIjoicFNkV1dCdXBsT1BYSG5JbEhjNm5jVEcyNDFweWQxdEFtVXVNUnJuSUYweCs4UlFYRVI2MjhuUHBtSXk1VGU4YWd4bHlpWmlrcG5HVHpSY0dzc2laZVdsWUJHRDQ4TDY1RFk2UjVPT3dVVjQ9IiwibWFjIjoiMjI0Zjg5NWI4NDcxMDZiMjNhMWM2Y2YxNGQwMzJiZTVlM2ZhNTZhZTRjZGIxMDg2MTBjMGZlMjE0N2E0N2Y0NCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:48 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none; bet7k_session=eyJpdiI6ImhwTmd2bEZKSXlZbk82SGxaSE1QRmc9PSIsInZhbHVlIjoidStybC9rK1JoVWFkSCt3aTJPUzluM0wzTnRwMHB6MlA5ZTJyemhreUc1UzFHUnIzZEVhM3Y0QnFXV3Z0SUVUMnB1WVFKVjlKQ3VkZlM5RUg1blRPRVhCcEIxbXRCMEE3U2l0ZkJzQkQyVzdXVE43eVVsL2YzZ2xSZXVsWmR2ZjAiLCJtYWMiOiIzNjJiODU5MTRmNTIyMTk2M2RhMjE1YTc4NmIyZGMzZDYxOGMyMGVlODc5ZDAyZTg4YjM3NThlODhkMTE2NTk1IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 09:10:48 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=zF4Q8RSKQkCZgir9ej.WPZOtmopl4vJ2v4GnGvmRdGM-1761124248-1.0.1.1-_7C99hY_cJnC4wsZWUbp6jxmSPr7.mvMlIzMnAfvhVOSV346I5KnsGi5agxynofb6CJNN7LdqnTF_sxdLCnpZJGdrnB8s9AiVaNy_xKcWOc; path=/; expires=Wed, 22-Oct-25 09:40:48 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None; _cfuvid=psDTGqPvDbOCyZXDaM_LfChry4eOpQl9InDgq5ZR.W8-1761124248279-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS1tY2dhbWVzLWJldGJyLmJzMmJldC5jb20vdjIvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTEyNzQ3NCwiZXhwIjoxNzYxNzMyMjc0LCJuYmYiOjE3NjExMjc0NzQsImp0aSI6Im9tYjRUODhGMXh6TzBZMFQiLCJzdWIiOiIyOTk4MTAxNCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJoYSI6IjUiLCJoYiI6IjJhNjlkNTI0ZDMyNDJlZDY2N2M0NDRhZmRlYWViZWZkIiwiaGMiOiI3MDA2YTExYzY2NzViODcwMTAwNDRjMGQ3YmIxMjY4OSIsImhpIjoiYWIyY2M3Y2Q5NzY5YmZkNzBjN2Y2ZGY2NzdhZjMzNGMiLCJoZCI6IjY4NDk1N2ZkZGE1YTIwMzI3YjY3NTYzYjlkZjdmMDMyIiwiaGwiOiI4N2YzMWUzNjVlNWNkMDcyYjA1MTE1ZDRkMWJkZTc0YSIsImhmIjoiMV82ZDM1NmU0ZDQ1MzQ1NDM5ZDM1NjdiYTcwMGE2ODY4Ml8xNzYxMTI3NDczIn0.8umMQkR8Lp3N4OmlvEIWpQPXNNBwVaS6EIa-rtwtfEs",
+    "Cookie": "__Host-jwt_token_strict=eyJpdiI6IjdZWGUxZ0YwWmQwK2VZLzBBZ2hVVHc9PSIsInZhbHVlIjoiUHpYZ3RqMGJRd1pEaTR6ZUEvN0JVVjI1RnJIRk4zWHZtV1Z5UWF0MWQvVmRGdURKYldzTldGY2NucUZYNkFhak9NdlVJU0ZFVm5RK3Iya2RxVnlobnRyNHNoSTBpN1YzQkRlQU1sVlFrSkk9IiwibWFjIjoiMGE2Zjk5YTA1OWRhNjlhZWEwNTIxZjQ4ZmQ0NzUyYzdiZjdkYWFlOGIxY2NmMDliZDFlOTQ3MTM0MmIxMWUzMCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:34 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict; __Host-jwt_token_lax=eyJpdiI6ImM2RGovNm0xNDZYQk5vV3V3SjFNU2c9PSIsInZhbHVlIjoiSkQ4ZURuVk10ZkJoUkpNL1MwVjkyK21BYnk1ZUk5WHRWRFNNZHF0VmNnbS9mMzdQcTJ4TDRmdm0yQTU1TEY3Nzh6R3ZCbDVZcGVIUUZ4Y3hjcXNWemNVUHU1TnQzUFEveW9HYlk4RUJvWTA9IiwibWFjIjoiYTNlYjY1ZDlhYzZjYjYxZDZkZTA1YTA3NDY1NzJhY2U0N2U2NWFkYTM4MzAzZmY2ZjJiMTljNjk5MWYwZGY0NyIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:34 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax; __Host-jwt_token_none=eyJpdiI6IlFyczhUNExDdVBRaWliYU9RTmQrdkE9PSIsInZhbHVlIjoibVVKQndVSDhTS2IrM25EaU95WFRsQ2ZkODAvS3hhcEZRa2h0eUZVblRROVJScUs4K2lnYTRlUEFqeE95Z2JpT0JsNDhrQWNEUTBsNURnRmtCeER6WFd1QmlURm44SFRrOG9BR3dBV0xSNms9IiwibWFjIjoiMDFkNzUwYjYwMjVjNWY5YjFmMzJhZTgyYjI2ZTdmMWU3NzhiM2RlZjQ0OTQ3NmRlNTgzYjQyNTZhZTg1MTNhNyIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:34 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none; bet7k_session=eyJpdiI6Ik5aTEZaaEFqbUJCTVZZOEFVRWZqbEE9PSIsInZhbHVlIjoiWmFEWkZTeFduTFU1OVZvb1hGVWtVemRWbFZjZzdETHlIUWticWpRSVZQNVRmakdRUmM1ZG5pdkM2bFI4ay9EVk1WTWl0ck9vYjBPNXpmYjJXVkl6Uk8xamVoeTRZZmM5Sy9lWmJzOGpnUHlUQTFxck16M2dIS3Z0dk1IZ2o5SnIiLCJtYWMiOiJkZjU2OTQ1NmMyY2RjZTA5NWU5ZTIwZDcwMDBhZjg3MTRhNTAwMDY2Nzk5MjEwMmEzNDA3NDQ2OGIzMTU2NmNhIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:04:34 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=Ia0CtjTKDYpX21XNk_j6hyf0Hi9BIlgiZelY.BFkHCA-1761127474-1.0.1.1-FLbjEOSunpXoR03ruT7MTcMTMk28uCMb_Lu5mjXqihnLgybo1bYuy8mqIVjNlfpahYNJ5XMkszjym0ZYvwMEqpa05XPNsVFCVIJ.UvB_veo; path=/; expires=Wed, 22-Oct-25 10:34:34 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None; _cfuvid=2oAnUncnVxccXvb8Dv5zFTMqMoRJDdMHQctY5zTPVUc-1761127474679-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
   },
-  "sessionCookies": "__Host-jwt_token_strict=eyJpdiI6Ikwrekl0endvWTBkb1UyNURqZ1FrMEE9PSIsInZhbHVlIjoiYzAyU2RWY085eU1mUStJVkhkZUxSV2RsM3lFaDlpRVhqVTVoU2F6aHRQMWswYXZTNGJQYnFYQzB6WDJRMDZVRE5ncDZQWmJibFYxditBZk9mZmVaQ1ZsTkVvQU90Q1R1MENxM2lUYW9paVk9IiwibWFjIjoiNTE5Y2RmNGVkMzQxZWVjNmMyZDU2YWM4MmYxNWY4NGM0ZjIzMjkxYTMwODY4ODFiNTY3MjZiYWZlYWZlNDljNCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:48 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict; __Host-jwt_token_lax=eyJpdiI6Imd3eEJkWFExWGNlcjB3R3VJd2prdmc9PSIsInZhbHVlIjoib3g5WTVmTW91V3VYZ0JOeDlNRjl2enJTeUNiUFZnNFJCeWV2Nnp6TGowQWRaQVZJaGNkcjNJczZuMFdzU1dUVXNpZjltWlhpcy9YamNQT2lYVEpESlVHS0s1cWxnSEtXbE9jaXNpSDZkUjg9IiwibWFjIjoiNmUyYjRmNzUwMWRlNGQ1ZDQyNGQyNDFlNmVkMjY2ZGI3MGZkOWNmMjRjYzkxOTkyZjdlNmQ3NDI1YWRiYzQ0OCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:48 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax; __Host-jwt_token_none=eyJpdiI6ImhlMTVuWDNzNDBjd0xLZ1NucDBjbWc9PSIsInZhbHVlIjoicFNkV1dCdXBsT1BYSG5JbEhjNm5jVEcyNDFweWQxdEFtVXVNUnJuSUYweCs4UlFYRVI2MjhuUHBtSXk1VGU4YWd4bHlpWmlrcG5HVHpSY0dzc2laZVdsWUJHRDQ4TDY1RFk2UjVPT3dVVjQ9IiwibWFjIjoiMjI0Zjg5NWI4NDcxMDZiMjNhMWM2Y2YxNGQwMzJiZTVlM2ZhNTZhZTRjZGIxMDg2MTBjMGZlMjE0N2E0N2Y0NCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 09:10:48 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none; bet7k_session=eyJpdiI6ImhwTmd2bEZKSXlZbk82SGxaSE1QRmc9PSIsInZhbHVlIjoidStybC9rK1JoVWFkSCt3aTJPUzluM0wzTnRwMHB6MlA5ZTJyemhreUc1UzFHUnIzZEVhM3Y0QnFXV3Z0SUVUMnB1WVFKVjlKQ3VkZlM5RUg1blRPRVhCcEIxbXRCMEE3U2l0ZkJzQkQyVzdXVE43eVVsL2YzZ2xSZXVsWmR2ZjAiLCJtYWMiOiIzNjJiODU5MTRmNTIyMTk2M2RhMjE1YTc4NmIyZGMzZDYxOGMyMGVlODc5ZDAyZTg4YjM3NThlODhkMTE2NTk1IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 09:10:48 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=zF4Q8RSKQkCZgir9ej.WPZOtmopl4vJ2v4GnGvmRdGM-1761124248-1.0.1.1-_7C99hY_cJnC4wsZWUbp6jxmSPr7.mvMlIzMnAfvhVOSV346I5KnsGi5agxynofb6CJNN7LdqnTF_sxdLCnpZJGdrnB8s9AiVaNy_xKcWOc; path=/; expires=Wed, 22-Oct-25 09:40:48 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None; _cfuvid=psDTGqPvDbOCyZXDaM_LfChry4eOpQl9InDgq5ZR.W8-1761124248279-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+  "sessionCookies": "__Host-jwt_token_strict=eyJpdiI6IjdZWGUxZ0YwWmQwK2VZLzBBZ2hVVHc9PSIsInZhbHVlIjoiUHpYZ3RqMGJRd1pEaTR6ZUEvN0JVVjI1RnJIRk4zWHZtV1Z5UWF0MWQvVmRGdURKYldzTldGY2NucUZYNkFhak9NdlVJU0ZFVm5RK3Iya2RxVnlobnRyNHNoSTBpN1YzQkRlQU1sVlFrSkk9IiwibWFjIjoiMGE2Zjk5YTA1OWRhNjlhZWEwNTIxZjQ4ZmQ0NzUyYzdiZjdkYWFlOGIxY2NmMDliZDFlOTQ3MTM0MmIxMWUzMCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:34 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict; __Host-jwt_token_lax=eyJpdiI6ImM2RGovNm0xNDZYQk5vV3V3SjFNU2c9PSIsInZhbHVlIjoiSkQ4ZURuVk10ZkJoUkpNL1MwVjkyK21BYnk1ZUk5WHRWRFNNZHF0VmNnbS9mMzdQcTJ4TDRmdm0yQTU1TEY3Nzh6R3ZCbDVZcGVIUUZ4Y3hjcXNWemNVUHU1TnQzUFEveW9HYlk4RUJvWTA9IiwibWFjIjoiYTNlYjY1ZDlhYzZjYjYxZDZkZTA1YTA3NDY1NzJhY2U0N2U2NWFkYTM4MzAzZmY2ZjJiMTljNjk5MWYwZGY0NyIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:34 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax; __Host-jwt_token_none=eyJpdiI6IlFyczhUNExDdVBRaWliYU9RTmQrdkE9PSIsInZhbHVlIjoibVVKQndVSDhTS2IrM25EaU95WFRsQ2ZkODAvS3hhcEZRa2h0eUZVblRROVJScUs4K2lnYTRlUEFqeE95Z2JpT0JsNDhrQWNEUTBsNURnRmtCeER6WFd1QmlURm44SFRrOG9BR3dBV0xSNms9IiwibWFjIjoiMDFkNzUwYjYwMjVjNWY5YjFmMzJhZTgyYjI2ZTdmMWU3NzhiM2RlZjQ0OTQ3NmRlNTgzYjQyNTZhZTg1MTNhNyIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:04:34 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none; bet7k_session=eyJpdiI6Ik5aTEZaaEFqbUJCTVZZOEFVRWZqbEE9PSIsInZhbHVlIjoiWmFEWkZTeFduTFU1OVZvb1hGVWtVemRWbFZjZzdETHlIUWticWpRSVZQNVRmakdRUmM1ZG5pdkM2bFI4ay9EVk1WTWl0ck9vYjBPNXpmYjJXVkl6Uk8xamVoeTRZZmM5Sy9lWmJzOGpnUHlUQTFxck16M2dIS3Z0dk1IZ2o5SnIiLCJtYWMiOiJkZjU2OTQ1NmMyY2RjZTA5NWU5ZTIwZDcwMDBhZjg3MTRhNTAwMDY2Nzk5MjEwMmEzNDA3NDQ2OGIzMTU2NmNhIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:04:34 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=Ia0CtjTKDYpX21XNk_j6hyf0Hi9BIlgiZelY.BFkHCA-1761127474-1.0.1.1-FLbjEOSunpXoR03ruT7MTcMTMk28uCMb_Lu5mjXqihnLgybo1bYuy8mqIVjNlfpahYNJ5XMkszjym0ZYvwMEqpa05XPNsVFCVIJ.UvB_veo; path=/; expires=Wed, 22-Oct-25 10:34:34 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None; _cfuvid=2oAnUncnVxccXvb8Dv5zFTMqMoRJDdMHQctY5zTPVUc-1761127474679-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
 }
 ================================================================================
 
-[2025-10-22T09:10:49.843Z] ✅ [qtkvtd0om] RESPOSTA - mcgames
+[2025-10-22T10:04:35.150Z] ✅ [pz1qrhr78] RESPOSTA - mcgames
 {
-  "requestId": "qtkvtd0om",
-  "timestamp": "2025-10-22T09:10:49.843Z",
+  "requestId": "pz1qrhr78",
+  "timestamp": "2025-10-22T10:04:35.150Z",
   "siteName": "mcgames",
   "integration": "mcgames",
   "status": 200,
   "statusText": "OK",
   "headers": {
-    "date": "Wed, 22 Oct 2025 09:10:48 GMT",
+    "date": "Wed, 22 Oct 2025 10:04:34 GMT",
     "content-type": "application/json",
     "transfer-encoding": "chunked",
     "connection": "keep-alive",
     "server": "cloudflare",
-    "cf-ray": "9927dd17db87f2e4-GRU",
+    "cf-ray": "99282bdcdf9b1433-GRU",
     "cf-cache-status": "DYNAMIC",
     "access-control-allow-origin": "*",
     "cache-control": "max-age=0, no-cache, must-revalidate",
     "set-cookie": [
-      "bet7k_session=eyJpdiI6IlhBR1hBbiswa1BkcmdobU9hdHpqOVE9PSIsInZhbHVlIjoiNUQ2R3ZhNHJEWHlTK0twR2hrTXFTb1ZsZGg1d1JNb3ZGRUx5S0V0OEgvUktMdU9DZ05FWGNyMnFMd1F5TU9QMFhiSzg3bitSVU9hQjBOSGlLTTJvWkl2US92ek5US013dlc2dFJ2QUV2bXAyK05ULzlmWnZxWTg1cnNveUw1cTciLCJtYWMiOiI4YWVhNDBiZDMyZmY3MDQzODY1YzUyYzNiMmM5OWVlNzY1ZGIwYWIzZTRhNDA3N2U1N2Q0ZDk5ZmQzZTNlOWQ0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 09:10:48 GMT; Max-Age=31536000; path=/; httponly; samesite=lax",
-      "__cf_bm=bJ2srmSILOl8nnOkOm3F7DRdjUHxQd8kedTRURNmTRk-1761124248-1.0.1.1-z8gcTwc3834aj4Mm6cdShoPF06Gw_e1dLV69djjk9_TifFyB4JUaakFgDx6B9h.vD6HUTg1jk2q2533vJF1aH6rSBtpIBtCFP4NAodw3Yw8; path=/; expires=Wed, 22-Oct-25 09:40:48 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+      "bet7k_session=eyJpdiI6IkN6citYejJMZDF2YW44UUNVVU9hNVE9PSIsInZhbHVlIjoiNjQ5bmFuMTlQcGVING5CbjAyQmxKUzgrem1NaUwrKy8yNSsxemNjREF4bXY1aFVZUStEYUpNMXVidHB5aVR2ZlF3cjNxU1FjeVBTVG5KOGlySEhPU2dtZjlkNG9wTHhydE5zZzMxbkhPNWVDdTZGTFRFQnd0SlpYTnRzbHV0dkgiLCJtYWMiOiJlOWE2NGEzMmUwMTI2OTM5NTU1YmUxNTQ2MzM3ZTA5MDZlNGJkNzg1YzVmNWRkOTY3MDMzZmQ4OWZkNWNjZTEwIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:04:34 GMT; Max-Age=31536000; path=/; httponly; samesite=lax",
+      "__cf_bm=saZ9pawKI66f9IuiYEV0k0MO80EinaKAuo9Uh4ns5xA-1761127474-1.0.1.1-L_oPu4i7pAZaUpxuo9FDG0ovxZwltjg7FEmcbeZ8gfct_IuyV1mdgIwsdO18amkUHuyvI4dm_RZuokwLRmfqmdLs_rN0roz2iJZsZ3hLDu4; path=/; expires=Wed, 22-Oct-25 10:34:34 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
     ],
     "strict-transport-security": "max-age=15768000;",
     "vary": "Accept-Encoding",
-    "cf-placement": "local-",
+    "cf-placement": "local-GRU",
     "protected": "by MS23041901",
     "srv": "ip-172-16-60-179",
     "x-ratelimit-limit": "999999999",
-    "x-ratelimit-remaining": "999999843"
+    "x-ratelimit-remaining": "999999939"
   },
   "data": {
     "id": 29980963,
@@ -813,7 +815,7 @@
       "ftd_value": 650,
       "ftd_date": "2025-05-29 21:23:21",
       "created_at": "2025-05-30T00:18:43.000000Z",
-      "updated_at": "2025-10-22T09:10:47.000000Z",
+      "updated_at": "2025-10-22T10:04:33.000000Z",
       "is_active": 1,
       "phone": "13974198830",
       "commission": null,
@@ -929,7 +931,7 @@
         "user_limit_withdrawal": null,
         "user_limit_last_change": null,
         "last_verification_at": null,
-        "login_at": "2025-10-22 06:10:47",
+        "login_at": "2025-10-22 07:04:33",
         "login_attempt_qty": 3,
         "login_city": "Campinas",
         "login_state": "SP",
@@ -943,7 +945,7 @@
         "location_at": null,
         "nationalities": "[{\"id\": 1, \"value\": \"Brasileiro (a)\"}]",
         "created_at": "2025-05-30T00:18:43.000000Z",
-        "updated_at": "2025-10-22T09:10:47.000000Z",
+        "updated_at": "2025-10-22T10:04:33.000000Z",
         "id": 1979828,
         "two_factor_enabled": 0,
         "two_factor_type": null,
@@ -1005,8 +1007,1008 @@
     }
   },
   "cookies": "[Circular Reference]",
-  "sessionCookies": "bet7k_session=eyJpdiI6IlhBR1hBbiswa1BkcmdobU9hdHpqOVE9PSIsInZhbHVlIjoiNUQ2R3ZhNHJEWHlTK0twR2hrTXFTb1ZsZGg1d1JNb3ZGRUx5S0V0OEgvUktMdU9DZ05FWGNyMnFMd1F5TU9QMFhiSzg3bitSVU9hQjBOSGlLTTJvWkl2US92ek5US013dlc2dFJ2QUV2bXAyK05ULzlmWnZxWTg1cnNveUw1cTciLCJtYWMiOiI4YWVhNDBiZDMyZmY3MDQzODY1YzUyYzNiMmM5OWVlNzY1ZGIwYWIzZTRhNDA3N2U1N2Q0ZDk5ZmQzZTNlOWQ0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 09:10:48 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=bJ2srmSILOl8nnOkOm3F7DRdjUHxQd8kedTRURNmTRk-1761124248-1.0.1.1-z8gcTwc3834aj4Mm6cdShoPF06Gw_e1dLV69djjk9_TifFyB4JUaakFgDx6B9h.vD6HUTg1jk2q2533vJF1aH6rSBtpIBtCFP4NAodw3Yw8; path=/; expires=Wed, 22-Oct-25 09:40:48 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
-  "responseTime": 275
+  "sessionCookies": "bet7k_session=eyJpdiI6IkN6citYejJMZDF2YW44UUNVVU9hNVE9PSIsInZhbHVlIjoiNjQ5bmFuMTlQcGVING5CbjAyQmxKUzgrem1NaUwrKy8yNSsxemNjREF4bXY1aFVZUStEYUpNMXVidHB5aVR2ZlF3cjNxU1FjeVBTVG5KOGlySEhPU2dtZjlkNG9wTHhydE5zZzMxbkhPNWVDdTZGTFRFQnd0SlpYTnRzbHV0dkgiLCJtYWMiOiJlOWE2NGEzMmUwMTI2OTM5NTU1YmUxNTQ2MzM3ZTA5MDZlNGJkNzg1YzVmNWRkOTY3MDMzZmQ4OWZkNWNjZTEwIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:04:34 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=saZ9pawKI66f9IuiYEV0k0MO80EinaKAuo9Uh4ns5xA-1761127474-1.0.1.1-L_oPu4i7pAZaUpxuo9FDG0ovxZwltjg7FEmcbeZ8gfct_IuyV1mdgIwsdO18amkUHuyvI4dm_RZuokwLRmfqmdLs_rN0roz2iJZsZ3hLDu4; path=/; expires=Wed, 22-Oct-25 10:34:34 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 311
+}
+================================================================================
+
+[2025-10-22T10:05:18.592Z] 🚀 [vp8t70rbe] REQUISIÇÃO - mcgames
+{
+  "requestId": "vp8t70rbe",
+  "timestamp": "2025-10-22T10:05:18.592Z",
+  "siteName": "mcgames",
+  "integration": "mcgames",
+  "url": "https://mcgames.bet.br/api/auth/login",
+  "method": "post",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "login": "23597998860",
+    "email": "23597998860",
+    "password": "Mateuus.27",
+    "app_source": "web",
+    "captcha_token": ""
+  },
+  "sessionCookies": "",
+  "withCredentials": true,
+  "maxBodyLength": null
+}
+================================================================================
+
+[2025-10-22T10:05:20.575Z] ✅ [vp8t70rbe] RESPOSTA - mcgames
+{
+  "requestId": "vp8t70rbe",
+  "timestamp": "2025-10-22T10:05:20.575Z",
+  "siteName": "mcgames",
+  "integration": "mcgames",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Wed, 22 Oct 2025 10:05:19 GMT",
+    "content-type": "application/json",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "server": "cloudflare",
+    "cf-ray": "99282ce9e8397be8-GRU",
+    "cf-cache-status": "DYNAMIC",
+    "access-control-allow-origin": "*",
+    "cache-control": "max-age=0, no-cache, must-revalidate",
+    "set-cookie": [
+      "__Host-jwt_token_strict=eyJpdiI6InJFVDF6RG5SOThaR0l0amhxOU9xU3c9PSIsInZhbHVlIjoiZFVJTE1wUTl5V2ZUd3lBTVVtQWszZmxJWDU4TGdxTDhNbGxNeDFKYjlIZHBraWY5ZzZ6K2RjaUN4NDZYR0YvVFhrL0lVajBVRmIxbldLOVNGZjF0VDV5NGpjdVpWV1RUR01QSzVoN0pqOFE9IiwibWFjIjoiZThlNTVlMmQ2NDMwNTIzYWZmMTg3ZmMxMTgwZmQyNTIzYjJmMzg5NjlhZWU3MWVjYjI3NjhhOWJiMzVlYzQxMCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:19 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict",
+      "__Host-jwt_token_lax=eyJpdiI6ImxTTmpjazkyZVI1dStmbWVzVGU3b0E9PSIsInZhbHVlIjoiVjJkeVF2czVKVWJZM3ViL0hEUGdzeFBsZTNMWDBRSDNDZktON3FUZ1V2WVhjL0JOclRkSnRJSFhzK2FEM3FFNCt3RUk1RGJmZUR1NkQ3b2tMeFEvNE9YVDgwcG5GNmZ6b3pGTXJRYVkxdVU9IiwibWFjIjoiYjJhNzRhNjdkZDdmMTNlYmNiZmQ1NGU4NDhkNDhhZGZiZmJkMWEyN2Q2Yzc5MWQyMTFkYmM3YjM5MDRjMjM0MSIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:19 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax",
+      "__Host-jwt_token_none=eyJpdiI6InlTT2dRcTRBVVR4SVRINitVZFhjSXc9PSIsInZhbHVlIjoiNzMySGV6ejRmWHZVbkNpL0ZldEhWcGlIbDNTYmZXbWdqMFBYZ0tINFh4TSt2Q1dBNVVNZm1JZ2NWQytZQnM3V21uUlRLRU1jQXZtS2hRelEydU5rbVpBeDY5VSsrVVBIb0hrdXVZY3pjOWM9IiwibWFjIjoiOTdmZTQ2YTM0NWM3NjhiZGVhNjU3YzY2YmQ5NWU5ZTM2MGUyNzY0MjZiMDNkZTM5NjY3M2U1ZDEyNTViYWQ1ZCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:19 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none",
+      "bet7k_session=eyJpdiI6ImVncEtyanlybHJRc2N5RzFueUxnb1E9PSIsInZhbHVlIjoid0dZeUhaQ0pUSkV1ZVl6MDgvbHVsWXV4K1NleFV2d1pIVEN6SzBRUDFtY2tmRGpoRXF6UHd5K1dicmlzRFIrUnY5UXlGWEtyRmJqbm1lSGhKWisvYWxTTFdFUFc5NlhyVVF4RmZuQU1nby9ZK2Y2REdiRFNXSGhRbTllekV1aVciLCJtYWMiOiJhMGYxMTMwMmVlZjE3NDFjYmFkODQxN2FjZDNlNGJkYjI4OTJkZmRhNjU3ZGE1MTBkZTEzMzU2MTNiNjA1NGQ5IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:05:19 GMT; Max-Age=31536000; path=/; httponly; samesite=lax",
+      "__cf_bm=CJU1w9sR8wAMAZkrXa7D1Y._ZX0gYcuhizm7PDN695U-1761127519-1.0.1.1-Ss62cf3YLXBhBuRFt3rkh6eizp.VKuEx8rwf3UxI0PalxIQYdBrRo084CW.E0mgDJQOa9OTfbcau7GnzSmUMbcT1InpmM81zwrzbcyKoBcY; path=/; expires=Wed, 22-Oct-25 10:35:19 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None",
+      "__cf_bm=Lj6MMYuhNunSrqyHuRNRvr8Ju8XnTzW3aOXmS4M2hrQ-1761127519-1.0.1.1-lK3Yb6bdWDG17bd6XFhpGGGibrujfdlYpJ7agjhrV2n87rDzaTMQmzFFc93XbB8VaQbpion63b0QzZl9XOWc23s_9RC_ZcjRRWjrQ0bSTR4; path=/; expires=Wed, 22-Oct-25 10:35:19 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
+      "_cfuvid=CUhMkxa2nfdvroLv2YI4HPDYCNxnHTvgvYTvK0zn9xE-1761127519566-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+    ],
+    "strict-transport-security": "max-age=15768000;",
+    "vary": "Accept-Encoding",
+    "cf-placement": "local-",
+    "protected": "by MS23041901",
+    "srv": "ip-172-16-60-179",
+    "x-ratelimit-limit": "999999999",
+    "x-ratelimit-remaining": "999999972"
+  },
+  "data": {
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS1tY2dhbWVzLWJldGJyLmJzMmJldC5jb20vdjIvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTEyNzUxOSwiZXhwIjoxNzYxNzMyMzE5LCJuYmYiOjE3NjExMjc1MTksImp0aSI6IjJsQno2OEYwWUNwNWRkQkQiLCJzdWIiOiIyOTk4MTAxNCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJoYSI6IjUiLCJoYiI6Ijc1NWViOGEyMzZjYmM5MThkNzMzN2MwNjAwYzYyZmJjIiwiaGMiOiI3MDA2YTExYzY2NzViODcwMTAwNDRjMGQ3YmIxMjY4OSIsImhpIjoiYWIyY2M3Y2Q5NzY5YmZkNzBjN2Y2ZGY2NzdhZjMzNGMiLCJoZCI6IjY4NDk1N2ZkZGE1YTIwMzI3YjY3NTYzYjlkZjdmMDMyIiwiaGwiOiI4N2YzMWUzNjVlNWNkMDcyYjA1MTE1ZDRkMWJkZTc0YSIsImhmIjoiMV80MWI2ZTNjYjYyZTgyYzEzYTc1Mjc5MTAzZGM5OWFhYl8xNzYxMTI3NTE4In0.EPkT16uK0X991YI07yhDbIgDA4oam2Bh1md18vHxcwQ",
+    "token_type": "bearer",
+    "expires_in": 604800,
+    "user": {
+      "id": 29981014,
+      "name": "Mateus Rodrigues Santana",
+      "email": "muvucasbars@gmail.com",
+      "username": "072b1fa0214d80d612398aa2ec3c6d47",
+      "email_verified_at": null,
+      "token": "mcgamesbetbr_-2MpzDrMj2LTgsNgooGiDhwF4Rv5yfk95WgCQr132RWrpkQRYBs727Bnn",
+      "ftd_value": 650,
+      "ftd_date": "2025-05-29 21:23:21",
+      "created_at": "2025-05-30T00:18:43.000000Z",
+      "updated_at": "2025-10-22T10:05:18.000000Z",
+      "is_active": 1,
+      "phone": "13974198830",
+      "commission": null,
+      "manager_id": null,
+      "admin_id": null,
+      "commission_grid_id": null,
+      "affiliation_code": "e082c73f8dd4",
+      "recommended_by": null,
+      "menu_list": null,
+      "bonus_enabled": 0,
+      "first_name": "Mateus",
+      "last_name": "Santana",
+      "mother_name": "Agmar Rodrigues De Jesus",
+      "gender": 0,
+      "birth_date": "1995-09-27",
+      "cancelled_account": 0,
+      "is_test": 0,
+      "ddi": "+55",
+      "country": "BRA",
+      "currency": "BRL",
+      "language": "pt-br",
+      "timezone": "America/Sao_Paulo",
+      "address": "Sao Francisco De Assis, 3828, Casa - Tupiry",
+      "city": "Praia Grande",
+      "state": "SP",
+      "zipcode": "11724475",
+      "is_internal": 0,
+      "app_source": null,
+      "user_info": {
+        "user_id": 29981014,
+        "tc_accepted_at": "2025-05-29 21:18:44",
+        "mkt_accepted_at": "2025-05-29 21:18:44",
+        "lgpd_accepted_at": "2025-05-29 21:18:44",
+        "law_accepted_at": "2025-05-29 21:18:44",
+        "migrate_accepted_at": "2025-05-29 21:18:44",
+        "privacy_accepted_at": "2025-05-29 21:18:44",
+        "status": 1,
+        "status_updated_at": "2025-06-20 13:53:21",
+        "status_note": null,
+        "user_pause": 0,
+        "user_pause_at": null,
+        "user_exclusion": 0,
+        "user_exclusion_at": null,
+        "spa_exclusion": 0,
+        "spa_exclusion_at": null,
+        "spa_exclusion_note": null,
+        "operator_exclusion": 0,
+        "operator_exclusion_at": null,
+        "operator_exclusion_note": null,
+        "operator_exclusion_by": null,
+        "user_limit_period": null,
+        "user_limit_time": null,
+        "user_limit_time_active": 0,
+        "user_limit_time_period": null,
+        "user_limit_time_change": null,
+        "user_limit_bet": null,
+        "user_limit_bet_active": 0,
+        "user_limit_bet_period": null,
+        "user_limit_bet_change": null,
+        "user_limit_loss": null,
+        "user_limit_loss_active": 0,
+        "user_limit_loss_period": null,
+        "user_limit_loss_change": null,
+        "user_limit_deposit": null,
+        "user_limit_deposit_active": 0,
+        "user_limit_deposit_period": null,
+        "user_limit_deposit_change": null,
+        "user_limit_withdrawal": null,
+        "user_limit_last_change": null,
+        "last_verification_at": null,
+        "login_at": "2025-10-22 07:05:18",
+        "login_attempt_qty": 3,
+        "login_city": "Campinas",
+        "login_state": "SP",
+        "login_ip": "179.125.211.139",
+        "validate_email_at": "2025-05-29 23:29:22",
+        "validate_sms_at": "2025-05-29 23:31:04",
+        "kyc_validated_at": "2025-05-29 21:21:46",
+        "latitude": "-22.90556",
+        "longitude": "-47.06083",
+        "strong_password": 1,
+        "location_at": null,
+        "nationalities": "[{\"id\": 1, \"value\": \"Brasileiro (a)\"}]",
+        "created_at": "2025-05-30T00:18:43.000000Z",
+        "updated_at": "2025-10-22T10:05:18.000000Z",
+        "id": 1979828,
+        "two_factor_enabled": 0,
+        "two_factor_type": null,
+        "two_factor_at": null,
+        "login_device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+      },
+      "roles": [
+        {
+          "id": 5,
+          "name": "player",
+          "guard_name": "api",
+          "created_at": "2024-12-22T11:15:56.000000Z",
+          "updated_at": "2025-02-04T13:49:25.000000Z",
+          "pivot": {
+            "model_id": 29981014,
+            "role_id": 5,
+            "model_type": "App\\Models\\User"
+          }
+        }
+      ]
+    },
+    "userInfo": {
+      "user_id": 29981014,
+      "tc_accepted_at": "2025-05-29 21:18:44",
+      "mkt_accepted_at": "2025-05-29 21:18:44",
+      "lgpd_accepted_at": "2025-05-29 21:18:44",
+      "law_accepted_at": "2025-05-29 21:18:44",
+      "migrate_accepted_at": "2025-05-29 21:18:44",
+      "privacy_accepted_at": "2025-05-29 21:18:44",
+      "status": 1,
+      "status_updated_at": "2025-06-20 13:53:21",
+      "status_note": null,
+      "user_pause": 0,
+      "user_pause_at": null,
+      "user_exclusion": 0,
+      "user_exclusion_at": null,
+      "spa_exclusion": 0,
+      "spa_exclusion_at": null,
+      "spa_exclusion_note": null,
+      "operator_exclusion": 0,
+      "operator_exclusion_at": null,
+      "operator_exclusion_note": null,
+      "operator_exclusion_by": null,
+      "user_limit_period": null,
+      "user_limit_time": null,
+      "user_limit_time_active": 0,
+      "user_limit_time_period": null,
+      "user_limit_time_change": null,
+      "user_limit_bet": null,
+      "user_limit_bet_active": 0,
+      "user_limit_bet_period": null,
+      "user_limit_bet_change": null,
+      "user_limit_loss": null,
+      "user_limit_loss_active": 0,
+      "user_limit_loss_period": null,
+      "user_limit_loss_change": null,
+      "user_limit_deposit": null,
+      "user_limit_deposit_active": 0,
+      "user_limit_deposit_period": null,
+      "user_limit_deposit_change": null,
+      "user_limit_withdrawal": null,
+      "user_limit_last_change": null,
+      "last_verification_at": null,
+      "login_at": "2025-10-22 07:05:18",
+      "login_attempt_qty": 3,
+      "login_city": "Campinas",
+      "login_state": "SP",
+      "login_ip": "179.125.211.139",
+      "validate_email_at": "2025-05-29 23:29:22",
+      "validate_sms_at": "2025-05-29 23:31:04",
+      "kyc_validated_at": "2025-05-29 21:21:46",
+      "latitude": "-22.90556",
+      "longitude": "-47.06083",
+      "strong_password": 1,
+      "location_at": null,
+      "nationalities": "[{\"id\": 1, \"value\": \"Brasileiro (a)\"}]",
+      "created_at": "2025-05-30T00:18:43.000000Z",
+      "updated_at": "2025-10-22T10:05:18.000000Z",
+      "id": 1979828,
+      "two_factor_enabled": 0,
+      "two_factor_type": null,
+      "two_factor_at": null,
+      "login_device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+    },
+    "need_change_password": false
+  },
+  "cookies": "[Circular Reference]",
+  "sessionCookies": "__Host-jwt_token_strict=eyJpdiI6InJFVDF6RG5SOThaR0l0amhxOU9xU3c9PSIsInZhbHVlIjoiZFVJTE1wUTl5V2ZUd3lBTVVtQWszZmxJWDU4TGdxTDhNbGxNeDFKYjlIZHBraWY5ZzZ6K2RjaUN4NDZYR0YvVFhrL0lVajBVRmIxbldLOVNGZjF0VDV5NGpjdVpWV1RUR01QSzVoN0pqOFE9IiwibWFjIjoiZThlNTVlMmQ2NDMwNTIzYWZmMTg3ZmMxMTgwZmQyNTIzYjJmMzg5NjlhZWU3MWVjYjI3NjhhOWJiMzVlYzQxMCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:19 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict; __Host-jwt_token_lax=eyJpdiI6ImxTTmpjazkyZVI1dStmbWVzVGU3b0E9PSIsInZhbHVlIjoiVjJkeVF2czVKVWJZM3ViL0hEUGdzeFBsZTNMWDBRSDNDZktON3FUZ1V2WVhjL0JOclRkSnRJSFhzK2FEM3FFNCt3RUk1RGJmZUR1NkQ3b2tMeFEvNE9YVDgwcG5GNmZ6b3pGTXJRYVkxdVU9IiwibWFjIjoiYjJhNzRhNjdkZDdmMTNlYmNiZmQ1NGU4NDhkNDhhZGZiZmJkMWEyN2Q2Yzc5MWQyMTFkYmM3YjM5MDRjMjM0MSIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:19 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax; __Host-jwt_token_none=eyJpdiI6InlTT2dRcTRBVVR4SVRINitVZFhjSXc9PSIsInZhbHVlIjoiNzMySGV6ejRmWHZVbkNpL0ZldEhWcGlIbDNTYmZXbWdqMFBYZ0tINFh4TSt2Q1dBNVVNZm1JZ2NWQytZQnM3V21uUlRLRU1jQXZtS2hRelEydU5rbVpBeDY5VSsrVVBIb0hrdXVZY3pjOWM9IiwibWFjIjoiOTdmZTQ2YTM0NWM3NjhiZGVhNjU3YzY2YmQ5NWU5ZTM2MGUyNzY0MjZiMDNkZTM5NjY3M2U1ZDEyNTViYWQ1ZCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:19 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none; bet7k_session=eyJpdiI6ImVncEtyanlybHJRc2N5RzFueUxnb1E9PSIsInZhbHVlIjoid0dZeUhaQ0pUSkV1ZVl6MDgvbHVsWXV4K1NleFV2d1pIVEN6SzBRUDFtY2tmRGpoRXF6UHd5K1dicmlzRFIrUnY5UXlGWEtyRmJqbm1lSGhKWisvYWxTTFdFUFc5NlhyVVF4RmZuQU1nby9ZK2Y2REdiRFNXSGhRbTllekV1aVciLCJtYWMiOiJhMGYxMTMwMmVlZjE3NDFjYmFkODQxN2FjZDNlNGJkYjI4OTJkZmRhNjU3ZGE1MTBkZTEzMzU2MTNiNjA1NGQ5IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:05:19 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=CJU1w9sR8wAMAZkrXa7D1Y._ZX0gYcuhizm7PDN695U-1761127519-1.0.1.1-Ss62cf3YLXBhBuRFt3rkh6eizp.VKuEx8rwf3UxI0PalxIQYdBrRo084CW.E0mgDJQOa9OTfbcau7GnzSmUMbcT1InpmM81zwrzbcyKoBcY; path=/; expires=Wed, 22-Oct-25 10:35:19 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None; __cf_bm=Lj6MMYuhNunSrqyHuRNRvr8Ju8XnTzW3aOXmS4M2hrQ-1761127519-1.0.1.1-lK3Yb6bdWDG17bd6XFhpGGGibrujfdlYpJ7agjhrV2n87rDzaTMQmzFFc93XbB8VaQbpion63b0QzZl9XOWc23s_9RC_ZcjRRWjrQ0bSTR4; path=/; expires=Wed, 22-Oct-25 10:35:19 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=CUhMkxa2nfdvroLv2YI4HPDYCNxnHTvgvYTvK0zn9xE-1761127519566-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 1983
+}
+================================================================================
+
+[2025-10-22T10:05:20.575Z] 🚀 [jdffy78ho] REQUISIÇÃO - mcgames
+{
+  "requestId": "jdffy78ho",
+  "timestamp": "2025-10-22T10:05:20.575Z",
+  "siteName": "mcgames",
+  "integration": "mcgames",
+  "url": "https://mcgames.bet.br/api/alternar/token",
+  "method": "get",
+  "headers": {
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS1tY2dhbWVzLWJldGJyLmJzMmJldC5jb20vdjIvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTEyNzUxOSwiZXhwIjoxNzYxNzMyMzE5LCJuYmYiOjE3NjExMjc1MTksImp0aSI6IjJsQno2OEYwWUNwNWRkQkQiLCJzdWIiOiIyOTk4MTAxNCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJoYSI6IjUiLCJoYiI6Ijc1NWViOGEyMzZjYmM5MThkNzMzN2MwNjAwYzYyZmJjIiwiaGMiOiI3MDA2YTExYzY2NzViODcwMTAwNDRjMGQ3YmIxMjY4OSIsImhpIjoiYWIyY2M3Y2Q5NzY5YmZkNzBjN2Y2ZGY2NzdhZjMzNGMiLCJoZCI6IjY4NDk1N2ZkZGE1YTIwMzI3YjY3NTYzYjlkZjdmMDMyIiwiaGwiOiI4N2YzMWUzNjVlNWNkMDcyYjA1MTE1ZDRkMWJkZTc0YSIsImhmIjoiMV80MWI2ZTNjYjYyZTgyYzEzYTc1Mjc5MTAzZGM5OWFhYl8xNzYxMTI3NTE4In0.EPkT16uK0X991YI07yhDbIgDA4oam2Bh1md18vHxcwQ",
+    "Cookie": "__Host-jwt_token_strict=eyJpdiI6InJFVDF6RG5SOThaR0l0amhxOU9xU3c9PSIsInZhbHVlIjoiZFVJTE1wUTl5V2ZUd3lBTVVtQWszZmxJWDU4TGdxTDhNbGxNeDFKYjlIZHBraWY5ZzZ6K2RjaUN4NDZYR0YvVFhrL0lVajBVRmIxbldLOVNGZjF0VDV5NGpjdVpWV1RUR01QSzVoN0pqOFE9IiwibWFjIjoiZThlNTVlMmQ2NDMwNTIzYWZmMTg3ZmMxMTgwZmQyNTIzYjJmMzg5NjlhZWU3MWVjYjI3NjhhOWJiMzVlYzQxMCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:19 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict; __Host-jwt_token_lax=eyJpdiI6ImxTTmpjazkyZVI1dStmbWVzVGU3b0E9PSIsInZhbHVlIjoiVjJkeVF2czVKVWJZM3ViL0hEUGdzeFBsZTNMWDBRSDNDZktON3FUZ1V2WVhjL0JOclRkSnRJSFhzK2FEM3FFNCt3RUk1RGJmZUR1NkQ3b2tMeFEvNE9YVDgwcG5GNmZ6b3pGTXJRYVkxdVU9IiwibWFjIjoiYjJhNzRhNjdkZDdmMTNlYmNiZmQ1NGU4NDhkNDhhZGZiZmJkMWEyN2Q2Yzc5MWQyMTFkYmM3YjM5MDRjMjM0MSIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:19 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax; __Host-jwt_token_none=eyJpdiI6InlTT2dRcTRBVVR4SVRINitVZFhjSXc9PSIsInZhbHVlIjoiNzMySGV6ejRmWHZVbkNpL0ZldEhWcGlIbDNTYmZXbWdqMFBYZ0tINFh4TSt2Q1dBNVVNZm1JZ2NWQytZQnM3V21uUlRLRU1jQXZtS2hRelEydU5rbVpBeDY5VSsrVVBIb0hrdXVZY3pjOWM9IiwibWFjIjoiOTdmZTQ2YTM0NWM3NjhiZGVhNjU3YzY2YmQ5NWU5ZTM2MGUyNzY0MjZiMDNkZTM5NjY3M2U1ZDEyNTViYWQ1ZCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:19 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none; bet7k_session=eyJpdiI6ImVncEtyanlybHJRc2N5RzFueUxnb1E9PSIsInZhbHVlIjoid0dZeUhaQ0pUSkV1ZVl6MDgvbHVsWXV4K1NleFV2d1pIVEN6SzBRUDFtY2tmRGpoRXF6UHd5K1dicmlzRFIrUnY5UXlGWEtyRmJqbm1lSGhKWisvYWxTTFdFUFc5NlhyVVF4RmZuQU1nby9ZK2Y2REdiRFNXSGhRbTllekV1aVciLCJtYWMiOiJhMGYxMTMwMmVlZjE3NDFjYmFkODQxN2FjZDNlNGJkYjI4OTJkZmRhNjU3ZGE1MTBkZTEzMzU2MTNiNjA1NGQ5IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:05:19 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=CJU1w9sR8wAMAZkrXa7D1Y._ZX0gYcuhizm7PDN695U-1761127519-1.0.1.1-Ss62cf3YLXBhBuRFt3rkh6eizp.VKuEx8rwf3UxI0PalxIQYdBrRo084CW.E0mgDJQOa9OTfbcau7GnzSmUMbcT1InpmM81zwrzbcyKoBcY; path=/; expires=Wed, 22-Oct-25 10:35:19 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None; __cf_bm=Lj6MMYuhNunSrqyHuRNRvr8Ju8XnTzW3aOXmS4M2hrQ-1761127519-1.0.1.1-lK3Yb6bdWDG17bd6XFhpGGGibrujfdlYpJ7agjhrV2n87rDzaTMQmzFFc93XbB8VaQbpion63b0QzZl9XOWc23s_9RC_ZcjRRWjrQ0bSTR4; path=/; expires=Wed, 22-Oct-25 10:35:19 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=CUhMkxa2nfdvroLv2YI4HPDYCNxnHTvgvYTvK0zn9xE-1761127519566-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+  },
+  "sessionCookies": "__Host-jwt_token_strict=eyJpdiI6InJFVDF6RG5SOThaR0l0amhxOU9xU3c9PSIsInZhbHVlIjoiZFVJTE1wUTl5V2ZUd3lBTVVtQWszZmxJWDU4TGdxTDhNbGxNeDFKYjlIZHBraWY5ZzZ6K2RjaUN4NDZYR0YvVFhrL0lVajBVRmIxbldLOVNGZjF0VDV5NGpjdVpWV1RUR01QSzVoN0pqOFE9IiwibWFjIjoiZThlNTVlMmQ2NDMwNTIzYWZmMTg3ZmMxMTgwZmQyNTIzYjJmMzg5NjlhZWU3MWVjYjI3NjhhOWJiMzVlYzQxMCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:19 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict; __Host-jwt_token_lax=eyJpdiI6ImxTTmpjazkyZVI1dStmbWVzVGU3b0E9PSIsInZhbHVlIjoiVjJkeVF2czVKVWJZM3ViL0hEUGdzeFBsZTNMWDBRSDNDZktON3FUZ1V2WVhjL0JOclRkSnRJSFhzK2FEM3FFNCt3RUk1RGJmZUR1NkQ3b2tMeFEvNE9YVDgwcG5GNmZ6b3pGTXJRYVkxdVU9IiwibWFjIjoiYjJhNzRhNjdkZDdmMTNlYmNiZmQ1NGU4NDhkNDhhZGZiZmJkMWEyN2Q2Yzc5MWQyMTFkYmM3YjM5MDRjMjM0MSIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:19 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax; __Host-jwt_token_none=eyJpdiI6InlTT2dRcTRBVVR4SVRINitVZFhjSXc9PSIsInZhbHVlIjoiNzMySGV6ejRmWHZVbkNpL0ZldEhWcGlIbDNTYmZXbWdqMFBYZ0tINFh4TSt2Q1dBNVVNZm1JZ2NWQytZQnM3V21uUlRLRU1jQXZtS2hRelEydU5rbVpBeDY5VSsrVVBIb0hrdXVZY3pjOWM9IiwibWFjIjoiOTdmZTQ2YTM0NWM3NjhiZGVhNjU3YzY2YmQ5NWU5ZTM2MGUyNzY0MjZiMDNkZTM5NjY3M2U1ZDEyNTViYWQ1ZCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:19 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none; bet7k_session=eyJpdiI6ImVncEtyanlybHJRc2N5RzFueUxnb1E9PSIsInZhbHVlIjoid0dZeUhaQ0pUSkV1ZVl6MDgvbHVsWXV4K1NleFV2d1pIVEN6SzBRUDFtY2tmRGpoRXF6UHd5K1dicmlzRFIrUnY5UXlGWEtyRmJqbm1lSGhKWisvYWxTTFdFUFc5NlhyVVF4RmZuQU1nby9ZK2Y2REdiRFNXSGhRbTllekV1aVciLCJtYWMiOiJhMGYxMTMwMmVlZjE3NDFjYmFkODQxN2FjZDNlNGJkYjI4OTJkZmRhNjU3ZGE1MTBkZTEzMzU2MTNiNjA1NGQ5IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:05:19 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=CJU1w9sR8wAMAZkrXa7D1Y._ZX0gYcuhizm7PDN695U-1761127519-1.0.1.1-Ss62cf3YLXBhBuRFt3rkh6eizp.VKuEx8rwf3UxI0PalxIQYdBrRo084CW.E0mgDJQOa9OTfbcau7GnzSmUMbcT1InpmM81zwrzbcyKoBcY; path=/; expires=Wed, 22-Oct-25 10:35:19 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None; __cf_bm=Lj6MMYuhNunSrqyHuRNRvr8Ju8XnTzW3aOXmS4M2hrQ-1761127519-1.0.1.1-lK3Yb6bdWDG17bd6XFhpGGGibrujfdlYpJ7agjhrV2n87rDzaTMQmzFFc93XbB8VaQbpion63b0QzZl9XOWc23s_9RC_ZcjRRWjrQ0bSTR4; path=/; expires=Wed, 22-Oct-25 10:35:19 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=CUhMkxa2nfdvroLv2YI4HPDYCNxnHTvgvYTvK0zn9xE-1761127519566-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+}
+================================================================================
+
+[2025-10-22T10:05:22.643Z] ✅ [jdffy78ho] RESPOSTA - mcgames
+{
+  "requestId": "jdffy78ho",
+  "timestamp": "2025-10-22T10:05:22.643Z",
+  "siteName": "mcgames",
+  "integration": "mcgames",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Wed, 22 Oct 2025 10:05:21 GMT",
+    "content-type": "application/json",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "server": "cloudflare",
+    "cf-ray": "99282cf55cfa7be8-GRU",
+    "cf-cache-status": "DYNAMIC",
+    "access-control-allow-origin": "*",
+    "cache-control": "max-age=0, no-cache, must-revalidate",
+    "set-cookie": [
+      "bet7k_session=eyJpdiI6IkNWdFRkNU0xZEJDbml2ZWxsMnNnOVE9PSIsInZhbHVlIjoiTklYZXdMWjJXL0k2ZTZyWXJteEM2Vk5JaTI5M2Y1VVhycjhQSDFhalR2RHNIZWJYNDRsZUJyTEtRMnJzUTFVUFJrbXd4RGorQlZXdmRQeW9HQUMva21DaEV4NmZheFkydWJOSHZmN0E2MjNEQTZ2WEJLUnNPUGozSFZjbkZVYm0iLCJtYWMiOiI4Y2I4NTE0MzdiMjEzMTJiODJjN2EwYzJjNDViYTA0ZDVkNWJiNDEwMDA5NzhjNzhhYjg3NDllYTQ4MDhiMmM0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:05:21 GMT; Max-Age=31536000; path=/; httponly; samesite=lax",
+      "__cf_bm=TtHZ5nmiDPzCuh8XurXpeondOr9TL9zyC.W7xPjju2M-1761127521-1.0.1.1-dfjBz2RjcwNhFEduIaJEeaLQCO13MaVt6GS15GuZ5.XrvQt8zBEaU25j0Lhj5sswfl4V7Gm.P22C15.Gxvg5FUrQ7OkUyxrMbBERxOg6aJ0; path=/; expires=Wed, 22-Oct-25 10:35:21 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+    ],
+    "strict-transport-security": "max-age=15768000;",
+    "vary": "Accept-Encoding",
+    "cf-placement": "local-",
+    "protected": "by MS23041901",
+    "srv": "ip-172-16-60-179",
+    "x-ratelimit-limit": "999999999",
+    "x-ratelimit-remaining": "999999955"
+  },
+  "data": {
+    "token": "mcgamesbetbr-fa314238884cb3e1000fff0805fc1ce13db54fd99bcfe1a69856c00ed86a64c6"
+  },
+  "cookies": "[Circular Reference]",
+  "sessionCookies": "bet7k_session=eyJpdiI6IkNWdFRkNU0xZEJDbml2ZWxsMnNnOVE9PSIsInZhbHVlIjoiTklYZXdMWjJXL0k2ZTZyWXJteEM2Vk5JaTI5M2Y1VVhycjhQSDFhalR2RHNIZWJYNDRsZUJyTEtRMnJzUTFVUFJrbXd4RGorQlZXdmRQeW9HQUMva21DaEV4NmZheFkydWJOSHZmN0E2MjNEQTZ2WEJLUnNPUGozSFZjbkZVYm0iLCJtYWMiOiI4Y2I4NTE0MzdiMjEzMTJiODJjN2EwYzJjNDViYTA0ZDVkNWJiNDEwMDA5NzhjNzhhYjg3NDllYTQ4MDhiMmM0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:05:21 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=TtHZ5nmiDPzCuh8XurXpeondOr9TL9zyC.W7xPjju2M-1761127521-1.0.1.1-dfjBz2RjcwNhFEduIaJEeaLQCO13MaVt6GS15GuZ5.XrvQt8zBEaU25j0Lhj5sswfl4V7Gm.P22C15.Gxvg5FUrQ7OkUyxrMbBERxOg6aJ0; path=/; expires=Wed, 22-Oct-25 10:35:21 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 2068
+}
+================================================================================
+
+[2025-10-22T10:05:22.645Z] 🚀 [717oki93q] REQUISIÇÃO - mcgames
+{
+  "requestId": "717oki93q",
+  "timestamp": "2025-10-22T10:05:22.645Z",
+  "siteName": "mcgames",
+  "integration": "mcgames",
+  "url": "https://sb2auth-altenar2.biahosted.com/api/WidgetAuth/SignIn",
+  "method": "post",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Cookie": "bet7k_session=eyJpdiI6IkNWdFRkNU0xZEJDbml2ZWxsMnNnOVE9PSIsInZhbHVlIjoiTklYZXdMWjJXL0k2ZTZyWXJteEM2Vk5JaTI5M2Y1VVhycjhQSDFhalR2RHNIZWJYNDRsZUJyTEtRMnJzUTFVUFJrbXd4RGorQlZXdmRQeW9HQUMva21DaEV4NmZheFkydWJOSHZmN0E2MjNEQTZ2WEJLUnNPUGozSFZjbkZVYm0iLCJtYWMiOiI4Y2I4NTE0MzdiMjEzMTJiODJjN2EwYzJjNDViYTA0ZDVkNWJiNDEwMDA5NzhjNzhhYjg3NDllYTQ4MDhiMmM0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:05:21 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=TtHZ5nmiDPzCuh8XurXpeondOr9TL9zyC.W7xPjju2M-1761127521-1.0.1.1-dfjBz2RjcwNhFEduIaJEeaLQCO13MaVt6GS15GuZ5.XrvQt8zBEaU25j0Lhj5sswfl4V7Gm.P22C15.Gxvg5FUrQ7OkUyxrMbBERxOg6aJ0; path=/; expires=Wed, 22-Oct-25 10:35:21 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+  },
+  "body": {
+    "culture": "pt-BR",
+    "timezoneOffset": 180,
+    "integration": "mcgames2",
+    "deviceType": 1,
+    "numFormat": "en-GB",
+    "countryCode": "BR",
+    "token": "mcgamesbetbr-fa314238884cb3e1000fff0805fc1ce13db54fd99bcfe1a69856c00ed86a64c6"
+  },
+  "sessionCookies": "bet7k_session=eyJpdiI6IkNWdFRkNU0xZEJDbml2ZWxsMnNnOVE9PSIsInZhbHVlIjoiTklYZXdMWjJXL0k2ZTZyWXJteEM2Vk5JaTI5M2Y1VVhycjhQSDFhalR2RHNIZWJYNDRsZUJyTEtRMnJzUTFVUFJrbXd4RGorQlZXdmRQeW9HQUMva21DaEV4NmZheFkydWJOSHZmN0E2MjNEQTZ2WEJLUnNPUGozSFZjbkZVYm0iLCJtYWMiOiI4Y2I4NTE0MzdiMjEzMTJiODJjN2EwYzJjNDViYTA0ZDVkNWJiNDEwMDA5NzhjNzhhYjg3NDllYTQ4MDhiMmM0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:05:21 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=TtHZ5nmiDPzCuh8XurXpeondOr9TL9zyC.W7xPjju2M-1761127521-1.0.1.1-dfjBz2RjcwNhFEduIaJEeaLQCO13MaVt6GS15GuZ5.XrvQt8zBEaU25j0Lhj5sswfl4V7Gm.P22C15.Gxvg5FUrQ7OkUyxrMbBERxOg6aJ0; path=/; expires=Wed, 22-Oct-25 10:35:21 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+}
+================================================================================
+
+[2025-10-22T10:05:23.069Z] ✅ [717oki93q] RESPOSTA - mcgames
+{
+  "requestId": "717oki93q",
+  "timestamp": "2025-10-22T10:05:23.069Z",
+  "siteName": "mcgames",
+  "integration": "mcgames",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "server": "nginx",
+    "date": "Wed, 22 Oct 2025 10:05:21 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "733",
+    "access-control-allow-origin": "*",
+    "strict-transport-security": "max-age=15552000",
+    "via": "1.1 google",
+    "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+  },
+  "data": {
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb25maWd1cmF0aW9uSWQiOiIxMiIsIlBlcnNvblR5cGUiOiIzIiwiUGVyc29uSWQiOiI1NDk3NTgzOCIsIlVzZXJOYW1lIjoibWNnYW1lc2JldGJyXzI5OTgxMDE0IiwiTG9naW5JZCI6IjYyOTcxNzAyIiwiQ3VycmVuY3lTaWduIjoiUiQiLCJNaW5Cb251c1ByaWNlIjoiMS4zIiwiQm9udXNUZW1wbGF0ZUlkIjoiMzAxIiwiQ3VycmVuY3lJZCI6Ijk4NiIsIkN1cnJlbmN5Q29kZSI6IkJSTCIsIkNvdW50cnlDb2RlIjoiQlIiLCJCcmFuZElkIjoiNzgwIiwiQ2xpZW50SVAiOiIxNzkuMTI1LjIxMS4xMzkiLCJleHAiOjE3NjExMjg0MjEsImlzcyI6IlNCMiIsImF1ZCI6IlNCMiJ9.QR-2Ow3GT-sXD5VXMJIHzorClDb0fKp5aKuRMhpWh_U",
+    "currency": "BRL",
+    "isUserLocked": false,
+    "isAgency": false,
+    "currencySign": "R$",
+    "currencyId": 986,
+    "currencyDisplay": 0,
+    "encryptedPlayerId": "e+ja10+xFoEs+4/cDvJNwg==",
+    "regDate": "2025-05-30T00:22:00.21"
+  },
+  "sessionCookies": "bet7k_session=eyJpdiI6IkNWdFRkNU0xZEJDbml2ZWxsMnNnOVE9PSIsInZhbHVlIjoiTklYZXdMWjJXL0k2ZTZyWXJteEM2Vk5JaTI5M2Y1VVhycjhQSDFhalR2RHNIZWJYNDRsZUJyTEtRMnJzUTFVUFJrbXd4RGorQlZXdmRQeW9HQUMva21DaEV4NmZheFkydWJOSHZmN0E2MjNEQTZ2WEJLUnNPUGozSFZjbkZVYm0iLCJtYWMiOiI4Y2I4NTE0MzdiMjEzMTJiODJjN2EwYzJjNDViYTA0ZDVkNWJiNDEwMDA5NzhjNzhhYjg3NDllYTQ4MDhiMmM0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:05:21 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=TtHZ5nmiDPzCuh8XurXpeondOr9TL9zyC.W7xPjju2M-1761127521-1.0.1.1-dfjBz2RjcwNhFEduIaJEeaLQCO13MaVt6GS15GuZ5.XrvQt8zBEaU25j0Lhj5sswfl4V7Gm.P22C15.Gxvg5FUrQ7OkUyxrMbBERxOg6aJ0; path=/; expires=Wed, 22-Oct-25 10:35:21 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 424
+}
+================================================================================
+
+[2025-10-22T10:05:23.097Z] 🚀 [i0clgn67g] REQUISIÇÃO - mcgames
+{
+  "requestId": "i0clgn67g",
+  "timestamp": "2025-10-22T10:05:23.097Z",
+  "siteName": "mcgames",
+  "integration": "mcgames",
+  "url": "https://sb2betgateway-altenar2.biahosted.com/api/widget/placeWidget",
+  "method": "post",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb25maWd1cmF0aW9uSWQiOiIxMiIsIlBlcnNvblR5cGUiOiIzIiwiUGVyc29uSWQiOiI1NDk3NTgzOCIsIlVzZXJOYW1lIjoibWNnYW1lc2JldGJyXzI5OTgxMDE0IiwiTG9naW5JZCI6IjYyOTcxNzAyIiwiQ3VycmVuY3lTaWduIjoiUiQiLCJNaW5Cb251c1ByaWNlIjoiMS4zIiwiQm9udXNUZW1wbGF0ZUlkIjoiMzAxIiwiQ3VycmVuY3lJZCI6Ijk4NiIsIkN1cnJlbmN5Q29kZSI6IkJSTCIsIkNvdW50cnlDb2RlIjoiQlIiLCJCcmFuZElkIjoiNzgwIiwiQ2xpZW50SVAiOiIxNzkuMTI1LjIxMS4xMzkiLCJleHAiOjE3NjExMjg0MjEsImlzcyI6IlNCMiIsImF1ZCI6IlNCMiJ9.QR-2Ow3GT-sXD5VXMJIHzorClDb0fKp5aKuRMhpWh_U",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Cookie": "bet7k_session=eyJpdiI6IkNWdFRkNU0xZEJDbml2ZWxsMnNnOVE9PSIsInZhbHVlIjoiTklYZXdMWjJXL0k2ZTZyWXJteEM2Vk5JaTI5M2Y1VVhycjhQSDFhalR2RHNIZWJYNDRsZUJyTEtRMnJzUTFVUFJrbXd4RGorQlZXdmRQeW9HQUMva21DaEV4NmZheFkydWJOSHZmN0E2MjNEQTZ2WEJLUnNPUGozSFZjbkZVYm0iLCJtYWMiOiI4Y2I4NTE0MzdiMjEzMTJiODJjN2EwYzJjNDViYTA0ZDVkNWJiNDEwMDA5NzhjNzhhYjg3NDllYTQ4MDhiMmM0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:05:21 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=TtHZ5nmiDPzCuh8XurXpeondOr9TL9zyC.W7xPjju2M-1761127521-1.0.1.1-dfjBz2RjcwNhFEduIaJEeaLQCO13MaVt6GS15GuZ5.XrvQt8zBEaU25j0Lhj5sswfl4V7Gm.P22C15.Gxvg5FUrQ7OkUyxrMbBERxOg6aJ0; path=/; expires=Wed, 22-Oct-25 10:35:21 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+  },
+  "body": {
+    "culture": "pt-BR",
+    "timezoneOffset": 180,
+    "integration": "mcgames2",
+    "deviceType": 1,
+    "numFormat": "en-GB",
+    "countryCode": "BR",
+    "betType": 0,
+    "isAutoCharge": false,
+    "stakes": [
+      1
+    ],
+    "oddsChangeAction": 1,
+    "betMarkets": [
+      {
+        "id": 14083496,
+        "isBanker": false,
+        "dbId": 10,
+        "sportName": "Futebol",
+        "rC": false,
+        "eventName": "Flamengo vs. Racing Club",
+        "catName": "Américas",
+        "champName": "Copa Libertadores",
+        "sportTypeId": 1,
+        "odds": [
+          {
+            "id": 2911669708,
+            "marketId": 1189183450,
+            "price": 4.3334,
+            "marketName": "Vencedor do encontro",
+            "marketTypeId": 1,
+            "mostBalanced": false,
+            "selectionTypeId": 1,
+            "selectionName": "Empate",
+            "widgetInfo": {
+              "widget": 12,
+              "page": 3,
+              "tabIndex": 3
+            }
+          }
+        ]
+      }
+    ],
+    "eachWays": [
+      false
+    ],
+    "requestId": "AkeKTPv8yAYZRqbVZyZop5",
+    "confirmedByClient": false,
+    "device": 0
+  },
+  "sessionCookies": "bet7k_session=eyJpdiI6IkNWdFRkNU0xZEJDbml2ZWxsMnNnOVE9PSIsInZhbHVlIjoiTklYZXdMWjJXL0k2ZTZyWXJteEM2Vk5JaTI5M2Y1VVhycjhQSDFhalR2RHNIZWJYNDRsZUJyTEtRMnJzUTFVUFJrbXd4RGorQlZXdmRQeW9HQUMva21DaEV4NmZheFkydWJOSHZmN0E2MjNEQTZ2WEJLUnNPUGozSFZjbkZVYm0iLCJtYWMiOiI4Y2I4NTE0MzdiMjEzMTJiODJjN2EwYzJjNDViYTA0ZDVkNWJiNDEwMDA5NzhjNzhhYjg3NDllYTQ4MDhiMmM0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:05:21 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=TtHZ5nmiDPzCuh8XurXpeondOr9TL9zyC.W7xPjju2M-1761127521-1.0.1.1-dfjBz2RjcwNhFEduIaJEeaLQCO13MaVt6GS15GuZ5.XrvQt8zBEaU25j0Lhj5sswfl4V7Gm.P22C15.Gxvg5FUrQ7OkUyxrMbBERxOg6aJ0; path=/; expires=Wed, 22-Oct-25 10:35:21 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+}
+================================================================================
+
+[2025-10-22T10:05:23.595Z] ✅ [i0clgn67g] RESPOSTA - mcgames
+{
+  "requestId": "i0clgn67g",
+  "timestamp": "2025-10-22T10:05:23.595Z",
+  "siteName": "mcgames",
+  "integration": "mcgames",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "server": "nginx",
+    "date": "Wed, 22 Oct 2025 10:05:22 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "26",
+    "access-control-allow-origin": "*",
+    "strict-transport-security": "max-age=15552000",
+    "via": "1.1 google",
+    "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+  },
+  "data": {
+    "error": {
+      "errorType": 15
+    }
+  },
+  "sessionCookies": "bet7k_session=eyJpdiI6IkNWdFRkNU0xZEJDbml2ZWxsMnNnOVE9PSIsInZhbHVlIjoiTklYZXdMWjJXL0k2ZTZyWXJteEM2Vk5JaTI5M2Y1VVhycjhQSDFhalR2RHNIZWJYNDRsZUJyTEtRMnJzUTFVUFJrbXd4RGorQlZXdmRQeW9HQUMva21DaEV4NmZheFkydWJOSHZmN0E2MjNEQTZ2WEJLUnNPUGozSFZjbkZVYm0iLCJtYWMiOiI4Y2I4NTE0MzdiMjEzMTJiODJjN2EwYzJjNDViYTA0ZDVkNWJiNDEwMDA5NzhjNzhhYjg3NDllYTQ4MDhiMmM0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:05:21 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=TtHZ5nmiDPzCuh8XurXpeondOr9TL9zyC.W7xPjju2M-1761127521-1.0.1.1-dfjBz2RjcwNhFEduIaJEeaLQCO13MaVt6GS15GuZ5.XrvQt8zBEaU25j0Lhj5sswfl4V7Gm.P22C15.Gxvg5FUrQ7OkUyxrMbBERxOg6aJ0; path=/; expires=Wed, 22-Oct-25 10:35:21 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 498
+}
+================================================================================
+
+[2025-10-22T10:05:23.596Z] 🚀 [y6n3dys3c] REQUISIÇÃO - mcgames
+{
+  "requestId": "y6n3dys3c",
+  "timestamp": "2025-10-22T10:05:23.596Z",
+  "siteName": "mcgames",
+  "integration": "mcgames",
+  "url": "https://mcgames.bet.br/api/auth/login",
+  "method": "post",
+  "headers": {
+    "Content-Type": "application/json",
+    "Cookie": "bet7k_session=eyJpdiI6IkNWdFRkNU0xZEJDbml2ZWxsMnNnOVE9PSIsInZhbHVlIjoiTklYZXdMWjJXL0k2ZTZyWXJteEM2Vk5JaTI5M2Y1VVhycjhQSDFhalR2RHNIZWJYNDRsZUJyTEtRMnJzUTFVUFJrbXd4RGorQlZXdmRQeW9HQUMva21DaEV4NmZheFkydWJOSHZmN0E2MjNEQTZ2WEJLUnNPUGozSFZjbkZVYm0iLCJtYWMiOiI4Y2I4NTE0MzdiMjEzMTJiODJjN2EwYzJjNDViYTA0ZDVkNWJiNDEwMDA5NzhjNzhhYjg3NDllYTQ4MDhiMmM0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:05:21 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=TtHZ5nmiDPzCuh8XurXpeondOr9TL9zyC.W7xPjju2M-1761127521-1.0.1.1-dfjBz2RjcwNhFEduIaJEeaLQCO13MaVt6GS15GuZ5.XrvQt8zBEaU25j0Lhj5sswfl4V7Gm.P22C15.Gxvg5FUrQ7OkUyxrMbBERxOg6aJ0; path=/; expires=Wed, 22-Oct-25 10:35:21 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+  },
+  "body": {
+    "login": "23597998860",
+    "email": "23597998860",
+    "password": "Mateuus.27",
+    "app_source": "web",
+    "captcha_token": ""
+  },
+  "sessionCookies": "bet7k_session=eyJpdiI6IkNWdFRkNU0xZEJDbml2ZWxsMnNnOVE9PSIsInZhbHVlIjoiTklYZXdMWjJXL0k2ZTZyWXJteEM2Vk5JaTI5M2Y1VVhycjhQSDFhalR2RHNIZWJYNDRsZUJyTEtRMnJzUTFVUFJrbXd4RGorQlZXdmRQeW9HQUMva21DaEV4NmZheFkydWJOSHZmN0E2MjNEQTZ2WEJLUnNPUGozSFZjbkZVYm0iLCJtYWMiOiI4Y2I4NTE0MzdiMjEzMTJiODJjN2EwYzJjNDViYTA0ZDVkNWJiNDEwMDA5NzhjNzhhYjg3NDllYTQ4MDhiMmM0IiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:05:21 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=TtHZ5nmiDPzCuh8XurXpeondOr9TL9zyC.W7xPjju2M-1761127521-1.0.1.1-dfjBz2RjcwNhFEduIaJEeaLQCO13MaVt6GS15GuZ5.XrvQt8zBEaU25j0Lhj5sswfl4V7Gm.P22C15.Gxvg5FUrQ7OkUyxrMbBERxOg6aJ0; path=/; expires=Wed, 22-Oct-25 10:35:21 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
+  "withCredentials": true,
+  "maxBodyLength": null
+}
+================================================================================
+
+[2025-10-22T10:05:25.284Z] ✅ [y6n3dys3c] RESPOSTA - mcgames
+{
+  "requestId": "y6n3dys3c",
+  "timestamp": "2025-10-22T10:05:25.284Z",
+  "siteName": "mcgames",
+  "integration": "mcgames",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Wed, 22 Oct 2025 10:05:24 GMT",
+    "content-type": "application/json",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "server": "cloudflare",
+    "cf-ray": "99282d073a877be8-GRU",
+    "cf-cache-status": "DYNAMIC",
+    "access-control-allow-origin": "*",
+    "cache-control": "max-age=0, no-cache, must-revalidate",
+    "set-cookie": [
+      "__Host-jwt_token_strict=eyJpdiI6InNDKzYrNTVObVJHRkh0MVB3UUUvdnc9PSIsInZhbHVlIjoiUEtoOU9yeWhtWDdadjJFdnFvdXlXVGYwMTVGVjVJR0VCU21HTmM2eUR0eWFuSzJ3MzZIRFVud3U0T0xVR3Bud1ZrMzM1c2dHQzJQQm5DdkRBaDAyaVZNMVpackxQVVpUQWVYVmM0emc2ZmM9IiwibWFjIjoiNmRjNGQ5YjZlNTAzYjBmOTJiODQ3YjIwYWM4ZmQ5OTVjN2YwMTNjNmFjNGE0NTNkMzgxNWQ2ZTAzM2ZiNjY3OCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:23 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict",
+      "__Host-jwt_token_lax=eyJpdiI6ImI0ZXV3UWlLZ1pYdGNqd3ZQellnTFE9PSIsInZhbHVlIjoienNKMG9GbzFMSHlGaDc2Q1NBM1VGUTZLUXcvdUJqdGQvK3YxZU44b0szRytKVExUdmhCem51ZnlEVXhGQnZpMk1PclpmR2VBaFp6UVdXYmd3SVZJYVhxbFg5dXdRSXgzSEhKYVVHZmV4QTQ9IiwibWFjIjoiYjNkOGNhYjk2MTU5YjFmMWMyOWMzMDhhZjM0ZGEwNjk3NWNjZTRmNDI0NTJlOWYwNDE5ZTNlNTU2MzQ3ZjYxNSIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:23 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax",
+      "__Host-jwt_token_none=eyJpdiI6IlRTUVozelZ6aERqbUx4L3lHS2hhN0E9PSIsInZhbHVlIjoiQUdXZlN5ancraDdiWUdWQXBReHA5TkQ1aHRMWVdsRnJGRE5YRFZYTk56NmlsS25NL2lMdjFTRzlJZFdHNW9SWnVOYkdEaUhuMThFbnE3dEJXRW03K1BKM0RFY3RPeGttTkl2TlZiZTlJdk09IiwibWFjIjoiMjA4MzM3YTkzYzllZTVlMzk2MjYxMTJhNzkzYTMxZjAzNThiMmFhNGMyNWNlODhhMmVhYjUzNGU1MjZiN2ZkNCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:23 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none",
+      "bet7k_session=eyJpdiI6ImpIMXdIZkI1RC9TdGlzWVhkUjYxdFE9PSIsInZhbHVlIjoiZG9uRlVQem5tK000RUdKUXJtTWJzUFlaZDVsRXBCeUJDV1ZRT0pEbjFkc0taQ2U2YzRlblRwSGxlckFISHB2SG0yMzNrb2taMWtqTnp0UmxORzQ0bFdIeWovWWplSUFIU3U3dDRtSXd6enU3VDY3UFAvU3BrV0JWQ0hqMnlXME0iLCJtYWMiOiI2YzY4OTFlODM0NzdkOTFjNDhiZjE5MjE5MTI1NTA1NmI3MGFhZjY0YWI0OTY3OGEwMzRiMDdhMDMxZjFmNGExIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:05:23 GMT; Max-Age=31536000; path=/; httponly; samesite=lax",
+      "__cf_bm=sJviiubgzFDdtx3tsiJonsXf0dtw06bQI5kLT2D6FxM-1761127524-1.0.1.1-xDNqOXSTv_njvbs39INajgtVfqw2Sm4Xfg6dHFAHPBdgYORuvVV_Dmk_oVuA4piQi2UbWaOQsaSyge5kobl6HaG6mokYM9iRkC0AgNov5p4; path=/; expires=Wed, 22-Oct-25 10:35:24 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None",
+      "_cfuvid=zUBt3WoylT2lMuYysI1jA__4oOyP9opXKlqPww6rDsQ-1761127524013-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+    ],
+    "strict-transport-security": "max-age=15768000;",
+    "vary": "Accept-Encoding",
+    "cf-placement": "local-",
+    "protected": "by MS23041901",
+    "srv": "ip-172-16-61-15",
+    "x-ratelimit-limit": "999999999",
+    "x-ratelimit-remaining": "999999951"
+  },
+  "data": {
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS1tY2dhbWVzLWJldGJyLmJzMmJldC5jb20vdjIvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTEyNzUyMywiZXhwIjoxNzYxNzMyMzIzLCJuYmYiOjE3NjExMjc1MjMsImp0aSI6IjNaeElwNzEwaGlWYURBcjAiLCJzdWIiOiIyOTk4MTAxNCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJoYSI6IjUiLCJoYiI6Ijg5ODMxMmI5MDE0NmEyNDI2OGJhNmJkNGE3MjM5NGMzIiwiaGMiOiI3MDA2YTExYzY2NzViODcwMTAwNDRjMGQ3YmIxMjY4OSIsImhpIjoiYWIyY2M3Y2Q5NzY5YmZkNzBjN2Y2ZGY2NzdhZjMzNGMiLCJoZCI6IjY4NDk1N2ZkZGE1YTIwMzI3YjY3NTYzYjlkZjdmMDMyIiwiaGwiOiI4N2YzMWUzNjVlNWNkMDcyYjA1MTE1ZDRkMWJkZTc0YSIsImhmIjoiMV81OGU3ZTY0MDEwMTcyNmNjNWNkN2ZmZWY3NmEzOGE1Yl8xNzYxMTI3NTIyIn0.7LEtyUAiMhQtlD6cL2V_AwdUOtjYt-786NP8BWlnxqE",
+    "token_type": "bearer",
+    "expires_in": 604800,
+    "user": {
+      "id": 29981014,
+      "name": "Mateus Rodrigues Santana",
+      "email": "muvucasbars@gmail.com",
+      "username": "072b1fa0214d80d612398aa2ec3c6d47",
+      "email_verified_at": null,
+      "token": "mcgamesbetbr_-2MpzDrMj2LTgsNgooGiDhwF4Rv5yfk95WgCQr132RWrpkQRYBs727Bnn",
+      "ftd_value": 650,
+      "ftd_date": "2025-05-29 21:23:21",
+      "created_at": "2025-05-30T00:18:43.000000Z",
+      "updated_at": "2025-10-22T10:05:22.000000Z",
+      "is_active": 1,
+      "phone": "13974198830",
+      "commission": null,
+      "manager_id": null,
+      "admin_id": null,
+      "commission_grid_id": null,
+      "affiliation_code": "e082c73f8dd4",
+      "recommended_by": null,
+      "menu_list": null,
+      "bonus_enabled": 0,
+      "first_name": "Mateus",
+      "last_name": "Santana",
+      "mother_name": "Agmar Rodrigues De Jesus",
+      "gender": 0,
+      "birth_date": "1995-09-27",
+      "cancelled_account": 0,
+      "is_test": 0,
+      "ddi": "+55",
+      "country": "BRA",
+      "currency": "BRL",
+      "language": "pt-br",
+      "timezone": "America/Sao_Paulo",
+      "address": "Sao Francisco De Assis, 3828, Casa - Tupiry",
+      "city": "Praia Grande",
+      "state": "SP",
+      "zipcode": "11724475",
+      "is_internal": 0,
+      "app_source": null,
+      "user_info": {
+        "user_id": 29981014,
+        "tc_accepted_at": "2025-05-29 21:18:44",
+        "mkt_accepted_at": "2025-05-29 21:18:44",
+        "lgpd_accepted_at": "2025-05-29 21:18:44",
+        "law_accepted_at": "2025-05-29 21:18:44",
+        "migrate_accepted_at": "2025-05-29 21:18:44",
+        "privacy_accepted_at": "2025-05-29 21:18:44",
+        "status": 1,
+        "status_updated_at": "2025-06-20 13:53:21",
+        "status_note": null,
+        "user_pause": 0,
+        "user_pause_at": null,
+        "user_exclusion": 0,
+        "user_exclusion_at": null,
+        "spa_exclusion": 0,
+        "spa_exclusion_at": null,
+        "spa_exclusion_note": null,
+        "operator_exclusion": 0,
+        "operator_exclusion_at": null,
+        "operator_exclusion_note": null,
+        "operator_exclusion_by": null,
+        "user_limit_period": null,
+        "user_limit_time": null,
+        "user_limit_time_active": 0,
+        "user_limit_time_period": null,
+        "user_limit_time_change": null,
+        "user_limit_bet": null,
+        "user_limit_bet_active": 0,
+        "user_limit_bet_period": null,
+        "user_limit_bet_change": null,
+        "user_limit_loss": null,
+        "user_limit_loss_active": 0,
+        "user_limit_loss_period": null,
+        "user_limit_loss_change": null,
+        "user_limit_deposit": null,
+        "user_limit_deposit_active": 0,
+        "user_limit_deposit_period": null,
+        "user_limit_deposit_change": null,
+        "user_limit_withdrawal": null,
+        "user_limit_last_change": null,
+        "last_verification_at": null,
+        "login_at": "2025-10-22 07:05:22",
+        "login_attempt_qty": 3,
+        "login_city": "Campinas",
+        "login_state": "SP",
+        "login_ip": "179.125.211.139",
+        "validate_email_at": "2025-05-29 23:29:22",
+        "validate_sms_at": "2025-05-29 23:31:04",
+        "kyc_validated_at": "2025-05-29 21:21:46",
+        "latitude": "-22.90556",
+        "longitude": "-47.06083",
+        "strong_password": 1,
+        "location_at": null,
+        "nationalities": "[{\"id\": 1, \"value\": \"Brasileiro (a)\"}]",
+        "created_at": "2025-05-30T00:18:43.000000Z",
+        "updated_at": "2025-10-22T10:05:22.000000Z",
+        "id": 1979828,
+        "two_factor_enabled": 0,
+        "two_factor_type": null,
+        "two_factor_at": null,
+        "login_device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+      },
+      "roles": [
+        {
+          "id": 5,
+          "name": "player",
+          "guard_name": "api",
+          "created_at": "2024-12-22T11:15:56.000000Z",
+          "updated_at": "2025-02-04T13:49:25.000000Z",
+          "pivot": {
+            "model_id": 29981014,
+            "role_id": 5,
+            "model_type": "App\\Models\\User"
+          }
+        }
+      ]
+    },
+    "userInfo": {
+      "user_id": 29981014,
+      "tc_accepted_at": "2025-05-29 21:18:44",
+      "mkt_accepted_at": "2025-05-29 21:18:44",
+      "lgpd_accepted_at": "2025-05-29 21:18:44",
+      "law_accepted_at": "2025-05-29 21:18:44",
+      "migrate_accepted_at": "2025-05-29 21:18:44",
+      "privacy_accepted_at": "2025-05-29 21:18:44",
+      "status": 1,
+      "status_updated_at": "2025-06-20 13:53:21",
+      "status_note": null,
+      "user_pause": 0,
+      "user_pause_at": null,
+      "user_exclusion": 0,
+      "user_exclusion_at": null,
+      "spa_exclusion": 0,
+      "spa_exclusion_at": null,
+      "spa_exclusion_note": null,
+      "operator_exclusion": 0,
+      "operator_exclusion_at": null,
+      "operator_exclusion_note": null,
+      "operator_exclusion_by": null,
+      "user_limit_period": null,
+      "user_limit_time": null,
+      "user_limit_time_active": 0,
+      "user_limit_time_period": null,
+      "user_limit_time_change": null,
+      "user_limit_bet": null,
+      "user_limit_bet_active": 0,
+      "user_limit_bet_period": null,
+      "user_limit_bet_change": null,
+      "user_limit_loss": null,
+      "user_limit_loss_active": 0,
+      "user_limit_loss_period": null,
+      "user_limit_loss_change": null,
+      "user_limit_deposit": null,
+      "user_limit_deposit_active": 0,
+      "user_limit_deposit_period": null,
+      "user_limit_deposit_change": null,
+      "user_limit_withdrawal": null,
+      "user_limit_last_change": null,
+      "last_verification_at": null,
+      "login_at": "2025-10-22 07:05:22",
+      "login_attempt_qty": 3,
+      "login_city": "Campinas",
+      "login_state": "SP",
+      "login_ip": "179.125.211.139",
+      "validate_email_at": "2025-05-29 23:29:22",
+      "validate_sms_at": "2025-05-29 23:31:04",
+      "kyc_validated_at": "2025-05-29 21:21:46",
+      "latitude": "-22.90556",
+      "longitude": "-47.06083",
+      "strong_password": 1,
+      "location_at": null,
+      "nationalities": "[{\"id\": 1, \"value\": \"Brasileiro (a)\"}]",
+      "created_at": "2025-05-30T00:18:43.000000Z",
+      "updated_at": "2025-10-22T10:05:22.000000Z",
+      "id": 1979828,
+      "two_factor_enabled": 0,
+      "two_factor_type": null,
+      "two_factor_at": null,
+      "login_device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+    },
+    "need_change_password": false
+  },
+  "cookies": "[Circular Reference]",
+  "sessionCookies": "__Host-jwt_token_strict=eyJpdiI6InNDKzYrNTVObVJHRkh0MVB3UUUvdnc9PSIsInZhbHVlIjoiUEtoOU9yeWhtWDdadjJFdnFvdXlXVGYwMTVGVjVJR0VCU21HTmM2eUR0eWFuSzJ3MzZIRFVud3U0T0xVR3Bud1ZrMzM1c2dHQzJQQm5DdkRBaDAyaVZNMVpackxQVVpUQWVYVmM0emc2ZmM9IiwibWFjIjoiNmRjNGQ5YjZlNTAzYjBmOTJiODQ3YjIwYWM4ZmQ5OTVjN2YwMTNjNmFjNGE0NTNkMzgxNWQ2ZTAzM2ZiNjY3OCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:23 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict; __Host-jwt_token_lax=eyJpdiI6ImI0ZXV3UWlLZ1pYdGNqd3ZQellnTFE9PSIsInZhbHVlIjoienNKMG9GbzFMSHlGaDc2Q1NBM1VGUTZLUXcvdUJqdGQvK3YxZU44b0szRytKVExUdmhCem51ZnlEVXhGQnZpMk1PclpmR2VBaFp6UVdXYmd3SVZJYVhxbFg5dXdRSXgzSEhKYVVHZmV4QTQ9IiwibWFjIjoiYjNkOGNhYjk2MTU5YjFmMWMyOWMzMDhhZjM0ZGEwNjk3NWNjZTRmNDI0NTJlOWYwNDE5ZTNlNTU2MzQ3ZjYxNSIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:23 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax; __Host-jwt_token_none=eyJpdiI6IlRTUVozelZ6aERqbUx4L3lHS2hhN0E9PSIsInZhbHVlIjoiQUdXZlN5ancraDdiWUdWQXBReHA5TkQ1aHRMWVdsRnJGRE5YRFZYTk56NmlsS25NL2lMdjFTRzlJZFdHNW9SWnVOYkdEaUhuMThFbnE3dEJXRW03K1BKM0RFY3RPeGttTkl2TlZiZTlJdk09IiwibWFjIjoiMjA4MzM3YTkzYzllZTVlMzk2MjYxMTJhNzkzYTMxZjAzNThiMmFhNGMyNWNlODhhMmVhYjUzNGU1MjZiN2ZkNCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:23 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none; bet7k_session=eyJpdiI6ImpIMXdIZkI1RC9TdGlzWVhkUjYxdFE9PSIsInZhbHVlIjoiZG9uRlVQem5tK000RUdKUXJtTWJzUFlaZDVsRXBCeUJDV1ZRT0pEbjFkc0taQ2U2YzRlblRwSGxlckFISHB2SG0yMzNrb2taMWtqTnp0UmxORzQ0bFdIeWovWWplSUFIU3U3dDRtSXd6enU3VDY3UFAvU3BrV0JWQ0hqMnlXME0iLCJtYWMiOiI2YzY4OTFlODM0NzdkOTFjNDhiZjE5MjE5MTI1NTA1NmI3MGFhZjY0YWI0OTY3OGEwMzRiMDdhMDMxZjFmNGExIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:05:23 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=sJviiubgzFDdtx3tsiJonsXf0dtw06bQI5kLT2D6FxM-1761127524-1.0.1.1-xDNqOXSTv_njvbs39INajgtVfqw2Sm4Xfg6dHFAHPBdgYORuvVV_Dmk_oVuA4piQi2UbWaOQsaSyge5kobl6HaG6mokYM9iRkC0AgNov5p4; path=/; expires=Wed, 22-Oct-25 10:35:24 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None; _cfuvid=zUBt3WoylT2lMuYysI1jA__4oOyP9opXKlqPww6rDsQ-1761127524013-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 1688
+}
+================================================================================
+
+[2025-10-22T10:05:25.284Z] 🚀 [hz6z8c7f3] REQUISIÇÃO - mcgames
+{
+  "requestId": "hz6z8c7f3",
+  "timestamp": "2025-10-22T10:05:25.284Z",
+  "siteName": "mcgames",
+  "integration": "mcgames",
+  "url": "https://mcgames.bet.br/api/users/wallet?withCurrentUser=true",
+  "method": "get",
+  "headers": {
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS1tY2dhbWVzLWJldGJyLmJzMmJldC5jb20vdjIvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTEyNzUyMywiZXhwIjoxNzYxNzMyMzIzLCJuYmYiOjE3NjExMjc1MjMsImp0aSI6IjNaeElwNzEwaGlWYURBcjAiLCJzdWIiOiIyOTk4MTAxNCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJoYSI6IjUiLCJoYiI6Ijg5ODMxMmI5MDE0NmEyNDI2OGJhNmJkNGE3MjM5NGMzIiwiaGMiOiI3MDA2YTExYzY2NzViODcwMTAwNDRjMGQ3YmIxMjY4OSIsImhpIjoiYWIyY2M3Y2Q5NzY5YmZkNzBjN2Y2ZGY2NzdhZjMzNGMiLCJoZCI6IjY4NDk1N2ZkZGE1YTIwMzI3YjY3NTYzYjlkZjdmMDMyIiwiaGwiOiI4N2YzMWUzNjVlNWNkMDcyYjA1MTE1ZDRkMWJkZTc0YSIsImhmIjoiMV81OGU3ZTY0MDEwMTcyNmNjNWNkN2ZmZWY3NmEzOGE1Yl8xNzYxMTI3NTIyIn0.7LEtyUAiMhQtlD6cL2V_AwdUOtjYt-786NP8BWlnxqE",
+    "Cookie": "__Host-jwt_token_strict=eyJpdiI6InNDKzYrNTVObVJHRkh0MVB3UUUvdnc9PSIsInZhbHVlIjoiUEtoOU9yeWhtWDdadjJFdnFvdXlXVGYwMTVGVjVJR0VCU21HTmM2eUR0eWFuSzJ3MzZIRFVud3U0T0xVR3Bud1ZrMzM1c2dHQzJQQm5DdkRBaDAyaVZNMVpackxQVVpUQWVYVmM0emc2ZmM9IiwibWFjIjoiNmRjNGQ5YjZlNTAzYjBmOTJiODQ3YjIwYWM4ZmQ5OTVjN2YwMTNjNmFjNGE0NTNkMzgxNWQ2ZTAzM2ZiNjY3OCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:23 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict; __Host-jwt_token_lax=eyJpdiI6ImI0ZXV3UWlLZ1pYdGNqd3ZQellnTFE9PSIsInZhbHVlIjoienNKMG9GbzFMSHlGaDc2Q1NBM1VGUTZLUXcvdUJqdGQvK3YxZU44b0szRytKVExUdmhCem51ZnlEVXhGQnZpMk1PclpmR2VBaFp6UVdXYmd3SVZJYVhxbFg5dXdRSXgzSEhKYVVHZmV4QTQ9IiwibWFjIjoiYjNkOGNhYjk2MTU5YjFmMWMyOWMzMDhhZjM0ZGEwNjk3NWNjZTRmNDI0NTJlOWYwNDE5ZTNlNTU2MzQ3ZjYxNSIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:23 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax; __Host-jwt_token_none=eyJpdiI6IlRTUVozelZ6aERqbUx4L3lHS2hhN0E9PSIsInZhbHVlIjoiQUdXZlN5ancraDdiWUdWQXBReHA5TkQ1aHRMWVdsRnJGRE5YRFZYTk56NmlsS25NL2lMdjFTRzlJZFdHNW9SWnVOYkdEaUhuMThFbnE3dEJXRW03K1BKM0RFY3RPeGttTkl2TlZiZTlJdk09IiwibWFjIjoiMjA4MzM3YTkzYzllZTVlMzk2MjYxMTJhNzkzYTMxZjAzNThiMmFhNGMyNWNlODhhMmVhYjUzNGU1MjZiN2ZkNCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:23 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none; bet7k_session=eyJpdiI6ImpIMXdIZkI1RC9TdGlzWVhkUjYxdFE9PSIsInZhbHVlIjoiZG9uRlVQem5tK000RUdKUXJtTWJzUFlaZDVsRXBCeUJDV1ZRT0pEbjFkc0taQ2U2YzRlblRwSGxlckFISHB2SG0yMzNrb2taMWtqTnp0UmxORzQ0bFdIeWovWWplSUFIU3U3dDRtSXd6enU3VDY3UFAvU3BrV0JWQ0hqMnlXME0iLCJtYWMiOiI2YzY4OTFlODM0NzdkOTFjNDhiZjE5MjE5MTI1NTA1NmI3MGFhZjY0YWI0OTY3OGEwMzRiMDdhMDMxZjFmNGExIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:05:23 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=sJviiubgzFDdtx3tsiJonsXf0dtw06bQI5kLT2D6FxM-1761127524-1.0.1.1-xDNqOXSTv_njvbs39INajgtVfqw2Sm4Xfg6dHFAHPBdgYORuvVV_Dmk_oVuA4piQi2UbWaOQsaSyge5kobl6HaG6mokYM9iRkC0AgNov5p4; path=/; expires=Wed, 22-Oct-25 10:35:24 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None; _cfuvid=zUBt3WoylT2lMuYysI1jA__4oOyP9opXKlqPww6rDsQ-1761127524013-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+  },
+  "sessionCookies": "__Host-jwt_token_strict=eyJpdiI6InNDKzYrNTVObVJHRkh0MVB3UUUvdnc9PSIsInZhbHVlIjoiUEtoOU9yeWhtWDdadjJFdnFvdXlXVGYwMTVGVjVJR0VCU21HTmM2eUR0eWFuSzJ3MzZIRFVud3U0T0xVR3Bud1ZrMzM1c2dHQzJQQm5DdkRBaDAyaVZNMVpackxQVVpUQWVYVmM0emc2ZmM9IiwibWFjIjoiNmRjNGQ5YjZlNTAzYjBmOTJiODQ3YjIwYWM4ZmQ5OTVjN2YwMTNjNmFjNGE0NTNkMzgxNWQ2ZTAzM2ZiNjY3OCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:23 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=strict; __Host-jwt_token_lax=eyJpdiI6ImI0ZXV3UWlLZ1pYdGNqd3ZQellnTFE9PSIsInZhbHVlIjoienNKMG9GbzFMSHlGaDc2Q1NBM1VGUTZLUXcvdUJqdGQvK3YxZU44b0szRytKVExUdmhCem51ZnlEVXhGQnZpMk1PclpmR2VBaFp6UVdXYmd3SVZJYVhxbFg5dXdRSXgzSEhKYVVHZmV4QTQ9IiwibWFjIjoiYjNkOGNhYjk2MTU5YjFmMWMyOWMzMDhhZjM0ZGEwNjk3NWNjZTRmNDI0NTJlOWYwNDE5ZTNlNTU2MzQ3ZjYxNSIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:23 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=lax; __Host-jwt_token_none=eyJpdiI6IlRTUVozelZ6aERqbUx4L3lHS2hhN0E9PSIsInZhbHVlIjoiQUdXZlN5ancraDdiWUdWQXBReHA5TkQ1aHRMWVdsRnJGRE5YRFZYTk56NmlsS25NL2lMdjFTRzlJZFdHNW9SWnVOYkdEaUhuMThFbnE3dEJXRW03K1BKM0RFY3RPeGttTkl2TlZiZTlJdk09IiwibWFjIjoiMjA4MzM3YTkzYzllZTVlMzk2MjYxMTJhNzkzYTMxZjAzNThiMmFhNGMyNWNlODhhMmVhYjUzNGU1MjZiN2ZkNCIsInRhZyI6IiJ9; expires=Mon, 04 Oct 2100 10:05:23 GMT; Max-Age=2365200000; path=/; secure; httponly; samesite=none; bet7k_session=eyJpdiI6ImpIMXdIZkI1RC9TdGlzWVhkUjYxdFE9PSIsInZhbHVlIjoiZG9uRlVQem5tK000RUdKUXJtTWJzUFlaZDVsRXBCeUJDV1ZRT0pEbjFkc0taQ2U2YzRlblRwSGxlckFISHB2SG0yMzNrb2taMWtqTnp0UmxORzQ0bFdIeWovWWplSUFIU3U3dDRtSXd6enU3VDY3UFAvU3BrV0JWQ0hqMnlXME0iLCJtYWMiOiI2YzY4OTFlODM0NzdkOTFjNDhiZjE5MjE5MTI1NTA1NmI3MGFhZjY0YWI0OTY3OGEwMzRiMDdhMDMxZjFmNGExIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:05:23 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=sJviiubgzFDdtx3tsiJonsXf0dtw06bQI5kLT2D6FxM-1761127524-1.0.1.1-xDNqOXSTv_njvbs39INajgtVfqw2Sm4Xfg6dHFAHPBdgYORuvVV_Dmk_oVuA4piQi2UbWaOQsaSyge5kobl6HaG6mokYM9iRkC0AgNov5p4; path=/; expires=Wed, 22-Oct-25 10:35:24 GMT; domain=.bs2bet.com; HttpOnly; Secure; SameSite=None; _cfuvid=zUBt3WoylT2lMuYysI1jA__4oOyP9opXKlqPww6rDsQ-1761127524013-0.0.1.1-604800000; path=/; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+}
+================================================================================
+
+[2025-10-22T10:05:25.585Z] ✅ [hz6z8c7f3] RESPOSTA - mcgames
+{
+  "requestId": "hz6z8c7f3",
+  "timestamp": "2025-10-22T10:05:25.585Z",
+  "siteName": "mcgames",
+  "integration": "mcgames",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Wed, 22 Oct 2025 10:05:24 GMT",
+    "content-type": "application/json",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "server": "cloudflare",
+    "cf-ray": "99282d11296a7be8-GRU",
+    "cf-cache-status": "DYNAMIC",
+    "access-control-allow-origin": "*",
+    "cache-control": "max-age=0, no-cache, must-revalidate",
+    "set-cookie": [
+      "bet7k_session=eyJpdiI6IjRxbWFFbFQvWnczbWNWSWd5NjFuanc9PSIsInZhbHVlIjoiUm1RQURLVG9JTzdIUEc3a1hwajRqZEdYc0F1VWRBSmUvc0JkdHNMRUZsTDhKc0NiaUNhQW1VdUF6bnZjVm8xT2VGYyt5TEwzQzhubENUb0RMV2NLMHhKbThRUWZLTkxZYkMvTnRDbXBBam8vVG1rZWZGMmZLckt3d0ROcit5VEgiLCJtYWMiOiJlNDE3NDY4YTIwZWMyZTUzZGQwOTFiMzEyYWM1YTZlNzcxYzkwZjM3Mzg2YmIzMjA1ODk3MTE3NjJkZWVjMWEyIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:05:24 GMT; Max-Age=31536000; path=/; httponly; samesite=lax",
+      "__cf_bm=v5X1PpqPQG2NQ6CiDOSDEGE2szK8Lk80czKuPDoWmsE-1761127524-1.0.1.1-TkYGaDZ3j63xDKMxf6Ay1DCRjMbxCRPYVdiDpczBH6dfriEqEp_Q.Gj_Brlt4y0RrMUU1TVZQfkzhFBKBHzHToVSBPICFMe9msHQBsq4bJY; path=/; expires=Wed, 22-Oct-25 10:35:24 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None"
+    ],
+    "strict-transport-security": "max-age=15768000;",
+    "vary": "Accept-Encoding",
+    "cf-placement": "local-",
+    "protected": "by MS23041901",
+    "srv": "ip-172-16-61-15",
+    "x-ratelimit-limit": "999999999",
+    "x-ratelimit-remaining": "999999949"
+  },
+  "data": {
+    "id": 29980963,
+    "balance": 0,
+    "credit": 0,
+    "available_value": 0,
+    "user_id": 29981014,
+    "created_at": "2025-05-30T00:18:43.000000Z",
+    "updated_at": "2025-06-20T18:05:23.000000Z",
+    "bonus": 0,
+    "max_withdraw_amount": null,
+    "withdraw_enabled": 1,
+    "rollover_is_active": 0,
+    "rollover_amount": 0,
+    "withdraw_enable_now": true,
+    "withdraw_next_date": null,
+    "bonus_wallet_result": {
+      "id": 24279755,
+      "credit": 0,
+      "credit_hold": 0,
+      "sports_amount_hold": 0,
+      "sports_rollover_count": 0,
+      "casino_amount_hold": 0,
+      "casino_rollover_count": 0,
+      "user_id": 29981014,
+      "rollover_type": null,
+      "expiry_datetime": "2025-06-20 15:05:23",
+      "created_at": "2025-05-30T00:18:43.000000Z",
+      "updated_at": "2025-06-20T18:05:23.000000Z"
+    },
+    "cashback_wallet_result": null,
+    "has_transactions": "2025-05-29 21:23:21",
+    "min_withdraw_amount": null,
+    "user_profile": {
+      "id": 29981014,
+      "name": "Mateus Rodrigues Santana",
+      "email": "muvucasbars@gmail.com",
+      "username": "072b1fa0214d80d612398aa2ec3c6d47",
+      "email_verified_at": null,
+      "token": "mcgamesbetbr_-2MpzDrMj2LTgsNgooGiDhwF4Rv5yfk95WgCQr132RWrpkQRYBs727Bnn",
+      "ftd_value": 650,
+      "ftd_date": "2025-05-29 21:23:21",
+      "created_at": "2025-05-30T00:18:43.000000Z",
+      "updated_at": "2025-10-22T10:05:22.000000Z",
+      "is_active": 1,
+      "phone": "13974198830",
+      "commission": null,
+      "manager_id": null,
+      "admin_id": null,
+      "commission_grid_id": null,
+      "affiliation_code": "e082c73f8dd4",
+      "recommended_by": null,
+      "menu_list": null,
+      "bonus_enabled": 0,
+      "first_name": "Mateus",
+      "last_name": "Santana",
+      "mother_name": "Agmar Rodrigues De Jesus",
+      "gender": 0,
+      "birth_date": "1995-09-27",
+      "cancelled_account": 0,
+      "is_test": 0,
+      "ddi": "+55",
+      "country": "BRA",
+      "currency": "BRL",
+      "language": "pt-br",
+      "timezone": "America/Sao_Paulo",
+      "address": "Sao Francisco De Assis, 3828, Casa - Tupiry",
+      "city": "Praia Grande",
+      "state": "SP",
+      "zipcode": "11724475",
+      "is_internal": 0,
+      "app_source": null,
+      "country_data": {
+        "id": 254,
+        "name": "Brasil",
+        "code": "BRA",
+        "flag_image_src": "",
+        "auto_update": 1,
+        "created_at": null,
+        "updated_at": "2024-02-15T00:45:02.000000Z",
+        "ddi": "+55",
+        "currency": "BRL",
+        "alpha2": "BR"
+      },
+      "_cached": {
+        "get-credits": {
+          "credit": 0,
+          "bonus": 0
+        },
+        "get-first-deposit": {
+          "success": true,
+          "data": {
+            "id": 50487379086,
+            "type": "credit",
+            "type_id": null,
+            "amount": 65000,
+            "status": "approved",
+            "user_id": null,
+            "wallet_id": 29980963,
+            "src": "deposit_charge",
+            "src_id": 6669964,
+            "created_at": "2025-05-30T00:23:22.000000Z",
+            "updated_at": "2025-05-30T00:23:53.000000Z",
+            "bonus_wallet_id": null,
+            "credit_percent": 0,
+            "bonus_percent": 0,
+            "cashed_out_amount": 0,
+            "old_balance": 0,
+            "old_bonus_balance": 0
+          }
+        },
+        "user-first-bet": {
+          "message": "Orderbet",
+          "orderBet": null,
+          "success": true
+        }
+      },
+      "user_info": {
+        "user_id": 29981014,
+        "tc_accepted_at": "2025-05-29 21:18:44",
+        "mkt_accepted_at": "2025-05-29 21:18:44",
+        "lgpd_accepted_at": "2025-05-29 21:18:44",
+        "law_accepted_at": "2025-05-29 21:18:44",
+        "migrate_accepted_at": "2025-05-29 21:18:44",
+        "privacy_accepted_at": "2025-05-29 21:18:44",
+        "status": 1,
+        "status_updated_at": "2025-06-20 13:53:21",
+        "status_note": null,
+        "user_pause": 0,
+        "user_pause_at": null,
+        "user_exclusion": 0,
+        "user_exclusion_at": null,
+        "spa_exclusion": 0,
+        "spa_exclusion_at": null,
+        "spa_exclusion_note": null,
+        "operator_exclusion": 0,
+        "operator_exclusion_at": null,
+        "operator_exclusion_note": null,
+        "operator_exclusion_by": null,
+        "user_limit_period": null,
+        "user_limit_time": null,
+        "user_limit_time_active": 0,
+        "user_limit_time_period": null,
+        "user_limit_time_change": null,
+        "user_limit_bet": null,
+        "user_limit_bet_active": 0,
+        "user_limit_bet_period": null,
+        "user_limit_bet_change": null,
+        "user_limit_loss": null,
+        "user_limit_loss_active": 0,
+        "user_limit_loss_period": null,
+        "user_limit_loss_change": null,
+        "user_limit_deposit": null,
+        "user_limit_deposit_active": 0,
+        "user_limit_deposit_period": null,
+        "user_limit_deposit_change": null,
+        "user_limit_withdrawal": null,
+        "user_limit_last_change": null,
+        "last_verification_at": null,
+        "login_at": "2025-10-22 07:05:22",
+        "login_attempt_qty": 3,
+        "login_city": "Campinas",
+        "login_state": "SP",
+        "login_ip": "179.125.211.139",
+        "validate_email_at": "2025-05-29 23:29:22",
+        "validate_sms_at": "2025-05-29 23:31:04",
+        "kyc_validated_at": "2025-05-29 21:21:46",
+        "latitude": "-22.90556",
+        "longitude": "-47.06083",
+        "strong_password": 1,
+        "location_at": null,
+        "nationalities": "[{\"id\": 1, \"value\": \"Brasileiro (a)\"}]",
+        "created_at": "2025-05-30T00:18:43.000000Z",
+        "updated_at": "2025-10-22T10:05:22.000000Z",
+        "id": 1979828,
+        "two_factor_enabled": 0,
+        "two_factor_type": null,
+        "two_factor_at": null,
+        "login_device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+        "force_request_kyc": false,
+        "force_request_kyc_reasons": []
+      },
+      "roles": [
+        {
+          "id": 5,
+          "name": "player",
+          "guard_name": "api",
+          "created_at": "2024-12-22T11:15:56.000000Z",
+          "updated_at": "2025-02-04T13:49:25.000000Z",
+          "pivot": {
+            "model_id": 29981014,
+            "role_id": 5,
+            "model_type": "App\\Models\\User"
+          }
+        }
+      ],
+      "wallet": {
+        "id": 29980963,
+        "balance": 0,
+        "credit": 0,
+        "available_value": 0,
+        "user_id": 29981014,
+        "created_at": "2025-05-30T00:18:43.000000Z",
+        "updated_at": "2025-06-20T18:05:23.000000Z",
+        "bonus": 0,
+        "max_withdraw_amount": null,
+        "withdraw_enabled": 1,
+        "rollover_is_active": 0,
+        "rollover_amount": 0
+      },
+      "bonus_wallet": {
+        "id": 24279755,
+        "credit": 0,
+        "credit_hold": 0,
+        "sports_amount_hold": 0,
+        "sports_rollover_count": 0,
+        "casino_amount_hold": 0,
+        "casino_rollover_count": 0,
+        "user_id": 29981014,
+        "rollover_type": null,
+        "expiry_datetime": "2025-06-20 15:05:23",
+        "created_at": "2025-05-30T00:18:43.000000Z",
+        "updated_at": "2025-06-20T18:05:23.000000Z"
+      },
+      "document": {
+        "id": 2014457,
+        "type": "cpf",
+        "number": "23597998860",
+        "user_id": 29981014,
+        "created_at": "2025-05-30T00:18:43.000000Z",
+        "updated_at": "2025-05-30T00:18:43.000000Z"
+      }
+    }
+  },
+  "cookies": "[Circular Reference]",
+  "sessionCookies": "bet7k_session=eyJpdiI6IjRxbWFFbFQvWnczbWNWSWd5NjFuanc9PSIsInZhbHVlIjoiUm1RQURLVG9JTzdIUEc3a1hwajRqZEdYc0F1VWRBSmUvc0JkdHNMRUZsTDhKc0NiaUNhQW1VdUF6bnZjVm8xT2VGYyt5TEwzQzhubENUb0RMV2NLMHhKbThRUWZLTkxZYkMvTnRDbXBBam8vVG1rZWZGMmZLckt3d0ROcit5VEgiLCJtYWMiOiJlNDE3NDY4YTIwZWMyZTUzZGQwOTFiMzEyYWM1YTZlNzcxYzkwZjM3Mzg2YmIzMjA1ODk3MTE3NjJkZWVjMWEyIiwidGFnIjoiIn0%3D; expires=Thu, 22 Oct 2026 10:05:24 GMT; Max-Age=31536000; path=/; httponly; samesite=lax; __cf_bm=v5X1PpqPQG2NQ6CiDOSDEGE2szK8Lk80czKuPDoWmsE-1761127524-1.0.1.1-TkYGaDZ3j63xDKMxf6Ay1DCRjMbxCRPYVdiDpczBH6dfriEqEp_Q.Gj_Brlt4y0RrMUU1TVZQfkzhFBKBHzHToVSBPICFMe9msHQBsq4bJY; path=/; expires=Wed, 22-Oct-25 10:35:24 GMT; domain=.mcgames.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 301
 }
 ================================================================================
 

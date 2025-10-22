@@ -1,0 +1,2007 @@
+[2025-10-22T09:39:51.613Z] 🚀 [kj36xv7hd] REQUISIÇÃO - estrelabet
+{
+  "requestId": "kj36xv7hd",
+  "timestamp": "2025-10-22T09:39:51.613Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "url": "https://www.estrelabet.bet.br/next/pb/api/login",
+  "method": "post",
+  "headers": {
+    "Content-Type": "application/json",
+    "Origin": "https://www.estrelabet.bet.br",
+    "Referer": "https://www.estrelabet.bet.br/",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Accept": "application/json",
+    "Accept-Language": "pt-BR,pt;q=0.9,en;q=0.8",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Sec-Fetch-Dest": "empty",
+    "Sec-Fetch-Mode": "cors",
+    "Sec-Fetch-Site": "same-origin"
+  },
+  "body": {
+    "login": "muvucasbars@gmail.com",
+    "domain": "www.estrelabet.bet.br",
+    "lnSessionId": "dd8a1dbe-f571-403b-9722-c1540018f8e7",
+    "password": "Mateuus.27"
+  },
+  "sessionCookies": "",
+  "withCredentials": true,
+  "maxBodyLength": null
+}
+================================================================================
+
+[2025-10-22T09:39:52.209Z] ✅ [kj36xv7hd] RESPOSTA - estrelabet
+{
+  "requestId": "kj36xv7hd",
+  "timestamp": "2025-10-22T09:39:52.209Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Wed, 22 Oct 2025 09:39:51 GMT",
+    "content-type": "application/json",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "access-control-allow-headers": "*",
+    "set-cookie": [
+      "ci_session=1oj7m5hig3l1aq7gds7u1e1osavf30kv; Path=/; HttpOnly; Domain=www.estrelabet.bet.br; SameSite=None; Secure; Max-Age=86400",
+      "__cf_bm=cV698nT5c_JUelvSnIk452voZ9rXiafcRiVk8Z8FbvA-1761125991-1.0.1.1-IRLd4_qZ_ME3G9ZgLE2rFwxiHkX15DClkgbEaU2Rd0RKf.IHchXX5fO3LFHMQ.50Y2mAjIhli9o3Qn03ElJrYW6EVGIWMij4_wli2CGbzpo; path=/; expires=Wed, 22-Oct-25 10:09:51 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+      "_cfuvid=JM8nJYE.RRGbNnqwYTDlKBRqfw9EopbPD4bFysS1tRI-1761125991474-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+    ],
+    "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch",
+    "x-dns-prefetch-control": "on",
+    "x-frame-options": "SAMEORIGIN",
+    "cf-cache-status": "DYNAMIC",
+    "strict-transport-security": "max-age=0; includeSubDomains",
+    "x-content-type-options": "nosniff",
+    "server": "cloudflare",
+    "cf-ray": "992807a38b4600dd-GRU",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "data": {
+    "data": {
+      "success": true,
+      "id": "1oj7m5hig3l1aq7gds7u1e1osavf30kv",
+      "sessionLimit": 0,
+      "ecrCategory": "real_user",
+      "language": "pt_BR",
+      "rvpSessionId": "61aafb34-9fc9-4770-87f4-1bf0a1694517_SESSIONKEY",
+      "riverplayUrl": "wss://push.estrelabet.com",
+      "pragmaticSessionId": "61aafb34-9fc9-4770-87f4-1bf0a1694517_SESSIONKEY",
+      "pragmaticUrl": "wss://push.estrelabet.com",
+      "mobileVerificationStatus": "SUCCESS",
+      "emailVerificationStatus": "SUCCESS",
+      "twoFactorAuthEnabled": false,
+      "user": {
+        "id": "EST2022099960136",
+        "rvpSessionId": "61aafb34-9fc9-4770-87f4-1bf0a1694517_SESSIONKEY",
+        "riverplayUrl": "wss://push.estrelabet.com",
+        "pragmaticSessionId": "61aafb34-9fc9-4770-87f4-1bf0a1694517_SESSIONKEY",
+        "pragmaticUrl": "wss://push.estrelabet.com",
+        "partnerId": "estrelabet"
+      },
+      "lastLoginTime": "1761125705",
+      "userJurisdiction": "brazil",
+      "jurisdictionResponse": "",
+      "postAuthPopUpDetails": [],
+      "policies": [
+        {
+          "policyType": "BONUS_RULES",
+          "policyVersionId": "2.0",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2023-10-01 14:43:55.0",
+          "policyVersionType": "MATERIAL"
+        },
+        {
+          "policyType": "PRIVACY_POLICY",
+          "policyVersionId": "2.0",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2023-10-01 14:43:55.0",
+          "policyVersionType": "MATERIAL"
+        },
+        {
+          "policyType": "SPORTS_BETTING_RULES",
+          "policyVersionId": "2.0",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2023-10-01 14:43:55.0",
+          "policyVersionType": "MATERIAL"
+        },
+        {
+          "policyType": "TERMS_AND_CONDITIONS",
+          "policyVersionId": "2.1.1",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2025-05-02 22:24:30.0",
+          "policyVersionType": "MINOR"
+        }
+      ],
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWNjZXNzIjp0cnVlLCJpZCI6IjFvajdtNWhpZzNsMWFxN2dkczd1MWUxb3NhdmYzMGt2Iiwic2Vzc2lvbkxpbWl0IjowLCJlY3JDYXRlZ29yeSI6InJlYWxfdXNlciIsImxhbmd1YWdlIjoicHRfQlIiLCJydnBTZXNzaW9uSWQiOiI2MWFhZmIzNC05ZmM5LTQ3NzAtODdmNC0xYmYwYTE2OTQ1MTdfU0VTU0lPTktFWSIsInJpdmVycGxheVVybCI6IndzczovL3B1c2guZXN0cmVsYWJldC5jb20iLCJwcmFnbWF0aWNTZXNzaW9uSWQiOiI2MWFhZmIzNC05ZmM5LTQ3NzAtODdmNC0xYmYwYTE2OTQ1MTdfU0VTU0lPTktFWSIsInByYWdtYXRpY1VybCI6IndzczovL3B1c2guZXN0cmVsYWJldC5jb20iLCJtb2JpbGVWZXJpZmljYXRpb25TdGF0dXMiOiJTVUNDRVNTIiwiZW1haWxWZXJpZmljYXRpb25TdGF0dXMiOiJTVUNDRVNTIiwidHdvRmFjdG9yQXV0aEVuYWJsZWQiOmZhbHNlLCJ1c2VyIjp7ImlkIjoiRVNUMjAyMjA5OTk2MDEzNiIsInJ2cFNlc3Npb25JZCI6IjYxYWFmYjM0LTlmYzktNDc3MC04N2Y0LTFiZjBhMTY5NDUxN19TRVNTSU9OS0VZIiwicml2ZXJwbGF5VXJsIjoid3NzOi8vcHVzaC5lc3RyZWxhYmV0LmNvbSIsInByYWdtYXRpY1Nlc3Npb25JZCI6IjYxYWFmYjM0LTlmYzktNDc3MC04N2Y0LTFiZjBhMTY5NDUxN19TRVNTSU9OS0VZIiwicHJhZ21hdGljVXJsIjoid3NzOi8vcHVzaC5lc3RyZWxhYmV0LmNvbSIsInBhcnRuZXJJZCI6ImVzdHJlbGFiZXQifSwibGFzdExvZ2luVGltZSI6IjE3NjExMjU3MDUiLCJ1c2VySnVyaXNkaWN0aW9uIjoiYnJhemlsIiwianVyaXNkaWN0aW9uUmVzcG9uc2UiOiIiLCJwb3N0QXV0aFBvcFVwRGV0YWlscyI6W10sInBvbGljaWVzIjpbeyJwb2xpY3lUeXBlIjoiQk9OVVNfUlVMRVMiLCJwb2xpY3lWZXJzaW9uSWQiOiIyLjAiLCJwb2xpY3lBY2NlcHRlZCI6dHJ1ZSwicG9saWN5Q29uZmlybWF0aW9uRGF0ZSI6IjIwMjMtMTAtMDEgMTQ6NDM6NTUuMCIsInBvbGljeVZlcnNpb25UeXBlIjoiTUFURVJJQUwifSx7InBvbGljeVR5cGUiOiJQUklWQUNZX1BPTElDWSIsInBvbGljeVZlcnNpb25JZCI6IjIuMCIsInBvbGljeUFjY2VwdGVkIjp0cnVlLCJwb2xpY3lDb25maXJtYXRpb25EYXRlIjoiMjAyMy0xMC0wMSAxNDo0Mzo1NS4wIiwicG9saWN5VmVyc2lvblR5cGUiOiJNQVRFUklBTCJ9LHsicG9saWN5VHlwZSI6IlNQT1JUU19CRVRUSU5HX1JVTEVTIiwicG9saWN5VmVyc2lvbklkIjoiMi4wIiwicG9saWN5QWNjZXB0ZWQiOnRydWUsInBvbGljeUNvbmZpcm1hdGlvbkRhdGUiOiIyMDIzLTEwLTAxIDE0OjQzOjU1LjAiLCJwb2xpY3lWZXJzaW9uVHlwZSI6Ik1BVEVSSUFMIn0seyJwb2xpY3lUeXBlIjoiVEVSTVNfQU5EX0NPTkRJVElPTlMiLCJwb2xpY3lWZXJzaW9uSWQiOiIyLjEuMSIsInBvbGljeUFjY2VwdGVkIjp0cnVlLCJwb2xpY3lDb25maXJtYXRpb25EYXRlIjoiMjAyNS0wNS0wMiAyMjoyNDozMC4wIiwicG9saWN5VmVyc2lvblR5cGUiOiJNSU5PUiJ9XSwiaWF0IjoxNzYxMTI1OTkxLCJleHAiOjE3NjExMjk1OTF9.kpeLkezoy6hMo7mxlJfBl72pojklqCcF8-hjXDBcxNA",
+      "cookieHeader": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; Max-Age=43200; Domain=estrelabet.bet.br; HttpOnly; Secure; SameSite=Lax, ci_session=1oj7m5hig3l1aq7gds7u1e1osavf30kv; Max-Age=43200; Domain=estrelabet.bet.br; HttpOnly; Secure; SameSite=Lax, vst-no=2; Max-Age=43200; Domain=estrelabet.bet.br; HttpOnly; Secure; SameSite=Lax, __cf_bm=VdmBWh6DJqipCvvNjqR.863mu6mKWYMVQEuYrfzi9EE-1761125991-1.0.1.1-PDNvbDJhV0Ml_zcQvJJQTe7SWWzNT3fSJYqJ_Zwjnlr7WiveH3WNvHKI6_1phcTkIHF40WCEAQXyVvBKBDEA.RCvBmYwKGsTGqllkDm_6A0; path=/; expires=Wed, 22-Oct-25 10:09:51 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+    },
+    "error": null
+  },
+  "cookies": "[Circular Reference]",
+  "sessionCookies": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; ci_session=1oj7m5hig3l1aq7gds7u1e1osavf30kv; vst-no=2; __cf_bm=VdmBWh6DJqipCvvNjqR.863mu6mKWYMVQEuYrfzi9EE-1761125991-1.0.1.1-PDNvbDJhV0Ml_zcQvJJQTe7SWWzNT3fSJYqJ_Zwjnlr7WiveH3WNvHKI6_1phcTkIHF40WCEAQXyVvBKBDEA.RCvBmYwKGsTGqllkDm_6A0; 22-Oct-25 10:09:51 GMT",
+  "responseTime": 596
+}
+================================================================================
+
+[2025-10-22T09:39:52.210Z] 🚀 [56ewqdabv] REQUISIÇÃO - estrelabet
+{
+  "requestId": "56ewqdabv",
+  "timestamp": "2025-10-22T09:39:52.210Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "url": "https://bff-estrelabet.estrelabet.bet.br/sports/openSportsBook?vendorId=altenar",
+  "method": "get",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "SessionId": "1oj7m5hig3l1aq7gds7u1e1osavf30kv",
+    "Cookie": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; ci_session=1oj7m5hig3l1aq7gds7u1e1osavf30kv; vst-no=2; __cf_bm=VdmBWh6DJqipCvvNjqR.863mu6mKWYMVQEuYrfzi9EE-1761125991-1.0.1.1-PDNvbDJhV0Ml_zcQvJJQTe7SWWzNT3fSJYqJ_Zwjnlr7WiveH3WNvHKI6_1phcTkIHF40WCEAQXyVvBKBDEA.RCvBmYwKGsTGqllkDm_6A0; 22-Oct-25 10:09:51 GMT"
+  },
+  "sessionCookies": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; ci_session=1oj7m5hig3l1aq7gds7u1e1osavf30kv; vst-no=2; __cf_bm=VdmBWh6DJqipCvvNjqR.863mu6mKWYMVQEuYrfzi9EE-1761125991-1.0.1.1-PDNvbDJhV0Ml_zcQvJJQTe7SWWzNT3fSJYqJ_Zwjnlr7WiveH3WNvHKI6_1phcTkIHF40WCEAQXyVvBKBDEA.RCvBmYwKGsTGqllkDm_6A0; 22-Oct-25 10:09:51 GMT"
+}
+================================================================================
+
+[2025-10-22T09:39:52.346Z] ✅ [56ewqdabv] RESPOSTA - estrelabet
+{
+  "requestId": "56ewqdabv",
+  "timestamp": "2025-10-22T09:39:52.346Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Wed, 22 Oct 2025 09:39:51 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "access-control-allow-origin": "https://www.estrelabet.bet.br",
+    "vary": "Origin",
+    "x-forwarded-for": "179.125.211.139",
+    "x-request-id": "0e6d7efe-74bd-40e8-97c5-013016a3b889",
+    "cf-cache-status": "DYNAMIC",
+    "set-cookie": [
+      "__cf_bm=ivSUwH6kGEL7dxAAWEY6POp9_Xty6hIPYUJHnvmJj2I-1761125991-1.0.1.1-TZoEfFGUisb8J9iqhA5np3IvLEvZjV6NL.rL0BuLNu6Xmw6qITp4bD8QLVt5Z4dZU0hdHrVO4fPyh7_DW1UcRZX6Fhu_eQ.vKiIvSspWoVA; path=/; expires=Wed, 22-Oct-25 10:09:51 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+      "_cfuvid=oeY_RH1OPmZfHgfj0EyI931lITcJPZh_3JyB4gArliw-1761125991607-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+    ],
+    "strict-transport-security": "max-age=0; includeSubDomains",
+    "x-content-type-options": "nosniff",
+    "speculation-rules": "\"/cdn-cgi/speculation\"",
+    "server": "cloudflare",
+    "cf-ray": "992807a6f814ae8a-GRU",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "data": {
+    "data": {
+      "authToken": "d56c8d62-e3cb-4adc-b124-66e8ecb8ecaa",
+      "status": "SUCCESS",
+      "tokenExpiry": "1761129591"
+    }
+  },
+  "cookies": "[Circular Reference]",
+  "sessionCookies": "__cf_bm=ivSUwH6kGEL7dxAAWEY6POp9_Xty6hIPYUJHnvmJj2I-1761125991-1.0.1.1-TZoEfFGUisb8J9iqhA5np3IvLEvZjV6NL.rL0BuLNu6Xmw6qITp4bD8QLVt5Z4dZU0hdHrVO4fPyh7_DW1UcRZX6Fhu_eQ.vKiIvSspWoVA; path=/; expires=Wed, 22-Oct-25 10:09:51 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=oeY_RH1OPmZfHgfj0EyI931lITcJPZh_3JyB4gArliw-1761125991607-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 136
+}
+================================================================================
+
+[2025-10-22T09:39:52.348Z] 🚀 [mvx37k6wn] REQUISIÇÃO - estrelabet
+{
+  "requestId": "mvx37k6wn",
+  "timestamp": "2025-10-22T09:39:52.348Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "url": "https://sb2auth-altenar2.biahosted.com/api/WidgetAuth/SignIn",
+  "method": "post",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Cookie": "__cf_bm=ivSUwH6kGEL7dxAAWEY6POp9_Xty6hIPYUJHnvmJj2I-1761125991-1.0.1.1-TZoEfFGUisb8J9iqhA5np3IvLEvZjV6NL.rL0BuLNu6Xmw6qITp4bD8QLVt5Z4dZU0hdHrVO4fPyh7_DW1UcRZX6Fhu_eQ.vKiIvSspWoVA; path=/; expires=Wed, 22-Oct-25 10:09:51 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=oeY_RH1OPmZfHgfj0EyI931lITcJPZh_3JyB4gArliw-1761125991607-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+  },
+  "body": {
+    "culture": "pt-BR",
+    "timezoneOffset": 180,
+    "integration": "estrelabet",
+    "deviceType": 1,
+    "numFormat": "en-GB",
+    "countryCode": "BR",
+    "token": "d56c8d62-e3cb-4adc-b124-66e8ecb8ecaa"
+  },
+  "sessionCookies": "__cf_bm=ivSUwH6kGEL7dxAAWEY6POp9_Xty6hIPYUJHnvmJj2I-1761125991-1.0.1.1-TZoEfFGUisb8J9iqhA5np3IvLEvZjV6NL.rL0BuLNu6Xmw6qITp4bD8QLVt5Z4dZU0hdHrVO4fPyh7_DW1UcRZX6Fhu_eQ.vKiIvSspWoVA; path=/; expires=Wed, 22-Oct-25 10:09:51 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=oeY_RH1OPmZfHgfj0EyI931lITcJPZh_3JyB4gArliw-1761125991607-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+}
+================================================================================
+
+[2025-10-22T09:39:53.262Z] ✅ [mvx37k6wn] RESPOSTA - estrelabet
+{
+  "requestId": "mvx37k6wn",
+  "timestamp": "2025-10-22T09:39:53.262Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "server": "nginx",
+    "date": "Wed, 22 Oct 2025 09:39:52 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "723",
+    "access-control-allow-origin": "*",
+    "strict-transport-security": "max-age=15552000",
+    "via": "1.1 google",
+    "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+  },
+  "data": {
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb25maWd1cmF0aW9uSWQiOiIxMiIsIlBlcnNvblR5cGUiOiIzIiwiUGVyc29uSWQiOiIxNTE5ODgyNSIsIlVzZXJOYW1lIjoiMjAyMjA5OTk2MDEzNiIsIkxvZ2luSWQiOiIyMzA1Mzk2NyIsIkN1cnJlbmN5U2lnbiI6IlIkIiwiTWluQm9udXNQcmljZSI6IjEuMyIsIkJvbnVzVGVtcGxhdGVJZCI6IjIyNCIsIkN1cnJlbmN5SWQiOiI5ODYiLCJDdXJyZW5jeUNvZGUiOiJCUkwiLCJDb3VudHJ5Q29kZSI6IkJSIiwiQnJhbmRJZCI6IjQ1NyIsIkNsaWVudElQIjoiMTc5LjEyNS4yMTEuMTM5IiwiZXhwIjoxNzYxMTI2ODkyLCJpc3MiOiJTQjIiLCJhdWQiOiJTQjIifQ.-CTnzF1GiVm9nk6ZLQZpsvrCr26uoEFqeFrZGVPwnBk",
+    "currency": "BRL",
+    "isUserLocked": false,
+    "isAgency": false,
+    "currencySign": "R$",
+    "currencyId": 986,
+    "currencyDisplay": 0,
+    "encryptedPlayerId": "akeinOWwfi/pFfhdRXJ56A==",
+    "regDate": "2023-10-01T17:43:42.38"
+  },
+  "sessionCookies": "__cf_bm=ivSUwH6kGEL7dxAAWEY6POp9_Xty6hIPYUJHnvmJj2I-1761125991-1.0.1.1-TZoEfFGUisb8J9iqhA5np3IvLEvZjV6NL.rL0BuLNu6Xmw6qITp4bD8QLVt5Z4dZU0hdHrVO4fPyh7_DW1UcRZX6Fhu_eQ.vKiIvSspWoVA; path=/; expires=Wed, 22-Oct-25 10:09:51 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=oeY_RH1OPmZfHgfj0EyI931lITcJPZh_3JyB4gArliw-1761125991607-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 914
+}
+================================================================================
+
+[2025-10-22T09:39:53.309Z] 🚀 [p29di4r4f] REQUISIÇÃO - estrelabet
+{
+  "requestId": "p29di4r4f",
+  "timestamp": "2025-10-22T09:39:53.309Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "url": "https://sb2betgateway-altenar2.biahosted.com/api/widget/placeWidget",
+  "method": "post",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb25maWd1cmF0aW9uSWQiOiIxMiIsIlBlcnNvblR5cGUiOiIzIiwiUGVyc29uSWQiOiIxNTE5ODgyNSIsIlVzZXJOYW1lIjoiMjAyMjA5OTk2MDEzNiIsIkxvZ2luSWQiOiIyMzA1Mzk2NyIsIkN1cnJlbmN5U2lnbiI6IlIkIiwiTWluQm9udXNQcmljZSI6IjEuMyIsIkJvbnVzVGVtcGxhdGVJZCI6IjIyNCIsIkN1cnJlbmN5SWQiOiI5ODYiLCJDdXJyZW5jeUNvZGUiOiJCUkwiLCJDb3VudHJ5Q29kZSI6IkJSIiwiQnJhbmRJZCI6IjQ1NyIsIkNsaWVudElQIjoiMTc5LjEyNS4yMTEuMTM5IiwiZXhwIjoxNzYxMTI2ODkyLCJpc3MiOiJTQjIiLCJhdWQiOiJTQjIifQ.-CTnzF1GiVm9nk6ZLQZpsvrCr26uoEFqeFrZGVPwnBk",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Cookie": "__cf_bm=ivSUwH6kGEL7dxAAWEY6POp9_Xty6hIPYUJHnvmJj2I-1761125991-1.0.1.1-TZoEfFGUisb8J9iqhA5np3IvLEvZjV6NL.rL0BuLNu6Xmw6qITp4bD8QLVt5Z4dZU0hdHrVO4fPyh7_DW1UcRZX6Fhu_eQ.vKiIvSspWoVA; path=/; expires=Wed, 22-Oct-25 10:09:51 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=oeY_RH1OPmZfHgfj0EyI931lITcJPZh_3JyB4gArliw-1761125991607-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+  },
+  "body": {
+    "culture": "pt-BR",
+    "timezoneOffset": 180,
+    "integration": "estrelabet",
+    "deviceType": 1,
+    "numFormat": "en-GB",
+    "countryCode": "BR",
+    "betType": 0,
+    "isAutoCharge": false,
+    "stakes": [
+      100
+    ],
+    "oddsChangeAction": 1,
+    "betMarkets": [
+      {
+        "id": 14052559,
+        "isBanker": false,
+        "dbId": 10,
+        "sportName": "Futebol",
+        "rC": false,
+        "eventName": "Chelsea vs. AFC Ajax\t\t",
+        "catName": "Europa",
+        "champName": "Liga dos Campeões",
+        "sportTypeId": 1,
+        "odds": [
+          {
+            "id": 2933359098,
+            "marketId": 1197160088,
+            "price": 1.2728,
+            "marketName": "Vencedor do encontro",
+            "marketTypeId": 1,
+            "mostBalanced": false,
+            "selectionTypeId": 1,
+            "selectionName": "Chelsea",
+            "widgetInfo": {
+              "widget": 12,
+              "page": 3,
+              "tabIndex": 3
+            }
+          }
+        ]
+      }
+    ],
+    "eachWays": [
+      false
+    ],
+    "requestId": "ge5i9cFf1dsSoU2aOYfC",
+    "confirmedByClient": false,
+    "device": 0
+  },
+  "sessionCookies": "__cf_bm=ivSUwH6kGEL7dxAAWEY6POp9_Xty6hIPYUJHnvmJj2I-1761125991-1.0.1.1-TZoEfFGUisb8J9iqhA5np3IvLEvZjV6NL.rL0BuLNu6Xmw6qITp4bD8QLVt5Z4dZU0hdHrVO4fPyh7_DW1UcRZX6Fhu_eQ.vKiIvSspWoVA; path=/; expires=Wed, 22-Oct-25 10:09:51 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=oeY_RH1OPmZfHgfj0EyI931lITcJPZh_3JyB4gArliw-1761125991607-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+}
+================================================================================
+
+[2025-10-22T09:39:53.605Z] ✅ [p29di4r4f] RESPOSTA - estrelabet
+{
+  "requestId": "p29di4r4f",
+  "timestamp": "2025-10-22T09:39:53.605Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "server": "nginx",
+    "date": "Wed, 22 Oct 2025 09:39:52 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "214",
+    "access-control-allow-origin": "*",
+    "strict-transport-security": "max-age=15552000",
+    "via": "1.1 google",
+    "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+  },
+  "data": {
+    "error": {
+      "totalPotentialWin": 5.99,
+      "totalStake": 4.71,
+      "stakesFormatted": [
+        4.71
+      ],
+      "winFormatted": [
+        5.99
+      ],
+      "betslipResult": {
+        "totalPotentialWin": 5.99,
+        "minPotentialWin": 5.99,
+        "maxOdds": 1.2728,
+        "maxBonus": 0
+      },
+      "errorType": 1
+    }
+  },
+  "sessionCookies": "__cf_bm=ivSUwH6kGEL7dxAAWEY6POp9_Xty6hIPYUJHnvmJj2I-1761125991-1.0.1.1-TZoEfFGUisb8J9iqhA5np3IvLEvZjV6NL.rL0BuLNu6Xmw6qITp4bD8QLVt5Z4dZU0hdHrVO4fPyh7_DW1UcRZX6Fhu_eQ.vKiIvSspWoVA; path=/; expires=Wed, 22-Oct-25 10:09:51 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=oeY_RH1OPmZfHgfj0EyI931lITcJPZh_3JyB4gArliw-1761125991607-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 296
+}
+================================================================================
+
+[2025-10-22T09:39:53.605Z] 🚀 [bmhum2y6p] REQUISIÇÃO - estrelabet
+{
+  "requestId": "bmhum2y6p",
+  "timestamp": "2025-10-22T09:39:53.605Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "url": "https://www.estrelabet.bet.br/next/pb/api/login",
+  "method": "post",
+  "headers": {
+    "Content-Type": "application/json",
+    "Origin": "https://www.estrelabet.bet.br",
+    "Referer": "https://www.estrelabet.bet.br/",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Accept": "application/json",
+    "Accept-Language": "pt-BR,pt;q=0.9,en;q=0.8",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Sec-Fetch-Dest": "empty",
+    "Sec-Fetch-Mode": "cors",
+    "Sec-Fetch-Site": "same-origin",
+    "Cookie": "__cf_bm=ivSUwH6kGEL7dxAAWEY6POp9_Xty6hIPYUJHnvmJj2I-1761125991-1.0.1.1-TZoEfFGUisb8J9iqhA5np3IvLEvZjV6NL.rL0BuLNu6Xmw6qITp4bD8QLVt5Z4dZU0hdHrVO4fPyh7_DW1UcRZX6Fhu_eQ.vKiIvSspWoVA; path=/; expires=Wed, 22-Oct-25 10:09:51 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=oeY_RH1OPmZfHgfj0EyI931lITcJPZh_3JyB4gArliw-1761125991607-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+  },
+  "body": {
+    "login": "muvucasbars@gmail.com",
+    "domain": "www.estrelabet.bet.br",
+    "lnSessionId": "dd8a1dbe-f571-403b-9722-c1540018f8e7",
+    "password": "Mateuus.27"
+  },
+  "sessionCookies": "__cf_bm=ivSUwH6kGEL7dxAAWEY6POp9_Xty6hIPYUJHnvmJj2I-1761125991-1.0.1.1-TZoEfFGUisb8J9iqhA5np3IvLEvZjV6NL.rL0BuLNu6Xmw6qITp4bD8QLVt5Z4dZU0hdHrVO4fPyh7_DW1UcRZX6Fhu_eQ.vKiIvSspWoVA; path=/; expires=Wed, 22-Oct-25 10:09:51 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=oeY_RH1OPmZfHgfj0EyI931lITcJPZh_3JyB4gArliw-1761125991607-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+  "withCredentials": true,
+  "maxBodyLength": null
+}
+================================================================================
+
+[2025-10-22T09:39:54.097Z] ✅ [bmhum2y6p] RESPOSTA - estrelabet
+{
+  "requestId": "bmhum2y6p",
+  "timestamp": "2025-10-22T09:39:54.097Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Wed, 22 Oct 2025 09:39:53 GMT",
+    "content-type": "application/json",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "access-control-allow-headers": "*",
+    "set-cookie": [
+      "ci_session=cttonuncmas7gnpd7hm10n25ctms2hml; Path=/; HttpOnly; Domain=www.estrelabet.bet.br; SameSite=None; Secure; Max-Age=86400"
+    ],
+    "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch",
+    "x-dns-prefetch-control": "on",
+    "x-frame-options": "SAMEORIGIN",
+    "cf-cache-status": "DYNAMIC",
+    "strict-transport-security": "max-age=0; includeSubDomains",
+    "x-content-type-options": "nosniff",
+    "server": "cloudflare",
+    "cf-ray": "992807af0faa00dd-GRU",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "data": {
+    "data": {
+      "success": true,
+      "id": "cttonuncmas7gnpd7hm10n25ctms2hml",
+      "sessionLimit": 0,
+      "ecrCategory": "real_user",
+      "language": "pt_BR",
+      "rvpSessionId": "d4168398-3ec2-4545-b9a1-e924128bf68d_SESSIONKEY",
+      "riverplayUrl": "wss://push.estrelabet.com",
+      "pragmaticSessionId": "d4168398-3ec2-4545-b9a1-e924128bf68d_SESSIONKEY",
+      "pragmaticUrl": "wss://push.estrelabet.com",
+      "mobileVerificationStatus": "SUCCESS",
+      "emailVerificationStatus": "SUCCESS",
+      "twoFactorAuthEnabled": false,
+      "user": {
+        "id": "EST2022099960136",
+        "rvpSessionId": "d4168398-3ec2-4545-b9a1-e924128bf68d_SESSIONKEY",
+        "riverplayUrl": "wss://push.estrelabet.com",
+        "pragmaticSessionId": "d4168398-3ec2-4545-b9a1-e924128bf68d_SESSIONKEY",
+        "pragmaticUrl": "wss://push.estrelabet.com",
+        "partnerId": "estrelabet"
+      },
+      "lastLoginTime": "1761125991",
+      "userJurisdiction": "brazil",
+      "jurisdictionResponse": "",
+      "postAuthPopUpDetails": [],
+      "policies": [
+        {
+          "policyType": "BONUS_RULES",
+          "policyVersionId": "2.0",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2023-10-01 14:43:55.0",
+          "policyVersionType": "MATERIAL"
+        },
+        {
+          "policyType": "PRIVACY_POLICY",
+          "policyVersionId": "2.0",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2023-10-01 14:43:55.0",
+          "policyVersionType": "MATERIAL"
+        },
+        {
+          "policyType": "SPORTS_BETTING_RULES",
+          "policyVersionId": "2.0",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2023-10-01 14:43:55.0",
+          "policyVersionType": "MATERIAL"
+        },
+        {
+          "policyType": "TERMS_AND_CONDITIONS",
+          "policyVersionId": "2.1.1",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2025-05-02 22:24:30.0",
+          "policyVersionType": "MINOR"
+        }
+      ],
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWNjZXNzIjp0cnVlLCJpZCI6ImN0dG9udW5jbWFzN2ducGQ3aG0xMG4yNWN0bXMyaG1sIiwic2Vzc2lvbkxpbWl0IjowLCJlY3JDYXRlZ29yeSI6InJlYWxfdXNlciIsImxhbmd1YWdlIjoicHRfQlIiLCJydnBTZXNzaW9uSWQiOiJkNDE2ODM5OC0zZWMyLTQ1NDUtYjlhMS1lOTI0MTI4YmY2OGRfU0VTU0lPTktFWSIsInJpdmVycGxheVVybCI6IndzczovL3B1c2guZXN0cmVsYWJldC5jb20iLCJwcmFnbWF0aWNTZXNzaW9uSWQiOiJkNDE2ODM5OC0zZWMyLTQ1NDUtYjlhMS1lOTI0MTI4YmY2OGRfU0VTU0lPTktFWSIsInByYWdtYXRpY1VybCI6IndzczovL3B1c2guZXN0cmVsYWJldC5jb20iLCJtb2JpbGVWZXJpZmljYXRpb25TdGF0dXMiOiJTVUNDRVNTIiwiZW1haWxWZXJpZmljYXRpb25TdGF0dXMiOiJTVUNDRVNTIiwidHdvRmFjdG9yQXV0aEVuYWJsZWQiOmZhbHNlLCJ1c2VyIjp7ImlkIjoiRVNUMjAyMjA5OTk2MDEzNiIsInJ2cFNlc3Npb25JZCI6ImQ0MTY4Mzk4LTNlYzItNDU0NS1iOWExLWU5MjQxMjhiZjY4ZF9TRVNTSU9OS0VZIiwicml2ZXJwbGF5VXJsIjoid3NzOi8vcHVzaC5lc3RyZWxhYmV0LmNvbSIsInByYWdtYXRpY1Nlc3Npb25JZCI6ImQ0MTY4Mzk4LTNlYzItNDU0NS1iOWExLWU5MjQxMjhiZjY4ZF9TRVNTSU9OS0VZIiwicHJhZ21hdGljVXJsIjoid3NzOi8vcHVzaC5lc3RyZWxhYmV0LmNvbSIsInBhcnRuZXJJZCI6ImVzdHJlbGFiZXQifSwibGFzdExvZ2luVGltZSI6IjE3NjExMjU5OTEiLCJ1c2VySnVyaXNkaWN0aW9uIjoiYnJhemlsIiwianVyaXNkaWN0aW9uUmVzcG9uc2UiOiIiLCJwb3N0QXV0aFBvcFVwRGV0YWlscyI6W10sInBvbGljaWVzIjpbeyJwb2xpY3lUeXBlIjoiQk9OVVNfUlVMRVMiLCJwb2xpY3lWZXJzaW9uSWQiOiIyLjAiLCJwb2xpY3lBY2NlcHRlZCI6dHJ1ZSwicG9saWN5Q29uZmlybWF0aW9uRGF0ZSI6IjIwMjMtMTAtMDEgMTQ6NDM6NTUuMCIsInBvbGljeVZlcnNpb25UeXBlIjoiTUFURVJJQUwifSx7InBvbGljeVR5cGUiOiJQUklWQUNZX1BPTElDWSIsInBvbGljeVZlcnNpb25JZCI6IjIuMCIsInBvbGljeUFjY2VwdGVkIjp0cnVlLCJwb2xpY3lDb25maXJtYXRpb25EYXRlIjoiMjAyMy0xMC0wMSAxNDo0Mzo1NS4wIiwicG9saWN5VmVyc2lvblR5cGUiOiJNQVRFUklBTCJ9LHsicG9saWN5VHlwZSI6IlNQT1JUU19CRVRUSU5HX1JVTEVTIiwicG9saWN5VmVyc2lvbklkIjoiMi4wIiwicG9saWN5QWNjZXB0ZWQiOnRydWUsInBvbGljeUNvbmZpcm1hdGlvbkRhdGUiOiIyMDIzLTEwLTAxIDE0OjQzOjU1LjAiLCJwb2xpY3lWZXJzaW9uVHlwZSI6Ik1BVEVSSUFMIn0seyJwb2xpY3lUeXBlIjoiVEVSTVNfQU5EX0NPTkRJVElPTlMiLCJwb2xpY3lWZXJzaW9uSWQiOiIyLjEuMSIsInBvbGljeUFjY2VwdGVkIjp0cnVlLCJwb2xpY3lDb25maXJtYXRpb25EYXRlIjoiMjAyNS0wNS0wMiAyMjoyNDozMC4wIiwicG9saWN5VmVyc2lvblR5cGUiOiJNSU5PUiJ9XSwiaWF0IjoxNzYxMTI1OTkzLCJleHAiOjE3NjExMjk1OTN9.KlzGsme9TNK4kbMWgBnQqcaixH2-8jUwgeqKLCGuZA0",
+      "cookieHeader": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; Max-Age=43200; Domain=estrelabet.bet.br; HttpOnly; Secure; SameSite=Lax, ci_session=cttonuncmas7gnpd7hm10n25ctms2hml; Max-Age=43200; Domain=estrelabet.bet.br; HttpOnly; Secure; SameSite=Lax, vst-no=2; Max-Age=43200; Domain=estrelabet.bet.br; HttpOnly; Secure; SameSite=Lax, __cf_bm=SI7PNjN8xBFVvTG9P6TfVCyJaqszQXq7MaO6KJAK_u8-1761125993-1.0.1.1-J8qjADWv4Cdm0N7nZlXr1YVhKxQsCNcGh1S7VJDqQ9f1g1bPl77QSbFdkWEwJqkuslfIVdmuDxxBuULgZ85714ddN3whc4CqFGZ1VOkSbSs; path=/; expires=Wed, 22-Oct-25 10:09:53 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+    },
+    "error": null
+  },
+  "cookies": "[Circular Reference]",
+  "sessionCookies": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; ci_session=cttonuncmas7gnpd7hm10n25ctms2hml; vst-no=2; __cf_bm=SI7PNjN8xBFVvTG9P6TfVCyJaqszQXq7MaO6KJAK_u8-1761125993-1.0.1.1-J8qjADWv4Cdm0N7nZlXr1YVhKxQsCNcGh1S7VJDqQ9f1g1bPl77QSbFdkWEwJqkuslfIVdmuDxxBuULgZ85714ddN3whc4CqFGZ1VOkSbSs; 22-Oct-25 10:09:53 GMT",
+  "responseTime": 492
+}
+================================================================================
+
+[2025-10-22T09:39:54.098Z] 🚀 [arkbvgvew] REQUISIÇÃO - estrelabet
+{
+  "requestId": "arkbvgvew",
+  "timestamp": "2025-10-22T09:39:54.098Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "url": "https://bff-estrelabet.estrelabet.bet.br/profile/getProfileBalanceCurrency",
+  "method": "get",
+  "headers": {
+    "sessionid": "cttonuncmas7gnpd7hm10n25ctms2hml",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Cookie": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; ci_session=cttonuncmas7gnpd7hm10n25ctms2hml; vst-no=2; __cf_bm=SI7PNjN8xBFVvTG9P6TfVCyJaqszQXq7MaO6KJAK_u8-1761125993-1.0.1.1-J8qjADWv4Cdm0N7nZlXr1YVhKxQsCNcGh1S7VJDqQ9f1g1bPl77QSbFdkWEwJqkuslfIVdmuDxxBuULgZ85714ddN3whc4CqFGZ1VOkSbSs; 22-Oct-25 10:09:53 GMT"
+  },
+  "sessionCookies": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; ci_session=cttonuncmas7gnpd7hm10n25ctms2hml; vst-no=2; __cf_bm=SI7PNjN8xBFVvTG9P6TfVCyJaqszQXq7MaO6KJAK_u8-1761125993-1.0.1.1-J8qjADWv4Cdm0N7nZlXr1YVhKxQsCNcGh1S7VJDqQ9f1g1bPl77QSbFdkWEwJqkuslfIVdmuDxxBuULgZ85714ddN3whc4CqFGZ1VOkSbSs; 22-Oct-25 10:09:53 GMT"
+}
+================================================================================
+
+[2025-10-22T09:39:54.238Z] ✅ [arkbvgvew] RESPOSTA - estrelabet
+{
+  "requestId": "arkbvgvew",
+  "timestamp": "2025-10-22T09:39:54.238Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Wed, 22 Oct 2025 09:39:53 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "access-control-allow-origin": "https://www.estrelabet.bet.br",
+    "vary": "Origin",
+    "x-forwarded-for": "179.125.211.139",
+    "x-request-id": "24365e2b-0a0d-4b28-b9b2-99069e6ad52b",
+    "cf-cache-status": "DYNAMIC",
+    "set-cookie": [
+      "__cf_bm=NC4xcFnxk3WP_3T5oZfftdUEnlJ6iYqPxnDn85ukmZk-1761125993-1.0.1.1-ij7SdiSbravt8fefdSeiHzKqm6vMge6jhkHYTW_cmKKI22p1l6r0AetBQsqqQQqsQ4zFHjO33_75wb.3TSnRTVEsg0MnO.VvFeNv_xqpLQY; path=/; expires=Wed, 22-Oct-25 10:09:53 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+      "_cfuvid=QITcTFwRgFwh0Omwcy9iXzaJE.XHhu6kJg26wgYs2DU-1761125993390-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+    ],
+    "strict-transport-security": "max-age=0; includeSubDomains",
+    "x-content-type-options": "nosniff",
+    "speculation-rules": "\"/cdn-cgi/speculation\"",
+    "server": "cloudflare",
+    "cf-ray": "992807b1fb9bae8a-GRU",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "data": {
+    "data": {
+      "profile": {
+        "playerID": "2022099960136",
+        "nickname": "mateuus27",
+        "password": null,
+        "email": "muvucasbars@gmail.com",
+        "currency": "BRL",
+        "language": "pt_BR",
+        "firstName": "MATEUS",
+        "middleName": "",
+        "lastName": "SANTANA",
+        "address": "AVENIDA SÃO FRANCISCO DE ASSIS 3828",
+        "address1": "AVENIDA SÃO FRANCISCO DE ASSIS",
+        "address2": "3828",
+        "city": "PRAIA GRANDE",
+        "state": "SP",
+        "zip": "11724-475",
+        "zipCode": "11724-475",
+        "country": "BR",
+        "countryCode": "BR",
+        "phone": 13974198830,
+        "phoneNumber": 13974198830,
+        "areaCode": "55",
+        "countryAreaCode": "BR",
+        "phoneAreaCountryCode": "BR",
+        "cellPhone": 13974198830,
+        "mobileNumber": 13974198830,
+        "cellPhoneAreaCode": "55",
+        "mobileAreaCode": "55",
+        "cellPhoneCountryAreaCode": "BR",
+        "mobileAreaCountryCode": "BR",
+        "birthDate": "1995-09-27",
+        "gender": "F",
+        "affiliateLinkID": "",
+        "affiliateId": "",
+        "affiliateRefTag": null,
+        "bonusCode": null,
+        "promoAvailable": null,
+        "signUpIP": null,
+        "signUpClientType": null,
+        "signUpClientOS": null,
+        "signUpBrowser": null,
+        "userStatus": "real",
+        "createdTime": 1663253404000,
+        "maidenName": "",
+        "placeOfBirth": "",
+        "nationality": "BRAZILIAN",
+        "nationalId": "23597998860",
+        "affiliateName": "",
+        "bannerID": "",
+        "bannerId": "",
+        "nationalIdDocType": "",
+        "lastName2": "",
+        "taxCode": "",
+        "thirdPartyUser": false,
+        "pep": false,
+        "fitToPlay": false,
+        "jobTitle": "",
+        "employerName": "",
+        "employerAddress": "",
+        "employmentStatus": null,
+        "industry": "",
+        "occupation": "",
+        "pepAndSanctionDetails": null,
+        "bTag": "",
+        "playerLastAcknowledgementDate": "1746237432000",
+        "profileAcknowledgementRecommended": false,
+        "updateProfileForAnnualVerification": null,
+        "productChannelPreferences": null,
+        "externalEcrId": "2022099960136",
+        "title": "Mis",
+        "dob": "1995-09-27",
+        "userCategory": "real_user",
+        "jurisdiction": "brazil",
+        "withdrawlAllowed": true,
+        "withdrawalAllowed": true,
+        "depositAllowed": true,
+        "payAndPlayUserDetails": [],
+        "screenName": "mateuus27",
+        "emailId": "muvucasbars@gmail.com",
+        "birthName": "",
+        "motherName": "",
+        "twoFactorAuthEnabled": false,
+        "postAuthPopUpDetails": [],
+        "hostName": null,
+        "currencyCode": "BRL",
+        "bYear": "1995",
+        "bMonth": "09",
+        "bDay": "27",
+        "balanceDetails": {
+          "0": "BRL",
+          "cash": 1.25,
+          "bonus": 0,
+          "ecrCurrency": "BRL",
+          "currencyCode": "BRL",
+          "withdrawableBalance": 1.25,
+          "totalBonus": 0,
+          "drpBalance": 0,
+          "freebetBalance": 0,
+          "freespinsCount": 0
+        }
+      },
+      "currency": {
+        "symbol": "R$",
+        "code": "BRL",
+        "position": "before"
+      },
+      "currencyDetails": {
+        "symbol": "R$",
+        "code": "BRL",
+        "position": "before"
+      },
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYXRpb25hbElkIjoiMjM1OTc5OTg4NjAiLCJwbGF5ZXJJRCI6IjIwMjIwOTk5NjAxMzYiLCJleHRlcm5hbEVjcklkIjoiMjAyMjA5OTk2MDEzNiIsImlhdCI6MTc2MTEyNTk5MywiZXhwIjoxNzYxMTI5NTkzfQ.kLHKFxeRSlluSxBIzEfkmBJhpxQHBeKJc7vTLbsgS1A"
+    }
+  },
+  "cookies": "[Circular Reference]",
+  "sessionCookies": "__cf_bm=NC4xcFnxk3WP_3T5oZfftdUEnlJ6iYqPxnDn85ukmZk-1761125993-1.0.1.1-ij7SdiSbravt8fefdSeiHzKqm6vMge6jhkHYTW_cmKKI22p1l6r0AetBQsqqQQqsQ4zFHjO33_75wb.3TSnRTVEsg0MnO.VvFeNv_xqpLQY; path=/; expires=Wed, 22-Oct-25 10:09:53 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=QITcTFwRgFwh0Omwcy9iXzaJE.XHhu6kJg26wgYs2DU-1761125993390-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 140
+}
+================================================================================
+
+[2025-10-22T09:40:26.578Z] 🚀 [0vx2bsyiy] REQUISIÇÃO - estrelabet
+{
+  "requestId": "0vx2bsyiy",
+  "timestamp": "2025-10-22T09:40:26.578Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "url": "https://www.estrelabet.bet.br/next/pb/api/login",
+  "method": "post",
+  "headers": {
+    "Content-Type": "application/json",
+    "Origin": "https://www.estrelabet.bet.br",
+    "Referer": "https://www.estrelabet.bet.br/",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Accept": "application/json",
+    "Accept-Language": "pt-BR,pt;q=0.9,en;q=0.8",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Sec-Fetch-Dest": "empty",
+    "Sec-Fetch-Mode": "cors",
+    "Sec-Fetch-Site": "same-origin"
+  },
+  "body": {
+    "login": "muvucasbars@gmail.com",
+    "domain": "www.estrelabet.bet.br",
+    "lnSessionId": "dd8a1dbe-f571-403b-9722-c1540018f8e7",
+    "password": "Mateuus.27"
+  },
+  "sessionCookies": "",
+  "withCredentials": true,
+  "maxBodyLength": null
+}
+================================================================================
+
+[2025-10-22T09:40:27.229Z] ✅ [0vx2bsyiy] RESPOSTA - estrelabet
+{
+  "requestId": "0vx2bsyiy",
+  "timestamp": "2025-10-22T09:40:27.229Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Wed, 22 Oct 2025 09:40:26 GMT",
+    "content-type": "application/json",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "access-control-allow-headers": "*",
+    "set-cookie": [
+      "ci_session=nrpm5323g81rf1jfcuucdsmubfddb0q3; Path=/; HttpOnly; Domain=www.estrelabet.bet.br; SameSite=None; Secure; Max-Age=86400",
+      "__cf_bm=K7eK8cK6ud.xDg9rb1TxrgBj5pTmoRHudCiUYSfu8sU-1761126026-1.0.1.1-aH6LXB7s25SxNXcqEnQE5PRg.EukSxN.A7LxPrP8iuKoThopA7MRagQaZ3JMyGIxnP25fKAzrHadf5Uf0FqLbZCQ.QsbZamqC8s78v60v38; path=/; expires=Wed, 22-Oct-25 10:10:26 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+      "_cfuvid=2XHv9dckMruxRCoX.OX5k4jQX_bFnQZPlJohF_PSGvc-1761126026248-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+    ],
+    "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch",
+    "x-dns-prefetch-control": "on",
+    "x-frame-options": "SAMEORIGIN",
+    "cf-cache-status": "DYNAMIC",
+    "strict-transport-security": "max-age=0; includeSubDomains",
+    "x-content-type-options": "nosniff",
+    "server": "cloudflare",
+    "cf-ray": "9928087d5e26a4ef-GRU",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "data": {
+    "data": {
+      "success": true,
+      "id": "nrpm5323g81rf1jfcuucdsmubfddb0q3",
+      "sessionLimit": 0,
+      "ecrCategory": "real_user",
+      "language": "pt_BR",
+      "rvpSessionId": "25469545-8434-43d2-9635-b420e9c1636d_SESSIONKEY",
+      "riverplayUrl": "wss://push.estrelabet.com",
+      "pragmaticSessionId": "25469545-8434-43d2-9635-b420e9c1636d_SESSIONKEY",
+      "pragmaticUrl": "wss://push.estrelabet.com",
+      "mobileVerificationStatus": "SUCCESS",
+      "emailVerificationStatus": "SUCCESS",
+      "twoFactorAuthEnabled": false,
+      "user": {
+        "id": "EST2022099960136",
+        "rvpSessionId": "25469545-8434-43d2-9635-b420e9c1636d_SESSIONKEY",
+        "riverplayUrl": "wss://push.estrelabet.com",
+        "pragmaticSessionId": "25469545-8434-43d2-9635-b420e9c1636d_SESSIONKEY",
+        "pragmaticUrl": "wss://push.estrelabet.com",
+        "partnerId": "estrelabet"
+      },
+      "lastLoginTime": "1761125993",
+      "userJurisdiction": "brazil",
+      "jurisdictionResponse": "",
+      "postAuthPopUpDetails": [],
+      "policies": [
+        {
+          "policyType": "BONUS_RULES",
+          "policyVersionId": "2.0",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2023-10-01 14:43:55.0",
+          "policyVersionType": "MATERIAL"
+        },
+        {
+          "policyType": "PRIVACY_POLICY",
+          "policyVersionId": "2.0",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2023-10-01 14:43:55.0",
+          "policyVersionType": "MATERIAL"
+        },
+        {
+          "policyType": "SPORTS_BETTING_RULES",
+          "policyVersionId": "2.0",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2023-10-01 14:43:55.0",
+          "policyVersionType": "MATERIAL"
+        },
+        {
+          "policyType": "TERMS_AND_CONDITIONS",
+          "policyVersionId": "2.1.1",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2025-05-02 22:24:30.0",
+          "policyVersionType": "MINOR"
+        }
+      ],
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWNjZXNzIjp0cnVlLCJpZCI6Im5ycG01MzIzZzgxcmYxamZjdXVjZHNtdWJmZGRiMHEzIiwic2Vzc2lvbkxpbWl0IjowLCJlY3JDYXRlZ29yeSI6InJlYWxfdXNlciIsImxhbmd1YWdlIjoicHRfQlIiLCJydnBTZXNzaW9uSWQiOiIyNTQ2OTU0NS04NDM0LTQzZDItOTYzNS1iNDIwZTljMTYzNmRfU0VTU0lPTktFWSIsInJpdmVycGxheVVybCI6IndzczovL3B1c2guZXN0cmVsYWJldC5jb20iLCJwcmFnbWF0aWNTZXNzaW9uSWQiOiIyNTQ2OTU0NS04NDM0LTQzZDItOTYzNS1iNDIwZTljMTYzNmRfU0VTU0lPTktFWSIsInByYWdtYXRpY1VybCI6IndzczovL3B1c2guZXN0cmVsYWJldC5jb20iLCJtb2JpbGVWZXJpZmljYXRpb25TdGF0dXMiOiJTVUNDRVNTIiwiZW1haWxWZXJpZmljYXRpb25TdGF0dXMiOiJTVUNDRVNTIiwidHdvRmFjdG9yQXV0aEVuYWJsZWQiOmZhbHNlLCJ1c2VyIjp7ImlkIjoiRVNUMjAyMjA5OTk2MDEzNiIsInJ2cFNlc3Npb25JZCI6IjI1NDY5NTQ1LTg0MzQtNDNkMi05NjM1LWI0MjBlOWMxNjM2ZF9TRVNTSU9OS0VZIiwicml2ZXJwbGF5VXJsIjoid3NzOi8vcHVzaC5lc3RyZWxhYmV0LmNvbSIsInByYWdtYXRpY1Nlc3Npb25JZCI6IjI1NDY5NTQ1LTg0MzQtNDNkMi05NjM1LWI0MjBlOWMxNjM2ZF9TRVNTSU9OS0VZIiwicHJhZ21hdGljVXJsIjoid3NzOi8vcHVzaC5lc3RyZWxhYmV0LmNvbSIsInBhcnRuZXJJZCI6ImVzdHJlbGFiZXQifSwibGFzdExvZ2luVGltZSI6IjE3NjExMjU5OTMiLCJ1c2VySnVyaXNkaWN0aW9uIjoiYnJhemlsIiwianVyaXNkaWN0aW9uUmVzcG9uc2UiOiIiLCJwb3N0QXV0aFBvcFVwRGV0YWlscyI6W10sInBvbGljaWVzIjpbeyJwb2xpY3lUeXBlIjoiQk9OVVNfUlVMRVMiLCJwb2xpY3lWZXJzaW9uSWQiOiIyLjAiLCJwb2xpY3lBY2NlcHRlZCI6dHJ1ZSwicG9saWN5Q29uZmlybWF0aW9uRGF0ZSI6IjIwMjMtMTAtMDEgMTQ6NDM6NTUuMCIsInBvbGljeVZlcnNpb25UeXBlIjoiTUFURVJJQUwifSx7InBvbGljeVR5cGUiOiJQUklWQUNZX1BPTElDWSIsInBvbGljeVZlcnNpb25JZCI6IjIuMCIsInBvbGljeUFjY2VwdGVkIjp0cnVlLCJwb2xpY3lDb25maXJtYXRpb25EYXRlIjoiMjAyMy0xMC0wMSAxNDo0Mzo1NS4wIiwicG9saWN5VmVyc2lvblR5cGUiOiJNQVRFUklBTCJ9LHsicG9saWN5VHlwZSI6IlNQT1JUU19CRVRUSU5HX1JVTEVTIiwicG9saWN5VmVyc2lvbklkIjoiMi4wIiwicG9saWN5QWNjZXB0ZWQiOnRydWUsInBvbGljeUNvbmZpcm1hdGlvbkRhdGUiOiIyMDIzLTEwLTAxIDE0OjQzOjU1LjAiLCJwb2xpY3lWZXJzaW9uVHlwZSI6Ik1BVEVSSUFMIn0seyJwb2xpY3lUeXBlIjoiVEVSTVNfQU5EX0NPTkRJVElPTlMiLCJwb2xpY3lWZXJzaW9uSWQiOiIyLjEuMSIsInBvbGljeUFjY2VwdGVkIjp0cnVlLCJwb2xpY3lDb25maXJtYXRpb25EYXRlIjoiMjAyNS0wNS0wMiAyMjoyNDozMC4wIiwicG9saWN5VmVyc2lvblR5cGUiOiJNSU5PUiJ9XSwiaWF0IjoxNzYxMTI2MDI2LCJleHAiOjE3NjExMjk2MjZ9.rfz9lLjitgdYG_o1kmh6CPJigLbac6XbjNDKoyAHruU",
+      "cookieHeader": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; Max-Age=43200; Domain=estrelabet.bet.br; HttpOnly; Secure; SameSite=Lax, ci_session=nrpm5323g81rf1jfcuucdsmubfddb0q3; Max-Age=43200; Domain=estrelabet.bet.br; HttpOnly; Secure; SameSite=Lax, vst-no=2; Max-Age=43200; Domain=estrelabet.bet.br; HttpOnly; Secure; SameSite=Lax, __cf_bm=Ph8Gngnq9.tn4GJOEBcjDaTmdyrKtYvHQOz87w4yvss-1761126026-1.0.1.1-Xie.CM.yjgbyB0UQ4Fp75TUkdUNmgT5qBrmKakRznaXV7WEwLulJo.PTjMqkrIPgihMJ2zyiM5nhAQoEbaLT.K6TgDsS31lFCQWSoBvZu7k; path=/; expires=Wed, 22-Oct-25 10:10:26 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+    },
+    "error": null
+  },
+  "cookies": "[Circular Reference]",
+  "sessionCookies": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; ci_session=nrpm5323g81rf1jfcuucdsmubfddb0q3; vst-no=2; __cf_bm=Ph8Gngnq9.tn4GJOEBcjDaTmdyrKtYvHQOz87w4yvss-1761126026-1.0.1.1-Xie.CM.yjgbyB0UQ4Fp75TUkdUNmgT5qBrmKakRznaXV7WEwLulJo.PTjMqkrIPgihMJ2zyiM5nhAQoEbaLT.K6TgDsS31lFCQWSoBvZu7k; 22-Oct-25 10:10:26 GMT",
+  "responseTime": 651
+}
+================================================================================
+
+[2025-10-22T09:40:27.230Z] 🚀 [oi9ole54i] REQUISIÇÃO - estrelabet
+{
+  "requestId": "oi9ole54i",
+  "timestamp": "2025-10-22T09:40:27.230Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "url": "https://bff-estrelabet.estrelabet.bet.br/sports/openSportsBook?vendorId=altenar",
+  "method": "get",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "SessionId": "nrpm5323g81rf1jfcuucdsmubfddb0q3",
+    "Cookie": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; ci_session=nrpm5323g81rf1jfcuucdsmubfddb0q3; vst-no=2; __cf_bm=Ph8Gngnq9.tn4GJOEBcjDaTmdyrKtYvHQOz87w4yvss-1761126026-1.0.1.1-Xie.CM.yjgbyB0UQ4Fp75TUkdUNmgT5qBrmKakRznaXV7WEwLulJo.PTjMqkrIPgihMJ2zyiM5nhAQoEbaLT.K6TgDsS31lFCQWSoBvZu7k; 22-Oct-25 10:10:26 GMT"
+  },
+  "sessionCookies": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; ci_session=nrpm5323g81rf1jfcuucdsmubfddb0q3; vst-no=2; __cf_bm=Ph8Gngnq9.tn4GJOEBcjDaTmdyrKtYvHQOz87w4yvss-1761126026-1.0.1.1-Xie.CM.yjgbyB0UQ4Fp75TUkdUNmgT5qBrmKakRznaXV7WEwLulJo.PTjMqkrIPgihMJ2zyiM5nhAQoEbaLT.K6TgDsS31lFCQWSoBvZu7k; 22-Oct-25 10:10:26 GMT"
+}
+================================================================================
+
+[2025-10-22T09:40:27.522Z] ✅ [oi9ole54i] RESPOSTA - estrelabet
+{
+  "requestId": "oi9ole54i",
+  "timestamp": "2025-10-22T09:40:27.522Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Wed, 22 Oct 2025 09:40:26 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "access-control-allow-origin": "https://www.estrelabet.bet.br",
+    "vary": "Origin",
+    "x-forwarded-for": "179.125.211.139",
+    "x-request-id": "c272b02f-c19b-4055-98e3-146cda23d9a1",
+    "cf-cache-status": "DYNAMIC",
+    "set-cookie": [
+      "__cf_bm=no5pvB6sQZrsOtHBoESDz2ey__eOIbTdg4Shvr7djvQ-1761126026-1.0.1.1-se5chelFx1gqAPC67b5OfjuzRNgBNPjyUpUq2j4DUCx3hx7sPHE_uMNbvouifz7FGnTFNoWU0z.fdlQbBbervzKr.X42oWdyjRU36sVeh0M; path=/; expires=Wed, 22-Oct-25 10:10:26 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+      "_cfuvid=KOJMJUTVeYB0cLilmX1MEy68VWmx8_BwNfjQKX3qjUw-1761126026526-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+    ],
+    "strict-transport-security": "max-age=0; includeSubDomains",
+    "x-content-type-options": "nosniff",
+    "speculation-rules": "\"/cdn-cgi/speculation\"",
+    "server": "cloudflare",
+    "cf-ray": "992808812c0f1d38-GRU",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "data": {
+    "data": {
+      "authToken": "afbe4a91-d9db-494e-a1d9-2d521d346c9e",
+      "status": "SUCCESS",
+      "tokenExpiry": "1761129626"
+    }
+  },
+  "cookies": "[Circular Reference]",
+  "sessionCookies": "__cf_bm=no5pvB6sQZrsOtHBoESDz2ey__eOIbTdg4Shvr7djvQ-1761126026-1.0.1.1-se5chelFx1gqAPC67b5OfjuzRNgBNPjyUpUq2j4DUCx3hx7sPHE_uMNbvouifz7FGnTFNoWU0z.fdlQbBbervzKr.X42oWdyjRU36sVeh0M; path=/; expires=Wed, 22-Oct-25 10:10:26 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=KOJMJUTVeYB0cLilmX1MEy68VWmx8_BwNfjQKX3qjUw-1761126026526-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 292
+}
+================================================================================
+
+[2025-10-22T09:40:27.523Z] 🚀 [8fxvw86jx] REQUISIÇÃO - estrelabet
+{
+  "requestId": "8fxvw86jx",
+  "timestamp": "2025-10-22T09:40:27.523Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "url": "https://sb2auth-altenar2.biahosted.com/api/WidgetAuth/SignIn",
+  "method": "post",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Cookie": "__cf_bm=no5pvB6sQZrsOtHBoESDz2ey__eOIbTdg4Shvr7djvQ-1761126026-1.0.1.1-se5chelFx1gqAPC67b5OfjuzRNgBNPjyUpUq2j4DUCx3hx7sPHE_uMNbvouifz7FGnTFNoWU0z.fdlQbBbervzKr.X42oWdyjRU36sVeh0M; path=/; expires=Wed, 22-Oct-25 10:10:26 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=KOJMJUTVeYB0cLilmX1MEy68VWmx8_BwNfjQKX3qjUw-1761126026526-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+  },
+  "body": {
+    "culture": "pt-BR",
+    "timezoneOffset": 180,
+    "integration": "estrelabet",
+    "deviceType": 1,
+    "numFormat": "en-GB",
+    "countryCode": "BR",
+    "token": "afbe4a91-d9db-494e-a1d9-2d521d346c9e"
+  },
+  "sessionCookies": "__cf_bm=no5pvB6sQZrsOtHBoESDz2ey__eOIbTdg4Shvr7djvQ-1761126026-1.0.1.1-se5chelFx1gqAPC67b5OfjuzRNgBNPjyUpUq2j4DUCx3hx7sPHE_uMNbvouifz7FGnTFNoWU0z.fdlQbBbervzKr.X42oWdyjRU36sVeh0M; path=/; expires=Wed, 22-Oct-25 10:10:26 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=KOJMJUTVeYB0cLilmX1MEy68VWmx8_BwNfjQKX3qjUw-1761126026526-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+}
+================================================================================
+
+[2025-10-22T09:40:28.066Z] ✅ [8fxvw86jx] RESPOSTA - estrelabet
+{
+  "requestId": "8fxvw86jx",
+  "timestamp": "2025-10-22T09:40:28.066Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "server": "nginx",
+    "date": "Wed, 22 Oct 2025 09:40:26 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "723",
+    "access-control-allow-origin": "*",
+    "strict-transport-security": "max-age=15552000",
+    "via": "1.1 google",
+    "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+  },
+  "data": {
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb25maWd1cmF0aW9uSWQiOiIxMiIsIlBlcnNvblR5cGUiOiIzIiwiUGVyc29uSWQiOiIxNTE5ODgyNSIsIlVzZXJOYW1lIjoiMjAyMjA5OTk2MDEzNiIsIkxvZ2luSWQiOiIyMzA1Mzk2NyIsIkN1cnJlbmN5U2lnbiI6IlIkIiwiTWluQm9udXNQcmljZSI6IjEuMyIsIkJvbnVzVGVtcGxhdGVJZCI6IjIyNCIsIkN1cnJlbmN5SWQiOiI5ODYiLCJDdXJyZW5jeUNvZGUiOiJCUkwiLCJDb3VudHJ5Q29kZSI6IkJSIiwiQnJhbmRJZCI6IjQ1NyIsIkNsaWVudElQIjoiMTc5LjEyNS4yMTEuMTM5IiwiZXhwIjoxNzYxMTI2OTI2LCJpc3MiOiJTQjIiLCJhdWQiOiJTQjIifQ.WDgfFsOiO72rB8RdcvMmxRgeV2TrzHRLBAYMJgDjiDw",
+    "currency": "BRL",
+    "isUserLocked": false,
+    "isAgency": false,
+    "currencySign": "R$",
+    "currencyId": 986,
+    "currencyDisplay": 0,
+    "encryptedPlayerId": "akeinOWwfi/pFfhdRXJ56A==",
+    "regDate": "2023-10-01T17:43:42.38"
+  },
+  "sessionCookies": "__cf_bm=no5pvB6sQZrsOtHBoESDz2ey__eOIbTdg4Shvr7djvQ-1761126026-1.0.1.1-se5chelFx1gqAPC67b5OfjuzRNgBNPjyUpUq2j4DUCx3hx7sPHE_uMNbvouifz7FGnTFNoWU0z.fdlQbBbervzKr.X42oWdyjRU36sVeh0M; path=/; expires=Wed, 22-Oct-25 10:10:26 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=KOJMJUTVeYB0cLilmX1MEy68VWmx8_BwNfjQKX3qjUw-1761126026526-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 543
+}
+================================================================================
+
+[2025-10-22T09:40:28.231Z] 🚀 [73ui8hd9y] REQUISIÇÃO - estrelabet
+{
+  "requestId": "73ui8hd9y",
+  "timestamp": "2025-10-22T09:40:28.231Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "url": "https://sb2betgateway-altenar2.biahosted.com/api/widget/placeWidget",
+  "method": "post",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb25maWd1cmF0aW9uSWQiOiIxMiIsIlBlcnNvblR5cGUiOiIzIiwiUGVyc29uSWQiOiIxNTE5ODgyNSIsIlVzZXJOYW1lIjoiMjAyMjA5OTk2MDEzNiIsIkxvZ2luSWQiOiIyMzA1Mzk2NyIsIkN1cnJlbmN5U2lnbiI6IlIkIiwiTWluQm9udXNQcmljZSI6IjEuMyIsIkJvbnVzVGVtcGxhdGVJZCI6IjIyNCIsIkN1cnJlbmN5SWQiOiI5ODYiLCJDdXJyZW5jeUNvZGUiOiJCUkwiLCJDb3VudHJ5Q29kZSI6IkJSIiwiQnJhbmRJZCI6IjQ1NyIsIkNsaWVudElQIjoiMTc5LjEyNS4yMTEuMTM5IiwiZXhwIjoxNzYxMTI2OTI2LCJpc3MiOiJTQjIiLCJhdWQiOiJTQjIifQ.WDgfFsOiO72rB8RdcvMmxRgeV2TrzHRLBAYMJgDjiDw",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Cookie": "__cf_bm=no5pvB6sQZrsOtHBoESDz2ey__eOIbTdg4Shvr7djvQ-1761126026-1.0.1.1-se5chelFx1gqAPC67b5OfjuzRNgBNPjyUpUq2j4DUCx3hx7sPHE_uMNbvouifz7FGnTFNoWU0z.fdlQbBbervzKr.X42oWdyjRU36sVeh0M; path=/; expires=Wed, 22-Oct-25 10:10:26 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=KOJMJUTVeYB0cLilmX1MEy68VWmx8_BwNfjQKX3qjUw-1761126026526-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+  },
+  "body": {
+    "culture": "pt-BR",
+    "timezoneOffset": 180,
+    "integration": "estrelabet",
+    "deviceType": 1,
+    "numFormat": "en-GB",
+    "countryCode": "BR",
+    "betType": 0,
+    "isAutoCharge": false,
+    "stakes": [
+      100
+    ],
+    "oddsChangeAction": 1,
+    "betMarkets": [
+      {
+        "id": 14052559,
+        "isBanker": false,
+        "dbId": 10,
+        "sportName": "Futebol",
+        "rC": false,
+        "eventName": "Chelsea vs. AFC Ajax\t\t",
+        "catName": "Europa",
+        "champName": "Liga dos Campeões",
+        "sportTypeId": 1,
+        "odds": [
+          {
+            "id": 2933359098,
+            "marketId": 1197160088,
+            "price": 1.2728,
+            "marketName": "Vencedor do encontro",
+            "marketTypeId": 1,
+            "mostBalanced": false,
+            "selectionTypeId": 1,
+            "selectionName": "Chelsea",
+            "widgetInfo": {
+              "widget": 12,
+              "page": 3,
+              "tabIndex": 3
+            }
+          }
+        ]
+      }
+    ],
+    "eachWays": [
+      false
+    ],
+    "requestId": "mSRCGRuvAlFXTuASupFX",
+    "confirmedByClient": false,
+    "device": 0
+  },
+  "sessionCookies": "__cf_bm=no5pvB6sQZrsOtHBoESDz2ey__eOIbTdg4Shvr7djvQ-1761126026-1.0.1.1-se5chelFx1gqAPC67b5OfjuzRNgBNPjyUpUq2j4DUCx3hx7sPHE_uMNbvouifz7FGnTFNoWU0z.fdlQbBbervzKr.X42oWdyjRU36sVeh0M; path=/; expires=Wed, 22-Oct-25 10:10:26 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=KOJMJUTVeYB0cLilmX1MEy68VWmx8_BwNfjQKX3qjUw-1761126026526-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+}
+================================================================================
+
+[2025-10-22T09:40:28.793Z] ✅ [73ui8hd9y] RESPOSTA - estrelabet
+{
+  "requestId": "73ui8hd9y",
+  "timestamp": "2025-10-22T09:40:28.793Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "server": "nginx",
+    "date": "Wed, 22 Oct 2025 09:40:27 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "214",
+    "access-control-allow-origin": "*",
+    "strict-transport-security": "max-age=15552000",
+    "via": "1.1 google",
+    "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+  },
+  "data": {
+    "error": {
+      "totalPotentialWin": 5.99,
+      "totalStake": 4.71,
+      "stakesFormatted": [
+        4.71
+      ],
+      "winFormatted": [
+        5.99
+      ],
+      "betslipResult": {
+        "totalPotentialWin": 5.99,
+        "minPotentialWin": 5.99,
+        "maxOdds": 1.2728,
+        "maxBonus": 0
+      },
+      "errorType": 1
+    }
+  },
+  "sessionCookies": "__cf_bm=no5pvB6sQZrsOtHBoESDz2ey__eOIbTdg4Shvr7djvQ-1761126026-1.0.1.1-se5chelFx1gqAPC67b5OfjuzRNgBNPjyUpUq2j4DUCx3hx7sPHE_uMNbvouifz7FGnTFNoWU0z.fdlQbBbervzKr.X42oWdyjRU36sVeh0M; path=/; expires=Wed, 22-Oct-25 10:10:26 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=KOJMJUTVeYB0cLilmX1MEy68VWmx8_BwNfjQKX3qjUw-1761126026526-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 562
+}
+================================================================================
+
+[2025-10-22T09:40:28.793Z] 🚀 [gqtbrvqqj] REQUISIÇÃO - estrelabet
+{
+  "requestId": "gqtbrvqqj",
+  "timestamp": "2025-10-22T09:40:28.793Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "url": "https://www.estrelabet.bet.br/next/pb/api/login",
+  "method": "post",
+  "headers": {
+    "Content-Type": "application/json",
+    "Origin": "https://www.estrelabet.bet.br",
+    "Referer": "https://www.estrelabet.bet.br/",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Accept": "application/json",
+    "Accept-Language": "pt-BR,pt;q=0.9,en;q=0.8",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Sec-Fetch-Dest": "empty",
+    "Sec-Fetch-Mode": "cors",
+    "Sec-Fetch-Site": "same-origin",
+    "Cookie": "__cf_bm=no5pvB6sQZrsOtHBoESDz2ey__eOIbTdg4Shvr7djvQ-1761126026-1.0.1.1-se5chelFx1gqAPC67b5OfjuzRNgBNPjyUpUq2j4DUCx3hx7sPHE_uMNbvouifz7FGnTFNoWU0z.fdlQbBbervzKr.X42oWdyjRU36sVeh0M; path=/; expires=Wed, 22-Oct-25 10:10:26 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=KOJMJUTVeYB0cLilmX1MEy68VWmx8_BwNfjQKX3qjUw-1761126026526-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+  },
+  "body": {
+    "login": "muvucasbars@gmail.com",
+    "domain": "www.estrelabet.bet.br",
+    "lnSessionId": "dd8a1dbe-f571-403b-9722-c1540018f8e7",
+    "password": "Mateuus.27"
+  },
+  "sessionCookies": "__cf_bm=no5pvB6sQZrsOtHBoESDz2ey__eOIbTdg4Shvr7djvQ-1761126026-1.0.1.1-se5chelFx1gqAPC67b5OfjuzRNgBNPjyUpUq2j4DUCx3hx7sPHE_uMNbvouifz7FGnTFNoWU0z.fdlQbBbervzKr.X42oWdyjRU36sVeh0M; path=/; expires=Wed, 22-Oct-25 10:10:26 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=KOJMJUTVeYB0cLilmX1MEy68VWmx8_BwNfjQKX3qjUw-1761126026526-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+  "withCredentials": true,
+  "maxBodyLength": null
+}
+================================================================================
+
+[2025-10-22T09:40:29.250Z] ✅ [gqtbrvqqj] RESPOSTA - estrelabet
+{
+  "requestId": "gqtbrvqqj",
+  "timestamp": "2025-10-22T09:40:29.250Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Wed, 22 Oct 2025 09:40:28 GMT",
+    "content-type": "application/json",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "access-control-allow-headers": "*",
+    "set-cookie": [
+      "ci_session=opflt8nj87ui409r7bkimq9165gcvndr; Path=/; HttpOnly; Domain=www.estrelabet.bet.br; SameSite=None; Secure; Max-Age=86400"
+    ],
+    "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch",
+    "x-dns-prefetch-control": "on",
+    "x-frame-options": "SAMEORIGIN",
+    "cf-cache-status": "DYNAMIC",
+    "strict-transport-security": "max-age=0; includeSubDomains",
+    "x-content-type-options": "nosniff",
+    "server": "cloudflare",
+    "cf-ray": "992808895aefa4ef-GRU",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "data": {
+    "data": {
+      "success": true,
+      "id": "opflt8nj87ui409r7bkimq9165gcvndr",
+      "sessionLimit": 0,
+      "ecrCategory": "real_user",
+      "language": "pt_BR",
+      "rvpSessionId": "1e90bb66-2750-49f3-9ac9-fb0d3e0054b9_SESSIONKEY",
+      "riverplayUrl": "wss://push.estrelabet.com",
+      "pragmaticSessionId": "1e90bb66-2750-49f3-9ac9-fb0d3e0054b9_SESSIONKEY",
+      "pragmaticUrl": "wss://push.estrelabet.com",
+      "mobileVerificationStatus": "SUCCESS",
+      "emailVerificationStatus": "SUCCESS",
+      "twoFactorAuthEnabled": false,
+      "user": {
+        "id": "EST2022099960136",
+        "rvpSessionId": "1e90bb66-2750-49f3-9ac9-fb0d3e0054b9_SESSIONKEY",
+        "riverplayUrl": "wss://push.estrelabet.com",
+        "pragmaticSessionId": "1e90bb66-2750-49f3-9ac9-fb0d3e0054b9_SESSIONKEY",
+        "pragmaticUrl": "wss://push.estrelabet.com",
+        "partnerId": "estrelabet"
+      },
+      "lastLoginTime": "1761126026",
+      "userJurisdiction": "brazil",
+      "jurisdictionResponse": "",
+      "postAuthPopUpDetails": [],
+      "policies": [
+        {
+          "policyType": "BONUS_RULES",
+          "policyVersionId": "2.0",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2023-10-01 14:43:55.0",
+          "policyVersionType": "MATERIAL"
+        },
+        {
+          "policyType": "PRIVACY_POLICY",
+          "policyVersionId": "2.0",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2023-10-01 14:43:55.0",
+          "policyVersionType": "MATERIAL"
+        },
+        {
+          "policyType": "SPORTS_BETTING_RULES",
+          "policyVersionId": "2.0",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2023-10-01 14:43:55.0",
+          "policyVersionType": "MATERIAL"
+        },
+        {
+          "policyType": "TERMS_AND_CONDITIONS",
+          "policyVersionId": "2.1.1",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2025-05-02 22:24:30.0",
+          "policyVersionType": "MINOR"
+        }
+      ],
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWNjZXNzIjp0cnVlLCJpZCI6Im9wZmx0OG5qODd1aTQwOXI3YmtpbXE5MTY1Z2N2bmRyIiwic2Vzc2lvbkxpbWl0IjowLCJlY3JDYXRlZ29yeSI6InJlYWxfdXNlciIsImxhbmd1YWdlIjoicHRfQlIiLCJydnBTZXNzaW9uSWQiOiIxZTkwYmI2Ni0yNzUwLTQ5ZjMtOWFjOS1mYjBkM2UwMDU0YjlfU0VTU0lPTktFWSIsInJpdmVycGxheVVybCI6IndzczovL3B1c2guZXN0cmVsYWJldC5jb20iLCJwcmFnbWF0aWNTZXNzaW9uSWQiOiIxZTkwYmI2Ni0yNzUwLTQ5ZjMtOWFjOS1mYjBkM2UwMDU0YjlfU0VTU0lPTktFWSIsInByYWdtYXRpY1VybCI6IndzczovL3B1c2guZXN0cmVsYWJldC5jb20iLCJtb2JpbGVWZXJpZmljYXRpb25TdGF0dXMiOiJTVUNDRVNTIiwiZW1haWxWZXJpZmljYXRpb25TdGF0dXMiOiJTVUNDRVNTIiwidHdvRmFjdG9yQXV0aEVuYWJsZWQiOmZhbHNlLCJ1c2VyIjp7ImlkIjoiRVNUMjAyMjA5OTk2MDEzNiIsInJ2cFNlc3Npb25JZCI6IjFlOTBiYjY2LTI3NTAtNDlmMy05YWM5LWZiMGQzZTAwNTRiOV9TRVNTSU9OS0VZIiwicml2ZXJwbGF5VXJsIjoid3NzOi8vcHVzaC5lc3RyZWxhYmV0LmNvbSIsInByYWdtYXRpY1Nlc3Npb25JZCI6IjFlOTBiYjY2LTI3NTAtNDlmMy05YWM5LWZiMGQzZTAwNTRiOV9TRVNTSU9OS0VZIiwicHJhZ21hdGljVXJsIjoid3NzOi8vcHVzaC5lc3RyZWxhYmV0LmNvbSIsInBhcnRuZXJJZCI6ImVzdHJlbGFiZXQifSwibGFzdExvZ2luVGltZSI6IjE3NjExMjYwMjYiLCJ1c2VySnVyaXNkaWN0aW9uIjoiYnJhemlsIiwianVyaXNkaWN0aW9uUmVzcG9uc2UiOiIiLCJwb3N0QXV0aFBvcFVwRGV0YWlscyI6W10sInBvbGljaWVzIjpbeyJwb2xpY3lUeXBlIjoiQk9OVVNfUlVMRVMiLCJwb2xpY3lWZXJzaW9uSWQiOiIyLjAiLCJwb2xpY3lBY2NlcHRlZCI6dHJ1ZSwicG9saWN5Q29uZmlybWF0aW9uRGF0ZSI6IjIwMjMtMTAtMDEgMTQ6NDM6NTUuMCIsInBvbGljeVZlcnNpb25UeXBlIjoiTUFURVJJQUwifSx7InBvbGljeVR5cGUiOiJQUklWQUNZX1BPTElDWSIsInBvbGljeVZlcnNpb25JZCI6IjIuMCIsInBvbGljeUFjY2VwdGVkIjp0cnVlLCJwb2xpY3lDb25maXJtYXRpb25EYXRlIjoiMjAyMy0xMC0wMSAxNDo0Mzo1NS4wIiwicG9saWN5VmVyc2lvblR5cGUiOiJNQVRFUklBTCJ9LHsicG9saWN5VHlwZSI6IlNQT1JUU19CRVRUSU5HX1JVTEVTIiwicG9saWN5VmVyc2lvbklkIjoiMi4wIiwicG9saWN5QWNjZXB0ZWQiOnRydWUsInBvbGljeUNvbmZpcm1hdGlvbkRhdGUiOiIyMDIzLTEwLTAxIDE0OjQzOjU1LjAiLCJwb2xpY3lWZXJzaW9uVHlwZSI6Ik1BVEVSSUFMIn0seyJwb2xpY3lUeXBlIjoiVEVSTVNfQU5EX0NPTkRJVElPTlMiLCJwb2xpY3lWZXJzaW9uSWQiOiIyLjEuMSIsInBvbGljeUFjY2VwdGVkIjp0cnVlLCJwb2xpY3lDb25maXJtYXRpb25EYXRlIjoiMjAyNS0wNS0wMiAyMjoyNDozMC4wIiwicG9saWN5VmVyc2lvblR5cGUiOiJNSU5PUiJ9XSwiaWF0IjoxNzYxMTI2MDI4LCJleHAiOjE3NjExMjk2Mjh9.4zwkTkvMcJOIhPS4NzL8AJ_PHYW8FnS9-9a-DSo-40A",
+      "cookieHeader": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; Max-Age=43200; Domain=estrelabet.bet.br; HttpOnly; Secure; SameSite=Lax, ci_session=opflt8nj87ui409r7bkimq9165gcvndr; Max-Age=43200; Domain=estrelabet.bet.br; HttpOnly; Secure; SameSite=Lax, vst-no=2; Max-Age=43200; Domain=estrelabet.bet.br; HttpOnly; Secure; SameSite=Lax, __cf_bm=MlKsKWTGOk60CLFcM9Y1K1Xd294.Cn1r9O17PQ4_vqY-1761126028-1.0.1.1-myUOTmJKiBYGvHsnU4vaSmZIyAxoiGmhgirN64R3bMw4eNw4os1PpRuNYBcXfmKqW5k29CrZn5qTczzpLIw1a.zhhOFCAVzeuBhF2A9rCQ8; path=/; expires=Wed, 22-Oct-25 10:10:28 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+    },
+    "error": null
+  },
+  "cookies": "[Circular Reference]",
+  "sessionCookies": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; ci_session=opflt8nj87ui409r7bkimq9165gcvndr; vst-no=2; __cf_bm=MlKsKWTGOk60CLFcM9Y1K1Xd294.Cn1r9O17PQ4_vqY-1761126028-1.0.1.1-myUOTmJKiBYGvHsnU4vaSmZIyAxoiGmhgirN64R3bMw4eNw4os1PpRuNYBcXfmKqW5k29CrZn5qTczzpLIw1a.zhhOFCAVzeuBhF2A9rCQ8; 22-Oct-25 10:10:28 GMT",
+  "responseTime": 457
+}
+================================================================================
+
+[2025-10-22T09:40:29.250Z] 🚀 [k200alofh] REQUISIÇÃO - estrelabet
+{
+  "requestId": "k200alofh",
+  "timestamp": "2025-10-22T09:40:29.250Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "url": "https://bff-estrelabet.estrelabet.bet.br/profile/getProfileBalanceCurrency",
+  "method": "get",
+  "headers": {
+    "sessionid": "opflt8nj87ui409r7bkimq9165gcvndr",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Cookie": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; ci_session=opflt8nj87ui409r7bkimq9165gcvndr; vst-no=2; __cf_bm=MlKsKWTGOk60CLFcM9Y1K1Xd294.Cn1r9O17PQ4_vqY-1761126028-1.0.1.1-myUOTmJKiBYGvHsnU4vaSmZIyAxoiGmhgirN64R3bMw4eNw4os1PpRuNYBcXfmKqW5k29CrZn5qTczzpLIw1a.zhhOFCAVzeuBhF2A9rCQ8; 22-Oct-25 10:10:28 GMT"
+  },
+  "sessionCookies": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; ci_session=opflt8nj87ui409r7bkimq9165gcvndr; vst-no=2; __cf_bm=MlKsKWTGOk60CLFcM9Y1K1Xd294.Cn1r9O17PQ4_vqY-1761126028-1.0.1.1-myUOTmJKiBYGvHsnU4vaSmZIyAxoiGmhgirN64R3bMw4eNw4os1PpRuNYBcXfmKqW5k29CrZn5qTczzpLIw1a.zhhOFCAVzeuBhF2A9rCQ8; 22-Oct-25 10:10:28 GMT"
+}
+================================================================================
+
+[2025-10-22T09:40:29.397Z] ✅ [k200alofh] RESPOSTA - estrelabet
+{
+  "requestId": "k200alofh",
+  "timestamp": "2025-10-22T09:40:29.397Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Wed, 22 Oct 2025 09:40:28 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "access-control-allow-origin": "https://www.estrelabet.bet.br",
+    "vary": "Origin",
+    "x-forwarded-for": "179.125.211.139",
+    "x-request-id": "20061758-4a37-4eb9-acb9-3ca4f1784f83",
+    "cf-cache-status": "DYNAMIC",
+    "set-cookie": [
+      "__cf_bm=Qefo33Qo3o7njBCYj7zdoqQungbJVTiVIKL57VFiT8A-1761126028-1.0.1.1-GZ5QPTvpWNmC9afrK2NtnCeYuKzbwZj3QFyJhPOp34A9A063mvabksiteVpRghl7Sx4zaNpC81CxfuOCXYBgEG4ZGJallpBvg4MdnjsOAsk; path=/; expires=Wed, 22-Oct-25 10:10:28 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+      "_cfuvid=2ixgDRE9dz5dZr6NjjENGkbpopMW7FUqzxbo4mebBug-1761126028299-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+    ],
+    "strict-transport-security": "max-age=0; includeSubDomains",
+    "x-content-type-options": "nosniff",
+    "speculation-rules": "\"/cdn-cgi/speculation\"",
+    "server": "cloudflare",
+    "cf-ray": "9928088c19c81d38-GRU",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "data": {
+    "data": {
+      "profile": {
+        "playerID": "2022099960136",
+        "nickname": "mateuus27",
+        "password": null,
+        "email": "muvucasbars@gmail.com",
+        "currency": "BRL",
+        "language": "pt_BR",
+        "firstName": "MATEUS",
+        "middleName": "",
+        "lastName": "SANTANA",
+        "address": "AVENIDA SÃO FRANCISCO DE ASSIS 3828",
+        "address1": "AVENIDA SÃO FRANCISCO DE ASSIS",
+        "address2": "3828",
+        "city": "PRAIA GRANDE",
+        "state": "SP",
+        "zip": "11724-475",
+        "zipCode": "11724-475",
+        "country": "BR",
+        "countryCode": "BR",
+        "phone": 13974198830,
+        "phoneNumber": 13974198830,
+        "areaCode": "55",
+        "countryAreaCode": "BR",
+        "phoneAreaCountryCode": "BR",
+        "cellPhone": 13974198830,
+        "mobileNumber": 13974198830,
+        "cellPhoneAreaCode": "55",
+        "mobileAreaCode": "55",
+        "cellPhoneCountryAreaCode": "BR",
+        "mobileAreaCountryCode": "BR",
+        "birthDate": "1995-09-27",
+        "gender": "F",
+        "affiliateLinkID": "",
+        "affiliateId": "",
+        "affiliateRefTag": null,
+        "bonusCode": null,
+        "promoAvailable": null,
+        "signUpIP": null,
+        "signUpClientType": null,
+        "signUpClientOS": null,
+        "signUpBrowser": null,
+        "userStatus": "real",
+        "createdTime": 1663253404000,
+        "maidenName": "",
+        "placeOfBirth": "",
+        "nationality": "BRAZILIAN",
+        "nationalId": "23597998860",
+        "affiliateName": "",
+        "bannerID": "",
+        "bannerId": "",
+        "nationalIdDocType": "",
+        "lastName2": "",
+        "taxCode": "",
+        "thirdPartyUser": false,
+        "pep": false,
+        "fitToPlay": false,
+        "jobTitle": "",
+        "employerName": "",
+        "employerAddress": "",
+        "employmentStatus": null,
+        "industry": "",
+        "occupation": "",
+        "pepAndSanctionDetails": null,
+        "bTag": "",
+        "playerLastAcknowledgementDate": "1746237432000",
+        "profileAcknowledgementRecommended": false,
+        "updateProfileForAnnualVerification": null,
+        "productChannelPreferences": null,
+        "externalEcrId": "2022099960136",
+        "title": "Mis",
+        "dob": "1995-09-27",
+        "userCategory": "real_user",
+        "jurisdiction": "brazil",
+        "withdrawlAllowed": true,
+        "withdrawalAllowed": true,
+        "depositAllowed": true,
+        "payAndPlayUserDetails": [],
+        "screenName": "mateuus27",
+        "emailId": "muvucasbars@gmail.com",
+        "birthName": "",
+        "motherName": "",
+        "twoFactorAuthEnabled": false,
+        "postAuthPopUpDetails": [],
+        "hostName": null,
+        "currencyCode": "BRL",
+        "bYear": "1995",
+        "bMonth": "09",
+        "bDay": "27",
+        "balanceDetails": {
+          "0": "BRL",
+          "cash": 1.25,
+          "bonus": 0,
+          "ecrCurrency": "BRL",
+          "currencyCode": "BRL",
+          "withdrawableBalance": 1.25,
+          "totalBonus": 0,
+          "drpBalance": 0,
+          "freebetBalance": 0,
+          "freespinsCount": 0
+        }
+      },
+      "currency": {
+        "symbol": "R$",
+        "code": "BRL",
+        "position": "before"
+      },
+      "currencyDetails": {
+        "symbol": "R$",
+        "code": "BRL",
+        "position": "before"
+      },
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYXRpb25hbElkIjoiMjM1OTc5OTg4NjAiLCJwbGF5ZXJJRCI6IjIwMjIwOTk5NjAxMzYiLCJleHRlcm5hbEVjcklkIjoiMjAyMjA5OTk2MDEzNiIsImlhdCI6MTc2MTEyNjAyOCwiZXhwIjoxNzYxMTI5NjI4fQ.C4FuD7nw6gm7RQHAWgrEEjDQB8MiVNWJW7U59iQQUSQ"
+    }
+  },
+  "cookies": "[Circular Reference]",
+  "sessionCookies": "__cf_bm=Qefo33Qo3o7njBCYj7zdoqQungbJVTiVIKL57VFiT8A-1761126028-1.0.1.1-GZ5QPTvpWNmC9afrK2NtnCeYuKzbwZj3QFyJhPOp34A9A063mvabksiteVpRghl7Sx4zaNpC81CxfuOCXYBgEG4ZGJallpBvg4MdnjsOAsk; path=/; expires=Wed, 22-Oct-25 10:10:28 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=2ixgDRE9dz5dZr6NjjENGkbpopMW7FUqzxbo4mebBug-1761126028299-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 147
+}
+================================================================================
+
+[2025-10-22T09:50:20.192Z] 🚀 [ra4dt1i7n] REQUISIÇÃO - estrelabet
+{
+  "requestId": "ra4dt1i7n",
+  "timestamp": "2025-10-22T09:50:20.192Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "url": "https://www.estrelabet.bet.br/next/pb/api/login",
+  "method": "post",
+  "headers": {
+    "Content-Type": "application/json",
+    "Origin": "https://www.estrelabet.bet.br",
+    "Referer": "https://www.estrelabet.bet.br/",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Accept": "application/json",
+    "Accept-Language": "pt-BR,pt;q=0.9,en;q=0.8",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Sec-Fetch-Dest": "empty",
+    "Sec-Fetch-Mode": "cors",
+    "Sec-Fetch-Site": "same-origin"
+  },
+  "body": {
+    "login": "muvucasbars@gmail.com",
+    "domain": "www.estrelabet.bet.br",
+    "lnSessionId": "dd8a1dbe-f571-403b-9722-c1540018f8e7",
+    "password": "Mateuus.27"
+  },
+  "sessionCookies": "",
+  "withCredentials": true,
+  "maxBodyLength": null
+}
+================================================================================
+
+[2025-10-22T09:50:20.764Z] ✅ [ra4dt1i7n] RESPOSTA - estrelabet
+{
+  "requestId": "ra4dt1i7n",
+  "timestamp": "2025-10-22T09:50:20.764Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Wed, 22 Oct 2025 09:50:20 GMT",
+    "content-type": "application/json",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "access-control-allow-headers": "*",
+    "set-cookie": [
+      "ci_session=i411jhagl5rqq62spk2h827p0bnuaveo; Path=/; HttpOnly; Domain=www.estrelabet.bet.br; SameSite=None; Secure; Max-Age=86400",
+      "__cf_bm=44.GFQQMcS2RZ7Fqki_zq7qdD7ItcXFtsNd_dQSsDL0-1761126620-1.0.1.1-F4bfvN8ROO.KyNZauzOHjr87kUMEdVK.0e6prnYqxZBUj8dlitUD9XnhUOR6GkE3ZQdrc7qTux2LI9.OQKyiUWLIbIFl39mtaLC4.HRuXZM; path=/; expires=Wed, 22-Oct-25 10:20:20 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+      "_cfuvid=hkOg.1jJ5P5IWyM2ULXlooEdw2Z3lPc8ua_okWHHovo-1761126620664-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+    ],
+    "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch",
+    "x-dns-prefetch-control": "on",
+    "x-frame-options": "SAMEORIGIN",
+    "cf-cache-status": "DYNAMIC",
+    "strict-transport-security": "max-age=0; includeSubDomains",
+    "x-content-type-options": "nosniff",
+    "server": "cloudflare",
+    "cf-ray": "992817002db4f20c-GRU",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "data": {
+    "data": {
+      "success": true,
+      "id": "i411jhagl5rqq62spk2h827p0bnuaveo",
+      "sessionLimit": 0,
+      "ecrCategory": "real_user",
+      "language": "pt_BR",
+      "rvpSessionId": "c199e49e-67b5-45f4-a846-55e7ba7c243a_SESSIONKEY",
+      "riverplayUrl": "wss://push.estrelabet.com",
+      "pragmaticSessionId": "c199e49e-67b5-45f4-a846-55e7ba7c243a_SESSIONKEY",
+      "pragmaticUrl": "wss://push.estrelabet.com",
+      "mobileVerificationStatus": "SUCCESS",
+      "emailVerificationStatus": "SUCCESS",
+      "twoFactorAuthEnabled": false,
+      "user": {
+        "id": "EST2022099960136",
+        "rvpSessionId": "c199e49e-67b5-45f4-a846-55e7ba7c243a_SESSIONKEY",
+        "riverplayUrl": "wss://push.estrelabet.com",
+        "pragmaticSessionId": "c199e49e-67b5-45f4-a846-55e7ba7c243a_SESSIONKEY",
+        "pragmaticUrl": "wss://push.estrelabet.com",
+        "partnerId": "estrelabet"
+      },
+      "lastLoginTime": "1761126028",
+      "userJurisdiction": "brazil",
+      "jurisdictionResponse": "",
+      "postAuthPopUpDetails": [],
+      "policies": [
+        {
+          "policyType": "BONUS_RULES",
+          "policyVersionId": "2.0",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2023-10-01 14:43:55.0",
+          "policyVersionType": "MATERIAL"
+        },
+        {
+          "policyType": "PRIVACY_POLICY",
+          "policyVersionId": "2.0",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2023-10-01 14:43:55.0",
+          "policyVersionType": "MATERIAL"
+        },
+        {
+          "policyType": "SPORTS_BETTING_RULES",
+          "policyVersionId": "2.0",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2023-10-01 14:43:55.0",
+          "policyVersionType": "MATERIAL"
+        },
+        {
+          "policyType": "TERMS_AND_CONDITIONS",
+          "policyVersionId": "2.1.1",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2025-05-02 22:24:30.0",
+          "policyVersionType": "MINOR"
+        }
+      ],
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWNjZXNzIjp0cnVlLCJpZCI6Imk0MTFqaGFnbDVycXE2MnNwazJoODI3cDBibnVhdmVvIiwic2Vzc2lvbkxpbWl0IjowLCJlY3JDYXRlZ29yeSI6InJlYWxfdXNlciIsImxhbmd1YWdlIjoicHRfQlIiLCJydnBTZXNzaW9uSWQiOiJjMTk5ZTQ5ZS02N2I1LTQ1ZjQtYTg0Ni01NWU3YmE3YzI0M2FfU0VTU0lPTktFWSIsInJpdmVycGxheVVybCI6IndzczovL3B1c2guZXN0cmVsYWJldC5jb20iLCJwcmFnbWF0aWNTZXNzaW9uSWQiOiJjMTk5ZTQ5ZS02N2I1LTQ1ZjQtYTg0Ni01NWU3YmE3YzI0M2FfU0VTU0lPTktFWSIsInByYWdtYXRpY1VybCI6IndzczovL3B1c2guZXN0cmVsYWJldC5jb20iLCJtb2JpbGVWZXJpZmljYXRpb25TdGF0dXMiOiJTVUNDRVNTIiwiZW1haWxWZXJpZmljYXRpb25TdGF0dXMiOiJTVUNDRVNTIiwidHdvRmFjdG9yQXV0aEVuYWJsZWQiOmZhbHNlLCJ1c2VyIjp7ImlkIjoiRVNUMjAyMjA5OTk2MDEzNiIsInJ2cFNlc3Npb25JZCI6ImMxOTllNDllLTY3YjUtNDVmNC1hODQ2LTU1ZTdiYTdjMjQzYV9TRVNTSU9OS0VZIiwicml2ZXJwbGF5VXJsIjoid3NzOi8vcHVzaC5lc3RyZWxhYmV0LmNvbSIsInByYWdtYXRpY1Nlc3Npb25JZCI6ImMxOTllNDllLTY3YjUtNDVmNC1hODQ2LTU1ZTdiYTdjMjQzYV9TRVNTSU9OS0VZIiwicHJhZ21hdGljVXJsIjoid3NzOi8vcHVzaC5lc3RyZWxhYmV0LmNvbSIsInBhcnRuZXJJZCI6ImVzdHJlbGFiZXQifSwibGFzdExvZ2luVGltZSI6IjE3NjExMjYwMjgiLCJ1c2VySnVyaXNkaWN0aW9uIjoiYnJhemlsIiwianVyaXNkaWN0aW9uUmVzcG9uc2UiOiIiLCJwb3N0QXV0aFBvcFVwRGV0YWlscyI6W10sInBvbGljaWVzIjpbeyJwb2xpY3lUeXBlIjoiQk9OVVNfUlVMRVMiLCJwb2xpY3lWZXJzaW9uSWQiOiIyLjAiLCJwb2xpY3lBY2NlcHRlZCI6dHJ1ZSwicG9saWN5Q29uZmlybWF0aW9uRGF0ZSI6IjIwMjMtMTAtMDEgMTQ6NDM6NTUuMCIsInBvbGljeVZlcnNpb25UeXBlIjoiTUFURVJJQUwifSx7InBvbGljeVR5cGUiOiJQUklWQUNZX1BPTElDWSIsInBvbGljeVZlcnNpb25JZCI6IjIuMCIsInBvbGljeUFjY2VwdGVkIjp0cnVlLCJwb2xpY3lDb25maXJtYXRpb25EYXRlIjoiMjAyMy0xMC0wMSAxNDo0Mzo1NS4wIiwicG9saWN5VmVyc2lvblR5cGUiOiJNQVRFUklBTCJ9LHsicG9saWN5VHlwZSI6IlNQT1JUU19CRVRUSU5HX1JVTEVTIiwicG9saWN5VmVyc2lvbklkIjoiMi4wIiwicG9saWN5QWNjZXB0ZWQiOnRydWUsInBvbGljeUNvbmZpcm1hdGlvbkRhdGUiOiIyMDIzLTEwLTAxIDE0OjQzOjU1LjAiLCJwb2xpY3lWZXJzaW9uVHlwZSI6Ik1BVEVSSUFMIn0seyJwb2xpY3lUeXBlIjoiVEVSTVNfQU5EX0NPTkRJVElPTlMiLCJwb2xpY3lWZXJzaW9uSWQiOiIyLjEuMSIsInBvbGljeUFjY2VwdGVkIjp0cnVlLCJwb2xpY3lDb25maXJtYXRpb25EYXRlIjoiMjAyNS0wNS0wMiAyMjoyNDozMC4wIiwicG9saWN5VmVyc2lvblR5cGUiOiJNSU5PUiJ9XSwiaWF0IjoxNzYxMTI2NjIwLCJleHAiOjE3NjExMzAyMjB9.W-_3qBD31fYATHSLB-M-2-iAWLXM1E98Q0eHu5DFRvw",
+      "cookieHeader": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; Max-Age=43200; Domain=estrelabet.bet.br; HttpOnly; Secure; SameSite=Lax, ci_session=i411jhagl5rqq62spk2h827p0bnuaveo; Max-Age=43200; Domain=estrelabet.bet.br; HttpOnly; Secure; SameSite=Lax, vst-no=2; Max-Age=43200; Domain=estrelabet.bet.br; HttpOnly; Secure; SameSite=Lax, __cf_bm=ssO4sj.1KQVSBuJoB70RQLFF7OZlPDh1i0.OE_WgOkc-1761126620-1.0.1.1-uW.GvSU7v_PchG.MinTsF6zcdipzbzHW10V_fkWJ4syjxyqHi5CywKyh2hiKwd_yf_Rl1shhT5pDRlQTFhRLJHuXjdVfoyK3un7jFBT9lF0; path=/; expires=Wed, 22-Oct-25 10:20:20 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+    },
+    "error": null
+  },
+  "cookies": "[Circular Reference]",
+  "sessionCookies": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; ci_session=i411jhagl5rqq62spk2h827p0bnuaveo; vst-no=2; __cf_bm=ssO4sj.1KQVSBuJoB70RQLFF7OZlPDh1i0.OE_WgOkc-1761126620-1.0.1.1-uW.GvSU7v_PchG.MinTsF6zcdipzbzHW10V_fkWJ4syjxyqHi5CywKyh2hiKwd_yf_Rl1shhT5pDRlQTFhRLJHuXjdVfoyK3un7jFBT9lF0; 22-Oct-25 10:20:20 GMT",
+  "responseTime": 572
+}
+================================================================================
+
+[2025-10-22T09:50:20.764Z] 🚀 [w1iibhg2p] REQUISIÇÃO - estrelabet
+{
+  "requestId": "w1iibhg2p",
+  "timestamp": "2025-10-22T09:50:20.764Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "url": "https://bff-estrelabet.estrelabet.bet.br/sports/openSportsBook?vendorId=altenar",
+  "method": "get",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "SessionId": "i411jhagl5rqq62spk2h827p0bnuaveo",
+    "Cookie": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; ci_session=i411jhagl5rqq62spk2h827p0bnuaveo; vst-no=2; __cf_bm=ssO4sj.1KQVSBuJoB70RQLFF7OZlPDh1i0.OE_WgOkc-1761126620-1.0.1.1-uW.GvSU7v_PchG.MinTsF6zcdipzbzHW10V_fkWJ4syjxyqHi5CywKyh2hiKwd_yf_Rl1shhT5pDRlQTFhRLJHuXjdVfoyK3un7jFBT9lF0; 22-Oct-25 10:20:20 GMT"
+  },
+  "sessionCookies": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; ci_session=i411jhagl5rqq62spk2h827p0bnuaveo; vst-no=2; __cf_bm=ssO4sj.1KQVSBuJoB70RQLFF7OZlPDh1i0.OE_WgOkc-1761126620-1.0.1.1-uW.GvSU7v_PchG.MinTsF6zcdipzbzHW10V_fkWJ4syjxyqHi5CywKyh2hiKwd_yf_Rl1shhT5pDRlQTFhRLJHuXjdVfoyK3un7jFBT9lF0; 22-Oct-25 10:20:20 GMT"
+}
+================================================================================
+
+[2025-10-22T09:50:20.920Z] ✅ [w1iibhg2p] RESPOSTA - estrelabet
+{
+  "requestId": "w1iibhg2p",
+  "timestamp": "2025-10-22T09:50:20.920Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Wed, 22 Oct 2025 09:50:20 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "access-control-allow-origin": "https://www.estrelabet.bet.br",
+    "vary": "Origin",
+    "x-forwarded-for": "179.125.211.139",
+    "x-request-id": "9d6716c3-00ef-4645-a2ff-77af531fe0df",
+    "cf-cache-status": "DYNAMIC",
+    "set-cookie": [
+      "__cf_bm=Ho5.tj9jI.37R5LXJEAfmQ3wn7.SR3O6.ShFRBbdx9w-1761126620-1.0.1.1-HoDRLHCLKEIey9UH4SKrvEDUJP2jJx2ft2GcOZa.TUlc_N_eM_TGxx6MLcMxVAbVe4IvEfpVeY7eCU8bZFKPtV5RBpfCs9e7inYf_8JclL8; path=/; expires=Wed, 22-Oct-25 10:20:20 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+      "_cfuvid=fkVRdUdaKsdVN5nh_xU5vSJXLJoaSNKxWlgVgw3AYk4-1761126620811-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+    ],
+    "strict-transport-security": "max-age=0; includeSubDomains",
+    "x-content-type-options": "nosniff",
+    "speculation-rules": "\"/cdn-cgi/speculation\"",
+    "server": "cloudflare",
+    "cf-ray": "992817037cbf6d53-GRU",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "data": {
+    "data": {
+      "authToken": "1a342030-b80c-4526-aaa3-54940e736514",
+      "status": "SUCCESS",
+      "tokenExpiry": "1761130220"
+    }
+  },
+  "cookies": "[Circular Reference]",
+  "sessionCookies": "__cf_bm=Ho5.tj9jI.37R5LXJEAfmQ3wn7.SR3O6.ShFRBbdx9w-1761126620-1.0.1.1-HoDRLHCLKEIey9UH4SKrvEDUJP2jJx2ft2GcOZa.TUlc_N_eM_TGxx6MLcMxVAbVe4IvEfpVeY7eCU8bZFKPtV5RBpfCs9e7inYf_8JclL8; path=/; expires=Wed, 22-Oct-25 10:20:20 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=fkVRdUdaKsdVN5nh_xU5vSJXLJoaSNKxWlgVgw3AYk4-1761126620811-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 156
+}
+================================================================================
+
+[2025-10-22T09:50:20.922Z] 🚀 [3dxu65817] REQUISIÇÃO - estrelabet
+{
+  "requestId": "3dxu65817",
+  "timestamp": "2025-10-22T09:50:20.922Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "url": "https://sb2auth-altenar2.biahosted.com/api/WidgetAuth/SignIn",
+  "method": "post",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Cookie": "__cf_bm=Ho5.tj9jI.37R5LXJEAfmQ3wn7.SR3O6.ShFRBbdx9w-1761126620-1.0.1.1-HoDRLHCLKEIey9UH4SKrvEDUJP2jJx2ft2GcOZa.TUlc_N_eM_TGxx6MLcMxVAbVe4IvEfpVeY7eCU8bZFKPtV5RBpfCs9e7inYf_8JclL8; path=/; expires=Wed, 22-Oct-25 10:20:20 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=fkVRdUdaKsdVN5nh_xU5vSJXLJoaSNKxWlgVgw3AYk4-1761126620811-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+  },
+  "body": {
+    "culture": "pt-BR",
+    "timezoneOffset": 180,
+    "integration": "estrelabet",
+    "deviceType": 1,
+    "numFormat": "en-GB",
+    "countryCode": "BR",
+    "token": "1a342030-b80c-4526-aaa3-54940e736514"
+  },
+  "sessionCookies": "__cf_bm=Ho5.tj9jI.37R5LXJEAfmQ3wn7.SR3O6.ShFRBbdx9w-1761126620-1.0.1.1-HoDRLHCLKEIey9UH4SKrvEDUJP2jJx2ft2GcOZa.TUlc_N_eM_TGxx6MLcMxVAbVe4IvEfpVeY7eCU8bZFKPtV5RBpfCs9e7inYf_8JclL8; path=/; expires=Wed, 22-Oct-25 10:20:20 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=fkVRdUdaKsdVN5nh_xU5vSJXLJoaSNKxWlgVgw3AYk4-1761126620811-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+}
+================================================================================
+
+[2025-10-22T09:50:21.680Z] ✅ [3dxu65817] RESPOSTA - estrelabet
+{
+  "requestId": "3dxu65817",
+  "timestamp": "2025-10-22T09:50:21.680Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "server": "nginx",
+    "date": "Wed, 22 Oct 2025 09:50:21 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "723",
+    "access-control-allow-origin": "*",
+    "strict-transport-security": "max-age=15552000",
+    "via": "1.1 google",
+    "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+  },
+  "data": {
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb25maWd1cmF0aW9uSWQiOiIxMiIsIlBlcnNvblR5cGUiOiIzIiwiUGVyc29uSWQiOiIxNTE5ODgyNSIsIlVzZXJOYW1lIjoiMjAyMjA5OTk2MDEzNiIsIkxvZ2luSWQiOiIyMzA1Mzk2NyIsIkN1cnJlbmN5U2lnbiI6IlIkIiwiTWluQm9udXNQcmljZSI6IjEuMyIsIkJvbnVzVGVtcGxhdGVJZCI6IjIyNCIsIkN1cnJlbmN5SWQiOiI5ODYiLCJDdXJyZW5jeUNvZGUiOiJCUkwiLCJDb3VudHJ5Q29kZSI6IkJSIiwiQnJhbmRJZCI6IjQ1NyIsIkNsaWVudElQIjoiMTc5LjEyNS4yMTEuMTM5IiwiZXhwIjoxNzYxMTI3NTIxLCJpc3MiOiJTQjIiLCJhdWQiOiJTQjIifQ.j05ig-eodgADNmeHknUjMeuImR61TJ5WilwTYLAyOPY",
+    "currency": "BRL",
+    "isUserLocked": false,
+    "isAgency": false,
+    "currencySign": "R$",
+    "currencyId": 986,
+    "currencyDisplay": 0,
+    "encryptedPlayerId": "akeinOWwfi/pFfhdRXJ56A==",
+    "regDate": "2023-10-01T17:43:42.38"
+  },
+  "sessionCookies": "__cf_bm=Ho5.tj9jI.37R5LXJEAfmQ3wn7.SR3O6.ShFRBbdx9w-1761126620-1.0.1.1-HoDRLHCLKEIey9UH4SKrvEDUJP2jJx2ft2GcOZa.TUlc_N_eM_TGxx6MLcMxVAbVe4IvEfpVeY7eCU8bZFKPtV5RBpfCs9e7inYf_8JclL8; path=/; expires=Wed, 22-Oct-25 10:20:20 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=fkVRdUdaKsdVN5nh_xU5vSJXLJoaSNKxWlgVgw3AYk4-1761126620811-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 758
+}
+================================================================================
+
+[2025-10-22T09:50:21.750Z] 🚀 [6b0fhcjkl] REQUISIÇÃO - estrelabet
+{
+  "requestId": "6b0fhcjkl",
+  "timestamp": "2025-10-22T09:50:21.750Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "url": "https://sb2betgateway-altenar2.biahosted.com/api/widget/placeWidget",
+  "method": "post",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb25maWd1cmF0aW9uSWQiOiIxMiIsIlBlcnNvblR5cGUiOiIzIiwiUGVyc29uSWQiOiIxNTE5ODgyNSIsIlVzZXJOYW1lIjoiMjAyMjA5OTk2MDEzNiIsIkxvZ2luSWQiOiIyMzA1Mzk2NyIsIkN1cnJlbmN5U2lnbiI6IlIkIiwiTWluQm9udXNQcmljZSI6IjEuMyIsIkJvbnVzVGVtcGxhdGVJZCI6IjIyNCIsIkN1cnJlbmN5SWQiOiI5ODYiLCJDdXJyZW5jeUNvZGUiOiJCUkwiLCJDb3VudHJ5Q29kZSI6IkJSIiwiQnJhbmRJZCI6IjQ1NyIsIkNsaWVudElQIjoiMTc5LjEyNS4yMTEuMTM5IiwiZXhwIjoxNzYxMTI3NTIxLCJpc3MiOiJTQjIiLCJhdWQiOiJTQjIifQ.j05ig-eodgADNmeHknUjMeuImR61TJ5WilwTYLAyOPY",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Cookie": "__cf_bm=Ho5.tj9jI.37R5LXJEAfmQ3wn7.SR3O6.ShFRBbdx9w-1761126620-1.0.1.1-HoDRLHCLKEIey9UH4SKrvEDUJP2jJx2ft2GcOZa.TUlc_N_eM_TGxx6MLcMxVAbVe4IvEfpVeY7eCU8bZFKPtV5RBpfCs9e7inYf_8JclL8; path=/; expires=Wed, 22-Oct-25 10:20:20 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=fkVRdUdaKsdVN5nh_xU5vSJXLJoaSNKxWlgVgw3AYk4-1761126620811-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+  },
+  "body": {
+    "culture": "pt-BR",
+    "timezoneOffset": 180,
+    "integration": "estrelabet",
+    "deviceType": 1,
+    "numFormat": "en-GB",
+    "countryCode": "BR",
+    "betType": 0,
+    "isAutoCharge": false,
+    "stakes": [
+      1
+    ],
+    "oddsChangeAction": 1,
+    "betMarkets": [
+      {
+        "id": 14052559,
+        "isBanker": false,
+        "dbId": 10,
+        "sportName": "Futebol",
+        "rC": false,
+        "eventName": "Chelsea vs. AFC Ajax\t\t",
+        "catName": "Europa",
+        "champName": "Liga dos Campeões",
+        "sportTypeId": 1,
+        "odds": [
+          {
+            "id": 2933359098,
+            "marketId": 1197160088,
+            "price": 1.2728,
+            "marketName": "Vencedor do encontro",
+            "marketTypeId": 1,
+            "mostBalanced": false,
+            "selectionTypeId": 1,
+            "selectionName": "Chelsea",
+            "widgetInfo": {
+              "widget": 12,
+              "page": 3,
+              "tabIndex": 3
+            }
+          }
+        ]
+      }
+    ],
+    "eachWays": [
+      false
+    ],
+    "requestId": "IW1593aibDOdEGdhLuVVTH",
+    "confirmedByClient": false,
+    "device": 0
+  },
+  "sessionCookies": "__cf_bm=Ho5.tj9jI.37R5LXJEAfmQ3wn7.SR3O6.ShFRBbdx9w-1761126620-1.0.1.1-HoDRLHCLKEIey9UH4SKrvEDUJP2jJx2ft2GcOZa.TUlc_N_eM_TGxx6MLcMxVAbVe4IvEfpVeY7eCU8bZFKPtV5RBpfCs9e7inYf_8JclL8; path=/; expires=Wed, 22-Oct-25 10:20:20 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=fkVRdUdaKsdVN5nh_xU5vSJXLJoaSNKxWlgVgw3AYk4-1761126620811-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+}
+================================================================================
+
+[2025-10-22T09:50:22.804Z] ✅ [6b0fhcjkl] RESPOSTA - estrelabet
+{
+  "requestId": "6b0fhcjkl",
+  "timestamp": "2025-10-22T09:50:22.804Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "server": "nginx",
+    "date": "Wed, 22 Oct 2025 09:50:22 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "882",
+    "access-control-allow-origin": "*",
+    "strict-transport-security": "max-age=15552000",
+    "via": "1.1 google",
+    "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+  },
+  "data": {
+    "bets": [
+      {
+        "id": 4180461297,
+        "type": 0,
+        "status": 0,
+        "unitStake": 1,
+        "totalStake": 1,
+        "finalStake": 1,
+        "openStake": 1,
+        "totalWin": 1.27,
+        "createdDate": "2025-10-22T09:50:22.12Z",
+        "combLength": 1,
+        "linesCount": 1,
+        "currency": "BRL",
+        "selections": [
+          {
+            "id": 2933359098,
+            "status": 0,
+            "price": 1.2728,
+            "priceType": 0,
+            "name": "Chelsea",
+            "spec": "",
+            "marketName": "Vencedor do encontro",
+            "marketTypeId": 1,
+            "isLive": false,
+            "isBetBuilder": false,
+            "isBanker": false,
+            "isVirtual": false,
+            "dbId": 10,
+            "eventId": 14052559,
+            "eventName": "Chelsea vs. AFC Ajax\t\t",
+            "eventDate": "2025-10-22T19:00:00Z",
+            "isLiveOrVirtual": false,
+            "offers": [
+              0
+            ],
+            "sportTypeId": 1,
+            "sportId": 66,
+            "champId": 16808,
+            "catId": 1133,
+            "marketId": 1197160088,
+            "selectionTypeId": 1
+          }
+        ],
+        "remainingTotalWin": 1.27,
+        "cashOutValue": 0,
+        "partialCashOut": 0,
+        "bonus": 0,
+        "bonusPart": 0,
+        "initBonusPart": 0,
+        "bonusPartPercent": 0,
+        "bonusInsurance": 0,
+        "isCancelAllowed": false,
+        "totalOdds": 1.2728
+      }
+    ]
+  },
+  "sessionCookies": "__cf_bm=Ho5.tj9jI.37R5LXJEAfmQ3wn7.SR3O6.ShFRBbdx9w-1761126620-1.0.1.1-HoDRLHCLKEIey9UH4SKrvEDUJP2jJx2ft2GcOZa.TUlc_N_eM_TGxx6MLcMxVAbVe4IvEfpVeY7eCU8bZFKPtV5RBpfCs9e7inYf_8JclL8; path=/; expires=Wed, 22-Oct-25 10:20:20 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=fkVRdUdaKsdVN5nh_xU5vSJXLJoaSNKxWlgVgw3AYk4-1761126620811-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 1054
+}
+================================================================================
+
+[2025-10-22T09:50:22.804Z] 🚀 [9gr6tqz20] REQUISIÇÃO - estrelabet
+{
+  "requestId": "9gr6tqz20",
+  "timestamp": "2025-10-22T09:50:22.804Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "url": "https://www.estrelabet.bet.br/next/pb/api/login",
+  "method": "post",
+  "headers": {
+    "Content-Type": "application/json",
+    "Origin": "https://www.estrelabet.bet.br",
+    "Referer": "https://www.estrelabet.bet.br/",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Accept": "application/json",
+    "Accept-Language": "pt-BR,pt;q=0.9,en;q=0.8",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Sec-Fetch-Dest": "empty",
+    "Sec-Fetch-Mode": "cors",
+    "Sec-Fetch-Site": "same-origin",
+    "Cookie": "__cf_bm=Ho5.tj9jI.37R5LXJEAfmQ3wn7.SR3O6.ShFRBbdx9w-1761126620-1.0.1.1-HoDRLHCLKEIey9UH4SKrvEDUJP2jJx2ft2GcOZa.TUlc_N_eM_TGxx6MLcMxVAbVe4IvEfpVeY7eCU8bZFKPtV5RBpfCs9e7inYf_8JclL8; path=/; expires=Wed, 22-Oct-25 10:20:20 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=fkVRdUdaKsdVN5nh_xU5vSJXLJoaSNKxWlgVgw3AYk4-1761126620811-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+  },
+  "body": {
+    "login": "muvucasbars@gmail.com",
+    "domain": "www.estrelabet.bet.br",
+    "lnSessionId": "dd8a1dbe-f571-403b-9722-c1540018f8e7",
+    "password": "Mateuus.27"
+  },
+  "sessionCookies": "__cf_bm=Ho5.tj9jI.37R5LXJEAfmQ3wn7.SR3O6.ShFRBbdx9w-1761126620-1.0.1.1-HoDRLHCLKEIey9UH4SKrvEDUJP2jJx2ft2GcOZa.TUlc_N_eM_TGxx6MLcMxVAbVe4IvEfpVeY7eCU8bZFKPtV5RBpfCs9e7inYf_8JclL8; path=/; expires=Wed, 22-Oct-25 10:20:20 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=fkVRdUdaKsdVN5nh_xU5vSJXLJoaSNKxWlgVgw3AYk4-1761126620811-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+  "withCredentials": true,
+  "maxBodyLength": null
+}
+================================================================================
+
+[2025-10-22T09:50:23.273Z] ✅ [9gr6tqz20] RESPOSTA - estrelabet
+{
+  "requestId": "9gr6tqz20",
+  "timestamp": "2025-10-22T09:50:23.273Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Wed, 22 Oct 2025 09:50:23 GMT",
+    "content-type": "application/json",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "access-control-allow-headers": "*",
+    "set-cookie": [
+      "ci_session=1iu2418u1i7fgc2mgg9o3ee4qjqg48fj; Path=/; HttpOnly; Domain=www.estrelabet.bet.br; SameSite=None; Secure; Max-Age=86400"
+    ],
+    "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch",
+    "x-dns-prefetch-control": "on",
+    "x-frame-options": "SAMEORIGIN",
+    "cf-cache-status": "DYNAMIC",
+    "strict-transport-security": "max-age=0; includeSubDomains",
+    "x-content-type-options": "nosniff",
+    "server": "cloudflare",
+    "cf-ray": "9928170f4e5df20c-GRU",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "data": {
+    "data": {
+      "success": true,
+      "id": "1iu2418u1i7fgc2mgg9o3ee4qjqg48fj",
+      "sessionLimit": 0,
+      "ecrCategory": "real_user",
+      "language": "pt_BR",
+      "rvpSessionId": "4ca636a1-b42b-45c1-956b-fa433bbe3edd_SESSIONKEY",
+      "riverplayUrl": "wss://push.estrelabet.com",
+      "pragmaticSessionId": "4ca636a1-b42b-45c1-956b-fa433bbe3edd_SESSIONKEY",
+      "pragmaticUrl": "wss://push.estrelabet.com",
+      "mobileVerificationStatus": "SUCCESS",
+      "emailVerificationStatus": "SUCCESS",
+      "twoFactorAuthEnabled": false,
+      "user": {
+        "id": "EST2022099960136",
+        "rvpSessionId": "4ca636a1-b42b-45c1-956b-fa433bbe3edd_SESSIONKEY",
+        "riverplayUrl": "wss://push.estrelabet.com",
+        "pragmaticSessionId": "4ca636a1-b42b-45c1-956b-fa433bbe3edd_SESSIONKEY",
+        "pragmaticUrl": "wss://push.estrelabet.com",
+        "partnerId": "estrelabet"
+      },
+      "lastLoginTime": "1761126620",
+      "userJurisdiction": "brazil",
+      "jurisdictionResponse": "",
+      "postAuthPopUpDetails": [],
+      "policies": [
+        {
+          "policyType": "BONUS_RULES",
+          "policyVersionId": "2.0",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2023-10-01 14:43:55.0",
+          "policyVersionType": "MATERIAL"
+        },
+        {
+          "policyType": "PRIVACY_POLICY",
+          "policyVersionId": "2.0",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2023-10-01 14:43:55.0",
+          "policyVersionType": "MATERIAL"
+        },
+        {
+          "policyType": "SPORTS_BETTING_RULES",
+          "policyVersionId": "2.0",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2023-10-01 14:43:55.0",
+          "policyVersionType": "MATERIAL"
+        },
+        {
+          "policyType": "TERMS_AND_CONDITIONS",
+          "policyVersionId": "2.1.1",
+          "policyAccepted": true,
+          "policyConfirmationDate": "2025-05-02 22:24:30.0",
+          "policyVersionType": "MINOR"
+        }
+      ],
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWNjZXNzIjp0cnVlLCJpZCI6IjFpdTI0MTh1MWk3ZmdjMm1nZzlvM2VlNHFqcWc0OGZqIiwic2Vzc2lvbkxpbWl0IjowLCJlY3JDYXRlZ29yeSI6InJlYWxfdXNlciIsImxhbmd1YWdlIjoicHRfQlIiLCJydnBTZXNzaW9uSWQiOiI0Y2E2MzZhMS1iNDJiLTQ1YzEtOTU2Yi1mYTQzM2JiZTNlZGRfU0VTU0lPTktFWSIsInJpdmVycGxheVVybCI6IndzczovL3B1c2guZXN0cmVsYWJldC5jb20iLCJwcmFnbWF0aWNTZXNzaW9uSWQiOiI0Y2E2MzZhMS1iNDJiLTQ1YzEtOTU2Yi1mYTQzM2JiZTNlZGRfU0VTU0lPTktFWSIsInByYWdtYXRpY1VybCI6IndzczovL3B1c2guZXN0cmVsYWJldC5jb20iLCJtb2JpbGVWZXJpZmljYXRpb25TdGF0dXMiOiJTVUNDRVNTIiwiZW1haWxWZXJpZmljYXRpb25TdGF0dXMiOiJTVUNDRVNTIiwidHdvRmFjdG9yQXV0aEVuYWJsZWQiOmZhbHNlLCJ1c2VyIjp7ImlkIjoiRVNUMjAyMjA5OTk2MDEzNiIsInJ2cFNlc3Npb25JZCI6IjRjYTYzNmExLWI0MmItNDVjMS05NTZiLWZhNDMzYmJlM2VkZF9TRVNTSU9OS0VZIiwicml2ZXJwbGF5VXJsIjoid3NzOi8vcHVzaC5lc3RyZWxhYmV0LmNvbSIsInByYWdtYXRpY1Nlc3Npb25JZCI6IjRjYTYzNmExLWI0MmItNDVjMS05NTZiLWZhNDMzYmJlM2VkZF9TRVNTSU9OS0VZIiwicHJhZ21hdGljVXJsIjoid3NzOi8vcHVzaC5lc3RyZWxhYmV0LmNvbSIsInBhcnRuZXJJZCI6ImVzdHJlbGFiZXQifSwibGFzdExvZ2luVGltZSI6IjE3NjExMjY2MjAiLCJ1c2VySnVyaXNkaWN0aW9uIjoiYnJhemlsIiwianVyaXNkaWN0aW9uUmVzcG9uc2UiOiIiLCJwb3N0QXV0aFBvcFVwRGV0YWlscyI6W10sInBvbGljaWVzIjpbeyJwb2xpY3lUeXBlIjoiQk9OVVNfUlVMRVMiLCJwb2xpY3lWZXJzaW9uSWQiOiIyLjAiLCJwb2xpY3lBY2NlcHRlZCI6dHJ1ZSwicG9saWN5Q29uZmlybWF0aW9uRGF0ZSI6IjIwMjMtMTAtMDEgMTQ6NDM6NTUuMCIsInBvbGljeVZlcnNpb25UeXBlIjoiTUFURVJJQUwifSx7InBvbGljeVR5cGUiOiJQUklWQUNZX1BPTElDWSIsInBvbGljeVZlcnNpb25JZCI6IjIuMCIsInBvbGljeUFjY2VwdGVkIjp0cnVlLCJwb2xpY3lDb25maXJtYXRpb25EYXRlIjoiMjAyMy0xMC0wMSAxNDo0Mzo1NS4wIiwicG9saWN5VmVyc2lvblR5cGUiOiJNQVRFUklBTCJ9LHsicG9saWN5VHlwZSI6IlNQT1JUU19CRVRUSU5HX1JVTEVTIiwicG9saWN5VmVyc2lvbklkIjoiMi4wIiwicG9saWN5QWNjZXB0ZWQiOnRydWUsInBvbGljeUNvbmZpcm1hdGlvbkRhdGUiOiIyMDIzLTEwLTAxIDE0OjQzOjU1LjAiLCJwb2xpY3lWZXJzaW9uVHlwZSI6Ik1BVEVSSUFMIn0seyJwb2xpY3lUeXBlIjoiVEVSTVNfQU5EX0NPTkRJVElPTlMiLCJwb2xpY3lWZXJzaW9uSWQiOiIyLjEuMSIsInBvbGljeUFjY2VwdGVkIjp0cnVlLCJwb2xpY3lDb25maXJtYXRpb25EYXRlIjoiMjAyNS0wNS0wMiAyMjoyNDozMC4wIiwicG9saWN5VmVyc2lvblR5cGUiOiJNSU5PUiJ9XSwiaWF0IjoxNzYxMTI2NjIzLCJleHAiOjE3NjExMzAyMjN9.VekozNAwNisoHaYXDqPQuRjNZyRvCaBbEv237odrJ0U",
+      "cookieHeader": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; Max-Age=43200; Domain=estrelabet.bet.br; HttpOnly; Secure; SameSite=Lax, ci_session=1iu2418u1i7fgc2mgg9o3ee4qjqg48fj; Max-Age=43200; Domain=estrelabet.bet.br; HttpOnly; Secure; SameSite=Lax, vst-no=2; Max-Age=43200; Domain=estrelabet.bet.br; HttpOnly; Secure; SameSite=Lax, __cf_bm=cEj76hTSN4_noV7RxdqwusLFXjSscCiFfSiXNbJh3NU-1761126623-1.0.1.1-3PPjCXFBVDHWaPJI72BJkYa_5tM6mEMGj9Hof37mqCCxvkY9GnimSTCtYENW7lhLqOoSbtqiu0S9HWS_WxhbCBQ8jtwGxRsCJcyg3xQyFfo; path=/; expires=Wed, 22-Oct-25 10:20:23 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+    },
+    "error": null
+  },
+  "cookies": "[Circular Reference]",
+  "sessionCookies": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; ci_session=1iu2418u1i7fgc2mgg9o3ee4qjqg48fj; vst-no=2; __cf_bm=cEj76hTSN4_noV7RxdqwusLFXjSscCiFfSiXNbJh3NU-1761126623-1.0.1.1-3PPjCXFBVDHWaPJI72BJkYa_5tM6mEMGj9Hof37mqCCxvkY9GnimSTCtYENW7lhLqOoSbtqiu0S9HWS_WxhbCBQ8jtwGxRsCJcyg3xQyFfo; 22-Oct-25 10:20:23 GMT",
+  "responseTime": 469
+}
+================================================================================
+
+[2025-10-22T09:50:23.274Z] 🚀 [feo9uu3wf] REQUISIÇÃO - estrelabet
+{
+  "requestId": "feo9uu3wf",
+  "timestamp": "2025-10-22T09:50:23.274Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "url": "https://bff-estrelabet.estrelabet.bet.br/profile/getProfileBalanceCurrency",
+  "method": "get",
+  "headers": {
+    "sessionid": "1iu2418u1i7fgc2mgg9o3ee4qjqg48fj",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Cookie": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; ci_session=1iu2418u1i7fgc2mgg9o3ee4qjqg48fj; vst-no=2; __cf_bm=cEj76hTSN4_noV7RxdqwusLFXjSscCiFfSiXNbJh3NU-1761126623-1.0.1.1-3PPjCXFBVDHWaPJI72BJkYa_5tM6mEMGj9Hof37mqCCxvkY9GnimSTCtYENW7lhLqOoSbtqiu0S9HWS_WxhbCBQ8jtwGxRsCJcyg3xQyFfo; 22-Oct-25 10:20:23 GMT"
+  },
+  "sessionCookies": "_shown_chat_message=%7B%22sent_message%22%3A0%2C%22sent_to_agent%22%3Afalse%7D; ci_session=1iu2418u1i7fgc2mgg9o3ee4qjqg48fj; vst-no=2; __cf_bm=cEj76hTSN4_noV7RxdqwusLFXjSscCiFfSiXNbJh3NU-1761126623-1.0.1.1-3PPjCXFBVDHWaPJI72BJkYa_5tM6mEMGj9Hof37mqCCxvkY9GnimSTCtYENW7lhLqOoSbtqiu0S9HWS_WxhbCBQ8jtwGxRsCJcyg3xQyFfo; 22-Oct-25 10:20:23 GMT"
+}
+================================================================================
+
+[2025-10-22T09:50:23.429Z] ✅ [feo9uu3wf] RESPOSTA - estrelabet
+{
+  "requestId": "feo9uu3wf",
+  "timestamp": "2025-10-22T09:50:23.429Z",
+  "siteName": "estrelabet",
+  "integration": "estrelabet",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Wed, 22 Oct 2025 09:50:23 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "access-control-allow-origin": "https://www.estrelabet.bet.br",
+    "vary": "Origin",
+    "x-forwarded-for": "179.125.211.139",
+    "x-request-id": "85478f87-cad3-4e14-a464-e3fc9a7a2609",
+    "cf-cache-status": "DYNAMIC",
+    "set-cookie": [
+      "__cf_bm=2vPhpGI_NyDYVcRDnY.63MIDdETV3raXaKADFysjog0-1761126623-1.0.1.1-8Ig1ymsg2hlV7n20VqgdPZtOR3PoDHlqlO7acPbSX.lQqWCJ9_XkD_7KuFzbw_Amj8zqDqBtk1nr0JdCb04gvEeIMCo0Fd5HBiz7Xjzj8hY; path=/; expires=Wed, 22-Oct-25 10:20:23 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+      "_cfuvid=.hzZbHRDcO_NGSIPzfn1ulUDf3Xx1T55zHHOuYy1cxs-1761126623182-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None"
+    ],
+    "strict-transport-security": "max-age=0; includeSubDomains",
+    "x-content-type-options": "nosniff",
+    "speculation-rules": "\"/cdn-cgi/speculation\"",
+    "server": "cloudflare",
+    "cf-ray": "992817121f716d53-GRU",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "data": {
+    "data": {
+      "profile": {
+        "playerID": "2022099960136",
+        "nickname": "mateuus27",
+        "password": null,
+        "email": "muvucasbars@gmail.com",
+        "currency": "BRL",
+        "language": "pt_BR",
+        "firstName": "MATEUS",
+        "middleName": "",
+        "lastName": "SANTANA",
+        "address": "AVENIDA SÃO FRANCISCO DE ASSIS 3828",
+        "address1": "AVENIDA SÃO FRANCISCO DE ASSIS",
+        "address2": "3828",
+        "city": "PRAIA GRANDE",
+        "state": "SP",
+        "zip": "11724-475",
+        "zipCode": "11724-475",
+        "country": "BR",
+        "countryCode": "BR",
+        "phone": 13974198830,
+        "phoneNumber": 13974198830,
+        "areaCode": "55",
+        "countryAreaCode": "BR",
+        "phoneAreaCountryCode": "BR",
+        "cellPhone": 13974198830,
+        "mobileNumber": 13974198830,
+        "cellPhoneAreaCode": "55",
+        "mobileAreaCode": "55",
+        "cellPhoneCountryAreaCode": "BR",
+        "mobileAreaCountryCode": "BR",
+        "birthDate": "1995-09-27",
+        "gender": "F",
+        "affiliateLinkID": "",
+        "affiliateId": "",
+        "affiliateRefTag": null,
+        "bonusCode": null,
+        "promoAvailable": null,
+        "signUpIP": null,
+        "signUpClientType": null,
+        "signUpClientOS": null,
+        "signUpBrowser": null,
+        "userStatus": "real",
+        "createdTime": 1663253404000,
+        "maidenName": "",
+        "placeOfBirth": "",
+        "nationality": "BRAZILIAN",
+        "nationalId": "23597998860",
+        "affiliateName": "",
+        "bannerID": "",
+        "bannerId": "",
+        "nationalIdDocType": "",
+        "lastName2": "",
+        "taxCode": "",
+        "thirdPartyUser": false,
+        "pep": false,
+        "fitToPlay": false,
+        "jobTitle": "",
+        "employerName": "",
+        "employerAddress": "",
+        "employmentStatus": null,
+        "industry": "",
+        "occupation": "",
+        "pepAndSanctionDetails": null,
+        "bTag": "",
+        "playerLastAcknowledgementDate": "1746237432000",
+        "profileAcknowledgementRecommended": false,
+        "updateProfileForAnnualVerification": null,
+        "productChannelPreferences": null,
+        "externalEcrId": "2022099960136",
+        "title": "Mis",
+        "dob": "1995-09-27",
+        "userCategory": "real_user",
+        "jurisdiction": "brazil",
+        "withdrawlAllowed": true,
+        "withdrawalAllowed": true,
+        "depositAllowed": true,
+        "payAndPlayUserDetails": [],
+        "screenName": "mateuus27",
+        "emailId": "muvucasbars@gmail.com",
+        "birthName": "",
+        "motherName": "",
+        "twoFactorAuthEnabled": false,
+        "postAuthPopUpDetails": [],
+        "hostName": null,
+        "currencyCode": "BRL",
+        "bYear": "1995",
+        "bMonth": "09",
+        "bDay": "27",
+        "balanceDetails": {
+          "0": "BRL",
+          "cash": 0.25,
+          "bonus": 0,
+          "ecrCurrency": "BRL",
+          "currencyCode": "BRL",
+          "withdrawableBalance": 0.25,
+          "totalBonus": 0,
+          "drpBalance": 0,
+          "freebetBalance": 0,
+          "freespinsCount": 0
+        }
+      },
+      "currency": {
+        "symbol": "R$",
+        "code": "BRL",
+        "position": "before"
+      },
+      "currencyDetails": {
+        "symbol": "R$",
+        "code": "BRL",
+        "position": "before"
+      },
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYXRpb25hbElkIjoiMjM1OTc5OTg4NjAiLCJwbGF5ZXJJRCI6IjIwMjIwOTk5NjAxMzYiLCJleHRlcm5hbEVjcklkIjoiMjAyMjA5OTk2MDEzNiIsImlhdCI6MTc2MTEyNjYyMywiZXhwIjoxNzYxMTMwMjIzfQ.xji48QWhNVMhUQOTwH_jNvWIVJ0bUGiETiDdW8oCqCo"
+    }
+  },
+  "cookies": "[Circular Reference]",
+  "sessionCookies": "__cf_bm=2vPhpGI_NyDYVcRDnY.63MIDdETV3raXaKADFysjog0-1761126623-1.0.1.1-8Ig1ymsg2hlV7n20VqgdPZtOR3PoDHlqlO7acPbSX.lQqWCJ9_XkD_7KuFzbw_Amj8zqDqBtk1nr0JdCb04gvEeIMCo0Fd5HBiz7Xjzj8hY; path=/; expires=Wed, 22-Oct-25 10:20:23 GMT; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None; _cfuvid=.hzZbHRDcO_NGSIPzfn1ulUDf3Xx1T55zHHOuYy1cxs-1761126623182-0.0.1.1-604800000; path=/; domain=.estrelabet.bet.br; HttpOnly; Secure; SameSite=None",
+  "responseTime": 155
+}
+================================================================================
+
