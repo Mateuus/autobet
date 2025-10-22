@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
+import Image from 'next/image';
 import { 
   CreditCard, 
   Plus, 
@@ -10,7 +11,6 @@ import {
   MoreHorizontal,
   TrendingUp,
   DollarSign,
-  X,
   CheckCircle,
   AlertCircle
 } from 'lucide-react';
@@ -24,6 +24,7 @@ interface Account {
   name: string;
   platform: string;
   email: string;
+  password: string;
   balance: number;
   status: string;
   lastUpdate: string;
@@ -36,9 +37,10 @@ function AccountsContent() {
   const [accounts, setAccounts] = useState<Account[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedAccount, setSelectedAccount] = useState<Account | null>(null);
-  const [showActions, setShowActions] = useState(false);
   const [notification, setNotification] = useState<{ type: 'success' | 'error', message: string } | null>(null);
+  const [showPasswords, setShowPasswords] = useState<{ [key: string]: boolean }>({});
+  const [clickedAccount, setClickedAccount] = useState<string | null>(null);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const hasLoadedRef = useRef(false);
 
   // Buscar contas do usuário
@@ -76,14 +78,8 @@ function AccountsContent() {
     fetchAccounts(); // Recarregar lista após adicionar conta
   };
 
-  const handleAccountAction = (account: Account) => {
-    setSelectedAccount(account);
-    setShowActions(true);
-  };
-
   const handleActionSuccess = (message: string) => {
     setNotification({ type: 'success', message });
-    setShowActions(false);
     fetchAccounts(); // Recarregar lista para atualizar dados
     setTimeout(() => setNotification(null), 5000);
   };
@@ -91,6 +87,59 @@ function AccountsContent() {
   const handleActionError = (error: string) => {
     setNotification({ type: 'error', message: error });
     setTimeout(() => setNotification(null), 5000);
+  };
+
+  const togglePasswordVisibility = (accountId: string) => {
+    setShowPasswords(prev => ({
+      ...prev,
+      [accountId]: !prev[accountId]
+    }));
+  };
+
+  const toggleAccountActions = (accountId: string) => {
+    setClickedAccount(prev => prev === accountId ? null : accountId);
+  };
+
+  // Fechar tooltip quando clicar fora
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (!target.closest('.account-actions-container')) {
+        setClickedAccount(null);
+      }
+    };
+
+    if (clickedAccount) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [clickedAccount]);
+
+  const refreshAllAccounts = async () => {
+    setIsRefreshing(true);
+    try {
+      const response = await fetch('/api/accounts/refresh', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setNotification({ type: 'success', message: 'Contas atualizadas com sucesso!' });
+        fetchAccounts(); // Recarregar lista com dados atualizados
+      } else {
+        setNotification({ type: 'error', message: data.error || 'Erro ao atualizar contas' });
+      }
+    } catch {
+      setNotification({ type: 'error', message: 'Erro ao atualizar contas' });
+    } finally {
+      setIsRefreshing(false);
+      setTimeout(() => setNotification(null), 5000);
+    }
   };
 
   const getStatusColor = (status: string) => {
@@ -114,13 +163,27 @@ function AccountsContent() {
           <h1 className="text-2xl font-bold text-gray-900">Contas</h1>
           <p className="text-gray-600">Gerencie suas contas de apostas</p>
         </div>
-        <button 
-          onClick={() => setIsModalOpen(true)}
-          className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-        >
-          <Plus className="w-5 h-5" />
-          <span>Adicionar Conta</span>
-        </button>
+        <div className="flex items-center space-x-3">
+          <button 
+            onClick={refreshAllAccounts}
+            disabled={isRefreshing}
+            className="flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isRefreshing ? (
+              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+            ) : (
+              <TrendingUp className="w-5 h-5" />
+            )}
+            <span>{isRefreshing ? 'Atualizando...' : 'Atualizar Contas'}</span>
+          </button>
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            <Plus className="w-5 h-5" />
+            <span>Adicionar Conta</span>
+          </button>
+        </div>
       </div>
 
       {/* Stats Cards */}
@@ -194,6 +257,9 @@ function AccountsContent() {
                   Conta
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Login / Senha
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Plataforma
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -201,9 +267,6 @@ function AccountsContent() {
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Status
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Última Atualização
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Ações
@@ -231,10 +294,14 @@ function AccountsContent() {
                 <tr key={account.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
-                      <div className="w-10 h-10 bg-linear-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
-                        <span className="text-white font-bold text-sm">
-                          {account.name.charAt(0)}
-                        </span>
+                      <div className="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center bg-slate-800">
+                        <Image 
+                          src={`/bookmakers/logo/${account.name.toLowerCase()}.webp`}
+                          alt={`Logo ${account.name}`}
+                          width={40}
+                          height={40}
+                          className="object-contain"
+                        />
                       </div>
                       <div className="ml-4">
                         <div className="text-sm font-medium text-gray-900">
@@ -243,6 +310,29 @@ function AccountsContent() {
                         <div className="text-sm text-gray-500">
                           ID: {account.id}
                         </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="space-y-1">
+                      <div className="text-sm text-gray-900">
+                        <span className="font-medium">Login:</span> {account.email}
+                      </div>
+                      <div className="text-sm text-gray-900 flex items-center">
+                        <span className="font-medium">Senha:</span>
+                        <span className="ml-1">
+                          {showPasswords[account.id] ? account.password : '••••••••'}
+                        </span>
+                        <button 
+                          onClick={() => togglePasswordVisibility(account.id)}
+                          className="ml-2 text-gray-400 hover:text-gray-600 transition-colors"
+                        >
+                          {showPasswords[account.id] ? (
+                            <EyeOff className="w-4 h-4" />
+                          ) : (
+                            <Eye className="w-4 h-4" />
+                          )}
+                        </button>
                       </div>
                     </div>
                   </td>
@@ -272,16 +362,27 @@ function AccountsContent() {
                       {account.status}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {account.lastUpdate}
-                  </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                    <button 
-                      onClick={() => handleAccountAction(account)}
-                      className="text-gray-400 hover:text-gray-600 transition-colors"
-                    >
-                      <MoreHorizontal className="w-5 h-5" />
-                    </button>
+                    <div className="relative account-actions-container">
+                      <button 
+                        onClick={() => toggleAccountActions(account.id)}
+                        className="text-gray-400 hover:text-gray-600 transition-colors"
+                      >
+                        <MoreHorizontal className="w-5 h-5" />
+                      </button>
+                      
+                      {/* Tooltip */}
+                      {clickedAccount === account.id && (
+                        <div className="absolute right-0 top-0 z-50 bg-white border border-gray-200 rounded-lg shadow-lg p-2 min-w-[200px]">
+                          <AccountActions
+                            accountId={account.id}
+                            site={account.name}
+                            onSuccess={handleActionSuccess}
+                            onError={handleActionError}
+                          />
+                        </div>
+                      )}
+                    </div>
                   </td>
                 </tr>
                 ))
@@ -297,37 +398,6 @@ function AccountsContent() {
         onClose={() => setIsModalOpen(false)}
         onSuccess={handleAddAccountSuccess}
       />
-
-      {/* Modal de Ações da Conta */}
-      {showActions && selectedAccount && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-xl max-w-md w-full mx-4">
-            {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200">
-              <div>
-                <h2 className="text-xl font-semibold text-gray-900">Ações da Conta</h2>
-                <p className="text-sm text-gray-600">{selectedAccount.name}</p>
-              </div>
-              <button
-                onClick={() => setShowActions(false)}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-
-            {/* Actions */}
-            <div className="p-6">
-              <AccountActions
-                accountId={selectedAccount.id}
-                site={selectedAccount.name}
-                onSuccess={handleActionSuccess}
-                onError={handleActionError}
-              />
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Notificações */}
       {notification && (

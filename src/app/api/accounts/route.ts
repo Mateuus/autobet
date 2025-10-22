@@ -47,6 +47,7 @@ export async function GET(request: NextRequest) {
       name: account.site,
       platform: account.platform,
       email: account.email,
+      password: account.password,
       balance: account.balance,
       status: account.isActive ? 'Ativo' : 'Inativo',
       lastUpdate: account.updatedAt.toISOString(),

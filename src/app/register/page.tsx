@@ -4,8 +4,9 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Eye, EyeOff, Mail, Lock, User, AlertCircle, CheckCircle } from 'lucide-react';
+import { NoSSR } from '@/components/common/NoSSR';
 
-export default function RegisterPage() {
+function RegisterContent() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -67,7 +68,7 @@ export default function RegisterPage() {
       } else {
         setError(data.error || 'Erro ao criar conta');
       }
-    } catch (error) {
+    } catch {
       setError('Erro de conexão. Tente novamente.');
     } finally {
       setIsLoading(false);
@@ -87,7 +88,7 @@ export default function RegisterPage() {
         {/* Header */}
         <div className="text-center">
           <div className="flex justify-center">
-            <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 bg-linear-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg">AB</span>
             </div>
           </div>
@@ -121,9 +122,9 @@ export default function RegisterPage() {
             </div>
           )}
 
-          <div className="space-y-4">
+          <div className="space-y-6">
             {/* Name */}
-            <div>
+            <div className="space-y-2">
               <label htmlFor="name" className="form-label">
                 Nome completo
               </label>
@@ -137,7 +138,7 @@ export default function RegisterPage() {
                   type="text"
                   autoComplete="name"
                   required
-                  className="form-input pl-10"
+                  className="form-input with-icon-left py-3 text-base"
                   placeholder="Seu nome completo"
                   value={formData.name}
                   onChange={handleChange}
@@ -146,7 +147,7 @@ export default function RegisterPage() {
             </div>
 
             {/* Email */}
-            <div>
+            <div className="space-y-2">
               <label htmlFor="email" className="form-label">
                 Email
               </label>
@@ -160,7 +161,7 @@ export default function RegisterPage() {
                   type="email"
                   autoComplete="email"
                   required
-                  className="form-input pl-10"
+                  className="form-input with-icon-left py-3 text-base"
                   placeholder="seu@email.com"
                   value={formData.email}
                   onChange={handleChange}
@@ -169,7 +170,7 @@ export default function RegisterPage() {
             </div>
 
             {/* Password */}
-            <div>
+            <div className="space-y-2">
               <label htmlFor="password" className="form-label">
                 Senha
               </label>
@@ -183,27 +184,28 @@ export default function RegisterPage() {
                   type={showPassword ? 'text' : 'password'}
                   autoComplete="new-password"
                   required
-                  className="form-input pl-10 pr-10"
+                  className="form-input with-icon-left with-icon-right py-3 text-base"
                   placeholder="Mínimo 6 caracteres"
                   value={formData.password}
                   onChange={handleChange}
                 />
                 <button
                   type="button"
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center justify-center w-10 h-full hover:bg-gray-50 rounded-r-lg transition-colors"
                   onClick={() => setShowPassword(!showPassword)}
+                  tabIndex={-1}
                 >
                   {showPassword ? (
-                    <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                    <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600 transition-colors" />
                   ) : (
-                    <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                    <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600 transition-colors" />
                   )}
                 </button>
               </div>
             </div>
 
             {/* Confirm Password */}
-            <div>
+            <div className="space-y-2">
               <label htmlFor="confirmPassword" className="form-label">
                 Confirmar senha
               </label>
@@ -217,20 +219,21 @@ export default function RegisterPage() {
                   type={showConfirmPassword ? 'text' : 'password'}
                   autoComplete="new-password"
                   required
-                  className="form-input pl-10 pr-10"
+                  className="form-input with-icon-left with-icon-right py-3 text-base"
                   placeholder="Confirme sua senha"
                   value={formData.confirmPassword}
                   onChange={handleChange}
                 />
                 <button
                   type="button"
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center justify-center w-10 h-full hover:bg-gray-50 rounded-r-lg transition-colors"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  tabIndex={-1}
                 >
                   {showConfirmPassword ? (
-                    <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                    <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600 transition-colors" />
                   ) : (
-                    <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                    <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600 transition-colors" />
                   )}
                 </button>
               </div>
@@ -269,5 +272,22 @@ export default function RegisterPage() {
         </form>
       </div>
     </div>
+  );
+}
+
+export default function RegisterPage() {
+  return (
+    <NoSSR fallback={
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <div className="w-12 h-12 bg-linear-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <span className="text-white font-bold text-lg">AB</span>
+          </div>
+          <p className="text-gray-600">Carregando...</p>
+        </div>
+      </div>
+    }>
+      <RegisterContent />
+    </NoSSR>
   );
 }

@@ -15,8 +15,8 @@ export function ClientLayout({ children }: ClientLayoutProps) {
     return <>{children}</>;
   }
   
-  // Se for login, renderizar sem layout do dashboard mas dentro do contexto
-  if (pathname === '/login') {
+  // Se for login ou register, renderizar sem layout do dashboard mas dentro do contexto
+  if (pathname === '/login' || pathname === '/register') {
     return <>{children}</>;
   }
   

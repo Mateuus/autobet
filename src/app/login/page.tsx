@@ -79,9 +79,9 @@ function LoginContent() {
             </div>
           )}
 
-          <div className="space-y-4">
+          <div className="space-y-6">
             {/* Email */}
-            <div>
+            <div className="space-y-2">
               <label htmlFor="email" className="form-label">
                 Email
               </label>
@@ -95,7 +95,7 @@ function LoginContent() {
                   type="email"
                   autoComplete="email"
                   required
-                  className="form-input pl-10"
+                  className="form-input with-icon-left py-3 text-base"
                   placeholder="seu@email.com"
                   value={formData.email}
                   onChange={handleChange}
@@ -104,7 +104,7 @@ function LoginContent() {
             </div>
 
             {/* Password */}
-            <div>
+            <div className="space-y-2">
               <label htmlFor="password" className="form-label">
                 Senha
               </label>
@@ -118,20 +118,21 @@ function LoginContent() {
                   type={showPassword ? 'text' : 'password'}
                   autoComplete="current-password"
                   required
-                  className="form-input pl-10 pr-10"
+                  className="form-input with-icon-left with-icon-right py-3 text-base"
                   placeholder="Sua senha"
                   value={formData.password}
                   onChange={handleChange}
                 />
                 <button
                   type="button"
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center justify-center w-10 h-full hover:bg-gray-50 rounded-r-lg transition-colors"
                   onClick={() => setShowPassword(!showPassword)}
+                  tabIndex={-1}
                 >
                   {showPassword ? (
-                    <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                    <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600 transition-colors" />
                   ) : (
-                    <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                    <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600 transition-colors" />
                   )}
                 </button>
               </div>
