@@ -224,7 +224,7 @@ export default function EventDetail({ event, onBackToList, loading = false, erro
         {/* Categorias com scroll customizado */}
         {!isSearchActive && (
           <div className="relative">
-            <div className="flex gap-2 overflow-x-auto scrollbar-custom pb-2">
+            <div className="flex gap-2 overflow-x-auto scrollbar-custom pb-2 pl-4 pr-4">
               {/* Botão de pesquisa dentro da tab */}
               <button
                 onClick={handleSearchToggle}
@@ -252,8 +252,8 @@ export default function EventDetail({ event, onBackToList, loading = false, erro
             </div>
             
             {/* Gradiente nas bordas para indicar scroll */}
-            <div className="absolute left-0 top-0 bottom-2 w-8 bg-linear-to-r from-white to-transparent pointer-events-none"></div>
-            <div className="absolute right-0 top-0 bottom-2 w-8 bg-linear-to-l from-white to-transparent pointer-events-none"></div>
+            <div className="absolute left-0 top-0 bottom-2 w-4 bg-linear-to-r from-white to-transparent pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-2 w-4 bg-linear-to-l from-white to-transparent pointer-events-none"></div>
           </div>
         )}
 
@@ -266,7 +266,7 @@ export default function EventDetail({ event, onBackToList, loading = false, erro
               className="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-600 text-white transition-all duration-300"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
 
