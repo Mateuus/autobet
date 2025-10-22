@@ -12,6 +12,9 @@ import { useEvents, EventsFilters, UnifiedEvent } from '@/hooks/useEvents';
 import { useLiveEvents } from '@/hooks/useLiveEvents';
 import { useEventDetail } from '@/hooks/useEventDetail';
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
+import FloatingBettingButton from '@/components/betting/FloatingBettingButton';
+import BettingSlipModal from '@/components/betting/BettingSlipModal';
+import { useBetting } from '@/contexts/BettingContext';
 
 function EventsContent() {
   const router = useRouter();
@@ -23,6 +26,7 @@ function EventsContent() {
     sortBy: 'date'
   });
   const [activeTab, setActiveTab] = useState<EventTabType>('prematch');
+  const { isOpen, setIsOpen } = useBetting();
 
   // Criar uma data fixa para evitar recriação a cada render
   const [currentDate] = useState(() => new Date());
@@ -231,6 +235,10 @@ function EventsContent() {
           </button>
         ))}
       </div>
+
+      {/* Sistema de Apostas - apenas na página de eventos */}
+      <FloatingBettingButton />
+      <BettingSlipModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </div>
   );
 }

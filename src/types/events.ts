@@ -172,6 +172,7 @@ export interface MarketOption {
   isSelected?: boolean;
   isDisabled?: boolean;
   oddStatus?: number;
+  oddId?: number;
 }
 
 // Tipos adicionais para markets e odds baseados na estrutura real

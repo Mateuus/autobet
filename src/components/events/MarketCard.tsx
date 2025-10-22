@@ -11,6 +11,30 @@ interface MarketCardProps {
   additionalIcons?: ReactNode;
   children?: ReactNode;
   isBB?: boolean;
+  // Novas props para integração com sistema de apostas
+  eventData?: {
+    id: number;
+    name: string;
+    startDate: string;
+    code?: number;
+    competitors?: Array<{ id: number; name: string }>;
+    sport?: { typeId: number; iconName: string; hasLiveEvents: boolean; id: number; name: string };
+    championship?: { hasLiveEvents: boolean; id: number; name: string };
+    category?: { iso: string; hasLiveEvents: boolean; id: number; name: string };
+  };
+  marketData?: {
+    typeId: number;
+    isMB: boolean;
+    sv?: string;
+    shortName?: string;
+    name: string;
+    desktopOddIds?: number[][];
+    mobileOddIds?: number[][];
+    isBB: boolean;
+    so: number;
+    sportMarketId: number;
+    id: number;
+  };
 }
 
 export default function MarketCard({ 
@@ -21,7 +45,9 @@ export default function MarketCard({
   onToggleCollapse,
   additionalIcons,
   children,
-  isBB = false
+  isBB = false,
+  eventData,
+  marketData
 }: MarketCardProps) {
   return (
     <div className="bg-white rounded-lg p-4 border border-gray-200 shadow-sm">
@@ -64,6 +90,9 @@ export default function MarketCard({
                 isSelected={option.isSelected}
                 isDisabled={option.isDisabled}
                 oddStatus={option.oddStatus}
+                oddId={option.oddId}
+                eventData={eventData}
+                marketData={marketData}
               />
             ))}
           </div>

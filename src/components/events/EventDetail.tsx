@@ -656,7 +656,8 @@ export default function EventDetail({ event, onBackToList, loading = false, erro
                     onClick: () => handleOddsClick(`market-${market.id}-${odd.id}`),
                     isSelected: selectedOdds === `market-${market.id}-${odd.id}`,
                     isDisabled: false,
-                    oddStatus: odd.oddStatus || 0
+                    oddStatus: odd.oddStatus || 0,
+                    oddId: odd.id
                   };
                 }).filter((item): item is NonNullable<typeof item> => item !== null)
               ) || [];
@@ -671,6 +672,29 @@ export default function EventDetail({ event, onBackToList, loading = false, erro
                   isCollapsed={collapsedMarkets.has(market.id)}
                   onToggleCollapse={() => toggleMarketCollapse(market.id)}
                   isBB={market.isBB}
+                  eventData={{
+                    id: event.id,
+                    name: event.name,
+                    startDate: event.startDate,
+                    code: event.eventCode,
+                    competitors: event.competitors,
+                    sport: event.sport,
+                    championship: event.champ,
+                    category: event.category
+                  }}
+                  marketData={{
+                    typeId: market.typeId,
+                    isMB: market.isMB,
+                    sv: market.sv,
+                    shortName: market.shortName,
+                    name: market.name,
+                    desktopOddIds: market.desktopOddIds,
+                    mobileOddIds: market.mobileOddIds,
+                    isBB: market.isBB,
+                    so: market.so,
+                    sportMarketId: market.sportMarketId,
+                    id: market.id
+                  }}
                 />
               );
             }
