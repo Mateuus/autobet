@@ -49,7 +49,8 @@ export const MARKET_CONFIG: MarketSpecialConfig = {
   // Configurar aqui os sportMarketIds que devem ter processamento de duplicatas
   // (usado apenas quando removeDuplicatesForAllMarkets = false)
   duplicateRemovalSportMarketIds: [
-    70472 // Vencedor do encontro - exemplo
+    70472, // Vencedor do encontro - exemplo
+    70491 // Primeiro Gol
   ]
 };
 

@@ -389,6 +389,7 @@ export default function EventDetail({ event, onBackToList, loading = false, erro
                       isDisabled={odd.oddStatus !== 0}
                       oddStatus={odd.oddStatus || 0}
                       oddId={odd.id}
+                      className="w-full"
                       eventData={{
                         id: event.id,
                         name: event.name,
@@ -428,6 +429,7 @@ export default function EventDetail({ event, onBackToList, loading = false, erro
                       isDisabled={odd.oddStatus !== 0}
                       oddStatus={odd.oddStatus || 0}
                       oddId={odd.id}
+                      className="w-full"
                       eventData={{
                         id: event.id,
                         name: event.name,
