@@ -61,6 +61,60 @@ export interface FssbGameStatus {
   gameTimeBFFGotAt: number;
 }
 
+export interface FssbOutcome {
+  id: string;                    //0 ID do outcome
+  name: string;                  //1 Nome do outcome
+  displayName: string;           //2 Display name
+  TypeName: string;              //3 TypeName
+  array2: string;                //4 Desconhecido
+  array3: string;                //5 Desconhecido
+  odds: number;                  //6 Odds
+  isActive: boolean;             //7 Se está ativo
+  oddsDisplay: string[];         //8 Display das odds
+  isSuspended: boolean;           //9 Se está suspenso
+  providerId: number;            //10 Provider ID
+  OutcomeType: string;           //11 Lado (Home/Away/Draw)
+  MarketId: string;              //12 Market ID
+  array4: string;                //13 Desconhecido
+  array5: string;                //14 Desconhecido
+  array6: string;                //15 Desconhecido
+  Points: string;                //16 Points Handicap
+  marketType: string;            //19 Market Type
+}
+
+export interface FssbMarket {
+  _id: string;                   //0 ID do market
+  name: string;                  //1 Nome do market
+  displayName: string | null;    //2 Display name
+  description: string;           //3 Descrição
+  array4: string;                //4 Desconhecido
+  array5: string;                //5 Desconhecido
+  eventId: string;               //6 Event ID
+  leagueId: string;              //7 League ID
+  sportId: string;               //8 Sport ID
+  startTime: string;             //9 Start time
+  array10: string;               //10 Desconhecido
+  array11: string;               //11 Desconhecido
+  array12: string;               //12 Desconhecido
+  outcomes: FssbOutcome[];       //13 Array de outcomes
+  array14: string;               //14 Desconhecido
+  array15: string;               //15 Desconhecido
+  array16: string;               //16 Desconhecido
+  array17: string;               //17 Desconhecido
+  array18: string;               //18 Desconhecido
+  marketType: string;            //19 Market Type
+  array20: string;               //20 Desconhecido
+  array21: string;               //21 Desconhecido
+  array22: string;               //22 Desconhecido
+  array23: string;               //23 Desconhecido
+  array24: string;               //24 Desconhecido
+  array25: string;               //25 Desconhecido
+  array26: string;               //26 Desconhecido
+  array27: string;               //27 Desconhecido
+  array28: string;               //28 Desconhecido
+  array29: string;               //29 Desconhecido
+}
+
 export interface FssbEvent {
   id: string;                    //0 "766498955642302464" - ID do evento
   leagueId: string;              //1 "677879777860075520" - ID da liga
@@ -80,16 +134,25 @@ export interface FssbEvent {
   gameStatus: FssbGameStatus;    //15 Status do jogo
   isPostponed: boolean;          //16 true - Se foi adiado
   lastUpdate: string;            //17 "" - Última atualização
-  markets: unknown[];            //18 Mercados de apostas
-  marketsTypes: MarketType[];    //19 Tipos de mercados
-  providerEventId: string;       //20 "638967881930679868" - ID do evento no provedor
+  providerEventId: string;       //19 string id de alguma coisa
+  markets: FssbMarket[];         //20 Mercados de apostas
   slug: string;                  //21 "Atlético-MG-vs-Ceará" - Slug para URL
   leagueSlug: string;            //22 "Brasileirão-Série-A" - Slug da liga
-  idDesconhedio: string;         //23 "766498955642302464" - ID desconhecido [27]
-  array28: unknown[];            //24 "Fixture" - Array desconhecido [28]
-  colors: unknown[];             //25 "Teams" - Cores dos times [29]
-  colorsInfo: unknown[];         //26 colorsInfo [29]
-  array31: unknown[];            //27 Array desconhecido [31]
+  countrySlug: string;           //23 "Brasil" - Slug do país
+  sportSlug: string;             //24 "Futebol" - Slug do esporte
+  array25: unknown[];           //25 Array desconhecido [25]
+  array26: unknown[];           //26 Array desconhecido [26]
+  array27: unknown[];           //27 Array desconhecido [27]
+  Fixture: unknown[];           //28 Fixture
+  colorsInfo: unknown[];         //29 colorsInfo
+  marketsTypes: MarketType[];   //30 Tipos de mercados
+  array31: unknown[];           //31 Array desconhecido [31]
+  array32: unknown[];           //32 Array desconhecido [32]
+  array33: unknown[];           //33 Array desconhecido [33]
+  array34: unknown[];           //34 Array desconhecido [34]
+  array35: unknown[];           //35 Array desconhecido [35]
+  array36: unknown[];           //36 Array desconhecido [36]
+  array37: unknown[];           //37 Array desconhecido [37]
 }
 
 export interface FssbEventsResponse {
@@ -547,16 +610,25 @@ export class FssbApiService {
         lastUpdate: eventArray[17] as string,           // ""
         providerEventId: eventArray[19] as string,          // string id de algumac coisa
         //marketType2: marketArray[20] as string           // League slug
-        markets: Array.isArray(eventArray[20]) ? (eventArray[20] as unknown[]).map((market: unknown) => {
+        markets: Array.isArray(eventArray[20]) ? (eventArray[20] as unknown[]).map((market: unknown): FssbMarket => {
           const marketArray = market as unknown[];
           return {
             _id: marketArray[0] as string,                    // ID do market
             name: marketArray[1] as string,                  // Nome do market
             displayName: marketArray[2] as string | null,    // Display name
             description: marketArray[3] as string,           // Descrição
+            array4: marketArray[4] as string,                // Desconhecido
+            array5: marketArray[5] as string,                // Desconhecido
+            eventId: marketArray[6] as string,              // Event ID
+            leagueId: marketArray[7] as string,            // League ID
+            sportId: marketArray[8] as string,             // Sport ID
+            startTime: marketArray[9] as string,           // Start time
+            array10: marketArray[10] as string,              // Desconhecido
+            array11: marketArray[11] as string,              // Desconhecido
+            array12: marketArray[12] as string,              // Desconhecido
             outcomes: Array.isArray(marketArray[13]) ? (marketArray[13] as unknown[])
               .filter((outcome: unknown) => outcome !== null && outcome !== undefined && Array.isArray(outcome))
-              .map((outcome: unknown) => {
+              .map((outcome: unknown): FssbOutcome => {
                 const outcomeArray = outcome as unknown[];
                 return {
                   id: outcomeArray[0] as string,              // ID do outcome
@@ -575,13 +647,26 @@ export class FssbApiService {
                   array4: outcomeArray[13] as string,           // Desconhecido
                   array5: outcomeArray[14] as string,           // Desconhecido
                   array6: outcomeArray[15] as string,           // Desconhecido
-                  Points: outcomeArray[16] as string           // Points Handicap
+                  Points: outcomeArray[16] as string,           // Points Handicap
+                  marketType: outcomeArray[19] as string        // Market Type
                 };
               }) : [],
-            eventId: marketArray[6] as string,              // Event ID
-            leagueId: marketArray[7] as string,            // League ID
-            sportId: marketArray[8] as string,             // Sport ID
-            startTime: marketArray[9] as string,           // Start time
+            array14: marketArray[14] as string,              // Desconhecido
+            array15: marketArray[15] as string,              // Desconhecido
+            array16: marketArray[16] as string,              // Desconhecido
+            array17: marketArray[17] as string,              // Desconhecido
+            array18: marketArray[18] as string,              // Desconhecido
+            marketType: marketArray[19] as string,           // Market Type
+            array20: marketArray[20] as string,              // Desconhecido
+            array21: marketArray[21] as string,              // Desconhecido
+            array22: marketArray[22] as string,              // Desconhecido
+            array23: marketArray[23] as string,              // Desconhecido
+            array24: marketArray[24] as string,              // Desconhecido
+            array25: marketArray[25] as string,              // Desconhecido
+            array26: marketArray[26] as string,              // Desconhecido
+            array27: marketArray[27] as string,              // Desconhecido
+            array28: marketArray[28] as string,              // Desconhecido
+            array29: marketArray[29] as string,              // Desconhecido
           };
         }) : [],                                        // Mercados
         slug: eventArray[21] as string,                 // "Atlético-MG-vs-Ceará"
