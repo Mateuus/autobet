@@ -1,45 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Calendar, Star, RefreshCw, AlertCircle } from 'lucide-react';
-
-interface Team {
-  id: string;
-  name: string;
-  side: 'Home' | 'Away';
-  type: string;
-  logo?: string;
-}
-
-interface Event {
-  id: string;
-  leagueId: string;
-  leagueName: string;
-  sportId: string;
-  sportName: string;
-  countryId: string;
-  countryCode: string;
-  countryName: string;
-  teams: Team[];
-  providerId: number;
-  name: string;
-  startTime: string;
-  status: string[];
-  isLive: boolean;
-  isSuspended: boolean;
-  gameStatus: {
-    clockRunning: boolean;
-    clockDirection: number;
-    updateDate: string;
-    gameTimeBFFGotAt: number;
-  };
-  isPostponed: boolean;
-  lastUpdate: string;
-  markets: unknown[];
-  providerEventId: string;
-  slug: string;
-  leagueSlug: string;
-}
+import { FssbEvent } from '../../../services/fssbApi';
 
 interface LeagueEventsProps {
   leagueId: string;
@@ -48,67 +11,34 @@ interface LeagueEventsProps {
 }
 
 export default function LeagueEvents({ leagueId, onEventSelect, selectedEventId }: LeagueEventsProps) {
-  const [events, setEvents] = useState<Event[]>([]);
+  const [events, setEvents] = useState<FssbEvent[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const isLoadingRef = useRef(false);
 
-  useEffect(() => {
-    if (leagueId) {
-      loadEvents();
-    }
-  }, [leagueId]);
-
-  const loadEvents = async () => {
+  const loadEvents = useCallback(async () => {
+    if (isLoadingRef.current) return;
+    
     try {
+      isLoadingRef.current = true;
       setLoading(true);
       setError(null);
       
-      // Simular carregamento dos dados do league-events.json
-      const response = await fetch('/endpoints/fssio/mockReal/league-events.json');
+      // Usar o endpoint local que consome o fssbApi
+      const response = await fetch(`/api/fssb/league-events?leagueId=${leagueId}`);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
       const data = await response.json();
       
       if (data.data) {
-        // Converter array de arrays para objetos Event
-        const eventsData: Event[] = data.data.map((event: unknown[]) => ({
-          id: event[0],
-          leagueId: event[1],
-          leagueName: event[2],
-          sportId: event[3],
-          sportName: event[4],
-          countryId: event[5],
-          countryCode: event[6],
-          countryName: event[7],
-          teams: (event[8] as unknown[]).map((team: unknown) => {
-            const teamArray = team as unknown[];
-            return {
-              id: teamArray[0] as string,
-              name: typeof teamArray[1] === 'object' ? 
-                (teamArray[1] as Record<string, string>)['BR-PT'] || 
-                (teamArray[1] as Record<string, string>)['EN'] || 
-                Object.values(teamArray[1] as Record<string, string>)[0] : 
-                teamArray[1] as string,
-              side: teamArray[2] as 'Home' | 'Away',
-              type: (teamArray[3] as string) || 'Unknown',
-              logo: teamArray[4] as string || null
-            };
-          }),
-          providerId: event[9],
-          name: event[10],
-          startTime: event[11],
-          status: event[12],
-          isLive: event[13],
-          isSuspended: event[14],
-          gameStatus: event[15],
-          isPostponed: event[16],
-          lastUpdate: event[17],
-          markets: event[18],
-          providerEventId: event[19],
-          slug: event[20],
-          leagueSlug: event[21]
-        }));
-        
-        setEvents(eventsData);
+        console.log('⚽ [LeagueEvents] Eventos recebidos:', data.data.slice(0, 3));
+        console.log('⚽ [LeagueEvents] Total de eventos:', data.data.length);
+        setEvents(data.data);
       } else {
+        console.error('❌ [LeagueEvents] Dados inválidos:', data);
         setError('Formato de dados inválido');
       }
     } catch (err) {
@@ -116,8 +46,15 @@ export default function LeagueEvents({ leagueId, onEventSelect, selectedEventId 
       console.error('Erro ao carregar eventos:', err);
     } finally {
       setLoading(false);
+      isLoadingRef.current = false;
     }
-  };
+  }, [leagueId]);
+
+  useEffect(() => {
+    if (leagueId) {
+      loadEvents();
+    }
+  }, [leagueId, loadEvents]);
 
   const handleEventClick = (eventId: string) => {
     onEventSelect(eventId);

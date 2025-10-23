@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Card, CardContent } from '../../ui/card';
 import { Button } from '../../ui/button';
 import { List, Trophy, Users, Calendar } from 'lucide-react';
@@ -13,41 +14,109 @@ interface FssioEventsProps {
   className?: string;
 }
 
+interface League {
+  id: string;
+  name: string;
+}
+
 export default function FssioEvents({ className }: FssioEventsProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  
   const [selectedSportId, setSelectedSportId] = useState<string>('');
   const [selectedLeagueId, setSelectedLeagueId] = useState<string>('');
   const [selectedEventId, setSelectedEventId] = useState<string>('');
+  const [selectedLeagueName, setSelectedLeagueName] = useState<string>('');
   const [isLeaguesSidebarOpen, setIsLeaguesSidebarOpen] = useState(false);
   const [currentView, setCurrentView] = useState<'sports' | 'events' | 'details'>('sports');
 
-  const handleSportSelect = (sportId: string) => {
+  // Sincronizar com URL parameters
+  useEffect(() => {
+    const sportId = searchParams.get('sportid') || '';
+    const leagueId = searchParams.get('league') || '';
+    const eventId = searchParams.get('event') || '';
+
     setSelectedSportId(sportId);
-    setSelectedLeagueId('');
-    setSelectedEventId('');
+    setSelectedLeagueId(leagueId);
+    setSelectedEventId(eventId);
+
+    // Determinar view baseado nos parâmetros
+    if (eventId) {
+      setCurrentView('details');
+    } else if (leagueId) {
+      setCurrentView('events');
+      setIsLeaguesSidebarOpen(false);
+    } else if (sportId) {
+      setCurrentView('sports');
+      setIsLeaguesSidebarOpen(true);
+    } else {
+      setCurrentView('sports');
+      setIsLeaguesSidebarOpen(false);
+    }
+  }, [searchParams]);
+
+  // Buscar nome da liga quando o leagueId mudar
+  useEffect(() => {
+    const fetchLeagueName = async () => {
+      if (selectedLeagueId && selectedSportId) {
+        try {
+          const response = await fetch(`/api/fssb/leagues?sportId=${selectedSportId}`);
+          if (response.ok) {
+            const data = await response.json();
+            const league = data.data.find((l: League) => l.id === selectedLeagueId);
+            if (league) {
+              setSelectedLeagueName(league.name);
+            } else {
+              setSelectedLeagueName(`Liga ${selectedLeagueId}`);
+            }
+          } else {
+            setSelectedLeagueName(`Liga ${selectedLeagueId}`);
+          }
+        } catch (error) {
+          console.error('Erro ao buscar nome da liga:', error);
+          setSelectedLeagueName(`Liga ${selectedLeagueId}`);
+        }
+      } else {
+        setSelectedLeagueName('');
+      }
+    };
+
+    fetchLeagueName();
+  }, [selectedLeagueId, selectedSportId]);
+
+  const updateURL = (sportId?: string, leagueId?: string, eventId?: string) => {
+    const params = new URLSearchParams();
+    
+    if (sportId) params.set('sportid', sportId);
+    if (leagueId) params.set('league', leagueId);
+    if (eventId) params.set('event', eventId);
+    
+    const queryString = params.toString();
+    const newURL = queryString ? `/events?${queryString}` : '/events';
+    
+    router.push(newURL);
+  };
+
+  const handleSportSelect = (sportId: string) => {
+    updateURL(sportId);
     setIsLeaguesSidebarOpen(true);
-    setCurrentView('sports');
   };
 
   const handleLeagueSelect = (leagueId: string) => {
-    setSelectedLeagueId(leagueId);
-    setSelectedEventId('');
+    updateURL(selectedSportId, leagueId);
     setIsLeaguesSidebarOpen(false);
-    setCurrentView('events');
   };
 
   const handleEventSelect = (eventId: string) => {
-    setSelectedEventId(eventId);
-    setCurrentView('details');
+    updateURL(selectedSportId, selectedLeagueId, eventId);
   };
 
   const handleBackToEvents = () => {
-    setCurrentView('events');
+    updateURL(selectedSportId, selectedLeagueId);
   };
 
   const handleBackToSports = () => {
-    setCurrentView('sports');
-    setSelectedLeagueId('');
-    setSelectedEventId('');
+    updateURL(selectedSportId);
   };
 
   const getCurrentSportName = () => {
@@ -57,8 +126,7 @@ export default function FssioEvents({ className }: FssioEventsProps) {
   };
 
   const getCurrentLeagueName = () => {
-    // Esta função seria implementada para buscar o nome da liga baseado no ID
-    return selectedLeagueId ? `Liga ${selectedLeagueId}` : '';
+    return selectedLeagueName || (selectedLeagueId ? `Liga ${selectedLeagueId}` : '');
   };
 
   return (
