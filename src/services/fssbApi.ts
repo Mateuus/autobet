@@ -81,9 +81,10 @@ export interface FssbEvent {
   isPostponed: boolean;          // true - Se foi adiado
   lastUpdate: string;            // "" - Última atualização
   markets: unknown[];            // Mercados de apostas
-  providerEventId: string;       // "638967881930679868" - ID do evento no provedor
-  slug: string;                  // "Atlético-MG-vs-Ceará" - Slug para URL
-  leagueSlug: string;            // "Brasileirão-Série-A" - Slug da liga
+  marketsTypes: MarketType[];   // Tipos de mercados
+  providerEventId: string;      // "638967881930679868" - ID do evento no provedor
+  slug: string;                 // "Atlético-MG-vs-Ceará" - Slug para URL
+  leagueSlug: string;           // "Brasileirão-Série-A" - Slug da liga
 }
 
 export interface FssbEventsResponse {
@@ -96,6 +97,13 @@ export interface LeagueEventsParams {
 
 export interface EventDetailsParams {
   eventId: string;
+}
+
+export interface MarketType {
+  id: number;           // ID único do tipo de mercado
+  name: string;         // Nome do tipo de mercado
+  displayName: string;  // Nome de exibição (geralmente igual ao name)
+  category: string;     // Categoria (derivada do nome)
 }
 
 export interface FssbEventDetailsResponse {
@@ -402,10 +410,43 @@ export class FssbApiService {
         gameStatus: eventArray[15] as FssbGameStatus,   // Status do jogo
         isPostponed: eventArray[16] as boolean,         // true
         lastUpdate: eventArray[17] as string,           // ""
-        markets: eventArray[18] as unknown[],           // Mercados
-        providerEventId: eventArray[19] as string,      // "638967881930679868"
-        slug: eventArray[20] as string,                 // "Atlético-MG-vs-Ceará"
-        leagueSlug: eventArray[21] as string            // "Brasileirão-Série-A"
+        markets: Array.isArray(eventArray[20]) ? (eventArray[20] as unknown[]).map((market: unknown) => {
+          const marketArray = market as unknown[];
+          return {
+            id: marketArray[0] as string,                    // ID do market
+            name: marketArray[1] as string,                  // Nome do market
+            displayName: marketArray[2] as string | null,    // Display name
+            description: marketArray[3] as string,           // Descrição
+            outcomes: Array.isArray(marketArray[5]) ? (marketArray[5] as unknown[])
+              .filter((outcome: unknown) => outcome !== null && outcome !== undefined && Array.isArray(outcome))
+              .map((outcome: unknown) => {
+                const outcomeArray = outcome as unknown[];
+                return {
+                  id: outcomeArray[0] as string,               // ID do outcome
+                  name: outcomeArray[1] as string,             // Nome do outcome
+                  displayName: outcomeArray[2] as string,       // Display name
+                  odds: outcomeArray[6] as number,             // Odds
+                  isActive: outcomeArray[7] as boolean,       // Se está ativo
+                  isSuspended: outcomeArray[8] as boolean,      // Se está suspenso
+                  oddsDisplay: outcomeArray[9] as string[],     // Display das odds
+                  providerId: outcomeArray[10] as number,      // Provider ID
+                  side: outcomeArray[11] as string,           // Lado (Home/Away/Draw)
+                  displaySide: outcomeArray[12] as string       // Display do lado
+                };
+              }) : [],
+            eventId: marketArray[13] as string,              // Event ID
+            leagueId: marketArray[14] as string,            // League ID
+            sportId: marketArray[15] as string,             // Sport ID
+            startTime: marketArray[16] as string,           // Start time
+            providerId: marketArray[17] as number,           // Provider ID
+            lastUpdate: marketArray[18] as string,           // Last update
+            slug: marketArray[19] as string,                 // Slug
+            leagueSlug: marketArray[20] as string           // League slug
+          };
+        }) : [],                                          // Mercados
+        providerEventId: eventArray[21] as string,      // "638967881930679868"
+        slug: eventArray[22] as string,                 // "Atlético-MG-vs-Ceará"
+        leagueSlug: eventArray[23] as string            // "Brasileirão-Série-A"
       }));
 
       const data: FssbEventsResponse = {
@@ -499,10 +540,58 @@ export class FssbApiService {
         gameStatus: eventArray[15] as FssbGameStatus,   // Status do jogo
         isPostponed: eventArray[16] as boolean,         // true
         lastUpdate: eventArray[17] as string,           // ""
-        markets: eventArray[18] as unknown[],           // Mercados
-        providerEventId: eventArray[19] as string,      // "638967881930679868"
-        slug: eventArray[20] as string,                 // "Atlético-MG-vs-Ceará"
-        leagueSlug: eventArray[21] as string            // "Brasileirão-Série-A"
+        markets: Array.isArray(eventArray[20]) ? (eventArray[20] as unknown[]).map((market: unknown) => {
+          const marketArray = market as unknown[];
+          return {
+            id: marketArray[0] as string,                    // ID do market
+            name: marketArray[1] as string,                  // Nome do market
+            displayName: marketArray[2] as string | null,    // Display name
+            description: marketArray[3] as string,           // Descrição
+            outcomes: Array.isArray(marketArray[5]) ? (marketArray[5] as unknown[])
+              .filter((outcome: unknown) => outcome !== null && outcome !== undefined && Array.isArray(outcome))
+              .map((outcome: unknown) => {
+                const outcomeArray = outcome as unknown[];
+                return {
+                  id: outcomeArray[0] as string,               // ID do outcome
+                  name: outcomeArray[1] as string,             // Nome do outcome
+                  displayName: outcomeArray[2] as string,       // Display name
+                  odds: outcomeArray[6] as number,             // Odds
+                  isActive: outcomeArray[7] as boolean,       // Se está ativo
+                  isSuspended: outcomeArray[8] as boolean,      // Se está suspenso
+                  oddsDisplay: outcomeArray[9] as string[],     // Display das odds
+                  providerId: outcomeArray[10] as number,      // Provider ID
+                  side: outcomeArray[11] as string,           // Lado (Home/Away/Draw)
+                  displaySide: outcomeArray[12] as string       // Display do lado
+                };
+              }) : [],
+            eventId: marketArray[13] as string,              // Event ID
+            leagueId: marketArray[14] as string,            // League ID
+            sportId: marketArray[15] as string,             // Sport ID
+            startTime: marketArray[16] as string,           // Start time
+            providerId: marketArray[17] as number,           // Provider ID
+            lastUpdate: marketArray[18] as string,           // Last update
+            slug: marketArray[19] as string,                 // Slug
+            leagueSlug: marketArray[20] as string           // League slug
+          };
+        }) : [],                                          // Mercados
+        providerEventId: eventArray[21] as string,      // "638967881930679868"
+        slug: eventArray[22] as string,                 // "Atlético-MG-vs-Ceará"
+        leagueSlug: eventArray[23] as string,            // "Brasileirão-Série-A"
+        //contry [24]
+        //null [25]
+        //null [26]
+        idDesconhedio: eventArray[27] as string, // "766498955642302464",
+        array28: eventArray[28] as unknown[], // "Fixture",
+        colors: eventArray[29] as unknown[], // "Teams",
+        marketsTypes: (eventArray[30] as unknown[])?.map((marketType: unknown) => {
+          const marketTypeArray = marketType as unknown[];
+          return {
+            id: marketTypeArray[2] as number,           // ID único do tipo de mercado
+            name: marketTypeArray[0] as string,        // Nome do tipo de mercado
+            displayName: marketTypeArray[1] as string, // Nome de exibição (geralmente igual ao name)
+            category: marketTypeArray[0] as string     // Categoria (derivada do nome)
+          };
+        }) || [], // "MarketsType",
       }));
 
       const data: FssbEventDetailsResponse = {

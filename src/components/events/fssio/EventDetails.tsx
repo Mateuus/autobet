@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import MarketCard from '../MarketCard';
+import { MarketType } from '@/services/fssbApi';
 
 interface Team {
   id: string;
@@ -60,6 +61,7 @@ interface EventData {
   isPostponed: boolean;
   lastUpdate: string;
   markets: unknown[];
+  marketsTypes: MarketType[];
   providerEventId: string;
   slug: string;
   leagueSlug: string;
@@ -80,108 +82,134 @@ export default function EventDetails({ eventId, onBack }: EventDetailsProps) {
   const [collapsedMarkets, setCollapsedMarkets] = useState<Set<number>>(new Set());
   const [searchTerm, setSearchTerm] = useState('');
   const [isSearchActive, setIsSearchActive] = useState(false);
-
-  const loadEventDetails = useCallback(async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      
-      // Buscar detalhes do evento usando a API
-      const response = await fetch(`/api/fssb/events/${eventId}`);
-      
-      if (!response.ok) {
-        throw new Error(`Erro HTTP: ${response.status}`);
-      }
-      
-      const data = await response.json();
-      
-      if (data.data && data.data.length > 0) {
-        const eventData = data.data[0];
-        
-        // Converter dados do evento
-        const eventInfo: EventData = {
-          id: eventData.id,
-          leagueId: eventData.leagueId,
-          leagueName: eventData.leagueName,
-          sportId: eventData.sportId,
-          sportName: eventData.sportName,
-          countryId: eventData.countryId,
-          countryCode: eventData.countryCode,
-          countryName: eventData.countryName,
-          teams: eventData.teams.map((team: Team) => ({
-            id: team.id,
-            name: team.name,
-            side: team.side,
-            type: team.type || 'Unknown',
-            logo: team.logo || undefined
-          })),
-          providerId: eventData.providerId,
-          name: eventData.name,
-          startTime: eventData.startTime,
-          status: eventData.status,
-          isLive: eventData.isLive,
-          isSuspended: eventData.isSuspended,
-          gameStatus: eventData.gameStatus,
-          isPostponed: eventData.isPostponed,
-          lastUpdate: eventData.lastUpdate,
-          markets: eventData.markets,
-          providerEventId: eventData.providerEventId,
-          slug: eventData.slug,
-          leagueSlug: eventData.leagueSlug
-        };
-        
-        setEvent(eventInfo);
-        
-        // Converter mercados
-        if (eventData.markets && Array.isArray(eventData.markets) && eventData.markets.length > 0) {
-          const marketsData: Market[] = eventData.markets.map((market: unknown[]) => ({
-            id: market[0] as string,
-            name: market[1] as string,
-            displayName: market[2] as string,
-            description: market[3] as string,
-            outcomes: market[5] ? (market[5] as unknown[]).map((outcome: unknown) => {
-              const outcomeArray = outcome as unknown[];
-              return {
-                id: outcomeArray[0] as string,
-                name: outcomeArray[1] as string,
-                displayName: outcomeArray[2] as string,
-                odds: outcomeArray[5] as number,
-                isActive: outcomeArray[6] as boolean,
-                isSuspended: outcomeArray[7] as boolean,
-                oddsDisplay: outcomeArray[8] as string[],
-                providerId: outcomeArray[9] as number,
-                side: outcomeArray[10] as string,
-                displaySide: outcomeArray[11] as string
-              };
-            }) : [],
-            eventId: market[6] as string,
-            leagueId: market[7] as string,
-            sportId: market[8] as string,
-            startTime: market[9] as string,
-            providerId: market[10] as number,
-            lastUpdate: market[11] as string,
-            slug: market[12] as string,
-            leagueSlug: market[13] as string
-          }));
-          
-          setMarkets(marketsData);
-        }
-      } else {
-        setError('Evento não encontrado');
-      }
-    } catch (err) {
-      setError('Erro ao carregar detalhes do evento');
-      console.error('Erro ao carregar detalhes do evento:', err);
-    } finally {
-      setLoading(false);
-    }
-  }, [eventId]);
+  const lastLoadedEventIdRef = useRef<string | null>(null);
+  const isLoadingRef = useRef(false);
 
   useEffect(() => {
-    if (eventId) {
-      loadEventDetails();
+    if (!eventId) return;
+    
+    // Evitar requisições duplicadas para o mesmo evento
+    if (lastLoadedEventIdRef.current === eventId && isLoadingRef.current) {
+      console.log('🚫 [EventDetails] Evitando requisição duplicada para evento:', eventId);
+      return;
     }
-  }, [eventId, loadEventDetails]);
+
+    let isCancelled = false;
+
+    const loadEventDetails = async () => {
+      try {
+        console.log('🔄 [EventDetails] Carregando evento:', eventId);
+        isLoadingRef.current = true;
+        setLoading(true);
+        setError(null);
+        
+        // Buscar detalhes do evento usando a API
+        const response = await fetch(`/api/fssb/events/${eventId}`);
+        
+        if (!response.ok) {
+          throw new Error(`Erro HTTP: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        // Verificar se o componente ainda está montado
+        if (isCancelled) return;
+        
+        if (data.data && data.data.length > 0) {
+          const eventData = data.data[0];
+          
+          // Converter dados do evento
+          const eventInfo: EventData = {
+            id: eventData.id,
+            leagueId: eventData.leagueId,
+            leagueName: eventData.leagueName,
+            sportId: eventData.sportId,
+            sportName: eventData.sportName,
+            countryId: eventData.countryId,
+            countryCode: eventData.countryCode,
+            countryName: eventData.countryName,
+            teams: eventData.teams.map((team: Team) => ({
+              id: team.id,
+              name: team.name,
+              side: team.side,
+              type: team.type || 'Unknown',
+              logo: team.logo || undefined
+            })),
+            providerId: eventData.providerId,
+            name: eventData.name,
+            startTime: eventData.startTime,
+            status: eventData.status,
+            isLive: eventData.isLive,
+            isSuspended: eventData.isSuspended,
+            gameStatus: eventData.gameStatus,
+            isPostponed: eventData.isPostponed,
+            lastUpdate: eventData.lastUpdate,
+            markets: eventData.markets,
+            marketsTypes: eventData.marketsTypes || [],
+            providerEventId: eventData.providerEventId,
+            slug: eventData.slug,
+            leagueSlug: eventData.leagueSlug
+          };
+          
+          setEvent(eventInfo);
+          lastLoadedEventIdRef.current = eventId; // Marcar evento como carregado
+          
+          // Converter mercados
+          if (eventData.markets && Array.isArray(eventData.markets) && eventData.markets.length > 0) {
+            const marketsData: Market[] = eventData.markets.map((market: unknown[]) => ({
+              id: market[0] as string,
+              name: market[1] as string,
+              displayName: market[2] as string,
+              description: market[3] as string,
+              outcomes: market[5] ? (market[5] as unknown[]).map((outcome: unknown) => {
+                const outcomeArray = outcome as unknown[];
+                return {
+                  id: outcomeArray[0] as string,
+                  name: outcomeArray[1] as string,
+                  displayName: outcomeArray[2] as string,
+                  odds: outcomeArray[5] as number,
+                  isActive: outcomeArray[6] as boolean,
+                  isSuspended: outcomeArray[7] as boolean,
+                  oddsDisplay: outcomeArray[8] as string[],
+                  providerId: outcomeArray[9] as number,
+                  side: outcomeArray[10] as string,
+                  displaySide: outcomeArray[11] as string
+                };
+              }) : [],
+              eventId: market[6] as string,
+              leagueId: market[7] as string,
+              sportId: market[8] as string,
+              startTime: market[9] as string,
+              providerId: market[10] as number,
+              lastUpdate: market[11] as string,
+              slug: market[12] as string,
+              leagueSlug: market[13] as string
+            }));
+            
+            setMarkets(marketsData);
+          }
+        } else {
+          setError('Evento não encontrado');
+        }
+      } catch (err) {
+        if (isCancelled) return;
+        setError('Erro ao carregar detalhes do evento');
+        console.error('Erro ao carregar detalhes do evento:', err);
+      } finally {
+        if (!isCancelled) {
+          setLoading(false);
+          isLoadingRef.current = false;
+        }
+      }
+    };
+
+    loadEventDetails();
+
+    // Cleanup function para cancelar requisições pendentes
+    return () => {
+      isCancelled = true;
+    };
+  }, [eventId]); // Remover lastLoadedEventId e event das dependências
 
   const handleOddsClick = (oddsId: string) => {
     setSelectedOdds(selectedOdds === oddsId ? null : oddsId);
@@ -218,9 +246,9 @@ export default function EventDetails({ eventId, onBack }: EventDetailsProps) {
     });
   };
 
-  // Criar categorias dinâmicas baseadas nos mercados
-  const categories = [
-    'Todos',
+  // Criar categorias dinâmicas baseadas nos marketsTypes do endpoint
+  const categories = event?.marketsTypes ? 
+    event.marketsTypes.map(marketType => marketType.name) : [
     'Popular',
     'Resultado Final',
     'Ambas Marcam',
@@ -247,7 +275,7 @@ export default function EventDetails({ eventId, onBack }: EventDetailsProps) {
           <h2 className="text-xl font-semibold text-gray-900 mb-2">Erro ao carregar evento</h2>
           <p className="text-gray-600 mb-4">{error}</p>
           <button
-            onClick={loadEventDetails}
+            onClick={() => window.location.reload()}
             className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
           >
             Tentar Novamente
@@ -308,29 +336,85 @@ export default function EventDetails({ eventId, onBack }: EventDetailsProps) {
 
   return (
     <div className="space-y-6">
-      {/* Event Header */}
-      <div className="text-center">
-        <div className="text-sm text-gray-500 mb-2">
-          {event.leagueName.toUpperCase()}, APERTURA | DIA DE JOGO 14
-        </div>
-        <div className="text-sm text-gray-500 mb-4">
-          {dateStr.replace('/', ' ').toUpperCase()} {timeStr}
-        </div>
-        <div className="flex items-center justify-center gap-8">
-          <div className="text-center">
-            <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mb-2">
-              <span className="text-white font-bold text-sm">{homeTeam.charAt(0)}</span>
-            </div>
-            <div className="text-sm font-medium text-gray-900">{homeTeam}</div>
+      {/* Event Header with Football Field Background */}
+      <div className="relative overflow-hidden rounded-xl bg-linear-to-br from-green-600 via-green-700 to-green-800 mb-6">
+        {/* Football Field Background Pattern */}
+        <div className="absolute inset-0 opacity-20">
+          {/* Field Lines */}
+          <div className="absolute inset-0">
+            {/* Center Line */}
+            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-white transform -translate-y-0.5"></div>
+            {/* Center Circle */}
+            <div className="absolute top-1/2 left-1/2 w-16 h-16 border-2 border-white rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
+            {/* Goal Areas */}
+            <div className="absolute top-1/2 left-0 w-8 h-12 border-2 border-white transform -translate-y-1/2"></div>
+            <div className="absolute top-1/2 right-0 w-8 h-12 border-2 border-white transform -translate-y-1/2"></div>
+            {/* Penalty Areas */}
+            <div className="absolute top-1/2 left-0 w-16 h-20 border-2 border-white transform -translate-y-1/2"></div>
+            <div className="absolute top-1/2 right-0 w-16 h-20 border-2 border-white transform -translate-y-1/2"></div>
+            {/* Field Markings */}
+            <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-white rounded-full"></div>
+            <div className="absolute top-1/4 right-1/4 w-1 h-1 bg-white rounded-full"></div>
+            <div className="absolute bottom-1/4 left-1/4 w-1 h-1 bg-white rounded-full"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-1 h-1 bg-white rounded-full"></div>
           </div>
-          <div className="text-gray-400">x</div>
-          <div className="text-center">
-            <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mb-2">
-              <span className="text-white font-bold text-sm">{awayTeam.charAt(0)}</span>
+        </div>
+
+        {/* Content Overlay */}
+        <div className="relative z-10 p-8">
+          {/* League Info */}
+          <div className="text-center mb-6">
+            <div className="text-sm text-green-100 mb-2 font-medium">
+              {event.leagueName.toUpperCase()}
             </div>
-            <div className="text-sm font-medium text-gray-900">{awayTeam}</div>
+            <div className="text-sm text-green-200 mb-4">
+              {dateStr.replace('/', ' ').toUpperCase()} {timeStr}
+            </div>
+          </div>
+
+          {/* Teams Matchup */}
+          <div className="flex items-center justify-center gap-8 mb-6">
+            {/* Home Team */}
+            <div className="text-center">
+              <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-3 border-2 border-white/30">
+                <span className="text-white font-bold text-lg">{homeTeam.charAt(0)}</span>
+              </div>
+              <div className="text-sm font-semibold text-white">{homeTeam}</div>
+            </div>
+
+            {/* VS Separator */}
+            <div className="text-white/80 text-2xl font-bold">VS</div>
+
+            {/* Away Team */}
+            <div className="text-center">
+              <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-3 border-2 border-white/30">
+                <span className="text-white font-bold text-lg">{awayTeam.charAt(0)}</span>
+              </div>
+              <div className="text-sm font-semibold text-white">{awayTeam}</div>
+            </div>
+          </div>
+
+          {/* Match Status */}
+          <div className="text-center">
+            {event.isLive ? (
+              <div className="inline-flex items-center gap-2 bg-red-500 text-white px-4 py-2 rounded-full text-sm font-medium">
+                <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                AO VIVO
+              </div>
+            ) : event.isPostponed ? (
+              <div className="inline-flex items-center gap-2 bg-yellow-500 text-white px-4 py-2 rounded-full text-sm font-medium">
+                ⏰ PRÉ-JOGO
+              </div>
+            ) : (
+              <div className="inline-flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium">
+                ⏸️ ADIADO
+              </div>
+            )}
           </div>
         </div>
+
+        {/* Gradient Overlay for better text readability */}
+        <div className="absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-black/20"></div>
       </div>
 
       {/* Categories */}
