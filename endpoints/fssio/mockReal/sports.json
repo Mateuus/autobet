@@ -1,0 +1,84 @@
+{
+    "sports": [
+        {
+            "sportId": "59",
+            "sportName": "Cricket",
+            "numberOfEvents": 9
+        },
+        {
+            "sportId": "1",
+            "sportName": "Futebol",
+            "numberOfEvents": 102
+        },
+        {
+            "sportId": "34",
+            "sportName": "Badminton",
+            "numberOfEvents": 70
+        },
+        {
+            "sportId": "2",
+            "sportName": "Basquete",
+            "numberOfEvents": 59
+        },
+        {
+            "sportId": "6",
+            "sportName": "Tênis",
+            "numberOfEvents": 363
+        },
+        {
+            "sportId": "35",
+            "sportName": "Rugby",
+            "numberOfEvents": 2
+        },
+        {
+            "sportId": "32",
+            "sportName": "Vôlei de praia",
+            "numberOfEvents": 10
+        },
+        {
+            "sportId": "26",
+            "sportName": "Tênis de mesa",
+            "numberOfEvents": 444
+        },
+        {
+            "sportId": "19",
+            "sportName": "Vôlei",
+            "numberOfEvents": 43
+        },
+        {
+            "sportId": "31",
+            "sportName": "Polo aquático",
+            "numberOfEvents": 2
+        },
+        {
+            "sportId": "10",
+            "sportName": "Handebol",
+            "numberOfEvents": 15
+        },
+        {
+            "sportId": "8",
+            "sportName": "Hóquei no gelo",
+            "numberOfEvents": 41
+        },
+        {
+            "sportId": "64",
+            "sportName": "E-Sports",
+            "numberOfEvents": 47
+        },
+        {
+            "sportId": "15",
+            "sportName": "Dardos",
+            "numberOfEvents": 18
+        },
+        {
+            "sportId": "13",
+            "sportName": "Sinuca & Bilhar",
+            "numberOfEvents": 8
+        },
+        {
+            "sportId": "7",
+            "sportName": "Beisebol",
+            "numberOfEvents": 1
+        }
+    ]
+}

@@ -1,13 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Calendar, Star, RefreshCw, AlertCircle } from 'lucide-react';
-
-interface Sport {
-  sportId: string;
-  sportName: string;
-  numberOfEvents: number;
-}
+import { FssbSport } from '../../../services/fssbApi';
 
 interface SportsListProps {
   onSportSelect: (sportId: string) => void;
@@ -15,16 +10,29 @@ interface SportsListProps {
 }
 
 export default function SportsList({ onSportSelect, selectedSportId }: SportsListProps) {
-  const [sports, setSports] = useState<Sport[]>([]);
+  const [sports, setSports] = useState<FssbSport[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const isLoadingRef = useRef(false); // Flag para evitar requests duplicados
 
   useEffect(() => {
     const loadSports = async () => {
+      // Evitar requests duplicados
+      if (isLoadingRef.current) {
+        return;
+      }
+
       try {
+        isLoadingRef.current = true;
         setLoading(true);
-        // Simular carregamento dos dados do initial.json
-        const response = await fetch('/endpoints/fssio/mockReal/initial.json');
+        
+        // Usar o endpoint local que consome o fssbApi
+        const response = await fetch('/api/fssb/sports');
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const data = await response.json();
         
         if (data.sports) {
@@ -37,11 +45,12 @@ export default function SportsList({ onSportSelect, selectedSportId }: SportsLis
         console.error('Erro ao carregar esportes:', err);
       } finally {
         setLoading(false);
+        isLoadingRef.current = false;
       }
     };
 
     loadSports();
-  }, []);
+  }, []); // Array vazio para executar apenas uma vez
 
   const handleSportClick = (sportId: string) => {
     onSportSelect(sportId);
