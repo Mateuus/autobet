@@ -24,6 +24,28 @@ export interface SportsParams {
   isAllPreMatch?: boolean;
 }
 
+export interface FssbLeague {
+  id: string;           // "741930177135853568" - ID da liga
+  name: string;         // "Alemanha Copa DFB" - Nome da liga
+  isPopular: boolean;   // false - Se é popular/destacada
+  priority: number;     // 0 - Prioridade da liga
+  slug: string;         // "Alemanha-Copa-DFB" - Nome para URL
+  country: string;      // "Alemanha" - País
+  sport: string;        // "Futebol" - Esporte
+  sportId: string;      // "54" - ID do esporte
+  providerId: number;  // 60000900 - ID do provedor
+  providerLeagueId: string; // "5768" - ID da liga no provedor
+}
+
+export interface FssbLeaguesResponse {
+  data: FssbLeague[];
+}
+
+export interface LeaguesParams {
+  sportId: string;
+  isTopLeague?: boolean;
+}
+
 /**
  * Serviço para fazer chamadas diretas à API FSSB
  */
@@ -163,6 +185,84 @@ export class FssbApiService {
     } catch (error) {
       console.error('❌ [FSSB API] Erro ao buscar lista de esportes:', error);
       throw new Error(`Falha ao buscar esportes: ${error instanceof Error ? error.message : 'Erro desconhecido'}`);
+    }
+  }
+
+  /**
+   * Busca lista de ligas disponíveis para um esporte específico
+   */
+  async getLeagues(params: LeaguesParams): Promise<FssbLeaguesResponse> {
+    const {
+      sportId,
+      isTopLeague = false
+    } = params;
+
+    // Inicializar tokens se necessário
+    await this.initializeTokens();
+
+    const url = new URL(`${FSSB_BASE_URL}/api/eventlist/eu/sports/${sportId}/leagues`);
+    url.searchParams.append('IsTopLeague', isTopLeague.toString());
+
+    //const cookieString = `authorization=${this.authorization}; session=${this.session}`;
+    
+    try {
+      const requestHeaders = {
+        'Authorization': this.authorization,
+        'Session': this.session,
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
+        //'Cookie': `authorization=${this.authorization}; session=${this.session}`
+      };
+      
+      console.log('🌐 [FSSB API] Fazendo requisição para:', url.toString());
+      console.log('📤 [FSSB API] Headers enviados:', Object.keys(requestHeaders));
+      console.log('🔑 [FSSB API] Authorization:', this.authorization.substring(0, 50) + '...');
+      console.log('🍪 [FSSB API] Session:', this.session.substring(0, 50) + '...');
+      
+      const response = await fetch(url.toString(), {
+        method: 'GET',
+        headers: requestHeaders,
+      });
+
+      if (!response.ok) {
+        // Tentar ler o corpo da resposta para debug
+        try {
+          const errorText = await response.text();
+          console.error('📄 [FSSB API] Corpo da resposta de erro:', errorText.substring(0, 1000));
+        } catch {
+          console.error('❌ [FSSB API] Não foi possível ler o corpo da resposta');
+        }
+        
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const rawData = await response.json();
+      
+      console.log('🔍 [FSSB API] Dados brutos recebidos:', rawData.data?.slice(0, 2));
+      
+      // Mapear os dados do array para objetos FssbLeague
+      const mappedLeagues: FssbLeague[] = rawData.data.map((leagueArray: unknown[]) => ({
+        id: leagueArray[0] as string,           // "741930177135853568"
+        name: leagueArray[1] as string,          // "Alemanha Copa DFB"
+        isPopular: leagueArray[2] as boolean,    // false
+        priority: leagueArray[3] as number,     // 0
+        slug: leagueArray[4] as string,         // "Alemanha-Copa-DFB"
+        country: leagueArray[5] as string,      // "Alemanha"
+        sport: leagueArray[6] as string,        // "Futebol"
+        sportId: leagueArray[7] as string,      // "54"
+        providerId: leagueArray[8] as number,   // 60000900
+        providerLeagueId: leagueArray[9] as string // "5768"
+      }));
+
+      const data: FssbLeaguesResponse = {
+        data: mappedLeagues
+      };
+      
+      console.log('🏆 [FSSB API] Primeiras 3 ligas mapeadas:', mappedLeagues.slice(0, 3));
+      
+      return data;
+    } catch (error) {
+      console.error('❌ [FSSB API] Erro ao buscar lista de ligas:', error);
+      throw new Error(`Falha ao buscar ligas: ${error instanceof Error ? error.message : 'Erro desconhecido'}`);
     }
   }
 }

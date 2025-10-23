@@ -97,18 +97,6 @@
             "250"
         ],
         [
-            "733002920924409856",
-            "El Salvador - Primeira Divisão",
-            false,
-            0,
-            "El-Salvador-Primeira-Divisão",
-            "El-Salvador",
-            "Futebol",
-            "204",
-            90004700,
-            "2864"
-        ],
-        [
             "741218199761199104",
             "Romênia - Liga 1",
             false,
@@ -325,18 +313,6 @@
             "46"
         ],
         [
-            "741616668569120768",
-            "México - Liga MX",
-            false,
-            0,
-            "México-Liga-MX",
-            "México",
-            "Futebol",
-            "153",
-            31000203,
-            "632"
-        ],
-        [
             "753878975465689088",
             "Austrália - Liga A",
             false,
@@ -412,13 +388,25 @@
             "728212319171264512",
             "Tanzânia - Premier League",
             false,
-            1,
+            0,
             "Tanzânia-Premier-League",
             "Tanzânia",
             "Futebol",
             "222",
             100039200,
             "8363"
+        ],
+        [
+            "741616668569120768",
+            "México - Liga MX",
+            false,
+            3,
+            "México-Liga-MX",
+            "México",
+            "Futebol",
+            "153",
+            31000203,
+            "632"
         ],
         [
             "736200078205894656",
@@ -431,18 +419,6 @@
             "185",
             91000008,
             "209"
-        ],
-        [
-            "715187404600053760",
-            "Copa da Colômbia",
-            false,
-            0,
-            "Copa-da-Colômbia",
-            "Colômbia",
-            "Futebol",
-            "47",
-            80008100,
-            "2487"
         ],
         [
             "751191773992562688",
@@ -469,16 +445,16 @@
             "237"
         ],
         [
-            "729017266418827264",
-            "Argentina - Liga Reserva",
+            "766421826162421760",
+            "Supercopa da França",
             false,
-            5,
-            "Argentina-Liga-Reserva",
-            "Argentina",
+            0,
+            "Supercopa-da-França",
+            "França",
             "Futebol",
-            "11",
-            100001100,
-            "5579"
+            "72",
+            30000400,
+            "1677"
         ],
         [
             "677879777860075520",
@@ -493,46 +469,10 @@
             "530"
         ],
         [
-            "766421826162421760",
-            "Supercopa da França",
-            false,
-            0,
-            "Supercopa-da-França",
-            "França",
-            "Futebol",
-            "72",
-            30000400,
-            "1677"
-        ],
-        [
-            "667266257325993984",
-            "Venezuela - Primera",
-            false,
-            0,
-            "Venezuela-Primera",
-            "Venezuela",
-            "Futebol",
-            "232",
-            91000019,
-            "896"
-        ],
-        [
-            "664765209877176320",
-            "EUA - Campeonato USL",
-            false,
-            0,
-            "EUA-Campeonato-USL",
-            "Estados-Unidos",
-            "Futebol",
-            "227",
-            91000016,
-            "3790"
-        ],
-        [
             "748893569406054400",
             "AFC Champions League 2",
             false,
-            1,
+            0,
             "AFC-Champions-League-2",
             "Internacional",
             "Futebol",
@@ -589,6 +529,18 @@
             "215"
         ],
         [
+            "729017266418827264",
+            "Argentina - Liga Reserva",
+            false,
+            0,
+            "Argentina-Liga-Reserva",
+            "Argentina",
+            "Futebol",
+            "11",
+            100001100,
+            "5579"
+        ],
+        [
             "665138884958830592",
             "Argentina - Liga Profissional",
             false,
@@ -616,7 +568,7 @@
             "720529807271837696",
             "Copa Centro-Americana da CONCACAF",
             false,
-            0,
+            1,
             "Copa-Centro-Americana-da-CONCACAF",
             "Internacional",
             "Futebol",
@@ -635,6 +587,30 @@
             "153",
             36000008,
             "207752358007152640"
+        ],
+        [
+            "731516173673689088",
+            "Nova Zelândia - Premier League Feminina",
+            false,
+            0,
+            "Nova-Zelândia-Premier-League-Feminina",
+            "Nova-Zelândia",
+            "Futebol",
+            "167",
+            110024900,
+            "8623"
+        ],
+        [
+            "756807975410388992",
+            "Copa da Federação de Bangladesh",
+            false,
+            0,
+            "Copa-da-Federação-de-Bangladesh",
+            "Bangladesh",
+            "Futebol",
+            "19",
+            92000020,
+            "7420"
         ],
         [
             "743708529861558272",
@@ -755,6 +731,18 @@
             "175",
             36000009,
             "285"
+        ],
+        [
+            "729981246293491712",
+            "Amistoso Internacional Feminino",
+            false,
+            0,
+            "Amistoso-Internacional-Feminino",
+            "Internacional",
+            "Futebol",
+            "245",
+            38004903,
+            "220555541016264704"
         ],
         [
             "728369379355705344",
@@ -928,7 +916,7 @@
             "726053182400376832",
             "Inglaterra - Campeonato",
             false,
-            4,
+            0,
             "Inglaterra-Campeonato",
             "Inglaterra",
             "Futebol",
@@ -983,6 +971,18 @@
             "44",
             38000014,
             "2477"
+        ],
+        [
+            "680752550349373440",
+            "Equador - Série B",
+            false,
+            0,
+            "Equador-Série-B",
+            "Equador",
+            "Futebol",
+            "60",
+            90004500,
+            "200531625183703040"
         ],
         [
             "667978321841471488",
@@ -1079,18 +1079,6 @@
             "218",
             39000006,
             "267"
-        ],
-        [
-            "740199478896836608",
-            "Copa do Paraguai",
-            false,
-            0,
-            "Copa-do-Paraguai",
-            "Paraguai",
-            "Futebol",
-            "182",
-            38008101,
-            "20682"
         ],
         [
             "735429679611392000",
@@ -1429,6 +1417,30 @@
             "370883421935001600"
         ],
         [
+            "664765209877176320",
+            "EUA - Campeonato USL",
+            false,
+            1,
+            "EUA-Campeonato-USL",
+            "Estados-Unidos",
+            "Futebol",
+            "227",
+            91000016,
+            "3790"
+        ],
+        [
+            "667266257325993984",
+            "Venezuela - Primera",
+            false,
+            0,
+            "Venezuela-Primera",
+            "Venezuela",
+            "Futebol",
+            "232",
+            91000019,
+            "896"
+        ],
+        [
             "728914699621810176",
             "Costa Rica - Primeira Divisão",
             false,
@@ -1501,18 +1513,6 @@
             "7052"
         ],
         [
-            "664763201703141376",
-            "EUA - MLS",
-            true,
-            0,
-            "EUA-MLS",
-            "Estados-Unidos",
-            "Futebol",
-            "227",
-            31000201,
-            "224"
-        ],
-        [
             "736191108393111552",
             "Bulgária - Segunda Liga",
             false,
@@ -1528,7 +1528,7 @@
             "735481265247240192",
             "Polônia - 2 Liga",
             false,
-            1,
+            0,
             "Polônia-2-Liga",
             "Polônia",
             "Futebol",
@@ -1585,6 +1585,18 @@
             "59"
         ],
         [
+            "664763201703141376",
+            "EUA - MLS",
+            true,
+            1,
+            "EUA-MLS",
+            "Estados-Unidos",
+            "Futebol",
+            "227",
+            31000201,
+            "224"
+        ],
+        [
             "735531891600547840",
             "Escócia - League Two",
             false,
@@ -1607,6 +1619,18 @@
             "120",
             32000003,
             "329"
+        ],
+        [
+            "754224451377528832",
+            "Eliminatórias Copa das Confederações CAF",
+            false,
+            0,
+            "Eliminatórias-Copa-das-Confederações-CAF",
+            "Internacional",
+            "Futebol",
+            "245",
+            90003100,
+            "4376"
         ],
         [
             "658281977979682816",
@@ -1633,42 +1657,6 @@
             "235710736205406208"
         ],
         [
-            "729981246293491712",
-            "Amistoso Internacional Feminino",
-            false,
-            0,
-            "Amistoso-Internacional-Feminino",
-            "Internacional",
-            "Futebol",
-            "245",
-            38004903,
-            "220555541016264704"
-        ],
-        [
-            "677395686987452416",
-            "Canadá - Premier League",
-            false,
-            0,
-            "Canadá-Premier-League",
-            "Canadá",
-            "Futebol",
-            "36",
-            90003600,
-            "25282"
-        ],
-        [
-            "679934289814769664",
-            "Bielorrússia - Premier League",
-            false,
-            0,
-            "Bielorrússia-Premier-League",
-            "Bielorússia",
-            "Futebol",
-            "34",
-            90001900,
-            "627"
-        ],
-        [
             "741210230717820928",
             "Paraguai - 1ª Divisão",
             false,
@@ -1691,6 +1679,30 @@
             "53",
             90004000,
             "480"
+        ],
+        [
+            "679934289814769664",
+            "Bielorrússia - Premier League",
+            false,
+            0,
+            "Bielorrússia-Premier-League",
+            "Bielorússia",
+            "Futebol",
+            "34",
+            90001900,
+            "627"
+        ],
+        [
+            "677395686987452416",
+            "Canadá - Premier League",
+            false,
+            0,
+            "Canadá-Premier-League",
+            "Canadá",
+            "Futebol",
+            "36",
+            90003600,
+            "25282"
         ],
         [
             "739804961139986432",
@@ -1741,6 +1753,18 @@
             "197963518955122688"
         ],
         [
+            "740199478896836608",
+            "Copa do Paraguai",
+            false,
+            0,
+            "Copa-do-Paraguai",
+            "Paraguai",
+            "Futebol",
+            "182",
+            38008101,
+            "20682"
+        ],
+        [
             "745245219955793920",
             "Turquia - 2. Lig",
             false,
@@ -1751,18 +1775,6 @@
             "218",
             90014500,
             "1218"
-        ],
-        [
-            "740819096367742976",
-            "Copa do Equador",
-            false,
-            0,
-            "Copa-do-Equador",
-            "Equador",
-            "Futebol",
-            "60",
-            80008400,
-            "22814"
         ],
         [
             "744528650448371712",
@@ -1789,16 +1801,16 @@
             "1076"
         ],
         [
-            "733589741873934336",
-            "Campeonato Guatemalteco de Futebol",
+            "733002920924409856",
+            "El Salvador - Primeira Divisão",
             false,
             0,
-            "Campeonato-Guatemalteco-de-Futebol",
-            "Guatemala",
+            "El-Salvador-Primeira-Divisão",
+            "El-Salvador",
             "Futebol",
-            "88",
-            90007300,
-            "929"
+            "204",
+            90004700,
+            "2864"
         ],
         [
             "728887737327054848",
@@ -1825,22 +1837,10 @@
             "6759"
         ],
         [
-            "680752550349373440",
-            "Equador - Série B",
-            false,
-            0,
-            "Equador-Série-B",
-            "Equador",
-            "Futebol",
-            "60",
-            90004500,
-            "200531625183703040"
-        ],
-        [
             "702127397495218176",
             "Bolívia Copa Pacena",
             false,
-            1,
+            0,
             "Bolívia-Copa-Pacena",
             "Bolívia",
             "Futebol",
@@ -1876,7 +1876,7 @@
             "745246040806203392",
             "Argélia - 1ª Div",
             false,
-            1,
+            0,
             "Argélia-1ª-Div",
             "Argélia",
             "Futebol",
@@ -1907,18 +1907,6 @@
             "14",
             70000300,
             "756032489168089088"
-        ],
-        [
-            "733790825422798848",
-            "Nicarágua - Primeira Divisão",
-            false,
-            0,
-            "Nicarágua-Primeira-Divisão",
-            "Nicarágua",
-            "Futebol",
-            "161",
-            111000036,
-            "292584321838276608"
         ],
         [
             "736199527409893376",
@@ -1953,7 +1941,7 @@
             "Mongólia",
             "Futebol",
             "143",
-            110024100,
+            110024000,
             "14863"
         ],
         [
@@ -2013,14 +2001,26 @@
             "Ilhas-Faroé",
             "Futebol",
             "71",
-            110012300,
+            110012200,
             "14338"
+        ],
+        [
+            "733589741873934336",
+            "Campeonato Guatemalteco de Futebol",
+            false,
+            0,
+            "Campeonato-Guatemalteco-de-Futebol",
+            "Guatemala",
+            "Futebol",
+            "88",
+            90007300,
+            "929"
         ],
         [
             "749297647965548544",
             "Liga dos Campeões",
             true,
-            7,
+            0,
             "Liga-dos-Campeões",
             "Europa",
             "Futebol",
@@ -2089,30 +2089,6 @@
             "2386"
         ],
         [
-            "720622242182213632",
-            "Copa do Caribe da CONCACAF",
-            false,
-            0,
-            "Copa-do-Caribe-da-CONCACAF",
-            "Internacional",
-            "Futebol",
-            "245",
-            90003200,
-            "482155216930881536"
-        ],
-        [
-            "727923470616506368",
-            "Argentina - Liga Regional",
-            false,
-            0,
-            "Argentina-Liga-Regional",
-            "Argentina",
-            "Futebol",
-            "11",
-            110000201,
-            "204536378036592640"
-        ],
-        [
             "723287360493928448",
             "Áustria Copa OFB",
             false,
@@ -2123,18 +2099,6 @@
             "13",
             36000405,
             "208"
-        ],
-        [
-            "752598637594656768",
-            "Brasil Copa Santa Catarina",
-            false,
-            0,
-            "Brasil-Copa-Santa-Catarina",
-            "Brasil",
-            "Futebol",
-            "29",
-            100010200,
-            "225656490646908928"
         ],
         [
             "761546189065003008",
@@ -2157,7 +2121,7 @@
             "Geórgia",
             "Futebol",
             "76",
-            110013300,
+            110013200,
             "19718"
         ],
         [
@@ -2260,7 +2224,7 @@
             "740828206895079424",
             "Inglaterra - Centro da Premier League do Sul",
             false,
-            1,
+            0,
             "Inglaterra-Centro-da-Premier-League-do-Sul",
             "Inglaterra",
             "Futebol",
@@ -2320,7 +2284,7 @@
             "739805210734632960",
             "Inglaterra - Premier League Sudoeste",
             false,
-            3,
+            0,
             "Inglaterra-Premier-League-Sudoeste",
             "Inglaterra",
             "Futebol",
@@ -2353,6 +2317,18 @@
             "451016540599672832"
         ],
         [
+            "720622242182213632",
+            "Copa do Caribe da CONCACAF",
+            false,
+            0,
+            "Copa-do-Caribe-da-CONCACAF",
+            "Internacional",
+            "Futebol",
+            "245",
+            90003200,
+            "482155216930881536"
+        ],
+        [
             "767997560819576832",
             "Inglaterra FA Trophy",
             false,
@@ -2373,7 +2349,7 @@
             "Malásia",
             "Futebol",
             "154",
-            110023000,
+            110022900,
             "733250854702116864"
         ],
         [
@@ -2413,6 +2389,18 @@
             "5647"
         ],
         [
+            "727923470616506368",
+            "Argentina - Liga Regional",
+            false,
+            0,
+            "Argentina-Liga-Regional",
+            "Argentina",
+            "Futebol",
+            "11",
+            110000201,
+            "204536378036592640"
+        ],
+        [
             "745757430587326464",
             "Irã - Liga do Azadegão",
             false,
@@ -2423,6 +2411,90 @@
             "105",
             92000058,
             "2820"
+        ],
+        [
+            "737588024658046976",
+            "Copa da Dinmarca",
+            false,
+            0,
+            "Copa-da-Dinmarca",
+            "Dinamarca",
+            "Futebol",
+            "56",
+            36000501,
+            "192"
+        ],
+        [
+            "733790825422798848",
+            "Nicarágua - Primeira Divisão",
+            false,
+            1,
+            "Nicarágua-Primeira-Divisão",
+            "Nicarágua",
+            "Futebol",
+            "161",
+            111000036,
+            "292584321838276608"
+        ],
+        [
+            "754266914116898816",
+            "Eliminatórias para a Liga dos Campeões da CAF",
+            false,
+            0,
+            "Eliminatórias-para-a-Liga-dos-Campeões-da-CAF",
+            "Internacional",
+            "Futebol",
+            "245",
+            80006100,
+            "7354"
+        ],
+        [
+            "731819184031543296",
+            "Panamá - LPF",
+            false,
+            0,
+            "Panamá-LPF",
+            "Panamá",
+            "Futebol",
+            "169",
+            92000073,
+            "3282"
+        ],
+        [
+            "690170466530529280",
+            "Bolívia - Primeira Divisão",
+            false,
+            0,
+            "Bolívia-Primeira-Divisão",
+            "Bolívia",
+            "Futebol",
+            "28",
+            38000013,
+            "1375"
+        ],
+        [
+            "765838141105180672",
+            "Bahrein - 2ª Divisão",
+            false,
+            0,
+            "Bahrein-2ª-Divisão",
+            "Bahrein",
+            "Futebol",
+            "23",
+            92000017,
+            "2818"
+        ],
+        [
+            "751326710389403648",
+            "Italy - Eccellenza",
+            false,
+            0,
+            "Italy-Eccellenza",
+            "Itália",
+            "Futebol",
+            "107",
+            110019400,
+            "8859"
         ],
         [
             "743122504231649280",
@@ -2497,136 +2569,40 @@
             "136"
         ],
         [
-            "753519463164641280",
-            "Brasil Campeonato Gaucho ",
+            "664896411120517120",
+            "E-Futebol Coreia K-League 1 - 12 minutos",
             false,
             1,
-            "Brasil-Campeonato-Gaucho-",
-            "Brasil",
-            "Futebol",
-            "29",
-            92000074,
-            "8174"
+            "E-Futebol-Coreia-K-League-1-12-minutos",
+            "E-Futebol",
+            "E-Futebol",
+            "275",
+            120001000,
+            "664896229448433664"
         ],
         [
-            "746674349079265280",
-            "Copa da Itália Série D",
-            false,
-            2,
-            "Copa-da-Itália-Série-D",
-            "Itália",
-            "Futebol",
-            "107",
-            110020004,
-            "8362"
-        ],
-        [
-            "755695286298718208",
-            "Copa São Marino",
-            false,
-            3,
-            "Copa-São-Marino",
-            "São-Marinho",
-            "Futebol",
-            "199",
-            110028801,
-            "6717"
-        ],
-        [
-            "742842450654138368",
-            "Inglaterra - Divisão 1 Sul do Isthmian",
+            "716297582674231296",
+            "E-Futebol Alemanha Bundesliga - 12 minutos",
             false,
             1,
-            "Inglaterra-Divisão-1-Sul-do-Isthmian",
-            "Inglaterra",
-            "Futebol",
-            "260",
-            111000030,
-            "8519"
+            "E-Futebol-Alemanha-Bundesliga-12-minutos",
+            "E-Futebol",
+            "E-Futebol",
+            "275",
+            120000300,
+            "631408858384117760"
         ],
         [
-            "742346165648076800",
-            "Suíça - 2. Liga Interregional",
-            false,
-            3,
-            "Suíça-2-Liga-Interregional",
-            "Suíça",
-            "Futebol",
-            "41",
-            110022502,
-            "483560359144521728"
-        ],
-        [
-            "757578766762639360",
-            "Brasil - Campeonato Gaúcho 3ª Divisão",
+            "716297774215544832",
+            "E-Futebol França Ligue 1 - 12 minutos",
             false,
             1,
-            "Brasil-Campeonato-Gaúcho-3ª-Divisão",
-            "Brasil",
-            "Futebol",
-            "29",
-            93000019,
-            "25128"
-        ],
-        [
-            "768579702528217088",
-            "Cuba - Campeonato Nacional",
-            false,
-            1,
-            "Cuba-Campeonato-Nacional",
-            "Cuba",
-            "Futebol",
-            "49",
-            92000027,
-            "11694"
-        ],
-        [
-            "741602698592399360",
-            "Inglaterra - Isthmian Div 1 Norte",
-            false,
-            1,
-            "Inglaterra-Isthmian-Div-1-Norte",
-            "Inglaterra",
-            "Futebol",
-            "260",
-            92000051,
-            "8469"
-        ],
-        [
-            "749385595729793024",
-            "Espanha - Tercera RFEF",
-            false,
-            3,
-            "Espanha-Tercera-RFEF",
-            "Espanha",
-            "Futebol",
-            "65",
-            111000053,
-            "221871204225826816"
-        ],
-        [
-            "741285986215010304",
-            "Inglaterra - Liga Norte 1°Div",
-            false,
-            4,
-            "Inglaterra-Liga-Norte-1°Div",
-            "Inglaterra",
-            "Futebol",
-            "260",
-            111000031,
-            "8470"
-        ],
-        [
-            "731133070488682496",
-            "E-Soccer GT Leagues - 12 mins",
-            false,
-            3,
-            "E-Soccer-GT-Leagues-12-mins",
-            "E-Soccer",
-            "Futebol",
-            "274",
-            140001300,
-            "286843617816141824"
+            "E-Futebol-França-Ligue-1-12-minutos",
+            "E-Futebol",
+            "E-Futebol",
+            "275",
+            120000800,
+            "635074946456203264"
         ],
         [
             "716298197177516032",
@@ -2677,6 +2653,18 @@
             "669980253825105920"
         ],
         [
+            "722423254903767040",
+            "E-Soccer Volta Germany 1.Bundesliga - 6 mins",
+            false,
+            1,
+            "E-Soccer-Volta-Germany-1Bundesliga-6-mins",
+            "E-Soccer",
+            "Futebol",
+            "274",
+            200002700,
+            "721315022558740480"
+        ],
+        [
             "697166494416834560",
             "E-Futebol Espanha La Liga - 12 minutos",
             false,
@@ -2701,28 +2689,16 @@
             "631094399203586048"
         ],
         [
-            "722417863012663296",
-            "E-Soccer International - 8 mins",
+            "722416792211046400",
+            "E-Soccer England Premier Leauge - 8 mins",
             false,
             2,
-            "E-Soccer-International-8-mins",
+            "E-Soccer-England-Premier-Leauge-8-mins",
             "E-Soccer",
             "Futebol",
             "274",
-            200001600,
-            "721286729071616000"
-        ],
-        [
-            "722422814191468544",
-            "E-Soccer Volta Champions League - 6 mins",
-            false,
-            2,
-            "E-Soccer-Volta-Champions-League-6-mins",
-            "E-Soccer",
-            "Futebol",
-            "274",
-            200002200,
-            "721308667848450048"
+            200001000,
+            "721312454076055552"
         ],
         [
             "669121589312606208",
@@ -2737,52 +2713,16 @@
             "669121473692319744"
         ],
         [
-            "667611053504671744",
-            "E-Futebol Copa Libertadores - 12 minutos",
-            false,
-            1,
-            "E-Futebol-Copa-Libertadores-12-minutos",
-            "E-Futebol",
-            "E-Futebol",
-            "275",
-            120000200,
-            "667610988841086976"
-        ],
-        [
-            "716297977463058432",
-            "E-Futebol Inglaterra Premier League - 12 minutos",
-            false,
-            1,
-            "E-Futebol-Inglaterra-Premier-League-12-minutos",
-            "E-Futebol",
-            "E-Futebol",
-            "275",
-            120001300,
-            "631093248953520128"
-        ],
-        [
-            "664896411120517120",
-            "E-Futebol Coreia K-League 1 - 12 minutos",
-            false,
-            1,
-            "E-Futebol-Coreia-K-League-1-12-minutos",
-            "E-Futebol",
-            "E-Futebol",
-            "275",
-            120001000,
-            "664896229448433664"
-        ],
-        [
-            "722416792211046400",
-            "E-Soccer England Premier Leauge - 8 mins",
+            "722417402037714944",
+            "E-Soccer FIFA Club World Cup - 8 mins",
             false,
             2,
-            "E-Soccer-England-Premier-Leauge-8-mins",
+            "E-Soccer-FIFA-Club-World-Cup-8-mins",
             "E-Soccer",
             "Futebol",
             "274",
-            200001000,
-            "721312454076055552"
+            200001200,
+            "721309114906755072"
         ]
     ]
 }

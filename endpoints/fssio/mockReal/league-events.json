@@ -1,33 +1,33 @@
 {
     "data": [
         [
-            "767580247343575040",
-            "667266257325993984",
-            "Venezuela - Primera",
+            "766498955642302464",
+            "677879777860075520",
+            "Brasileirão Série A",
             "1",
             "Futebol",
-            "232",
-            "VE",
-            "Venezuela",
+            "29",
+            "BR",
+            "Brasil",
             [
                 [
-                    "16235",
+                    "9830",
                     {
-                        "BR-PT": "Carabobo"
+                        "BR-PT": "Atlético MG"
                     },
                     "Home"
                 ],
                 [
-                    "200639",
+                    "1132414",
                     {
-                        "BR-PT": "FC Metropolitanos"
+                        "BR-PT": "Ceará"
                     },
                     "Away"
                 ]
             ],
-            131,
-            "Carabobo vs FC Metropolitanos",
-            "2025-10-22T21:30:00.000Z",
+            1602,
+            "Atlético MG vs Ceará",
+            "2025-10-25T19:00:00.000Z",
             [
                 "",
                 "",
@@ -40,34 +40,34 @@
                 "ClockRunning": false,
                 "ClockDirection": 0,
                 "UpdateDate": "0001-01-01T00:00:00.000Z",
-                "GameTimeBFFGotAt": 1761161440435
+                "GameTimeBFFGotAt": 1761191969706
             },
-            false,
+            true,
             [],
-            "638967573510655688",
+            "638967881930679868",
             null,
-            "Carabobo-vs-FC-Metropolitanos",
-            "Venezuela-Primera",
-            "Venezuela",
+            "Atlético-MG-vs-Ceará",
+            "Brasileirão-Série-A",
+            "Brasil",
             "Futebol",
             1,
-            91000019,
+            11000002,
             "Fixture",
-            53,
+            252,
             false,
             null,
             {
-                "IsBetBuilderEnabled": false,
+                "IsBetBuilderEnabled": true,
                 "IsExposureEnabled": false,
                 "IsVIPExcludeEnabled": false,
                 "IsWBComboEnabled": false,
                 "IsWBSingleEnabled": false,
-                "EarlyPayout": null
+                "EarlyPayout": 2
             },
-            "896",
-            "738736443320729600",
+            "530",
+            "738736444901982208",
             {
-                "HomeShirtColorPrimary": "#AE0000",
+                "HomeShirtColorPrimary": "#000000",
                 "HasVARCoverage": "true",
                 "HasIncidentCoverage": "true"
             },
@@ -75,33 +75,33 @@
             null
         ],
         [
-            "766450814926794752",
-            "667266257325993984",
-            "Venezuela - Primera",
+            "766498956070199296",
+            "677879777860075520",
+            "Brasileirão Série A",
             "1",
             "Futebol",
-            "232",
-            "VE",
-            "Venezuela",
+            "29",
+            "BR",
+            "Brasil",
             [
                 [
-                    "4028",
+                    "398689022673014784",
                     {
-                        "BR-PT": "Deportivo Tachira"
+                        "BR-PT": "Vitória"
                     },
                     "Home"
                 ],
                 [
-                    "2882",
+                    "1888",
                     {
-                        "BR-PT": "Caracas"
+                        "BR-PT": "Corinthians"
                     },
                     "Away"
                 ]
             ],
-            130,
-            "Deportivo Tachira vs Caracas",
-            "2025-10-22T23:30:00.000Z",
+            1709,
+            "Vitória vs Corinthians",
+            "2025-10-25T19:00:00.000Z",
             [
                 "",
                 "",
@@ -114,35 +114,1441 @@
                 "ClockRunning": false,
                 "ClockDirection": 0,
                 "UpdateDate": "0001-01-01T00:00:00.000Z",
-                "GameTimeBFFGotAt": 1761161440435
+                "GameTimeBFFGotAt": 1761191969706
             },
-            false,
+            true,
             [],
-            "638967570151541440",
+            "638967879733840829",
             null,
-            "Deportivo-Tachira-vs-Caracas",
-            "Venezuela-Primera",
-            "Venezuela",
+            "Vitória-vs-Corinthians",
+            "Brasileirão-Série-A",
+            "Brasil",
             "Futebol",
             1,
-            91000019,
+            11000002,
             "Fixture",
-            54,
+            234,
             false,
             null,
             {
-                "IsBetBuilderEnabled": false,
+                "IsBetBuilderEnabled": true,
                 "IsExposureEnabled": false,
                 "IsVIPExcludeEnabled": false,
                 "IsWBComboEnabled": false,
                 "IsWBSingleEnabled": false,
-                "EarlyPayout": null
+                "EarlyPayout": 2
             },
-            "896",
-            "738736443320729600",
+            "530",
+            "738736444901982208",
+            {
+                "AwayShirtColorPrimary": "#000000",
+                "HomeShirtColorPrimary": "#000000",
+                "HasVARCoverage": "true",
+                "HasIncidentCoverage": "true"
+            },
+            null,
+            null
+        ],
+        [
+            "766500930853302272",
+            "677879777860075520",
+            "Brasileirão Série A",
+            "1",
+            "Futebol",
+            "29",
+            "BR",
+            "Brasil",
+            [
+                [
+                    "2030",
+                    {
+                        "BR-PT": "Fluminense"
+                    },
+                    "Home"
+                ],
+                [
+                    "197691843252482048",
+                    {
+                        "BR-PT": "SC Internacional"
+                    },
+                    "Away"
+                ]
+            ],
+            1773,
+            "Fluminense vs SC Internacional",
+            "2025-10-25T20:30:00.000Z",
+            [
+                "",
+                "",
+                null,
+                {}
+            ],
+            false,
+            false,
+            {
+                "ClockRunning": false,
+                "ClockDirection": 0,
+                "UpdateDate": "0001-01-01T00:00:00.000Z",
+                "GameTimeBFFGotAt": 1761191969706
+            },
+            true,
+            [],
+            "638967881188355448",
+            null,
+            "Fluminense-vs-SC-Internacional",
+            "Brasileirão-Série-A",
+            "Brasil",
+            "Futebol",
+            1,
+            11000002,
+            "Fixture",
+            260,
+            false,
+            null,
+            {
+                "IsBetBuilderEnabled": true,
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": 2
+            },
+            "530",
+            "738736444901982208",
+            {
+                "HomeShirtColorPrimary": "#9F0000",
+                "HasVARCoverage": "true",
+                "HasIncidentCoverage": "true"
+            },
+            null,
+            null
+        ],
+        [
+            "766500358225989632",
+            "677879777860075520",
+            "Brasileirão Série A",
+            "1",
+            "Futebol",
+            "29",
+            "BR",
+            "Brasil",
+            [
+                [
+                    "47782",
+                    {
+                        "BR-PT": "Sport Recife"
+                    },
+                    "Home"
+                ],
+                [
+                    "46345",
+                    {
+                        "BR-PT": "Mirassol"
+                    },
+                    "Away"
+                ]
+            ],
+            1594,
+            "Sport Recife vs Mirassol",
+            "2025-10-25T21:30:00.000Z",
+            [
+                "",
+                "",
+                null,
+                {}
+            ],
+            false,
+            false,
+            {
+                "ClockRunning": false,
+                "ClockDirection": 0,
+                "UpdateDate": "0001-01-01T00:00:00.000Z",
+                "GameTimeBFFGotAt": 1761191969706
+            },
+            true,
+            [],
+            "638967879743846229",
+            null,
+            "Sport-Recife-vs-Mirassol",
+            "Brasileirão-Série-A",
+            "Brasil",
+            "Futebol",
+            1,
+            11000002,
+            "Fixture",
+            251,
+            false,
+            null,
+            {
+                "IsBetBuilderEnabled": true,
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": 2
+            },
+            "530",
+            "738736444901982208",
+            {
+                "HomeShirtColorPrimary": "#000000",
+                "HasVARCoverage": "true",
+                "HasIncidentCoverage": "true"
+            },
+            null,
+            null
+        ],
+        [
+            "766500357647175680",
+            "677879777860075520",
+            "Brasileirão Série A",
+            "1",
+            "Futebol",
+            "29",
+            "BR",
+            "Brasil",
+            [
+                [
+                    "514616",
+                    {
+                        "BR-PT": "Fortaleza"
+                    },
+                    "Home"
+                ],
+                [
+                    "2026",
+                    {
+                        "BR-PT": "Flamengo"
+                    },
+                    "Away"
+                ]
+            ],
+            1567,
+            "Fortaleza vs Flamengo",
+            "2025-10-25T22:30:00.000Z",
+            [
+                "",
+                "",
+                null,
+                {}
+            ],
+            false,
+            false,
+            {
+                "ClockRunning": false,
+                "ClockDirection": 0,
+                "UpdateDate": "0001-01-01T00:00:00.000Z",
+                "GameTimeBFFGotAt": 1761191969706
+            },
+            true,
+            [],
+            "638967882873591559",
+            null,
+            "Fortaleza-vs-Flamengo",
+            "Brasileirão-Série-A",
+            "Brasil",
+            "Futebol",
+            1,
+            11000002,
+            "Fixture",
+            262,
+            false,
+            null,
+            {
+                "IsBetBuilderEnabled": true,
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": 2
+            },
+            "530",
+            "738736444901982208",
+            {
+                "HomeShirtColorPrimary": "#1717FF",
+                "HasVARCoverage": "true",
+                "HasIncidentCoverage": "true"
+            },
+            null,
+            null
+        ],
+        [
+            "766500930140348416",
+            "677879777860075520",
+            "Brasileirão Série A",
+            "1",
+            "Futebol",
+            "29",
+            "BR",
+            "Brasil",
+            [
+                [
+                    "331470",
+                    {
+                        "BR-PT": "São Paulo SP"
+                    },
+                    "Home"
+                ],
+                [
+                    "299039",
+                    {
+                        "BR-PT": "EC Bahia"
+                    },
+                    "Away"
+                ]
+            ],
+            1782,
+            "São Paulo SP vs EC Bahia",
+            "2025-10-26T00:30:00.000Z",
+            [
+                "",
+                "",
+                null,
+                {}
+            ],
+            false,
+            false,
+            {
+                "ClockRunning": false,
+                "ClockDirection": 0,
+                "UpdateDate": "0001-01-01T00:00:00.000Z",
+                "GameTimeBFFGotAt": 1761191969706
+            },
+            true,
+            [],
+            "638967879773883977",
+            null,
+            "São-Paulo-SP-vs-EC-Bahia",
+            "Brasileirão-Série-A",
+            "Brasil",
+            "Futebol",
+            1,
+            11000002,
+            "Fixture",
+            259,
+            false,
+            null,
+            {
+                "IsBetBuilderEnabled": true,
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": 2
+            },
+            "530",
+            "738736444901982208",
+            {
+                "HasVARCoverage": "true",
+                "HasIncidentCoverage": "true"
+            },
+            null,
+            null
+        ],
+        [
+            "766507216215056384",
+            "677879777860075520",
+            "Brasileirão Série A",
+            "1",
+            "Futebol",
+            "29",
+            "BR",
+            "Brasil",
+            [
+                [
+                    "122061",
+                    {
+                        "BR-PT": "Botafogo RJ"
+                    },
+                    "Home"
+                ],
+                [
+                    "1898",
+                    {
+                        "BR-PT": "Santos"
+                    },
+                    "Away"
+                ]
+            ],
+            1557,
+            "Botafogo RJ vs Santos",
+            "2025-10-26T19:00:00.000Z",
+            [
+                "",
+                "",
+                null,
+                {}
+            ],
+            false,
+            false,
+            {
+                "ClockRunning": false,
+                "ClockDirection": 0,
+                "UpdateDate": "0001-01-01T00:00:00.000Z",
+                "GameTimeBFFGotAt": 1761191969706
+            },
+            true,
+            [],
+            "638967887354506176",
+            null,
+            "Botafogo-RJ-vs-Santos",
+            "Brasileirão-Série-A",
+            "Brasil",
+            "Futebol",
+            1,
+            11000002,
+            "Fixture",
+            264,
+            false,
+            null,
+            {
+                "IsBetBuilderEnabled": true,
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": 2
+            },
+            "530",
+            "738736444901982208",
+            {
+                "HomeShirtColorPrimary": "#000000",
+                "AwayShirtColorPrimary": "#000000",
+                "HasVARCoverage": "true",
+                "HasIncidentCoverage": "true"
+            },
+            null,
+            null
+        ],
+        [
+            "766533577679937536",
+            "677879777860075520",
+            "Brasileirão Série A",
+            "1",
+            "Futebol",
+            "29",
+            "BR",
+            "Brasil",
+            [
+                [
+                    "277903318343512064",
+                    {
+                        "BR-PT": "Grêmio"
+                    },
+                    "Home"
+                ],
+                [
+                    "2919",
+                    {
+                        "BR-PT": "EC Juventude"
+                    },
+                    "Away"
+                ]
+            ],
+            1732,
+            "Grêmio vs EC Juventude",
+            "2025-10-26T19:00:00.000Z",
+            [
+                "",
+                "",
+                null,
+                {}
+            ],
+            false,
+            false,
+            {
+                "ClockRunning": false,
+                "ClockDirection": 0,
+                "UpdateDate": "0001-01-01T00:00:00.000Z",
+                "GameTimeBFFGotAt": 1761191969706
+            },
+            true,
+            [],
+            "638967874190535602",
+            null,
+            "Grêmio-vs-EC-Juventude",
+            "Brasileirão-Série-A",
+            "Brasil",
+            "Futebol",
+            1,
+            11000002,
+            "Fixture",
+            263,
+            false,
+            null,
+            {
+                "IsBetBuilderEnabled": true,
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": 2
+            },
+            "530",
+            "738736444901982208",
+            {
+                "HomeShirtColorPrimary": "#2895E6",
+                "HasVARCoverage": "true",
+                "HasIncidentCoverage": "true"
+            },
+            null,
+            null
+        ],
+        [
+            "766507215980175361",
+            "677879777860075520",
+            "Brasileirão Série A",
+            "1",
+            "Futebol",
+            "29",
+            "BR",
+            "Brasil",
+            [
+                [
+                    "8607",
+                    {
+                        "BR-PT": "Bragantino"
+                    },
+                    "Home"
+                ],
+                [
+                    "2028",
+                    {
+                        "BR-PT": "Vasco da Gama"
+                    },
+                    "Away"
+                ]
+            ],
+            1899,
+            "Bragantino vs Vasco da Gama",
+            "2025-10-26T21:30:00.000Z",
+            [
+                "",
+                "",
+                null,
+                {}
+            ],
+            false,
+            false,
+            {
+                "ClockRunning": false,
+                "ClockDirection": 0,
+                "UpdateDate": "0001-01-01T00:00:00.000Z",
+                "GameTimeBFFGotAt": 1761191969706
+            },
+            true,
+            [],
+            "638967879783885905",
+            null,
+            "Bragantino-vs-Vasco-da-Gama",
+            "Brasileirão-Série-A",
+            "Brasil",
+            "Futebol",
+            1,
+            11000002,
+            "Fixture",
+            264,
+            false,
+            null,
+            {
+                "IsBetBuilderEnabled": true,
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": 2
+            },
+            "530",
+            "738736444901982208",
+            {
+                "HomeShirtColorPrimary": "#000000",
+                "AwayShirtColorPrimary": "#000000",
+                "HasVARCoverage": "true",
+                "HasIncidentCoverage": "true"
+            },
+            null,
+            null
+        ],
+        [
+            "766507215502024704",
+            "677879777860075520",
+            "Brasileirão Série A",
+            "1",
+            "Futebol",
+            "29",
+            "BR",
+            "Brasil",
+            [
+                [
+                    "1885",
+                    {
+                        "BR-PT": "Palmeiras"
+                    },
+                    "Home"
+                ],
+                [
+                    "2348",
+                    {
+                        "BR-PT": "Cruzeiro"
+                    },
+                    "Away"
+                ]
+            ],
+            1596,
+            "Palmeiras vs Cruzeiro",
+            "2025-10-26T23:30:00.000Z",
+            [
+                "",
+                "",
+                null,
+                {}
+            ],
+            false,
+            false,
+            {
+                "ClockRunning": false,
+                "ClockDirection": 0,
+                "UpdateDate": "0001-01-01T00:00:00.000Z",
+                "GameTimeBFFGotAt": 1761191969706
+            },
+            true,
+            [],
+            "638967879252711903",
+            null,
+            "Palmeiras-vs-Cruzeiro",
+            "Brasileirão-Série-A",
+            "Brasil",
+            "Futebol",
+            1,
+            11000002,
+            "Fixture",
+            269,
+            false,
+            null,
+            {
+                "IsBetBuilderEnabled": true,
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": 2
+            },
+            "530",
+            "738736444901982208",
+            {
+                "HomeShirtColorPrimary": "#008000",
+                "HasVARCoverage": "true",
+                "HasIncidentCoverage": "true"
+            },
+            null,
+            null
+        ],
+        [
+            "767923326550306816",
+            "677879777860075520",
+            "Brasileirão Série A",
+            "1",
+            "Futebol",
+            "29",
+            "BR",
+            "Brasil",
+            [
+                [
+                    "2030",
+                    {
+                        "BR-PT": "Fluminense"
+                    },
+                    "Home"
+                ],
+                [
+                    "1132414",
+                    {
+                        "BR-PT": "Ceará"
+                    },
+                    "Away"
+                ]
+            ],
+            181,
+            "Fluminense vs Ceará",
+            "2025-10-29T22:00:00.000Z",
+            [
+                "",
+                "",
+                null,
+                {}
+            ],
+            false,
+            false,
+            {
+                "ClockRunning": false,
+                "ClockDirection": 0,
+                "UpdateDate": "0001-01-01T00:00:00.000Z",
+                "GameTimeBFFGotAt": 1761191969706
+            },
+            true,
+            [],
+            "638967885864584805",
+            null,
+            "Fluminense-vs-Ceará",
+            "Brasileirão-Série-A",
+            "Brasil",
+            "Futebol",
+            1,
+            11000002,
+            "Fixture",
+            179,
+            false,
+            null,
+            {
+                "IsBetBuilderEnabled": true,
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": 2
+            },
+            "530",
+            "738736444901982208",
+            {
+                "HomeShirtColorPrimary": "#9F0000",
+                "HasVARCoverage": "true",
+                "HasIncidentCoverage": "true"
+            },
+            null,
+            null
+        ],
+        [
+            "767923325581471744",
+            "677879777860075520",
+            "Brasileirão Série A",
+            "1",
+            "Futebol",
+            "29",
+            "BR",
+            "Brasil",
+            [
+                [
+                    "2348",
+                    {
+                        "BR-PT": "Cruzeiro"
+                    },
+                    "Home"
+                ],
+                [
+                    "398689022673014784",
+                    {
+                        "BR-PT": "Vitória"
+                    },
+                    "Away"
+                ]
+            ],
+            186,
+            "Cruzeiro vs Vitória",
+            "2025-11-01T19:00:00.000Z",
+            [
+                "",
+                "",
+                null,
+                {}
+            ],
+            false,
+            false,
+            {
+                "ClockRunning": false,
+                "ClockDirection": 0,
+                "UpdateDate": "0001-01-01T00:00:00.000Z",
+                "GameTimeBFFGotAt": 1761191969706
+            },
+            true,
+            [],
+            "638967885814323359",
+            null,
+            "Cruzeiro-vs-Vitória",
+            "Brasileirão-Série-A",
+            "Brasil",
+            "Futebol",
+            1,
+            11000002,
+            "Fixture",
+            190,
+            false,
+            null,
+            {
+                "IsBetBuilderEnabled": true,
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": 2
+            },
+            "530",
+            "738736444901982208",
+            {
+                "HomeShirtColorPrimary": "#2F2FFF",
+                "HasVARCoverage": "false",
+                "HasIncidentCoverage": "true"
+            },
+            null,
+            null
+        ],
+        [
+            "767923326718111744",
+            "677879777860075520",
+            "Brasileirão Série A",
+            "1",
+            "Futebol",
+            "29",
+            "BR",
+            "Brasil",
+            [
+                [
+                    "1898",
+                    {
+                        "BR-PT": "Santos"
+                    },
+                    "Home"
+                ],
+                [
+                    "514616",
+                    {
+                        "BR-PT": "Fortaleza"
+                    },
+                    "Away"
+                ]
+            ],
+            187,
+            "Santos vs Fortaleza",
+            "2025-11-01T19:00:00.000Z",
+            [
+                "",
+                "",
+                null,
+                {}
+            ],
+            false,
+            false,
+            {
+                "ClockRunning": false,
+                "ClockDirection": 0,
+                "UpdateDate": "0001-01-01T00:00:00.000Z",
+                "GameTimeBFFGotAt": 1761191969706
+            },
+            true,
+            [],
+            "638967885904826256",
+            null,
+            "Santos-vs-Fortaleza",
+            "Brasileirão-Série-A",
+            "Brasil",
+            "Futebol",
+            1,
+            11000002,
+            "Fixture",
+            182,
+            false,
+            null,
+            {
+                "IsBetBuilderEnabled": true,
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": 2
+            },
+            "530",
+            "738736444901982208",
             {
                 "HomeShirtColorPrimary": "#FFFF00",
-                "HasVARCoverage": "true",
+                "HasVARCoverage": "false",
+                "HasIncidentCoverage": "true"
+            },
+            null,
+            null
+        ],
+        [
+            "767923326940409856",
+            "677879777860075520",
+            "Brasileirão Série A",
+            "1",
+            "Futebol",
+            "29",
+            "BR",
+            "Brasil",
+            [
+                [
+                    "46345",
+                    {
+                        "BR-PT": "Mirassol"
+                    },
+                    "Home"
+                ],
+                [
+                    "122061",
+                    {
+                        "BR-PT": "Botafogo RJ"
+                    },
+                    "Away"
+                ]
+            ],
+            190,
+            "Mirassol vs Botafogo RJ",
+            "2025-11-01T21:00:00.000Z",
+            [
+                "",
+                "",
+                null,
+                {}
+            ],
+            false,
+            false,
+            {
+                "ClockRunning": false,
+                "ClockDirection": 0,
+                "UpdateDate": "0001-01-01T00:00:00.000Z",
+                "GameTimeBFFGotAt": 1761191969706
+            },
+            true,
+            [],
+            "638967885904649758",
+            null,
+            "Mirassol-vs-Botafogo-RJ",
+            "Brasileirão-Série-A",
+            "Brasil",
+            "Futebol",
+            1,
+            11000002,
+            "Fixture",
+            173,
+            false,
+            null,
+            {
+                "IsBetBuilderEnabled": true,
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": 2
+            },
+            "530",
+            "738736444901982208",
+            {
+                "HomeShirtColorPrimary": "#008000",
+                "HasVARCoverage": "false",
+                "HasIncidentCoverage": "true"
+            },
+            null,
+            null
+        ],
+        [
+            "767923325686329344",
+            "677879777860075520",
+            "Brasileirão Série A",
+            "1",
+            "Futebol",
+            "29",
+            "BR",
+            "Brasil",
+            [
+                [
+                    "2026",
+                    {
+                        "BR-PT": "Flamengo"
+                    },
+                    "Home"
+                ],
+                [
+                    "47782",
+                    {
+                        "BR-PT": "Sport Recife"
+                    },
+                    "Away"
+                ]
+            ],
+            190,
+            "Flamengo vs Sport Recife",
+            "2025-11-02T00:00:00.000Z",
+            [
+                "",
+                "",
+                null,
+                {}
+            ],
+            false,
+            false,
+            {
+                "ClockRunning": false,
+                "ClockDirection": 0,
+                "UpdateDate": "0001-01-01T00:00:00.000Z",
+                "GameTimeBFFGotAt": 1761191969706
+            },
+            true,
+            [],
+            "638967885834383685",
+            null,
+            "Flamengo-vs-Sport-Recife",
+            "Brasileirão-Série-A",
+            "Brasil",
+            "Futebol",
+            1,
+            11000002,
+            "Fixture",
+            207,
+            false,
+            null,
+            {
+                "IsBetBuilderEnabled": true,
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": 2
+            },
+            "530",
+            "738736444901982208",
+            {
+                "HomeShirtColorPrimary": "#FF0000",
+                "HasVARCoverage": "false",
+                "HasIncidentCoverage": "true"
+            },
+            null,
+            null
+        ],
+        [
+            "767923325245927424",
+            "677879777860075520",
+            "Brasileirão Série A",
+            "1",
+            "Futebol",
+            "29",
+            "BR",
+            "Brasil",
+            [
+                [
+                    "1132414",
+                    {
+                        "BR-PT": "Ceará"
+                    },
+                    "Home"
+                ],
+                [
+                    "2030",
+                    {
+                        "BR-PT": "Fluminense"
+                    },
+                    "Away"
+                ]
+            ],
+            185,
+            "Ceará vs Fluminense",
+            "2025-11-02T19:00:00.000Z",
+            [
+                "",
+                "",
+                null,
+                {}
+            ],
+            false,
+            false,
+            {
+                "ClockRunning": false,
+                "ClockDirection": 0,
+                "UpdateDate": "0001-01-01T00:00:00.000Z",
+                "GameTimeBFFGotAt": 1761191969706
+            },
+            true,
+            [],
+            "638967885844415484",
+            null,
+            "Ceará-vs-Fluminense",
+            "Brasileirão-Série-A",
+            "Brasil",
+            "Futebol",
+            1,
+            11000002,
+            "Fixture",
+            160,
+            false,
+            null,
+            {
+                "IsBetBuilderEnabled": true,
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": 2
+            },
+            "530",
+            "738736444901982208",
+            {
+                "HomeShirtColorPrimary": "#000000",
+                "HasVARCoverage": "false",
+                "HasIncidentCoverage": "true"
+            },
+            null,
+            null
+        ],
+        [
+            "767923325417893888",
+            "677879777860075520",
+            "Brasileirão Série A",
+            "1",
+            "Futebol",
+            "29",
+            "BR",
+            "Brasil",
+            [
+                [
+                    "1888",
+                    {
+                        "BR-PT": "Corinthians"
+                    },
+                    "Home"
+                ],
+                [
+                    "277903318343512064",
+                    {
+                        "BR-PT": "Grêmio"
+                    },
+                    "Away"
+                ]
+            ],
+            179,
+            "Corinthians vs Grêmio",
+            "2025-11-02T19:00:00.000Z",
+            [
+                "",
+                "",
+                null,
+                {}
+            ],
+            false,
+            false,
+            {
+                "ClockRunning": false,
+                "ClockDirection": 0,
+                "UpdateDate": "0001-01-01T00:00:00.000Z",
+                "GameTimeBFFGotAt": 1761191969706
+            },
+            true,
+            [],
+            "638967885824355890",
+            null,
+            "Corinthians-vs-Grêmio",
+            "Brasileirão-Série-A",
+            "Brasil",
+            "Futebol",
+            1,
+            11000002,
+            "Fixture",
+            177,
+            false,
+            null,
+            {
+                "IsBetBuilderEnabled": true,
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": 2
+            },
+            "530",
+            "738736444901982208",
+            {
+                "HasVARCoverage": "false",
+                "HasIncidentCoverage": "true"
+            },
+            null,
+            null
+        ],
+        [
+            "768399486220570624",
+            "677879777860075520",
+            "Brasileirão Série A",
+            "1",
+            "Futebol",
+            "29",
+            "BR",
+            "Brasil",
+            [
+                [
+                    "299039",
+                    {
+                        "BR-PT": "EC Bahia"
+                    },
+                    "Home"
+                ],
+                [
+                    "8607",
+                    {
+                        "BR-PT": "Bragantino"
+                    },
+                    "Away"
+                ]
+            ],
+            191,
+            "EC Bahia vs Bragantino",
+            "2025-11-02T19:00:00.000Z",
+            [
+                "",
+                "",
+                null,
+                {}
+            ],
+            false,
+            false,
+            {
+                "ClockRunning": false,
+                "ClockDirection": 0,
+                "UpdateDate": "0001-01-01T00:00:00.000Z",
+                "GameTimeBFFGotAt": 1761191969706
+            },
+            true,
+            [],
+            "638967887204001348",
+            null,
+            "EC-Bahia-vs-Bragantino",
+            "Brasileirão-Série-A",
+            "Brasil",
+            "Futebol",
+            1,
+            11000002,
+            "Fixture",
+            189,
+            false,
+            null,
+            {
+                "IsBetBuilderEnabled": true,
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": 2
+            },
+            "530",
+            "738736444901982208",
+            {
+                "HasVARCoverage": "false",
+                "HasIncidentCoverage": "true"
+            },
+            null,
+            null
+        ],
+        [
+            "767923326244171776",
+            "677879777860075520",
+            "Brasileirão Série A",
+            "1",
+            "Futebol",
+            "29",
+            "BR",
+            "Brasil",
+            [
+                [
+                    "197691843252482048",
+                    {
+                        "BR-PT": "SC Internacional"
+                    },
+                    "Home"
+                ],
+                [
+                    "9830",
+                    {
+                        "BR-PT": "Atlético MG"
+                    },
+                    "Away"
+                ]
+            ],
+            155,
+            "SC Internacional vs Atlético MG",
+            "2025-11-02T21:30:00.000Z",
+            [
+                "",
+                "",
+                null,
+                {}
+            ],
+            false,
+            false,
+            {
+                "ClockRunning": false,
+                "ClockDirection": 0,
+                "UpdateDate": "0001-01-01T00:00:00.000Z",
+                "GameTimeBFFGotAt": 1761191969706
+            },
+            true,
+            [],
+            "638967885854536279",
+            null,
+            "SC-Internacional-vs-Atlético-MG",
+            "Brasileirão-Série-A",
+            "Brasil",
+            "Futebol",
+            1,
+            11000002,
+            "Fixture",
+            161,
+            false,
+            null,
+            {
+                "IsBetBuilderEnabled": true,
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": 2
+            },
+            "530",
+            "738736444901982208",
+            {
+                "HomeShirtColorPrimary": "#FF0000",
+                "HasVARCoverage": "false",
+                "HasIncidentCoverage": "true"
+            },
+            null,
+            null
+        ],
+        [
+            "767923325480808448",
+            "677879777860075520",
+            "Brasileirão Série A",
+            "1",
+            "Futebol",
+            "29",
+            "BR",
+            "Brasil",
+            [
+                [
+                    "2919",
+                    {
+                        "BR-PT": "EC Juventude"
+                    },
+                    "Home"
+                ],
+                [
+                    "1885",
+                    {
+                        "BR-PT": "Palmeiras"
+                    },
+                    "Away"
+                ]
+            ],
+            190,
+            "EC Juventude vs Palmeiras",
+            "2025-11-02T21:30:00.000Z",
+            [
+                "",
+                "",
+                null,
+                {}
+            ],
+            false,
+            false,
+            {
+                "ClockRunning": false,
+                "ClockDirection": 0,
+                "UpdateDate": "0001-01-01T00:00:00.000Z",
+                "GameTimeBFFGotAt": 1761191969706
+            },
+            true,
+            [],
+            "638967885814325202",
+            null,
+            "EC-Juventude-vs-Palmeiras",
+            "Brasileirão-Série-A",
+            "Brasil",
+            "Futebol",
+            1,
+            11000002,
+            "Fixture",
+            198,
+            false,
+            null,
+            {
+                "IsBetBuilderEnabled": true,
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": 2
+            },
+            "530",
+            "738736444901982208",
+            {
+                "HomeShirtColorPrimary": "#008000",
+                "HasVARCoverage": "false",
+                "HasIncidentCoverage": "true"
+            },
+            null,
+            null
+        ],
+        [
+            "767923326722273280",
+            "677879777860075520",
+            "Brasileirão Série A",
+            "1",
+            "Futebol",
+            "29",
+            "BR",
+            "Brasil",
+            [
+                [
+                    "2028",
+                    {
+                        "BR-PT": "Vasco da Gama"
+                    },
+                    "Home"
+                ],
+                [
+                    "331470",
+                    {
+                        "BR-PT": "São Paulo SP"
+                    },
+                    "Away"
+                ]
+            ],
+            161,
+            "Vasco da Gama vs São Paulo SP",
+            "2025-11-02T23:30:00.000Z",
+            [
+                "",
+                "",
+                null,
+                {}
+            ],
+            false,
+            false,
+            {
+                "ClockRunning": false,
+                "ClockDirection": 0,
+                "UpdateDate": "0001-01-01T00:00:00.000Z",
+                "GameTimeBFFGotAt": 1761191969706
+            },
+            true,
+            [],
+            "638967885884634756",
+            null,
+            "Vasco-da-Gama-vs-São-Paulo-SP",
+            "Brasileirão-Série-A",
+            "Brasil",
+            "Futebol",
+            1,
+            11000002,
+            "Fixture",
+            167,
+            false,
+            null,
+            {
+                "IsBetBuilderEnabled": true,
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": 2
+            },
+            "530",
+            "738736444901982208",
+            {
+                "AwayShirtColorPrimary": "#000000",
+                "HasVARCoverage": "false",
                 "HasIncidentCoverage": "true"
             },
             null,

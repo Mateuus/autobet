@@ -4,20 +4,8 @@ import { useState, useEffect, useCallback } from 'react';
 import { Button } from '../../ui/button';
 import { Skeleton } from '../../ui/skeleton';
 import { ScrollArea } from '../../ui/scroll-area';
-import { X, Trophy, Search } from 'lucide-react';
-
-interface League {
-  id: string;
-  name: string;
-  isPopular: boolean;
-  priority: number;
-  slug: string;
-  country: string;
-  sport: string;
-  sportId: string;
-  providerId: number;
-  providerLeagueId: string;
-}
+import { X, Trophy, Search, RefreshCw, AlertCircle } from 'lucide-react';
+import { FssbLeague } from '../../../services/fssbApi';
 
 interface LeaguesSidebarProps {
   sportId: string;
@@ -34,8 +22,8 @@ export default function LeaguesSidebar({
   onLeagueSelect, 
   selectedLeagueId 
 }: LeaguesSidebarProps) {
-  const [leagues, setLeagues] = useState<League[]>([]);
-  const [filteredLeagues, setFilteredLeagues] = useState<League[]>([]);
+  const [leagues, setLeagues] = useState<FssbLeague[]>([]);
+  const [filteredLeagues, setFilteredLeagues] = useState<FssbLeague[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -45,32 +33,40 @@ export default function LeaguesSidebar({
       setLoading(true);
       setError(null);
       
-      // Simular carregamento dos dados do leagues.json
-      const response = await fetch('/endpoints/fssio/mockReal/leagues.json');
+      // Usar o endpoint local que consome o fssbApi
+      const response = await fetch(`/api/fssb/leagues?sportId=${sportId}`);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
       const data = await response.json();
       
       if (data.data) {
-        // Converter array de arrays para objetos League
-        const leaguesData: League[] = data.data.map((league: unknown[]) => ({
-          id: league[0] as string,
-          name: league[1] as string,
-          isPopular: league[2] as boolean,
-          priority: league[3] as number,
-          slug: league[4] as string,
-          country: league[5] as string,
-          sport: league[6] as string,
-          sportId: league[7] as string,
-          providerId: league[8] as number,
-          providerLeagueId: league[9] as string
+        console.log('🏆 [LeaguesSidebar] Dados recebidos:', data.data.slice(0, 3)); // Debug: mostrar primeiras 3 ligas
+        console.log('🏆 [LeaguesSidebar] Total de ligas:', data.data.length);
+        console.log('🏆 [LeaguesSidebar] Primeira liga completa:', data.data[0]);
+        
+        // Mapear os dados do array para objetos FssbLeague
+        const mappedLeagues: FssbLeague[] = data.data.map((leagueArray: unknown[]) => ({
+          id: leagueArray[0] as string,           // "741930177135853568"
+          name: leagueArray[1] as string,          // "Alemanha Copa DFB"
+          isPopular: leagueArray[2] as boolean,    // false
+          priority: leagueArray[3] as number,     // 0
+          slug: leagueArray[4] as string,         // "Alemanha-Copa-DFB"
+          country: leagueArray[5] as string,      // "Alemanha"
+          sport: leagueArray[6] as string,        // "Futebol"
+          sportId: leagueArray[7] as string,      // "54"
+          providerId: leagueArray[8] as number,   // 60000900
+          providerLeagueId: leagueArray[9] as string // "5768"
         }));
         
-        // Filtrar apenas ligas do esporte selecionado (Futebol = "1")
-        const filteredLeagues = leaguesData.filter(league => 
-          league.sport.toLowerCase() === 'futebol' || league.sportId === sportId
-        );
-        setLeagues(filteredLeagues);
-        setFilteredLeagues(filteredLeagues);
+        console.log('🏆 [LeaguesSidebar] Primeiras 3 ligas mapeadas:', mappedLeagues.slice(0, 3));
+        
+        setLeagues(mappedLeagues);
+        setFilteredLeagues(mappedLeagues);
       } else {
+        console.error('❌ [LeaguesSidebar] Dados inválidos:', data);
         setError('Formato de dados inválido');
       }
     } catch (err) {
@@ -156,27 +152,30 @@ export default function LeaguesSidebar({
             </div>
           ) : error ? (
             <div className="p-6 text-center">
-              <p className="text-red-600">{error}</p>
+              <AlertCircle className="w-8 h-8 text-red-500 mx-auto mb-3" />
+              <h3 className="text-red-800 font-medium mb-2">Erro ao carregar ligas</h3>
+              <p className="text-red-600 text-sm mb-4">{error}</p>
               <Button 
                 onClick={loadLeagues} 
-                className="mt-4"
-                variant="outline"
+                className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
               >
+                <RefreshCw className="w-4 h-4 mr-2" />
                 Tentar Novamente
               </Button>
             </div>
           ) : filteredLeagues.length === 0 ? (
             <div className="p-6 text-center">
-              <p className="text-gray-500">Nenhuma liga encontrada</p>
-              {searchTerm && (
-                <p className="text-sm text-gray-400 mt-1">Tente outro termo de busca</p>
-              )}
+              <Trophy className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+              <h3 className="text-gray-600 font-medium mb-2">Nenhuma liga encontrada</h3>
+              <p className="text-gray-500 text-sm">
+                {searchTerm ? 'Tente outro termo de busca' : 'Não há ligas disponíveis para este esporte.'}
+              </p>
             </div>
           ) : (
             <div className="space-y-1">
-              {filteredLeagues.map((league) => (
+              {filteredLeagues.map((league, index) => (
                 <div 
-                  key={league.id}
+                  key={league.id || `league-${index}`}
                   onClick={() => handleLeagueClick(league.id)}
                   className={`p-3 rounded-lg cursor-pointer transition-colors border ${
                     selectedLeagueId === league.id 
@@ -194,13 +193,9 @@ export default function LeaguesSidebar({
                       </div>
                       <div className="flex items-center gap-2 mt-1">
                         <span className="text-xs text-gray-500">{league.country}</span>
-                        <span className="text-xs text-gray-400">•</span>
-                        <span className="text-xs text-gray-500">ID: {league.id}</span>
+                        {/*<span className="text-xs text-gray-400">•</span>
+                        <span className="text-xs text-gray-500">ID: {league.id}</span>*/}
                       </div>
-                    </div>
-                    <div className="flex items-center gap-1 ml-2">
-                      <span className="text-xs text-blue-600 font-medium">PRÉ-JOGO</span>
-                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                     </div>
                   </div>
                 </div>
