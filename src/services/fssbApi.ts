@@ -94,6 +94,14 @@ export interface LeagueEventsParams {
   leagueId: string;
 }
 
+export interface EventDetailsParams {
+  eventId: string;
+}
+
+export interface FssbEventDetailsResponse {
+  data: FssbEvent[];
+}
+
 /**
  * Serviço para fazer chamadas diretas à API FSSB
  */
@@ -408,6 +416,105 @@ export class FssbApiService {
     } catch (error) {
       console.error('❌ [FSSB API] Erro ao buscar eventos da liga:', error);
       throw new Error(`Falha ao buscar eventos: ${error instanceof Error ? error.message : 'Erro desconhecido'}`);
+    }
+  }
+
+  /**
+   * Busca detalhes de um evento específico
+   */
+  async getEventDetails(params: EventDetailsParams): Promise<FssbEventDetailsResponse> {
+    const { eventId } = params;
+
+    // Inicializar tokens se necessário
+    await this.initializeTokens();
+
+    const url = new URL(`${FSSB_BASE_URL}/api/eventpage/events/${eventId}`);
+    url.searchParams.append('hideX25X75Selections', 'false');
+
+    try {
+      const requestHeaders = {
+        'Authorization': this.authorization,
+        'Session': this.session,
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
+        'Cookie': `authorization=${this.authorization}; session=${this.session}`,
+        'Accept': 'application/json',
+        'Origin': 'https://7k.bet.br',
+        'Referer': 'https://7k.bet.br/',
+      };
+      
+      console.log('🌐 [FSSB API] Fazendo requisição para detalhes do evento:', url.toString());
+      console.log('📤 [FSSB API] Headers enviados:', Object.keys(requestHeaders));
+      console.log('🔑 [FSSB API] Authorization:', this.authorization.substring(0, 50) + '...');
+      console.log('🍪 [FSSB API] Session:', this.session.substring(0, 50) + '...');
+      
+      const response = await fetch(url.toString(), {
+        method: 'GET',
+        headers: requestHeaders,
+      });
+
+      if (!response.ok) {
+        // Tentar ler o corpo da resposta para debug
+        try {
+          const errorText = await response.text();
+          console.error('📄 [FSSB API] Corpo da resposta de erro:', errorText.substring(0, 1000));
+        } catch {
+          console.error('❌ [FSSB API] Não foi possível ler o corpo da resposta');
+        }
+        
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const rawData = await response.json();
+            
+      // Mapear os dados do array para objetos FssbEvent
+      const mappedEvents: FssbEvent[] = rawData.data.map((eventArray: unknown[]) => ({
+        id: eventArray[0] as string,                    // "766498955642302464"
+        leagueId: eventArray[1] as string,              // "677879777860075520"
+        leagueName: eventArray[2] as string,            // "Brasileirão Série A"
+        sportId: eventArray[3] as string,                // "1"
+        sportName: eventArray[4] as string,              // "Futebol"
+        countryId: eventArray[5] as string,              // "29"
+        countryCode: eventArray[6] as string,            // "BR"
+        countryName: eventArray[7] as string,            // "Brasil"
+        teams: (eventArray[8] as unknown[]).map((team: unknown) => {
+          const teamArray = team as unknown[];
+          return {
+            id: teamArray[0] as string,
+            name: typeof teamArray[1] === 'object' ? 
+              (teamArray[1] as Record<string, string>)['BR-PT'] || 
+              (teamArray[1] as Record<string, string>)['EN'] || 
+              Object.values(teamArray[1] as Record<string, string>)[0] : 
+              teamArray[1] as string,
+            side: teamArray[2] as 'Home' | 'Away',
+            type: (teamArray[3] as string) || 'Unknown',
+            logo: teamArray[4] as string || undefined
+          };
+        }),
+        providerId: eventArray[9] as number,            // 1602
+        name: eventArray[10] as string,                  // "Atlético MG vs Ceará"
+        startTime: eventArray[11] as string,            // "2025-10-25T19:00:00.000Z"
+        status: eventArray[12] as string[],              // Status do evento
+        isLive: eventArray[13] as boolean,              // false
+        isSuspended: eventArray[14] as boolean,         // false
+        gameStatus: eventArray[15] as FssbGameStatus,   // Status do jogo
+        isPostponed: eventArray[16] as boolean,         // true
+        lastUpdate: eventArray[17] as string,           // ""
+        markets: eventArray[18] as unknown[],           // Mercados
+        providerEventId: eventArray[19] as string,      // "638967881930679868"
+        slug: eventArray[20] as string,                 // "Atlético-MG-vs-Ceará"
+        leagueSlug: eventArray[21] as string            // "Brasileirão-Série-A"
+      }));
+
+      const data: FssbEventDetailsResponse = {
+        data: mappedEvents
+      };
+      
+      console.log('🎯 [FSSB API] Detalhes do evento obtidos:', mappedEvents.length, 'eventos');
+      
+      return data;
+    } catch (error) {
+      console.error('❌ [FSSB API] Erro ao buscar detalhes do evento:', error);
+      throw new Error(`Falha ao buscar detalhes do evento: ${error instanceof Error ? error.message : 'Erro desconhecido'}`);
     }
   }
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import MarketCard from '../MarketCard';
 
 interface Team {
@@ -81,95 +81,88 @@ export default function EventDetails({ eventId, onBack }: EventDetailsProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [isSearchActive, setIsSearchActive] = useState(false);
 
-  useEffect(() => {
-    if (eventId) {
-      loadEventDetails();
-    }
-  }, [eventId]);
-
-  const loadEventDetails = async () => {
+  const loadEventDetails = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
       
-      // Simular carregamento dos dados do event.json
-      const response = await fetch('/endpoints/fssio/mockReal/event.json');
+      // Buscar detalhes do evento usando a API
+      const response = await fetch(`/api/fssb/events/${eventId}`);
+      
+      if (!response.ok) {
+        throw new Error(`Erro HTTP: ${response.status}`);
+      }
+      
       const data = await response.json();
       
       if (data.data && data.data.length > 0) {
-        const eventData = data.data[0] as unknown[];
+        const eventData = data.data[0];
         
         // Converter dados do evento
         const eventInfo: EventData = {
-          id: eventData[0] as string,
-          leagueId: eventData[1] as string,
-          leagueName: eventData[2] as string,
-          sportId: eventData[3] as string,
-          sportName: eventData[4] as string,
-          countryId: eventData[5] as string,
-          countryCode: eventData[6] as string,
-          countryName: eventData[7] as string,
-          teams: (eventData[8] as unknown[]).map((team: unknown) => {
-            const teamArray = team as unknown[];
-            return {
-              id: teamArray[0] as string,
-              name: teamArray[1] as string,
-              side: teamArray[2] as 'Home' | 'Away',
-              type: (teamArray[3] as string) || 'Unknown',
-              logo: teamArray[4] as string || undefined
-            };
-          }),
-          providerId: eventData[9] as number,
-          name: eventData[10] as string,
-          startTime: eventData[11] as string,
-          status: eventData[12] as string[],
-          isLive: eventData[13] as boolean,
-          isSuspended: eventData[14] as boolean,
-          gameStatus: eventData[15],
-          isPostponed: eventData[16] as boolean,
-          lastUpdate: eventData[17] as string,
-          markets: eventData[18] as unknown[],
-          providerEventId: eventData[19] as string,
-          slug: eventData[20] as string,
-          leagueSlug: eventData[21] as string
+          id: eventData.id,
+          leagueId: eventData.leagueId,
+          leagueName: eventData.leagueName,
+          sportId: eventData.sportId,
+          sportName: eventData.sportName,
+          countryId: eventData.countryId,
+          countryCode: eventData.countryCode,
+          countryName: eventData.countryName,
+          teams: eventData.teams.map((team: Team) => ({
+            id: team.id,
+            name: team.name,
+            side: team.side,
+            type: team.type || 'Unknown',
+            logo: team.logo || undefined
+          })),
+          providerId: eventData.providerId,
+          name: eventData.name,
+          startTime: eventData.startTime,
+          status: eventData.status,
+          isLive: eventData.isLive,
+          isSuspended: eventData.isSuspended,
+          gameStatus: eventData.gameStatus,
+          isPostponed: eventData.isPostponed,
+          lastUpdate: eventData.lastUpdate,
+          markets: eventData.markets,
+          providerEventId: eventData.providerEventId,
+          slug: eventData.slug,
+          leagueSlug: eventData.leagueSlug
         };
         
         setEvent(eventInfo);
         
         // Converter mercados
-        if (eventData[18] && Array.isArray(eventData[18]) && eventData[18].length > 0) {
-          const marketsData: Market[] = (eventData[18] as unknown[]).map((market: unknown) => {
-            const marketArray = market as unknown[];
-            return {
-              id: marketArray[0] as string,
-              name: marketArray[1] as string,
-              displayName: marketArray[2] as string,
-              description: marketArray[3] as string,
-              outcomes: marketArray[5] ? (marketArray[5] as unknown[]).map((outcome: unknown) => {
-                const outcomeArray = outcome as unknown[];
-                return {
-                  id: outcomeArray[0] as string,
-                  name: outcomeArray[1] as string,
-                  displayName: outcomeArray[2] as string,
-                  odds: outcomeArray[5] as number,
-                  isActive: outcomeArray[6] as boolean,
-                  isSuspended: outcomeArray[7] as boolean,
-                  oddsDisplay: outcomeArray[8] as string[],
-                  providerId: outcomeArray[9] as number,
-                  side: outcomeArray[10] as string,
-                  displaySide: outcomeArray[11] as string
-                };
-              }) : [],
-              eventId: marketArray[6] as string,
-              leagueId: marketArray[7] as string,
-              sportId: marketArray[8] as string,
-              startTime: marketArray[9] as string,
-              providerId: marketArray[10] as number,
-              lastUpdate: marketArray[11] as string,
-              slug: marketArray[12] as string,
-              leagueSlug: marketArray[13] as string
-            };
-          });
+        if (eventData.markets && Array.isArray(eventData.markets) && eventData.markets.length > 0) {
+          const marketsData: Market[] = eventData.markets.map((market: unknown[]) => ({
+            id: market[0] as string,
+            name: market[1] as string,
+            displayName: market[2] as string,
+            description: market[3] as string,
+            outcomes: market[5] ? (market[5] as unknown[]).map((outcome: unknown) => {
+              const outcomeArray = outcome as unknown[];
+              return {
+                id: outcomeArray[0] as string,
+                name: outcomeArray[1] as string,
+                displayName: outcomeArray[2] as string,
+                odds: outcomeArray[5] as number,
+                isActive: outcomeArray[6] as boolean,
+                isSuspended: outcomeArray[7] as boolean,
+                oddsDisplay: outcomeArray[8] as string[],
+                providerId: outcomeArray[9] as number,
+                side: outcomeArray[10] as string,
+                displaySide: outcomeArray[11] as string
+              };
+            }) : [],
+            eventId: market[6] as string,
+            leagueId: market[7] as string,
+            sportId: market[8] as string,
+            startTime: market[9] as string,
+            providerId: market[10] as number,
+            lastUpdate: market[11] as string,
+            slug: market[12] as string,
+            leagueSlug: market[13] as string
+          }));
           
           setMarkets(marketsData);
         }
@@ -182,7 +175,13 @@ export default function EventDetails({ eventId, onBack }: EventDetailsProps) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [eventId]);
+
+  useEffect(() => {
+    if (eventId) {
+      loadEventDetails();
+    }
+  }, [eventId, loadEventDetails]);
 
   const handleOddsClick = (oddsId: string) => {
     setSelectedOdds(selectedOdds === oddsId ? null : oddsId);
