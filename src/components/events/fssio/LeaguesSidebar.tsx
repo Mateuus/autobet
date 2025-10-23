@@ -47,24 +47,9 @@ export default function LeaguesSidebar({
         console.log('🏆 [LeaguesSidebar] Total de ligas:', data.data.length);
         console.log('🏆 [LeaguesSidebar] Primeira liga completa:', data.data[0]);
         
-        // Mapear os dados do array para objetos FssbLeague
-        const mappedLeagues: FssbLeague[] = data.data.map((leagueArray: unknown[]) => ({
-          id: leagueArray[0] as string,           // "741930177135853568"
-          name: leagueArray[1] as string,          // "Alemanha Copa DFB"
-          isPopular: leagueArray[2] as boolean,    // false
-          priority: leagueArray[3] as number,     // 0
-          slug: leagueArray[4] as string,         // "Alemanha-Copa-DFB"
-          country: leagueArray[5] as string,      // "Alemanha"
-          sport: leagueArray[6] as string,        // "Futebol"
-          sportId: leagueArray[7] as string,      // "54"
-          providerId: leagueArray[8] as number,   // 60000900
-          providerLeagueId: leagueArray[9] as string // "5768"
-        }));
-        
-        console.log('🏆 [LeaguesSidebar] Primeiras 3 ligas mapeadas:', mappedLeagues.slice(0, 3));
-        
-        setLeagues(mappedLeagues);
-        setFilteredLeagues(mappedLeagues);
+        // Usar diretamente os dados já mapeados do endpoint
+        setLeagues(data.data);
+        setFilteredLeagues(data.data);
       } else {
         console.error('❌ [LeaguesSidebar] Dados inválidos:', data);
         setError('Formato de dados inválido');

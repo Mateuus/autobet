@@ -153,7 +153,14 @@ export default function FssioEvents({ className }: FssioEventsProps) {
         {selectedLeagueId && (
           <>
             <span>/</span>
-            <span className="font-medium">{getCurrentLeagueName()}</span>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => updateURL(selectedSportId, selectedLeagueId)}
+              className="h-6 px-2 font-medium text-gray-600 hover:text-gray-900"
+            >
+              {getCurrentLeagueName()}
+            </Button>
           </>
         )}
         

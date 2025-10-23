@@ -309,26 +309,6 @@ export default function EventDetails({ eventId, onBack }: EventDetailsProps) {
 
   return (
     <div className="space-y-6">
-      {/* Navigation */}
-      <div className="flex items-center gap-2">
-        <button 
-          onClick={onBack}
-          className="text-blue-600 hover:text-blue-700"
-        >
-          ← Voltar para Lista
-        </button>
-        <span className="text-gray-400">/</span>
-        <span className="text-sm text-gray-500">{event.sportName}</span>
-        <span className="text-gray-400">/</span>
-        <span className="text-sm text-gray-500">{event.leagueName}</span>
-        <div className="ml-2 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
-          {homeTeam} x {awayTeam}
-        </div>
-        <button className="text-gray-400">
-          ▼
-        </button>
-      </div>
-
       {/* Event Header */}
       <div className="text-center">
         <div className="text-sm text-gray-500 mb-2">
