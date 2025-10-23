@@ -4,28 +4,28 @@
       "id": "biahosted",
       "name": "Biahosted",
       "description": "Plataforma Biahosted para casas de apostas",
-      "defaultSite": "mcgames",
-      "integration": "mcgames2",
+      "defaultSite": "estrelabet",
+      "integration": "estrelabet",
       "sites": [
+        {
+            "id": "estrelabet",
+            "name": "EstrelaBet",
+            "url": "https://www.estrelabet.bet.br",
+            "integration": "estrelabet",
+            "isDefault": true
+        },
         {
           "id": "mcgames",
           "name": "McGames",
           "url": "https://mcgames.com.br",
           "integration": "mcgames2",
-          "isDefault": true
+          "isDefault": false
         },
         {
           "id": "lotogreen",
           "name": "LotoGreen",
           "url": "https://lotogreen.com.br",
           "integration": "lotogreen",
-          "isDefault": false
-        },
-        {
-          "id": "estrelabet",
-          "name": "EstrelaBet",
-          "url": "https://www.estrelabet.bet.br",
-          "integration": "estrelabet",
           "isDefault": false
         },
         {
