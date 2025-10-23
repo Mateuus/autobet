@@ -1,71 +1,21 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import MarketCard from '../MarketCard';
-import { MarketType } from '@/services/fssbApi';
+import FssioMarketCard from './MarketCard';
+import { FssbEvent, FssbMarket } from '@/services/fssbApi';
 
-interface Team {
-  id: string;
-  name: string;
-  side: 'Home' | 'Away';
-  type: string;
-  logo?: string;
-}
+// Helper function para extrair valores localizados
+const getLocalizedValue = (value: string | Record<string, string> | null | undefined): string => {
+  if (!value) return '';
+  if (typeof value === 'string') return value;
+  if (typeof value === 'object') {
+    // Prioridade: BR-PT > EN > primeiro valor disponível
+    return value['BR-PT'] || value['EN'] || Object.values(value)[0] || '';
+  }
+  return '';
+};
 
-interface Market {
-  id: string;
-  name: string;
-  displayName: string;
-  description: string;
-  outcomes: Outcome[];
-  eventId: string;
-  leagueId: string;
-  sportId: string;
-  startTime: string;
-  providerId: number;
-  lastUpdate: string;
-  slug: string;
-  leagueSlug: string;
-}
-
-interface Outcome {
-  id: string;
-  name: string;
-  displayName: string;
-  odds: number;
-  isActive: boolean;
-  isSuspended: boolean;
-  oddsDisplay: string[];
-  providerId: number;
-  side: string;
-  displaySide: string;
-}
-
-interface EventData {
-  id: string;
-  leagueId: string;
-  leagueName: string;
-  sportId: string;
-  sportName: string;
-  countryId: string;
-  countryCode: string;
-  countryName: string;
-  teams: Team[];
-  providerId: number;
-  name: string;
-  startTime: string;
-  status: string[];
-  isLive: boolean;
-  isSuspended: boolean;
-  gameStatus: unknown;
-  isPostponed: boolean;
-  lastUpdate: string;
-  markets: unknown[];
-  marketsTypes: MarketType[];
-  providerEventId: string;
-  slug: string;
-  leagueSlug: string;
-}
+// Usando as interfaces do fssbApi.ts
 
 interface EventDetailsProps {
   eventId: string;
@@ -73,11 +23,11 @@ interface EventDetailsProps {
 }
 
 export default function EventDetails({ eventId, onBack }: EventDetailsProps) {
-  const [event, setEvent] = useState<EventData | null>(null);
-  const [markets, setMarkets] = useState<Market[]>([]);
+  const [event, setEvent] = useState<FssbEvent | null>(null);
+  const [markets, setMarkets] = useState<FssbMarket[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState('Popular');
+  const [selectedCategory, setSelectedCategory] = useState('Main');
   const [selectedOdds, setSelectedOdds] = useState<string | null>(null);
   const [collapsedMarkets, setCollapsedMarkets] = useState<Set<number>>(new Set());
   const [searchTerm, setSearchTerm] = useState('');
@@ -118,75 +68,13 @@ export default function EventDetails({ eventId, onBack }: EventDetailsProps) {
         if (data.data && data.data.length > 0) {
           const eventData = data.data[0];
           
-          // Converter dados do evento
-          const eventInfo: EventData = {
-            id: eventData.id,
-            leagueId: eventData.leagueId,
-            leagueName: eventData.leagueName,
-            sportId: eventData.sportId,
-            sportName: eventData.sportName,
-            countryId: eventData.countryId,
-            countryCode: eventData.countryCode,
-            countryName: eventData.countryName,
-            teams: eventData.teams.map((team: Team) => ({
-              id: team.id,
-              name: team.name,
-              side: team.side,
-              type: team.type || 'Unknown',
-              logo: team.logo || undefined
-            })),
-            providerId: eventData.providerId,
-            name: eventData.name,
-            startTime: eventData.startTime,
-            status: eventData.status,
-            isLive: eventData.isLive,
-            isSuspended: eventData.isSuspended,
-            gameStatus: eventData.gameStatus,
-            isPostponed: eventData.isPostponed,
-            lastUpdate: eventData.lastUpdate,
-            markets: eventData.markets,
-            marketsTypes: eventData.marketsTypes || [],
-            providerEventId: eventData.providerEventId,
-            slug: eventData.slug,
-            leagueSlug: eventData.leagueSlug
-          };
-          
-          setEvent(eventInfo);
+          // Usar diretamente os dados da API (já estão no formato correto)
+          setEvent(eventData);
           lastLoadedEventIdRef.current = eventId; // Marcar evento como carregado
           
-          // Converter mercados
-          if (eventData.markets && Array.isArray(eventData.markets) && eventData.markets.length > 0) {
-            const marketsData: Market[] = eventData.markets.map((market: unknown[]) => ({
-              id: market[0] as string,
-              name: market[1] as string,
-              displayName: market[2] as string,
-              description: market[3] as string,
-              outcomes: market[5] ? (market[5] as unknown[]).map((outcome: unknown) => {
-                const outcomeArray = outcome as unknown[];
-                return {
-                  id: outcomeArray[0] as string,
-                  name: outcomeArray[1] as string,
-                  displayName: outcomeArray[2] as string,
-                  odds: outcomeArray[5] as number,
-                  isActive: outcomeArray[6] as boolean,
-                  isSuspended: outcomeArray[7] as boolean,
-                  oddsDisplay: outcomeArray[8] as string[],
-                  providerId: outcomeArray[9] as number,
-                  side: outcomeArray[10] as string,
-                  displaySide: outcomeArray[11] as string
-                };
-              }) : [],
-              eventId: market[6] as string,
-              leagueId: market[7] as string,
-              sportId: market[8] as string,
-              startTime: market[9] as string,
-              providerId: market[10] as number,
-              lastUpdate: market[11] as string,
-              slug: market[12] as string,
-              leagueSlug: market[13] as string
-            }));
-            
-            setMarkets(marketsData);
+          // Usar os mercados diretamente da API
+          if (eventData.markets && Array.isArray(eventData.markets)) {
+            setMarkets(eventData.markets);
           }
         } else {
           setError('Evento não encontrado');
@@ -246,14 +134,10 @@ export default function EventDetails({ eventId, onBack }: EventDetailsProps) {
     });
   };
 
-  // Criar categorias dinâmicas baseadas nos marketsTypes do endpoint
+  // Criar categorias baseadas nos marketsTypes do endpoint
   const categories = event?.marketsTypes ? 
-    event.marketsTypes.map(marketType => marketType.name) : [
-    'Popular',
-    'Resultado Final',
-    'Ambas Marcam',
-    'Over/Under'
-  ];
+    event.marketsTypes.map(marketType => marketType.name) : 
+    ['Main', 'Halves', 'Goals', 'Corners', 'Cards', 'Players', 'Specials', 'Period'];
 
   // Estados de loading e error
   if (loading) {
@@ -322,11 +206,29 @@ export default function EventDetails({ eventId, onBack }: EventDetailsProps) {
   const getFilteredMarkets = () => {
     let filteredMarkets = markets;
 
+    console.log('🔍 [EventDetails] Filtro - Categoria selecionada:', selectedCategory);
+    console.log('🔍 [EventDetails] Filtro - Total de mercados:', markets.length);
+    console.log('🔍 [EventDetails] Filtro - Primeiros 3 mercados:', markets.slice(0, 3).map(m => ({
+      id: m._id,
+      name: m.name,
+      marketType: m.marketType
+    })));
+
+    // Filtrar por categoria (marketType)
+    if (selectedCategory) {
+      filteredMarkets = filteredMarkets.filter(market =>
+        market.marketType && market.marketType.includes(selectedCategory)
+      );
+    }
+
+    console.log('🔍 [EventDetails] Filtro - Mercados após filtro:', filteredMarkets.length);
+
     // Filtrar por pesquisa
     if (searchTerm.trim()) {
-      filteredMarkets = filteredMarkets.filter(market =>
-        market.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+      filteredMarkets = filteredMarkets.filter(market => {
+        const marketName = getLocalizedValue(market.name);
+        return marketName.toLowerCase().includes(searchTerm.toLowerCase());
+      });
     }
 
     return filteredMarkets;
@@ -500,67 +402,21 @@ export default function EventDetails({ eventId, onBack }: EventDetailsProps) {
         {/* Renderizar mercados filtrados */}
         {filteredMarkets.length > 0 ? (
           filteredMarkets.map((market, index) => {
-            const marketOptions = market.outcomes.map((outcome: Outcome) => ({
-              label: outcome.displayName,
-              odds: outcome.odds,
-              onClick: () => handleOddsClick(`market-${market.id}-${outcome.id}`),
-              isSelected: selectedOdds === `market-${market.id}-${outcome.id}`,
-              isDisabled: outcome.isSuspended,
-              oddStatus: outcome.isSuspended ? 1 : 0,
-              oddId: parseInt(outcome.id)
-            }));
-
-            const uniqueKey = `${selectedCategory}-${index}-${market.id}`;
+            const uniqueKey = `${selectedCategory}-${index}-${market._id}`;
 
             return (
-              <MarketCard
+              <FssioMarketCard
                 key={uniqueKey}
-                title={market.displayName}
-                options={marketOptions}
-                isCollapsed={collapsedMarkets.has(parseInt(market.id))}
-                onToggleCollapse={() => toggleMarketCollapse(parseInt(market.id))}
-                isBB={false}
-                eventData={{
-                  id: parseInt(event.id),
-                  name: event.name,
-                  startDate: event.startTime,
-                  code: parseInt(event.providerEventId),
-                  competitors: event.teams.map(team => ({
-                    id: parseInt(team.id),
-                    name: team.name
-                  })),
-                  sport: {
-                    typeId: parseInt(event.sportId),
-                    iconName: 'soccer',
-                    hasLiveEvents: event.isLive,
-                    id: parseInt(event.sportId),
-                    name: event.sportName
-                  },
-                  championship: {
-                    hasLiveEvents: event.isLive,
-                    id: parseInt(event.leagueId),
-                    name: event.leagueName
-                  },
-                  category: {
-                    iso: event.countryCode,
-                    hasLiveEvents: event.isLive,
-                    id: parseInt(event.countryId),
-                    name: event.countryName
-                  }
+                title={getLocalizedValue(market.displayName) || getLocalizedValue(market.name)}
+                outcomes={market.outcomes}
+                isCollapsed={collapsedMarkets.has(parseInt(market._id))}
+                onToggleCollapse={() => toggleMarketCollapse(parseInt(market._id))}
+                onOutcomeClick={(outcomeId: string) => {
+                  const oddsId = `market-${market._id}-${outcomeId}`;
+                  handleOddsClick(oddsId);
                 }}
-                marketData={{
-                  typeId: parseInt(market.id),
-                  isMB: false,
-                  sv: undefined,
-                  shortName: market.name,
-                  name: market.displayName,
-                  desktopOddIds: [[parseInt(market.id)]],
-                  mobileOddIds: [[parseInt(market.id)]],
-                  isBB: false,
-                  so: 0,
-                  sportMarketId: parseInt(market.id),
-                  id: parseInt(market.id)
-                }}
+                selectedOutcomeId={selectedOdds?.startsWith(`market-${market._id}-`) ? 
+                  selectedOdds.replace(`market-${market._id}-`, '') : null}
               />
             );
           })

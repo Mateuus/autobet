@@ -63,9 +63,9 @@ export interface FssbGameStatus {
 
 export interface FssbOutcome {
   id: string;                    //0 ID do outcome
-  name: string;                  //1 Nome do outcome
-  displayName: string;           //2 Display name
-  TypeName: string;              //3 TypeName
+  name: string | Record<string, string>;                  //1 Nome do outcome (pode ser objeto localizado)
+  displayName: string | Record<string, string>;           //2 Display name (pode ser objeto localizado)
+  TypeName: string | Record<string, string>;              //3 TypeName (pode ser objeto localizado)
   array2: string;                //4 Desconhecido
   array3: string;                //5 Desconhecido
   odds: number;                  //6 Odds
@@ -73,7 +73,7 @@ export interface FssbOutcome {
   oddsDisplay: string[];         //8 Display das odds
   isSuspended: boolean;           //9 Se está suspenso
   providerId: number;            //10 Provider ID
-  OutcomeType: string;           //11 Lado (Home/Away/Draw)
+  OutcomeType: string | Record<string, string>;           //11 Lado (Home/Away/Draw) (pode ser objeto localizado)
   MarketId: string;              //12 Market ID
   array4: string;                //13 Desconhecido
   array5: string;                //14 Desconhecido
@@ -84,8 +84,8 @@ export interface FssbOutcome {
 
 export interface FssbMarket {
   _id: string;                   //0 ID do market
-  name: string;                  //1 Nome do market
-  displayName: string | null;    //2 Display name
+  name: string | Record<string, string>;                  //1 Nome do market (pode ser objeto localizado)
+  displayName: string | Record<string, string> | null;    //2 Display name (pode ser objeto localizado)
   description: string;           //3 Descrição
   array4: string;                //4 Desconhecido
   array5: string;                //5 Desconhecido
@@ -102,7 +102,7 @@ export interface FssbMarket {
   array16: string;               //16 Desconhecido
   array17: string;               //17 Desconhecido
   array18: string;               //18 Desconhecido
-  marketType: string;            //19 Market Type
+  marketType: string[];         //19 Market Type
   array20: string;               //20 Desconhecido
   array21: string;               //21 Desconhecido
   array22: string;               //22 Desconhecido
@@ -656,7 +656,7 @@ export class FssbApiService {
             array16: marketArray[16] as string,              // Desconhecido
             array17: marketArray[17] as string,              // Desconhecido
             array18: marketArray[18] as string,              // Desconhecido
-            marketType: marketArray[19] as string,           // Market Type
+            marketType: Array.isArray(marketArray[19]) ? marketArray[19] as string[] : [marketArray[19] as string], // Market Type
             array20: marketArray[20] as string,              // Desconhecido
             array21: marketArray[21] as string,              // Desconhecido
             array22: marketArray[22] as string,              // Desconhecido
