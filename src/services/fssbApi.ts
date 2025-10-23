@@ -62,29 +62,32 @@ export interface FssbGameStatus {
 }
 
 export interface FssbEvent {
-  id: string;                    // "766498955642302464" - ID do evento
-  leagueId: string;              // "677879777860075520" - ID da liga
-  leagueName: string;            // "Brasileirão Série A" - Nome da liga
-  sportId: string;               // "1" - ID do esporte
-  sportName: string;             // "Futebol" - Nome do esporte
-  countryId: string;             // "29" - ID do país
-  countryCode: string;           // "BR" - Código do país
-  countryName: string;           // "Brasil" - Nome do país
-  teams: FssbTeam[];             // Array de times
-  providerId: number;            // 1602 - ID do provedor
-  name: string;                  // "Atlético MG vs Ceará" - Nome do evento
-  startTime: string;             // "2025-10-25T19:00:00.000Z" - Data/hora de início
-  status: string[];              // Status do evento
-  isLive: boolean;               // false - Se está ao vivo
-  isSuspended: boolean;          // false - Se está suspenso
-  gameStatus: FssbGameStatus;    // Status do jogo
-  isPostponed: boolean;          // true - Se foi adiado
-  lastUpdate: string;            // "" - Última atualização
-  markets: unknown[];            // Mercados de apostas
-  marketsTypes: MarketType[];   // Tipos de mercados
-  providerEventId: string;      // "638967881930679868" - ID do evento no provedor
-  slug: string;                 // "Atlético-MG-vs-Ceará" - Slug para URL
-  leagueSlug: string;           // "Brasileirão-Série-A" - Slug da liga
+  id: string;                    //0 "766498955642302464" - ID do evento
+  leagueId: string;              //1 "677879777860075520" - ID da liga
+  leagueName: string;            //2 "Brasileirão Série A" - Nome da liga
+  sportId: string;               //3 "1" - ID do esporte
+  sportName: string;             //4 "Futebol" - Nome do esporte
+  countryId: string;             //5 "29" - ID do país
+  countryCode: string;           //6 "BR" - Código do país
+  countryName: string;           //7 "Brasil" - Nome do país
+  teams: FssbTeam[];             //8 Array de times
+  providerId: number;            //9 1602 - ID do provedor
+  name: string;                  //10 "Atlético MG vs Ceará" - Nome do evento
+  startTime: string;             //11 "2025-10-25T19:00:00.000Z" - Data/hora de início
+  status: string[];              //12 Status do evento
+  isLive: boolean;               //13 false - Se está ao vivo
+  isSuspended: boolean;          //14 false - Se está suspenso
+  gameStatus: FssbGameStatus;    //15 Status do jogo
+  isPostponed: boolean;          //16 true - Se foi adiado
+  lastUpdate: string;            //17 "" - Última atualização
+  markets: unknown[];            //18 Mercados de apostas
+  marketsTypes: MarketType[];    //19 Tipos de mercados
+  providerEventId: string;       //20 "638967881930679868" - ID do evento no provedor
+  slug: string;                  //21 "Atlético-MG-vs-Ceará" - Slug para URL
+  leagueSlug: string;            //22 "Brasileirão-Série-A" - Slug da liga
+  idDesconhedio: string;         //23 "766498955642302464" - ID desconhecido [27]
+  array28: unknown[];            //24 "Fixture" - Array desconhecido [28]
+  colors: unknown[];             //25 "Teams" - Cores dos times [29]
 }
 
 export interface FssbEventsResponse {
@@ -417,7 +420,7 @@ export class FssbApiService {
             name: marketArray[1] as string,                  // Nome do market
             displayName: marketArray[2] as string | null,    // Display name
             description: marketArray[3] as string,           // Descrição
-            outcomes: Array.isArray(marketArray[5]) ? (marketArray[5] as unknown[])
+            outcomes: Array.isArray(marketArray[13]) ? (marketArray[13] as unknown[])
               .filter((outcome: unknown) => outcome !== null && outcome !== undefined && Array.isArray(outcome))
               .map((outcome: unknown) => {
                 const outcomeArray = outcome as unknown[];
@@ -434,14 +437,14 @@ export class FssbApiService {
                   displaySide: outcomeArray[12] as string       // Display do lado
                 };
               }) : [],
-            eventId: marketArray[13] as string,              // Event ID
-            leagueId: marketArray[14] as string,            // League ID
-            sportId: marketArray[15] as string,             // Sport ID
-            startTime: marketArray[16] as string,           // Start time
-            providerId: marketArray[17] as number,           // Provider ID
-            lastUpdate: marketArray[18] as string,           // Last update
-            slug: marketArray[19] as string,                 // Slug
-            leagueSlug: marketArray[20] as string           // League slug
+            eventId: marketArray[6] as string,              // Event ID
+            leagueId: marketArray[7] as string,            // League ID
+            sportId: marketArray[8] as string,             // Sport ID
+            startTime: marketArray[9] as string,           // Start time
+            providerId: marketArray[10] as number,           // Provider ID
+            lastUpdate: marketArray[11] as string,           // Last update
+            marketType: marketArray[19] as string,          // Category Type
+            marketType2: marketArray[20] as string           // League slug
           };
         }) : [],                                          // Mercados
         providerEventId: eventArray[21] as string,      // "638967881930679868"
@@ -512,11 +515,11 @@ export class FssbApiService {
         id: eventArray[0] as string,                    // "766498955642302464"
         leagueId: eventArray[1] as string,              // "677879777860075520"
         leagueName: eventArray[2] as string,            // "Brasileirão Série A"
-        sportId: eventArray[3] as string,                // "1"
-        sportName: eventArray[4] as string,              // "Futebol"
-        countryId: eventArray[5] as string,              // "29"
-        countryCode: eventArray[6] as string,            // "BR"
-        countryName: eventArray[7] as string,            // "Brasil"
+        sportId: eventArray[3] as string,               // "1"
+        sportName: eventArray[4] as string,             // "Futebol"
+        countryId: eventArray[5] as string,             // "29"
+        countryCode: eventArray[6] as string,           // "BR"
+        countryName: eventArray[7] as string,           // "Brasil"
         teams: (eventArray[8] as unknown[]).map((team: unknown) => {
           const teamArray = team as unknown[];
           return {
@@ -532,7 +535,7 @@ export class FssbApiService {
           };
         }),
         providerId: eventArray[9] as number,            // 1602
-        name: eventArray[10] as string,                  // "Atlético MG vs Ceará"
+        name: eventArray[10] as string,                 // "Atlético MG vs Ceará"
         startTime: eventArray[11] as string,            // "2025-10-25T19:00:00.000Z"
         status: eventArray[12] as string[],              // Status do evento
         isLive: eventArray[13] as boolean,              // false
@@ -547,51 +550,57 @@ export class FssbApiService {
             name: marketArray[1] as string,                  // Nome do market
             displayName: marketArray[2] as string | null,    // Display name
             description: marketArray[3] as string,           // Descrição
-            outcomes: Array.isArray(marketArray[5]) ? (marketArray[5] as unknown[])
+            outcomes: Array.isArray(marketArray[13]) ? (marketArray[13] as unknown[])
               .filter((outcome: unknown) => outcome !== null && outcome !== undefined && Array.isArray(outcome))
               .map((outcome: unknown) => {
                 const outcomeArray = outcome as unknown[];
                 return {
-                  id: outcomeArray[0] as string,               // ID do outcome
+                  _id: outcomeArray[0] as string,              // ID do outcome
                   name: outcomeArray[1] as string,             // Nome do outcome
-                  displayName: outcomeArray[2] as string,       // Display name
+                  displayName: outcomeArray[2] as string,      // Display name
+                  TypeName: outcomeArray[3] as string,         // TypeName
+                  array2: outcomeArray[4] as string,           // Desconhecido
+                  array3: outcomeArray[5] as string,           // Desconhecido
                   odds: outcomeArray[6] as number,             // Odds
-                  isActive: outcomeArray[7] as boolean,       // Se está ativo
-                  isSuspended: outcomeArray[8] as boolean,      // Se está suspenso
-                  oddsDisplay: outcomeArray[9] as string[],     // Display das odds
+                  isActive: outcomeArray[7] as boolean,        // Se está ativo
+                  oddsDisplay: outcomeArray[8] as string[],    // Display das odds
+                  isSuspended: outcomeArray[9] as boolean,     // Se está suspenso
                   providerId: outcomeArray[10] as number,      // Provider ID
-                  side: outcomeArray[11] as string,           // Lado (Home/Away/Draw)
-                  displaySide: outcomeArray[12] as string       // Display do lado
+                  OutcomeType: outcomeArray[11] as string,     // Lado (Home/Away/Draw)
+                  MarketId: outcomeArray[12] as string,         // Market ID
+                  array4: outcomeArray[13] as string,           // Desconhecido
+                  array5: outcomeArray[14] as string,           // Desconhecido
+                  array6: outcomeArray[15] as string,           // Desconhecido
+                  Points: outcomeArray[16] as string,           // Points Handicap 
+                  array8: outcomeArray[17] as string,           // Desconhecido
+                  array9: outcomeArray[18] as string,           // Desconhecido
+                  array10: outcomeArray[19] as string,           // Desconhecido
+                  array11: outcomeArray[20] as string,           // Desconhecido
+                  array12: outcomeArray[21] as string,           // Desconhecido
+                  array13: outcomeArray[22] as string,           // Desconhecido
+                  array14: outcomeArray[23] as string,           // Desconhecido
+                  array15: outcomeArray[24] as string,           // Desconhecido
+                  array16: outcomeArray[25] as string,           // Desconhecido
+                  array17: outcomeArray[26] as string,           // Desconhecido
+                  array18: outcomeArray[27] as string,           // Desconhecido
+                  array19: outcomeArray[28] as string,           // Desconhecido
+                  array20: outcomeArray[29] as string,           // Desconhecido
+                  array21: outcomeArray[30] as string,           // Desconhecido
                 };
               }) : [],
-            eventId: marketArray[13] as string,              // Event ID
-            leagueId: marketArray[14] as string,            // League ID
-            sportId: marketArray[15] as string,             // Sport ID
-            startTime: marketArray[16] as string,           // Start time
-            providerId: marketArray[17] as number,           // Provider ID
-            lastUpdate: marketArray[18] as string,           // Last update
-            slug: marketArray[19] as string,                 // Slug
-            leagueSlug: marketArray[20] as string           // League slug
+            eventId: marketArray[6] as string,              // Event ID
+            leagueId: marketArray[7] as string,            // League ID
+            sportId: marketArray[8] as string,             // Sport ID
+            startTime: marketArray[9] as string,           // Start time
+            providerId: marketArray[10] as number,           // Provider ID
+            lastUpdate: marketArray[11] as string,           // Last update
+            marketType: marketArray[19] as string,          // Category Type
+            marketType2: marketArray[20] as string           // League slug
           };
         }) : [],                                          // Mercados
         providerEventId: eventArray[21] as string,      // "638967881930679868"
         slug: eventArray[22] as string,                 // "Atlético-MG-vs-Ceará"
-        leagueSlug: eventArray[23] as string,            // "Brasileirão-Série-A"
-        //contry [24]
-        //null [25]
-        //null [26]
-        idDesconhedio: eventArray[27] as string, // "766498955642302464",
-        array28: eventArray[28] as unknown[], // "Fixture",
-        colors: eventArray[29] as unknown[], // "Teams",
-        marketsTypes: (eventArray[30] as unknown[])?.map((marketType: unknown) => {
-          const marketTypeArray = marketType as unknown[];
-          return {
-            id: marketTypeArray[2] as number,           // ID único do tipo de mercado
-            name: marketTypeArray[0] as string,        // Nome do tipo de mercado
-            displayName: marketTypeArray[1] as string, // Nome de exibição (geralmente igual ao name)
-            category: marketTypeArray[0] as string     // Categoria (derivada do nome)
-          };
-        }) || [], // "MarketsType",
+        leagueSlug: eventArray[23] as string            // "Brasileirão-Série-A"
       }));
 
       const data: FssbEventDetailsResponse = {
