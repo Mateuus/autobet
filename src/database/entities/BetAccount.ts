@@ -38,6 +38,9 @@ export class BetAccount {
   @Column({ type: 'text', nullable: true })
   sessionCookies?: string; // Cookies de sessão para manter autenticação
 
+  @Column({ type: 'int', nullable: true })
+  platformCustomerId?: number; // Customer ID específico da plataforma (ex: FSSB)
+
   @Column({ type: 'boolean', default: true })
   isActive!: boolean;
 

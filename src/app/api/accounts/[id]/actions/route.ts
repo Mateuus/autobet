@@ -166,8 +166,15 @@ async function refreshTokens(
       // Fazer signIn para capturar cookies da plataforma
       const platformToken = await platform.signIn(launchResponse.url);
       
-      // Atualizar apenas platformToken no banco
+      // Atualizar platformToken e platformCustomerId no banco
       account.platformToken = platformToken.accessToken;
+      
+      // Salvar customerId se disponível (específico para FSSB)
+      if ('platformCustomerId' in platformToken && platformToken.platformCustomerId) {
+        account.platformCustomerId = platformToken.platformCustomerId as number;
+        console.log(`🆔 Customer ID ${platformToken.platformCustomerId} salvo para conta ${account.id}`);
+      }
+      
       await repository.save(account);
 
       return NextResponse.json({

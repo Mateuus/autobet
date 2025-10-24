@@ -1,0 +1,451 @@
+const axios = require('axios');
+
+let config = {
+  method: 'get',
+  maxBodyLength: Infinity,
+  url: 'https://prod20350-kbet-152319626.fssb.io/api/betslip/betslip?initial=true',
+  headers: { 
+    'Cookie': 'authorization=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsYW5ndWFnZUNvZGUiOiJici1wdCIsImJldHRpbmdWaWV3IjoiRXVyb3BlYW4gVmlldyIsInNvcnRpbmdUeXBlSWQiOjAsImJldHRpbmdMYXlvdXQiOjEsImN1c3RvbWVyVHlwZSI6InJlYWwiLCJkaXNwbGF5VHlwZUlkIjoxLCJ0aW1lem9uZUlkIjoxMCwib2Rkc1N0eWxlSWQiOiIiLCJhbGxvd0NoYW5nZU9kZCI6MCwiaW50VGFiRXhwYW5kZWQiOjEsImF1dG9UaW1lWm9uZSI6MSwibGFzdElucHV0U3Rha2UiOiIwLjY1IiwiYmFsYW5jZVByaW9yaXR5IjoxLCJjb3VudHJ5Q29kZSI6IkJSIiwiY3VycmVuY3lSYXRlIjowLjEzOTM3MjE1Njk1MTU0MywiY3VycmVuY3lSYXRlZXVyIjowLjE1OTg3OTY3MDMwMDkzNywiY3VzdG9tZXJJZCI6MTYyMjI0OTg3LCJldU9kZHNJZCI6IjEiLCJrb3JlYW5PZGRzSWQiOiIxIiwiYXNpYW5PZGRzSWQiOiIxIiwib3BlcmF0b3JUb2tlbiI6ImE3a2JldGJyLTEzZTI2ZTc1ZGU0MDIzYjgzMjkzN2NhZWJmNjlmMTUxZDE4OTRkODUyNjBhMGFjZDFhZGNlZDdkNmJhNjY1ODEiLCJiYWxhbmNlIjo0LjQ4LCJ0ZXN0Q3VzdG9tZXIiOjAsImN1c3RvbWVyTG9naW4iOiJhN2tiZXRicl8yOTIyNzM0OSIsImN1cnJlbmN5Q29kZSI6IkJSTCIsInN0YXRlQ29kZSI6IiIsImN1c3RvbWVyTGV2ZWwiOjAsImFnZW50SUQiOjE1MjMxOTYyNiwiZG9tYWluSUQiOjM1OTAsInNpdGVJZCI6MjAzNTAsImV4dEN1c3RvbWVySWQiOiJhN2tiZXRicl8yOTIyNzM0OSIsImV4dFNlc3Npb25JZCI6ImE3a2JldGJyLTEzZTI2ZTc1ZGU0MDIzYjgzMjkzN2NhZWJmNjlmMTUxZDE4OTRkODUyNjBhMGFjZDFhZGNlZDdkNmJhNjY1ODEiLCJsZXZlbCI6MSwiRVBPRW5hYmxlZCI6dHJ1ZSwiaWF0IjoxNzYxMjMyMjM3LCJib251c0JhbGFuY2UiOjAsInNlbGVjdGVkT3B0aW9uSWQiOjB9.Y3bBFavTXzqz1P8xKVNdJLMlg1Mh32Q4CSApE7qfXtc; events_updates=313632323234393837; session=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lcklkIjoxNjIyMjQ5ODcsImV4cGlyZWREYXRlIjoxNzYxNDE5MTIyMjg2LCJjdXN0b21lcklwIjoiMTc5LjEyNS4yMTEuMTM5IiwiaWF0IjoxNzYxMzMyNjUzfQ.oTk_HgCdYo_3Li4ShnBAwxHZCn2CCW-Q66qSLUHbyS4'
+  }
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+//respota: //pode ser [] vazio ou
+/*
+[
+    {
+        "_id": "0ML766507218492485632D",
+        "MarketId": "0ML766507218492485632",
+        "EventId": "766507216215056384",
+        "SportId": "1",
+        "MarketType": {
+            "IsCastMarket": false,
+            "LineTypeId": 1,
+            "LineTypeName": "1X2",
+            "Name": {
+                "AR": "النتيجة الكلية - فوز/تعادل/خسارة",
+                "BR-PT": "Resultado Final 1x2",
+                "DE": "FT 1X2",
+                "EN": "FT 1X2",
+                "ES": "TC 1X2",
+                "ES-MX": "FT 1X2",
+                "FR": "T.a.b. 1N2",
+                "HI": "एफटी 1X2",
+                "IT": "Scommesse Tempo Regolamentare 1X2",
+                "KO": "승무패"
+            },
+            "ShortName": "Full",
+            "Tier": 1,
+            "_id": "ML0"
+        },
+        "Side": 2,
+        "Type": 1,
+        "TypeName": "1X2",
+        "BetslipLine": "Empate",
+        "IsDisabled": false,
+        "Name": "Empate",
+        "IsOption": false,
+        "IsClientSide": true,
+        "ParticipantMapping": "",
+        "DisplayOdds": {
+            "Decimal": "3.49",
+            "Malay": "-0.402",
+            "HK": "2.49",
+            "Indo": "2.49",
+            "American": "249",
+            "Fractional": "25/10"
+        },
+        "TrueOdds": 3.49,
+        "OutcomeType": "Empate",
+        "Tags": [],
+        "TemplateOddsSettingsIndex": 0,
+        "TemplateGroupSettingsIndex": 0,
+        "TemplateCashoutSettingsIndex": 0,
+        "QAParam1": 0,
+        "QAParam2": 0,
+        "IsRemoved": false,
+        "Settings": {
+            "MinBet": 0.09,
+            "MaxWin": 5625,
+            "ComboMinBet": 0.09,
+            "ComboMaxBet": 1350,
+            "SystemMaxBet": 1350,
+            "ComboMaxWin": 0,
+            "SystemMaxWin": 0,
+            "EnableCombos": true,
+            "EnableSingles": true,
+            "EnableSystems": true,
+            "EnableTeasers": false
+        },
+        "event": {
+            "_id": "766507216215056384",
+            "IsGoingLive": false,
+            "IsLive": false,
+            "IsRemoved": false,
+            "IsSuspended": false,
+            "IsTopLeague": true,
+            "LeagueGroupId": "738736444901982208",
+            "MarketLinesCount": 1800,
+            "MasterLeagueId": "530",
+            "Score": {
+                "AwayScore": "",
+                "HomeScore": "",
+                "CombinedSecondTierScores": [],
+                "AdditionalScores": {}
+            },
+            "Settings": {
+                "IsExposureEnabled": false,
+                "IsVIPExcludeEnabled": false,
+                "IsWBComboEnabled": false,
+                "IsWBSingleEnabled": false,
+                "EarlyPayout": 2
+            },
+            "SportId": "1",
+            "StartEventDate": "2025-10-26T19:00:00.000Z",
+            "Type": "Fixture",
+            "UPDATE_TIMESTAMP": "638969289677137639",
+            "EventName": "Botafogo RJ vs Santos",
+            "LeagueName": "Brasileirão Série A",
+            "SportName": "Futebol",
+            "UrlEventName": "Botafogo-RJ-vs-Santos",
+            "UrlLeagueName": "Brasileirão-Série-A",
+            "UrlRegionName": "Brasil",
+            "UrlSportName": "Futebol",
+            "Participants": [
+                {
+                    "Name": "Botafogo RJ",
+                    "VenueRole": "Home",
+                    "_id": "122061"
+                },
+                {
+                    "Name": "Santos",
+                    "VenueRole": "Away",
+                    "_id": "1898"
+                }
+            ]
+        },
+        "market": {
+            "_id": "0ML766507218492485632",
+            "ComboBonuses": [
+                "672124631586717696"
+            ],
+            "EventId": "766507216215056384",
+            "IsClientSide": true,
+            "IsLive": false,
+            "IsRemoved": false,
+            "IsSuspended": false,
+            "LastUpdateDateTime": "2025-10-24T19:05:28.496Z",
+            "LeagueId": "677879777860075520",
+            "MarketType": {
+                "LineTypeName": "1X2",
+                "_id": "ML0",
+                "Tier": 1,
+                "Name": "Resultado Final 1x2"
+            },
+            "ParticipantMapping": "",
+            "SplitTypeId": 3,
+            "SportId": "1",
+            "StartDate": "2025-10-26T19:00:00.000Z",
+            "TotalSelectionsCount": 3,
+            "TemplateGroupSettings": [
+                {
+                    "MinBet": 0.09,
+                    "MaxWin": 5625,
+                    "ComboMinBet": 0.09,
+                    "ComboMaxBet": 1350,
+                    "SystemMaxBet": 1350,
+                    "ComboMaxWin": 0,
+                    "SystemMaxWin": 0,
+                    "EnableCombos": true,
+                    "EnableSingles": true,
+                    "EnableSystems": true,
+                    "EnableTeasers": false
+                }
+            ],
+            "UPDATE_TIMESTAMP": "638969295309307379",
+            "BetslipLine": "Resultado Final 1x2",
+            "Name": "Resultado Final 1x2",
+            "Selections": [
+                {
+                    "_id": "0ML766507218492485632D",
+                    "MarketId": "0ML766507218492485632",
+                    "EventId": "766507216215056384",
+                    "SportId": "1",
+                    "MarketType": {
+                        "IsCastMarket": false,
+                        "LineTypeId": 1,
+                        "LineTypeName": "1X2",
+                        "Name": {
+                            "AR": "النتيجة الكلية - فوز/تعادل/خسارة",
+                            "BR-PT": "Resultado Final 1x2",
+                            "DE": "FT 1X2",
+                            "EN": "FT 1X2",
+                            "ES": "TC 1X2",
+                            "ES-MX": "FT 1X2",
+                            "FR": "T.a.b. 1N2",
+                            "HI": "एफटी 1X2",
+                            "IT": "Scommesse Tempo Regolamentare 1X2",
+                            "KO": "승무패"
+                        },
+                        "ShortName": "Full",
+                        "Tier": 1,
+                        "_id": "ML0"
+                    },
+                    "Side": 2,
+                    "Type": 1,
+                    "TypeName": "1X2",
+                    "BetslipLine": "Empate",
+                    "IsDisabled": false,
+                    "Name": "Empate",
+                    "IsOption": false,
+                    "IsClientSide": true,
+                    "ParticipantMapping": "",
+                    "DisplayOdds": {
+                        "Decimal": "3.49",
+                        "Malay": "-0.402",
+                        "HK": "2.49",
+                        "Indo": "2.49",
+                        "American": "249",
+                        "Fractional": "25/10"
+                    },
+                    "TrueOdds": 3.49,
+                    "OutcomeType": "Empate",
+                    "Tags": [],
+                    "TemplateOddsSettingsIndex": 0,
+                    "TemplateGroupSettingsIndex": 0,
+                    "TemplateCashoutSettingsIndex": 0,
+                    "QAParam1": 0,
+                    "QAParam2": 0,
+                    "IsRemoved": false
+                },
+                {
+                    "_id": "0ML766507218492485632H",
+                    "MarketId": "0ML766507218492485632",
+                    "EventId": "766507216215056384",
+                    "SportId": "1",
+                    "MarketType": {
+                        "IsCastMarket": false,
+                        "LineTypeId": 1,
+                        "LineTypeName": "1X2",
+                        "Name": {
+                            "AR": "النتيجة الكلية - فوز/تعادل/خسارة",
+                            "BR-PT": "Resultado Final 1x2",
+                            "DE": "FT 1X2",
+                            "EN": "FT 1X2",
+                            "ES": "TC 1X2",
+                            "ES-MX": "FT 1X2",
+                            "FR": "T.a.b. 1N2",
+                            "HI": "एफटी 1X2",
+                            "IT": "Scommesse Tempo Regolamentare 1X2",
+                            "KO": "승무패"
+                        },
+                        "ShortName": "Full",
+                        "Tier": 1,
+                        "_id": "ML0"
+                    },
+                    "Side": 1,
+                    "Type": 1,
+                    "TypeName": "1X2",
+                    "BetslipLine": "Botafogo RJ",
+                    "IsDisabled": false,
+                    "Name": "Botafogo RJ",
+                    "IsOption": false,
+                    "IsClientSide": true,
+                    "ParticipantMapping": "",
+                    "DisplayOdds": {
+                        "Decimal": "1.81",
+                        "Malay": "0.81",
+                        "HK": "0.81",
+                        "Indo": "-1.24",
+                        "American": "-123",
+                        "Fractional": "81/100"
+                    },
+                    "TrueOdds": 1.81,
+                    "OutcomeType": "Casa",
+                    "Tags": [],
+                    "TemplateOddsSettingsIndex": 0,
+                    "TemplateGroupSettingsIndex": 0,
+                    "TemplateCashoutSettingsIndex": 0,
+                    "QAParam1": 0,
+                    "QAParam2": 0,
+                    "PlayerGroupsList": [
+                        [
+                            "1.81",
+                            "0.81",
+                            "0.81",
+                            "-1.24",
+                            "-123",
+                            "81/100"
+                        ],
+                        [
+                            "1.83",
+                            "0.83",
+                            "0.83",
+                            "-1.21",
+                            "-120",
+                            "83/100"
+                        ],
+                        [
+                            "1.85",
+                            "0.85",
+                            "0.85",
+                            "-1.18",
+                            "-118",
+                            "17/20"
+                        ],
+                        [
+                            "1.86",
+                            "0.86",
+                            "0.86",
+                            "-1.16",
+                            "-116",
+                            "6/7"
+                        ],
+                        [
+                            "1.78",
+                            "0.78",
+                            "0.78",
+                            "-1.28",
+                            "-128",
+                            "39/50"
+                        ],
+                        [
+                            "1.68",
+                            "0.68",
+                            "0.68",
+                            "-1.47",
+                            "-147",
+                            "17/25"
+                        ]
+                    ],
+                    "Odds": [
+                        "1.81",
+                        "0.81",
+                        "0.81",
+                        "-1.24",
+                        "-123",
+                        "81/100"
+                    ]
+                },
+                {
+                    "_id": "0ML766507218492485632A",
+                    "MarketId": "0ML766507218492485632",
+                    "EventId": "766507216215056384",
+                    "SportId": "1",
+                    "MarketType": {
+                        "IsCastMarket": false,
+                        "LineTypeId": 1,
+                        "LineTypeName": "1X2",
+                        "Name": {
+                            "AR": "النتيجة الكلية - فوز/تعادل/خسارة",
+                            "BR-PT": "Resultado Final 1x2",
+                            "DE": "FT 1X2",
+                            "EN": "FT 1X2",
+                            "ES": "TC 1X2",
+                            "ES-MX": "FT 1X2",
+                            "FR": "T.a.b. 1N2",
+                            "HI": "एफटी 1X2",
+                            "IT": "Scommesse Tempo Regolamentare 1X2",
+                            "KO": "승무패"
+                        },
+                        "ShortName": "Full",
+                        "Tier": 1,
+                        "_id": "ML0"
+                    },
+                    "Side": 3,
+                    "Type": 1,
+                    "TypeName": "1X2",
+                    "BetslipLine": "Santos",
+                    "IsDisabled": false,
+                    "Name": "Santos",
+                    "IsOption": false,
+                    "IsClientSide": true,
+                    "ParticipantMapping": "",
+                    "DisplayOdds": {
+                        "Decimal": "4.29",
+                        "Malay": "-0.304",
+                        "HK": "3.29",
+                        "Indo": "3.29",
+                        "American": "329",
+                        "Fractional": "33/10"
+                    },
+                    "TrueOdds": 4.29,
+                    "OutcomeType": "Fora",
+                    "Tags": [],
+                    "TemplateOddsSettingsIndex": 0,
+                    "TemplateGroupSettingsIndex": 0,
+                    "TemplateCashoutSettingsIndex": 0,
+                    "QAParam1": 0,
+                    "QAParam2": 0,
+                    "PlayerGroupsList": [
+                        [
+                            "4.29",
+                            "-0.304",
+                            "3.29",
+                            "3.29",
+                            "329",
+                            "33/10"
+                        ],
+                        [
+                            "4.34",
+                            "-0.299",
+                            "3.34",
+                            "3.34",
+                            "334",
+                            "10/3"
+                        ],
+                        [
+                            "4.40",
+                            "-0.294",
+                            "3.40",
+                            "3.40",
+                            "340",
+                            "17/5"
+                        ],
+                        [
+                            "4.46",
+                            "-0.289",
+                            "3.46",
+                            "3.46",
+                            "346",
+                            "31/9"
+                        ],
+                        [
+                            "4.17",
+                            "-0.315",
+                            "3.17",
+                            "3.17",
+                            "317",
+                            "22/7"
+                        ],
+                        [
+                            "3.83",
+                            "-0.353",
+                            "2.83",
+                            "2.83",
+                            "283",
+                            "20/7"
+                        ]
+                    ],
+                    "Odds": [
+                        "4.29",
+                        "-0.304",
+                        "3.29",
+                        "3.29",
+                        "329",
+                        "33/10"
+                    ]
+                }
+            ]
+        },
+        "viewKey": 1
+    }
+]
+*/

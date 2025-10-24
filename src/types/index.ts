@@ -157,6 +157,7 @@ export interface BetOdd {
 
 export interface BetResult {
   bets: Bet[];
+  error?: string;
 }
 
 export interface Bet {
@@ -235,6 +236,381 @@ export interface DashboardStats {
   totalBets: number;
   totalProfit: number;
   successRate: number;
+}
+
+// Tipos específicos para FSSB
+export interface FssbBetslipRequest {
+  selectionId: string;
+  viewKey: number;
+  isCrossBet: boolean;
+  isAddedToBetslip: boolean;
+  isDynamicMarket: boolean;
+  isBetBuilderBet: boolean;
+}
+
+export interface FssbBetslipResponse {
+  market: {
+    Operation: string;
+    TimeStamp: string;
+    Changeset: {
+      _id: string;
+      ComboBonuses: string[];
+      EventId: string;
+      IsClientSide: boolean;
+      IsLive: boolean;
+      IsRemoved: boolean;
+      IsSuspended: boolean;
+      LastUpdateDateTime: string;
+      LeagueId: string;
+      MarketType: {
+        LineTypeName: string;
+        _id: string;
+        Tier: number;
+        Name: string;
+      };
+      ParticipantMapping: string;
+      SplitTypeId: number;
+      SportId: string;
+      StartDate: string;
+      TotalSelectionsCount: number;
+      TemplateGroupSettings: unknown[];
+      UPDATE_TIMESTAMP: string;
+      BetslipLine: string;
+      Name: string;
+      Selections: unknown[];
+      Selection: {
+        _id: string;
+        MarketId: string;
+        EventId: string;
+        SportId: string;
+        MarketType: {
+          IsCastMarket: boolean;
+          LineTypeId: number;
+          LineTypeName: string;
+          Name: Record<string, string>;
+          ShortName: string;
+          Tier: number;
+          _id: string;
+        };
+        Side: number;
+        Type: number;
+        TypeName: string;
+        BetslipLine: string;
+        IsDisabled: boolean;
+        Name: string;
+        IsOption: boolean;
+        IsClientSide: boolean;
+        ParticipantMapping: string;
+        DisplayOdds: {
+          Decimal: string;
+          Malay: string;
+          HK: string;
+          Indo: string;
+          American: string;
+          Fractional: string;
+        };
+        TrueOdds: number;
+        OutcomeType: string;
+        Tags: unknown[];
+        TemplateOddsSettingsIndex: number;
+        TemplateGroupSettingsIndex: number;
+        TemplateCashoutSettingsIndex: number;
+        QAParam1: number;
+        QAParam2: number;
+        IsRemoved: boolean;
+        Settings: {
+          MinBet: number;
+          MaxWin: number;
+          ComboMinBet: number;
+          ComboMaxBet: number;
+          SystemMaxBet: number;
+          ComboMaxWin: number;
+          SystemMaxWin: number;
+          EnableCombos: boolean;
+          EnableSingles: boolean;
+          EnableSystems: boolean;
+          EnableTeasers: boolean;
+        };
+      };
+    };
+  };
+  event: {
+    Operation: string;
+    TimeStamp: string;
+    Changeset: {
+      _id: string;
+      IsGoingLive: boolean;
+      IsLive: boolean;
+      IsRemoved: boolean;
+      IsSuspended: boolean;
+      IsTopLeague: boolean;
+      LeagueGroupId: string;
+      MarketLinesCount: number;
+      MasterLeagueId: string;
+      Score: {
+        AwayScore: string;
+        HomeScore: string;
+        CombinedSecondTierScores: unknown[];
+        AdditionalScores: Record<string, unknown>;
+      };
+      Settings: {
+        IsExposureEnabled: boolean;
+        IsVIPExcludeEnabled: boolean;
+        IsWBComboEnabled: boolean;
+        IsWBSingleEnabled: boolean;
+        EarlyPayout: number;
+      };
+      SportId: string;
+      StartEventDate: string;
+      Type: string;
+      UPDATE_TIMESTAMP: string;
+      EventName: string;
+      LeagueName: string;
+      SportName: string;
+      UrlEventName: string;
+      UrlLeagueName: string;
+      UrlRegionName: string;
+      UrlSportName: string;
+      Participants: Array<{
+        Name: string;
+        VenueRole: string;
+        _id: string;
+      }>;
+    };
+  };
+  selectionId: string;
+  viewKey: number;
+  timestamp: string;
+  intervalTiming: string;
+}
+
+export interface FssbBetsRequest {
+  betName: string;
+  type: string;
+  count: string;
+  selectionsMapped: Array<{
+    id: string;
+    trueOdds: number;
+    displayOdds: {
+      Decimal: string;
+      Malay: string;
+      HK: string;
+      Indo: string;
+      American: string;
+      Fractional: string;
+    };
+    marketId: string;
+    eventId: string;
+    timestamp: string;
+    intervalTiming: string;
+    promotionIds: unknown[];
+  }>;
+  trueOdds: number;
+  displayOdds: {
+    Decimal: string;
+    Malay: string;
+    HK: string;
+    Indo: string;
+    American: string;
+    Fractional: string;
+  };
+  clientOdds: string;
+  comboSize: number;
+  isLive: boolean;
+  numberOfLines: number;
+  maxStake: number;
+  minStake: number;
+  numberOfBets: number;
+  oddStyleID: string;
+  sportID: number;
+  feRequestTime: string;
+  metaData: {
+    device: string;
+    isTablet: boolean;
+    bettingView: string;
+    balancePriority: number;
+    fullURL: string;
+    userAgent: string;
+    shareBetSlipCode: string;
+    refererDomain: string;
+    highMarginConfig: {
+      enableTestCustomer: boolean;
+      enableOperatorContribution: boolean;
+      numberOfSelections: number;
+      marketTypeIds: string[];
+    };
+    siteOption: boolean;
+    featuredSelections: unknown[];
+  };
+  selectionsNames: Array<{
+    id: string;
+    selectionName: string;
+  }>;
+  selectionsPlaced: string[];
+  stake: string;
+  potentialReturns: number;
+  freeBet: {
+    id: number;
+    amount: number;
+    gainDecimal: number;
+    isRiskFreeBet: boolean;
+  };
+  JackpotContribution: Record<string, unknown>;
+  calculationSettings: {
+    useNewCalculationSettings: boolean;
+    oddsRoundingMode: number;
+    gainRoundingMode: number;
+    roundCombinationOdds: boolean;
+  };
+  fotd: number;
+  tags: unknown[];
+  solution: string;
+}
+
+export interface FssbBetsResponse {
+  SQLTicketID: string;
+  potentialReturns: number;
+  status: string;
+  freeBetContribution: number;
+  isRiskFreeBet: boolean;
+  type: string;
+  creationDate: number;
+  bets: Array<{
+    id: number;
+    oddStyleId: string;
+    type: string;
+    selectionsMapped: Array<{
+      id: string;
+    }>;
+    trueOdds: number;
+    clientOdds: string;
+    numberOfBets: number;
+    stake: number;
+    potentialReturns: number;
+    comboSize: number;
+    numberOfLines: number;
+    selections: Array<{
+      _id: string;
+      Name: string;
+      Settings: {
+        MinBet: number;
+        MaxWin: number;
+        ComboMinBet: number;
+        ComboMaxBet: number;
+        SystemMaxBet: number;
+        ComboMaxWin: number;
+        SystemMaxWin: number;
+        EnableCombos: boolean;
+        EnableSingles: boolean;
+        EnableSystems: boolean;
+        EnableTeasers: boolean;
+      };
+      TrueOdds: number;
+      DisplayOdds: {
+        Decimal: string;
+        Malay: string;
+        HK: string;
+        Indo: string;
+        American: string;
+        Fractional: string;
+      };
+      ClientOdds: string;
+      BetslipLine: string;
+      TypeName: string;
+      Side: number;
+      event: {
+        _id: string;
+        IsLive: boolean;
+        LeagueGroupId: string;
+        LeagueId: string;
+        LiveGameState: Record<string, unknown>;
+        MasterLeagueId: string;
+        Score: {
+          AwayScore: string;
+          HomeScore: string;
+          CombinedSecondTierScores: unknown[];
+          AdditionalScores: Record<string, unknown>;
+        };
+        Settings: {
+          IsExposureEnabled: boolean;
+          IsVIPExcludeEnabled: boolean;
+          IsWBComboEnabled: boolean;
+          IsWBSingleEnabled: boolean;
+          EarlyPayout: number;
+        };
+        SportId: string;
+        StartEventDate: string;
+        Type: string;
+        UPDATE_TIMESTAMP: string;
+        LeagueName: string;
+        EventName: string;
+        SportName: string;
+        BetslipLine: string;
+        UrlEventName: string;
+        UrlLeagueName: string;
+        UrlRegionName: string;
+        UrlSportName: string;
+        Participants: Array<{
+          Name: string;
+        }>;
+      };
+      market: {
+        _id: string;
+        ComboBonuses: string[];
+        EventId: string;
+        IsClientSide: boolean;
+        IsLive: boolean;
+        IsRemoved: boolean;
+        IsSuspended: boolean;
+        LastUpdateDateTime: string;
+        LeagueId: string;
+        MarketType: {
+          LineTypeName: string;
+          _id: string;
+          Tier: number;
+          Name: string;
+        };
+        ParticipantMapping: string;
+        SplitTypeId: number;
+        SportId: string;
+        StartDate: string;
+        TotalSelectionsCount: number;
+        TemplateGroupSettings: Array<{
+          MinBet: number;
+          MaxWin: number;
+          ComboMinBet: number;
+          ComboMaxBet: number;
+          SystemMaxBet: number;
+          ComboMaxWin: number;
+          SystemMaxWin: number;
+          EnableCombos: boolean;
+          EnableSingles: boolean;
+          EnableSystems: boolean;
+          EnableTeasers: boolean;
+        }>;
+        UPDATE_TIMESTAMP: string;
+        BetslipLine: string;
+        Name: string;
+        Selections: unknown[];
+      };
+    }>;
+    mappedSelections: number[];
+  }>;
+}
+
+export interface FssbBetError {
+  error: {
+    type: string;
+    selectionsMapped: Array<{
+      id: string;
+      trueOdds: number;
+    }>;
+    stake: string;
+    potentialReturns: number;
+    declineReasons: Array<{
+      name: string;
+    }>;
+  };
 }
 
 // Re-export dos tipos de eventos

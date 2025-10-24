@@ -1,0 +1,616 @@
+const axios = require('axios');
+let data = [
+    {
+        "betName": "single bet",
+        "type": "single",
+        "count": "0.66",
+        "selectionsMapped": [
+            {
+                "id": "0ML762636706670473217D",
+                "trueOdds": 5.1,
+                "displayOdds": {
+                    "Decimal": "5.10",
+                    "Malay": "-0.244",
+                    "HK": "4.10",
+                    "Indo": "4.10",
+                    "American": "410",
+                    "Fractional": "41/10"
+                },
+                "marketId": "0ML762636706670473217",
+                "eventId": "762636703101194240",
+                "timestamp": "{{timestamp}}",
+                "intervalTiming": "{{intervalTiming}}",
+                "promotionIds": []
+            }
+        ],
+        "trueOdds": 5.1,
+        "displayOdds": {
+            "Decimal": "5.10",
+            "Malay": "-0.244",
+            "HK": "4.10",
+            "Indo": "4.10",
+            "American": "410",
+            "Fractional": "41/10"
+        },
+        "clientOdds": "5.10",
+        "comboSize": 0,
+        "isLive": false,
+        "numberOfLines": 1,
+        "maxStake": 1668.61,
+        "minStake": 0.65,
+        "numberOfBets": 1,
+        "oddStyleID": "1",
+        "sportID": 1,
+        "feRequestTime": "{{feRequestTime}}",
+        "metaData": {
+            "device": "desktop",
+            "isTablet": false,
+            "bettingView": "EU Modern View",
+            "balancePriority": 1,
+            "fullURL": "https://prod20350-kbet-152319626.fssb.io/br-pt/spbk/Futebol/It%25C3%25A1lia/It%25C3%25A1lia-S%25C3%25A9rie-A/AC-Milan-vs-Pisa/762636703101194240",
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+            "shareBetSlipCode": "",
+            "refererDomain": "undefined",
+            "highMarginConfig": {
+                "enableTestCustomer": false,
+                "enableOperatorContribution": false,
+                "numberOfSelections": 2,
+                "marketTypeIds": [
+                    "QA60",
+                    "ML1",
+                    "OU257",
+                    "HC2220",
+                    "HC270",
+                    "QA144",
+                    "OU201",
+                    "QA158",
+                    "OU1446",
+                    "QA61",
+                    "QA62",
+                    "QA291",
+                    "ML656",
+                    "HC628",
+                    "OU677",
+                    "OU641",
+                    "QA658",
+                    "QA687",
+                    "QA633",
+                    "ML623",
+                    "QA646",
+                    "QA626",
+                    "QA644"
+                ]
+            },
+            "siteOption": true,
+            "featuredSelections": []
+        },
+        "selectionsNames": [
+            {
+                "id": "0ML762636706670473217D",
+                "selectionName": "Empate"
+            }
+        ],
+        "selectionsPlaced": [
+            "0ML762636706670473217D"
+        ],
+        "stake": "0.66",
+        "potentialReturns": 3.63,
+        "freeBet": {
+            "id": 0,
+            "amount": 0,
+            "gainDecimal": 0,
+            "isRiskFreeBet": false
+        },
+        "JackpotContribution": {},
+        "calculationSettings": {
+            "useNewCalculationSettings": true,
+            "oddsRoundingMode": 0,
+            "gainRoundingMode": 1,
+            "roundCombinationOdds": false
+        },
+        "fotd": 162225011,
+        "tags": [],
+        "solution": "1"
+    }
+];
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://prod20350-kbet-152319626.fssb.io/api/betslip/bets',
+  headers: { 
+    'Accept': ' application/json', 
+    'Accept-Language': ' pt-BR,pt;q=0.9', 
+    'Authorization': ' eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsYW5ndWFnZUNvZGUiOiJici1wdCIsImJldHRpbmdWaWV3IjoiRXVyb3BlYW4gVmlldyIsInNvcnRpbmdUeXBlSWQiOjAsImJldHRpbmdMYXlvdXQiOjEsImN1c3RvbWVyVHlwZSI6InJlYWwiLCJkaXNwbGF5VHlwZUlkIjoxLCJ0aW1lem9uZUlkIjoxMCwib2Rkc1N0eWxlSWQiOiIiLCJhbGxvd0NoYW5nZU9kZCI6MCwiaW50VGFiRXhwYW5kZWQiOjEsImF1dG9UaW1lWm9uZSI6MSwibGFzdElucHV0U3Rha2UiOiIxIiwiYmFsYW5jZVByaW9yaXR5IjoxLCJjb3VudHJ5Q29kZSI6IkJSIiwiY3VycmVuY3lSYXRlIjowLjEzODY4OTI4NDMzOTEzMSwiY3VycmVuY3lSYXRlZXVyIjowLjE1OTUyMzQ1NjcwMDg0MywiY3VzdG9tZXJJZCI6MTYyMjI0OTg3LCJldU9kZHNJZCI6IjEiLCJrb3JlYW5PZGRzSWQiOiIxIiwiYXNpYW5PZGRzSWQiOiIxIiwib3BlcmF0b3JUb2tlbiI6ImE3a2JldGJyLWYwMDJiNjNjZWQzMjQ1NzM3MjU5YmEyZDdlYWEzNDhmMWFkYzc5MmRjYzMzYjAwOTk2OTA3Mjg5Y2RiOGRlNTEiLCJiYWxhbmNlIjo1LjQsInRlc3RDdXN0b21lciI6MCwiY3VzdG9tZXJMb2dpbiI6ImE3a2JldGJyXzI5MjI3MzQ5IiwiY3VycmVuY3lDb2RlIjoiQlJMIiwic3RhdGVDb2RlIjoiIiwiY3VzdG9tZXJMZXZlbCI6MCwiYWdlbnRJRCI6MTUyMzE5NjI2LCJkb21haW5JRCI6MzU5MCwic2l0ZUlkIjoyMDM1MCwiZXh0Q3VzdG9tZXJJZCI6ImE3a2JldGJyXzI5MjI3MzQ5IiwiZXh0U2Vzc2lvbklkIjoiYTdrYmV0YnItZjAwMmI2M2NlZDMyNDU3MzcyNTliYTJkN2VhYTM0OGYxYWRjNzkyZGNjMzNiMDA5OTY5MDcyODljZGI4ZGU1MSIsImxldmVsIjoxLCJFUE9FbmFibGVkIjp0cnVlLCJpYXQiOjE3NjEyMzIyMzcsInNlbGVjdGVkT3B0aW9uSWQiOjB9.ID1XzGHyEADn_hC9fkBFCzNxvDu5coEq-l6yHj0HgKg', 
+    'Cache-Control': ' no-cache', 
+    'Content-Type': ' application/json', 
+    'Ct-Request-Id': ' 5568064b-7bf4-46b2-a976-27dcf380ae82', 
+    'Origin': ' https://prod20350-kbet-152319626.fssb.io', 
+    'Pragma': ' no-cache', 
+    'Priority': ' u=1, i', 
+    'Referer': ' https://prod20350-kbet-152319626.fssb.io/br-pt/spbk?operatorToken=a7kbetbr-13e26e75de4023b832937caebf69f151d1894d85260a0acd1adced7d6ba66581', 
+    'Sec-Ch-Ua': ' "Google Chrome";v="141", "Not?A_Brand";v="8", "Chromium";v="141"', 
+    'Sec-Ch-Ua-Mobile': ' ?0', 
+    'Sec-Ch-Ua-Platform': ' "Windows"', 
+    'Sec-Fetch-Dest': ' empty', 
+    'Sec-Fetch-Mode': ' cors', 
+    'Sec-Fetch-Site': ' same-origin', 
+    'Session': ' eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lcklkIjoxNjIyMjQ5ODcsImV4cGlyZWREYXRlIjoxNzYxMzM1MjkxMjU3LCJjdXN0b21lcklwIjoiMTc5LjEyNS4yMTEuMTM5IiwiaWF0IjoxNzYxMjM3MDE2fQ.s_OHMm7nqN_cKZQIGEGA3YN3gIszla0P1GPs3aHiRjY', 
+    'Time-Area': ' 1', 
+    'User-Agent': ' Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 
+    'Accept-Encoding': 'gzip, deflate, br, zstd', 
+    'Cookie': 'authorization=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsYW5ndWFnZUNvZGUiOiJici1wdCIsImJldHRpbmdWaWV3IjoiRXVyb3BlYW4gVmlldyIsInNvcnRpbmdUeXBlSWQiOjAsImJldHRpbmdMYXlvdXQiOjEsImN1c3RvbWVyVHlwZSI6InJlYWwiLCJkaXNwbGF5VHlwZUlkIjoxLCJ0aW1lem9uZUlkIjoxMCwib2Rkc1N0eWxlSWQiOiIiLCJhbGxvd0NoYW5nZU9kZCI6MCwiaW50VGFiRXhwYW5kZWQiOjEsImF1dG9UaW1lWm9uZSI6MSwibGFzdElucHV0U3Rha2UiOiIwLjY1IiwiYmFsYW5jZVByaW9yaXR5IjoxLCJjb3VudHJ5Q29kZSI6IkJSIiwiY3VycmVuY3lSYXRlIjowLjEzOTM3MjE1Njk1MTU0MywiY3VycmVuY3lSYXRlZXVyIjowLjE1OTg3OTY3MDMwMDkzNywiY3VzdG9tZXJJZCI6MTYyMjI0OTg3LCJldU9kZHNJZCI6IjEiLCJrb3JlYW5PZGRzSWQiOiIxIiwiYXNpYW5PZGRzSWQiOiIxIiwib3BlcmF0b3JUb2tlbiI6ImE3a2JldGJyLWZhZDYyNzM4YjM5NmE4MmI1NjRhNWQ2OWQ0NjI2NTEwZTBmMjQ0NTRmNTI5M2U0MzdiMjQzNmJiZWYxNDAzNTEiLCJiYWxhbmNlIjo0LjUyLCJ0ZXN0Q3VzdG9tZXIiOjAsImN1c3RvbWVyTG9naW4iOiJhN2tiZXRicl8yOTIyNzM0OSIsImN1cnJlbmN5Q29kZSI6IkJSTCIsInN0YXRlQ29kZSI6IiIsImN1c3RvbWVyTGV2ZWwiOjAsImFnZW50SUQiOjE1MjMxOTYyNiwiZG9tYWluSUQiOjM1OTAsInNpdGVJZCI6MjAzNTAsImV4dEN1c3RvbWVySWQiOiJhN2tiZXRicl8yOTIyNzM0OSIsImV4dFNlc3Npb25JZCI6ImE3a2JldGJyLWZhZDYyNzM4YjM5NmE4MmI1NjRhNWQ2OWQ0NjI2NTEwZTBmMjQ0NTRmNTI5M2U0MzdiMjQzNmJiZWYxNDAzNTEiLCJsZXZlbCI6MSwiRVBPRW5hYmxlZCI6dHJ1ZSwiaWF0IjoxNzYxMjMyMjM3LCJib251c0JhbGFuY2UiOjAsInNlbGVjdGVkT3B0aW9uSWQiOjB9.UIOKuRkEEcpZbHTInU6prTZ6L4rqOYe03hqAwzZzxRw; events_updates=313632323234393837; session=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lcklkIjoxNjIyMjQ5ODcsImV4cGlyZWREYXRlIjoxNzYxMzc5OTM4MzQyLCJjdXN0b21lcklwIjoiMTc5LjEyNS4yMTEuMTM5IiwiaWF0IjoxNzYxMjkzNDU4fQ.THxySitV6fS_ey4NjW-G9UIJ4FjhJ-9NAjZzTs2cHms'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+//respota esperanda com tudo ok sem erro
+/*
+{
+    "SQLTicketID": "769473331615158272",
+    "potentialReturns": 3.37,
+    "status": "Open",
+    "freeBetContribution": 0,
+    "isRiskFreeBet": false,
+    "type": "single",
+    "creationDate": 2382.3354,
+    "bets": [
+        {
+            "id": 0,
+            "oddStyleId": "1",
+            "type": "single",
+            "selectionsMapped": [
+                {
+                    "id": "0ML762636706670473217D"
+                }
+            ],
+            "trueOdds": 5.1,
+            "clientOdds": "5.10",
+            "numberOfBets": 1,
+            "stake": 0.66,
+            "potentialReturns": 3.37,
+            "comboSize": 0,
+            "numberOfLines": 1,
+            "selections": [
+                {
+                    "_id": "0ML762636706670473217D",
+                    "Name": "Empate",
+                    "Settings": {
+                        "MinBet": 0.09,
+                        "MaxWin": 9375,
+                        "ComboMinBet": 0.09,
+                        "ComboMaxBet": 2250,
+                        "SystemMaxBet": 2250,
+                        "ComboMaxWin": 0,
+                        "SystemMaxWin": 0,
+                        "EnableCombos": true,
+                        "EnableSingles": true,
+                        "EnableSystems": true,
+                        "EnableTeasers": false
+                    },
+                    "TrueOdds": 5.1,
+                    "DisplayOdds": {
+                        "Decimal": "5.10",
+                        "Malay": "-0.244",
+                        "HK": "4.10",
+                        "Indo": "4.10",
+                        "American": "410",
+                        "Fractional": "41/10"
+                    },
+                    "ClientOdds": "5.10",
+                    "BetslipLine": "AC Milan vs Pisa",
+                    "TypeName": "1X2",
+                    "Side": 2,
+                    "event": {
+                        "_id": "762636703101194240",
+                        "IsLive": false,
+                        "LeagueGroupId": "738736444901982208",
+                        "LeagueId": "717757464334123008",
+                        "LiveGameState": {},
+                        "MasterLeagueId": "74",
+                        "Score": {
+                            "AwayScore": "",
+                            "HomeScore": "",
+                            "CombinedSecondTierScores": [],
+                            "AdditionalScores": {}
+                        },
+                        "Settings": {
+                            "IsExposureEnabled": false,
+                            "IsVIPExcludeEnabled": false,
+                            "IsWBComboEnabled": false,
+                            "IsWBSingleEnabled": false,
+                            "EarlyPayout": 2
+                        },
+                        "SportId": "1",
+                        "StartEventDate": "2025-10-24T18:45:00.000Z",
+                        "Type": "Fixture",
+                        "UPDATE_TIMESTAMP": "638968903165987271",
+                        "LeagueName": "Itália - Série A",
+                        "EventName": "AC Milan vs Pisa",
+                        "SportName": "Futebol",
+                        "BetslipLine": "AC Milan vs Pisa",
+                        "UrlEventName": "AC-Milan-vs-Pisa",
+                        "UrlLeagueName": "Itália-Série-A",
+                        "UrlRegionName": "Itália",
+                        "UrlSportName": "Futebol",
+                        "Participants": [
+                            {
+                                "Name": "AC Milan"
+                            },
+                            {
+                                "Name": "Pisa"
+                            }
+                        ]
+                    },
+                    "market": {
+                        "_id": "0ML762636706670473217",
+                        "ComboBonuses": [
+                            "672124631586717696"
+                        ],
+                        "EventId": "762636703101194240",
+                        "IsClientSide": true,
+                        "IsLive": false,
+                        "IsRemoved": false,
+                        "IsSuspended": false,
+                        "LastUpdateDateTime": "2025-10-24T08:09:38.123Z",
+                        "LeagueId": "717757464334123008",
+                        "MarketType": {
+                            "LineTypeName": "1X2",
+                            "_id": "ML0",
+                            "Tier": 1,
+                            "Name": "Resultado Final 1x2"
+                        },
+                        "ParticipantMapping": "",
+                        "SplitTypeId": 3,
+                        "SportId": "1",
+                        "StartDate": "2025-10-24T18:45:00.000Z",
+                        "TotalSelectionsCount": 3,
+                        "TemplateGroupSettings": [
+                            {
+                                "MinBet": 0.09,
+                                "MaxWin": 9375,
+                                "ComboMinBet": 0.09,
+                                "ComboMaxBet": 2250,
+                                "SystemMaxBet": 2250,
+                                "ComboMaxWin": 0,
+                                "SystemMaxWin": 0,
+                                "EnableCombos": true,
+                                "EnableSingles": true,
+                                "EnableSystems": true,
+                                "EnableTeasers": false
+                            }
+                        ],
+                        "UPDATE_TIMESTAMP": "638968901784557949",
+                        "BetslipLine": "Resultado Final 1x2",
+                        "Name": "Resultado Final 1x2",
+                        "Selections": [
+                            {
+                                "_id": "0ML762636706670473217D",
+                                "MarketId": "0ML762636706670473217",
+                                "EventId": "762636703101194240",
+                                "SportId": "1",
+                                "MarketType": {
+                                    "IsCastMarket": false,
+                                    "LineTypeId": 1,
+                                    "LineTypeName": "1X2",
+                                    "Name": {
+                                        "AR": "النتيجة الكلية - فوز/تعادل/خسارة",
+                                        "BR-PT": "Resultado Final 1x2",
+                                        "DE": "FT 1X2",
+                                        "EN": "FT 1X2",
+                                        "ES": "TC 1X2",
+                                        "ES-MX": "FT 1X2",
+                                        "FR": "T.a.b. 1N2",
+                                        "HI": "एफटी 1X2",
+                                        "IT": "Scommesse Tempo Regolamentare 1X2",
+                                        "KO": "승무패"
+                                    },
+                                    "ShortName": "Full",
+                                    "Tier": 1,
+                                    "_id": "ML0"
+                                },
+                                "Side": 2,
+                                "Type": 1,
+                                "TypeName": "1X2",
+                                "BetslipLine": "Empate",
+                                "IsDisabled": false,
+                                "Name": "Empate",
+                                "IsOption": false,
+                                "IsClientSide": true,
+                                "ParticipantMapping": "",
+                                "DisplayOdds": {
+                                    "Decimal": "5.10",
+                                    "Malay": "-0.244",
+                                    "HK": "4.10",
+                                    "Indo": "4.10",
+                                    "American": "410",
+                                    "Fractional": "41/10"
+                                },
+                                "TrueOdds": 5.1,
+                                "OutcomeType": "Empate",
+                                "Tags": [],
+                                "TemplateOddsSettingsIndex": 0,
+                                "TemplateGroupSettingsIndex": 0,
+                                "TemplateCashoutSettingsIndex": 0,
+                                "QAParam1": 0,
+                                "QAParam2": 0,
+                                "Settings": {
+                                    "MinBet": 0.09,
+                                    "MaxWin": 9375,
+                                    "ComboMinBet": 0.09,
+                                    "ComboMaxBet": 2250,
+                                    "SystemMaxBet": 2250,
+                                    "ComboMaxWin": 0,
+                                    "SystemMaxWin": 0,
+                                    "EnableCombos": true,
+                                    "EnableSingles": true,
+                                    "EnableSystems": true,
+                                    "EnableTeasers": false
+                                }
+                            },
+                            {
+                                "_id": "0ML762636706670473217H",
+                                "MarketId": "0ML762636706670473217",
+                                "EventId": "762636703101194240",
+                                "SportId": "1",
+                                "MarketType": {
+                                    "IsCastMarket": false,
+                                    "LineTypeId": 1,
+                                    "LineTypeName": "1X2",
+                                    "Name": {
+                                        "AR": "النتيجة الكلية - فوز/تعادل/خسارة",
+                                        "BR-PT": "Resultado Final 1x2",
+                                        "DE": "FT 1X2",
+                                        "EN": "FT 1X2",
+                                        "ES": "TC 1X2",
+                                        "ES-MX": "FT 1X2",
+                                        "FR": "T.a.b. 1N2",
+                                        "HI": "एफटी 1X2",
+                                        "IT": "Scommesse Tempo Regolamentare 1X2",
+                                        "KO": "승무패"
+                                    },
+                                    "ShortName": "Full",
+                                    "Tier": 1,
+                                    "_id": "ML0"
+                                },
+                                "Side": 1,
+                                "Type": 1,
+                                "TypeName": "1X2",
+                                "BetslipLine": "AC Milan",
+                                "IsDisabled": false,
+                                "Name": "AC Milan",
+                                "IsOption": false,
+                                "IsClientSide": true,
+                                "ParticipantMapping": "",
+                                "DisplayOdds": {
+                                    "Decimal": "1.31",
+                                    "Malay": "0.31",
+                                    "HK": "0.31",
+                                    "Indo": "-3.23",
+                                    "American": "-323",
+                                    "Fractional": "31/100"
+                                },
+                                "TrueOdds": 1.31,
+                                "OutcomeType": "Casa",
+                                "Tags": [],
+                                "TemplateOddsSettingsIndex": 0,
+                                "TemplateGroupSettingsIndex": 0,
+                                "TemplateCashoutSettingsIndex": 0,
+                                "QAParam1": 0,
+                                "QAParam2": 0,
+                                "PlayerGroupsList": [
+                                    [
+                                        "1.31",
+                                        "0.31",
+                                        "0.31",
+                                        "-3.23",
+                                        "-323",
+                                        "31/100"
+                                    ],
+                                    [
+                                        "1.32",
+                                        "0.32",
+                                        "0.32",
+                                        "-3.13",
+                                        "-312",
+                                        "8/25"
+                                    ],
+                                    [
+                                        "1.33",
+                                        "0.33",
+                                        "0.33",
+                                        "-3.03",
+                                        "-303",
+                                        "1/3"
+                                    ],
+                                    [
+                                        "1.33",
+                                        "0.33",
+                                        "0.33",
+                                        "-3.03",
+                                        "-303",
+                                        "1/3"
+                                    ],
+                                    [
+                                        "1.29",
+                                        "0.29",
+                                        "0.29",
+                                        "-3.45",
+                                        "-345",
+                                        "29/100"
+                                    ],
+                                    [
+                                        "1.24",
+                                        "0.24",
+                                        "0.24",
+                                        "-4.17",
+                                        "-417",
+                                        "6/25"
+                                    ]
+                                ],
+                                "Odds": [
+                                    "1.31",
+                                    "0.31",
+                                    "0.31",
+                                    "-3.23",
+                                    "-323",
+                                    "31/100"
+                                ]
+                            },
+                            {
+                                "_id": "0ML762636706670473217A",
+                                "MarketId": "0ML762636706670473217",
+                                "EventId": "762636703101194240",
+                                "SportId": "1",
+                                "MarketType": {
+                                    "IsCastMarket": false,
+                                    "LineTypeId": 1,
+                                    "LineTypeName": "1X2",
+                                    "Name": {
+                                        "AR": "النتيجة الكلية - فوز/تعادل/خسارة",
+                                        "BR-PT": "Resultado Final 1x2",
+                                        "DE": "FT 1X2",
+                                        "EN": "FT 1X2",
+                                        "ES": "TC 1X2",
+                                        "ES-MX": "FT 1X2",
+                                        "FR": "T.a.b. 1N2",
+                                        "HI": "एफटी 1X2",
+                                        "IT": "Scommesse Tempo Regolamentare 1X2",
+                                        "KO": "승무패"
+                                    },
+                                    "ShortName": "Full",
+                                    "Tier": 1,
+                                    "_id": "ML0"
+                                },
+                                "Side": 3,
+                                "Type": 1,
+                                "TypeName": "1X2",
+                                "BetslipLine": "Pisa",
+                                "IsDisabled": false,
+                                "Name": "Pisa",
+                                "IsOption": false,
+                                "IsClientSide": true,
+                                "ParticipantMapping": "",
+                                "DisplayOdds": {
+                                    "Decimal": "9.50",
+                                    "Malay": "-0.118",
+                                    "HK": "8.50",
+                                    "Indo": "8.50",
+                                    "American": "850",
+                                    "Fractional": "85/10"
+                                },
+                                "TrueOdds": 9.5,
+                                "OutcomeType": "Fora",
+                                "Tags": [],
+                                "TemplateOddsSettingsIndex": 0,
+                                "TemplateGroupSettingsIndex": 0,
+                                "TemplateCashoutSettingsIndex": 0,
+                                "QAParam1": 0,
+                                "QAParam2": 0,
+                                "PlayerGroupsList": [
+                                    [
+                                        "9.50",
+                                        "-0.118",
+                                        "8.50",
+                                        "8.50",
+                                        "850",
+                                        "85/10"
+                                    ],
+                                    [
+                                        "9.80",
+                                        "-0.114",
+                                        "8.80",
+                                        "8.80",
+                                        "880",
+                                        "44/5"
+                                    ],
+                                    [
+                                        "10.10",
+                                        "-0.11",
+                                        "9.10",
+                                        "9.10",
+                                        "910",
+                                        "9/1"
+                                    ],
+                                    [
+                                        "10.40",
+                                        "-0.106",
+                                        "9.40",
+                                        "9.40",
+                                        "940",
+                                        "9/1"
+                                    ],
+                                    [
+                                        "8.90",
+                                        "-0.127",
+                                        "7.90",
+                                        "7.90",
+                                        "790",
+                                        "79/10"
+                                    ],
+                                    [
+                                        "7.40",
+                                        "-0.156",
+                                        "6.40",
+                                        "6.40",
+                                        "640",
+                                        "32/5"
+                                    ]
+                                ],
+                                "Odds": [
+                                    "9.50",
+                                    "-0.118",
+                                    "8.50",
+                                    "8.50",
+                                    "850",
+                                    "85/10"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ],
+            "mappedSelections": [
+                0
+            ]
+        }
+    ]
+}
+*/
+
+//respota esperanda com erro é um dos erros no futuro temos tratar na função que vamos fazer
+/*
+//tem mais erros desse tipo com declineReasons depois nós tratar 
+{
+    "error": {
+        "type": "single",
+        "selectionsMapped": [
+            {
+                "id": "0ML762636706670473217D",
+                "trueOdds": 5.2
+            }
+        ],
+        "stake": "0.66",
+        "potentialReturns": 3.37,
+        "declineReasons": [
+            {
+                "name": "SelectionClosed"
+            }
+        ]
+    }
+}
+    status code 500 é um erro de servidor (Pode ser erro de autenticação o faltan)
+{
+    "statusCode": 500,
+    "message": "Internal server error"
+}
+
+*/
