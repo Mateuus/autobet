@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { BiahostedPlatform } from '@/lib/platforms/BiahostedPlatform';
+import { FssbPlatform } from '@/lib/platforms/FssbPlatform';
 import { AppDataSource } from '@/database/data-source';
 import { BetAccount } from '@/database/entities/BetAccount';
 import { verifyJWTToken } from '@/lib/auth/jwt';
@@ -107,6 +108,32 @@ export async function POST(request: NextRequest) {
       }, { status: 400 });
     }
 
+    // Validar plataforma suportada
+    if (!['biahosted', 'fssb'].includes(platform)) {
+      return NextResponse.json({ 
+        error: 'Plataforma não suportada. Use: biahosted ou fssb' 
+      }, { status: 400 });
+    }
+
+    // Validar site específico por plataforma
+    const validSites = {
+      biahosted: ['mcgames', 'lotogreen', 'estrelabet'],
+      fssb: ['bet7k', 'pixbet']
+    };
+
+    if (!validSites[platform as keyof typeof validSites]?.includes(site)) {
+      return NextResponse.json({ 
+        error: `Site '${site}' não é válido para a plataforma '${platform}'` 
+      }, { status: 400 });
+    }
+
+    // Validar siteUrl apenas para biahosted
+    if (platform === 'biahosted' && !siteUrl) {
+      return NextResponse.json({ 
+        error: 'URL do site é obrigatória para plataforma BiaHosted' 
+      }, { status: 400 });
+    }
+
     // Verificar se já existe uma conta com este email para este site específico
     const betAccountRepository = AppDataSource.getRepository(BetAccount);
     const existingAccount = await betAccountRepository.findOne({
@@ -125,39 +152,77 @@ export async function POST(request: NextRequest) {
 
     // Testar login na plataforma para validar credenciais
     try {
-      const platformInstance = new BiahostedPlatform(site, siteUrl);
-      const loginResult = await platformInstance.login({ email, password });
-      if (!loginResult.access_token) {
+      let platformInstance;
+      let loginResult;
+      let userToken;
+      let platformToken;
+
+      if (platform === 'biahosted') {
+        // Plataforma BiaHosted (McGames, LotoGreen, etc.)
+        platformInstance = new BiahostedPlatform(site, siteUrl);
+        loginResult = await platformInstance.login({ email, password });
+        
+        if (!loginResult.access_token) {
+          return NextResponse.json({ 
+            error: 'Credenciais inválidas' 
+          }, { status: 400 });
+        }
+
+        // Gerar token de usuário
+        const loginData = loginResult as unknown as Record<string, unknown>;
+        const userData = loginData.user as Record<string, unknown> | undefined;
+        const userTokenValue = userData?.token as string || loginResult.access_token;
+        userToken = await platformInstance.generateToken(loginResult.access_token, userTokenValue);
+        
+        // Fazer sign in na plataforma
+        platformToken = await platformInstance.signIn(userToken.token);
+
+      } else if (platform === 'fssb') {
+        // Plataforma FSSB (Bet7K, PixBet, etc.)
+        const baseUrl = site === 'bet7k' ? 'https://7k.bet.br' : 'https://pix.bet.br';
+        platformInstance = new FssbPlatform(site, baseUrl);
+        loginResult = await platformInstance.login({ email, password });
+        
+        if (!loginResult.access_token) {
+          return NextResponse.json({ 
+            error: 'Credenciais inválidas' 
+          }, { status: 400 });
+        }
+
+        // Para FSSB, não precisamos de userToken e platformToken por enquanto
+        // (métodos ainda não implementados)
+        userToken = { token: loginResult.access_token, user_id: 'temp' };
+        platformToken = { accessToken: loginResult.access_token };
+      } else {
         return NextResponse.json({ 
-          error: 'Credenciais inválidas' 
+          error: 'Plataforma não reconhecida' 
         }, { status: 400 });
       }
 
-      // Gerar token de usuário
-      // Para McGames, o user.token vem no loginResult.user.token
-      const loginData = loginResult as unknown as Record<string, unknown>;
-      const userData = loginData.user as Record<string, unknown> | undefined;
-      const userTokenValue = userData?.token as string || loginResult.access_token;
-      const userToken = await platformInstance.generateToken(loginResult.access_token, userTokenValue);
-      
-      // Fazer sign in na plataforma
-      const platformToken = await platformInstance.signIn(userToken.token);
-
       // Criar nova conta no banco de dados
       const newBetAccount = new BetAccount();
-      newBetAccount.platform = platform; // 'biahosted'
-      newBetAccount.site = site; // 'lotogreen', 'mcgames', etc.
+      newBetAccount.platform = platform; // 'biahosted' ou 'fssb'
+      newBetAccount.site = site; // 'mcgames', 'bet7k', etc.
       newBetAccount.email = email;
       newBetAccount.password = password; // Em produção, você deveria hash a senha
-      newBetAccount.siteUrl = siteUrl;
+      newBetAccount.siteUrl = platform === 'biahosted' ? siteUrl : null; // FSSB não precisa
       newBetAccount.balance = 0;
       
-      // Para McGames, usar o user.id do loginResult
-      const loginDataForUserId = loginResult as unknown as Record<string, unknown>;
-      const userDataForUserId = loginDataForUserId.user as Record<string, unknown> | undefined;
-      const userIdFromLogin = userDataForUserId?.id as number | undefined;
+      // Obter userId baseado na plataforma
+      if (platform === 'biahosted') {
+        // Para BiaHosted, usar o user.id do loginResult
+        const loginDataForUserId = loginResult as unknown as Record<string, unknown>;
+        const userDataForUserId = loginDataForUserId.user as Record<string, unknown> | undefined;
+        const userIdFromLogin = userDataForUserId?.id as number | undefined;
+        newBetAccount.userId = userIdFromLogin?.toString() || userToken.user_id;
+      } else if (platform === 'fssb') {
+        // Para FSSB, usar o user.id do loginResult se disponível
+        const loginDataForUserId = loginResult as unknown as Record<string, unknown>;
+        const userDataForUserId = loginDataForUserId.user as Record<string, unknown> | undefined;
+        const userIdFromLogin = userDataForUserId?.id as number | undefined;
+        newBetAccount.userId = userIdFromLogin?.toString() || 'temp';
+      }
       
-      newBetAccount.userId = userIdFromLogin?.toString() || userToken.user_id;
       newBetAccount.accessToken = loginResult.access_token;
       newBetAccount.userToken = userToken.token;
       newBetAccount.platformToken = platformToken.accessToken;

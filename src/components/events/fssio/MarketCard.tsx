@@ -23,30 +23,6 @@ interface FssioMarketCardProps {
   isBB?: boolean;
   onOutcomeClick?: (outcomeId: string) => void;
   selectedOutcomeId?: string | null;
-  // Props para integração com sistema de apostas
-  eventData?: {
-    id: number;
-    name: string;
-    startDate: string;
-    code?: number;
-    competitors?: Array<{ id: number; name: string }>;
-    sport?: { typeId: number; iconName: string; hasLiveEvents: boolean; id: number; name: string };
-    championship?: { hasLiveEvents: boolean; id: number; name: string };
-    category?: { iso: string; hasLiveEvents: boolean; id: number; name: string };
-  };
-  marketData?: {
-    typeId: number;
-    isMB: boolean;
-    sv?: string;
-    shortName?: string;
-    name: string;
-    desktopOddIds?: number[][];
-    mobileOddIds?: number[][];
-    isBB: boolean;
-    so: number;
-    sportMarketId: number;
-    id: number;
-  };
 }
 
 export default function FssioMarketCard({ 
@@ -59,9 +35,7 @@ export default function FssioMarketCard({
   children,
   isBB = false,
   onOutcomeClick,
-  selectedOutcomeId,
-  eventData,
-  marketData
+  selectedOutcomeId
 }: FssioMarketCardProps) {
   return (
     <div className="bg-white rounded-lg p-4 border border-gray-200 shadow-sm">
@@ -91,26 +65,26 @@ export default function FssioMarketCard({
         <>
           {children}
           <div className={`grid gap-2 ${
-            outcomes.length === 2 ? 'grid-cols-2' : 
-            outcomes.length === 3 ? 'grid-cols-3' : 
+            outcomes.filter(outcome => !outcome.isSuspense).length === 2 ? 'grid-cols-2' : 
+            outcomes.filter(outcome => !outcome.isSuspense).length === 3 ? 'grid-cols-3' : 
             'grid-cols-1'
           }`}>
-            {outcomes.map((outcome) => (
+            {outcomes.filter(outcome => !outcome.isSuspense).map((outcome) => (
               <button
                 key={outcome.id}
                 onClick={() => onOutcomeClick?.(outcome.id)}
-                disabled={!outcome.isActive}
+                disabled={outcome.isBlocked}
                 className={`
                   flex items-center justify-between p-2 rounded border transition-colors relative
-                  ${!outcome.isActive 
+                  ${outcome.isBlocked 
                     ? 'bg-gray-100 border-gray-200 text-gray-400 cursor-not-allowed' 
                     : 'bg-gray-50 hover:bg-gray-100 border-gray-200'
                   }
-                  ${selectedOutcomeId === outcome.id && outcome.isActive ? 'bg-red-100 border-red-300 text-red-900' : ''}
+                  ${selectedOutcomeId === outcome.id && !outcome.isBlocked ? 'bg-red-100 border-red-300 text-red-900' : ''}
                 `}
               >
-                {/* Ícone de cadeado para odds desativadas */}
-                {!outcome.isActive && (
+                {/* Ícone de cadeado para odds bloqueadas */}
+                {outcome.isBlocked && (
                   <div className="absolute top-1 right-1">
                     <svg className="w-3 h-3 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
@@ -118,10 +92,10 @@ export default function FssioMarketCard({
                   </div>
                 )}
 
-                <div className={`text-sm ${!outcome.isActive ? 'text-gray-400' : (selectedOutcomeId === outcome.id ? 'text-red-900' : 'text-gray-700')}`}>
+                <div className={`text-sm ${outcome.isBlocked ? 'text-gray-400' : (selectedOutcomeId === outcome.id ? 'text-red-900' : 'text-gray-700')}`}>
                   {getLocalizedValue(outcome.name)}
                 </div>
-                <div className={`font-bold ${!outcome.isActive ? 'text-gray-400' : (selectedOutcomeId === outcome.id ? 'text-red-600' : 'text-blue-500')}`}>
+                <div className={`font-bold ${outcome.isBlocked ? 'text-gray-400' : (selectedOutcomeId === outcome.id ? 'text-red-600' : 'text-blue-500')}`}>
                   {outcome.odds}
                 </div>
               </button>

@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { X, Eye, EyeOff, AlertCircle, CheckCircle } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { X, Eye, EyeOff, AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 
 interface AddAccountModalProps {
@@ -10,12 +10,37 @@ interface AddAccountModalProps {
   onSuccess: () => void;
 }
 
-const SITES = [
-  { id: 'lotogreen', platform: 'biahosted', name: 'Lotogreen', siteUrl: 'https://lotogreen.bet.br' },
-  { id: 'mcgames', platform: 'biahosted', name: 'McGames', siteUrl: 'https://mcgames.bet.br' },
-  { id: 'estrelabet', platform: 'biahosted', name: 'EstrelaBet', siteUrl: 'https://www.estrelabet.bet.br' },
-  { id: 'jogodeouro', platform: 'biahosted', name: 'JogoDeOuro', siteUrl: 'https://jogodeouro.bet.br' }
-];
+interface Platform {
+  id: string;
+  name: string;
+  description: string;
+  features: {
+    supportsUserToken: boolean;
+    supportsPlatformToken: boolean;
+    supportsBalanceCheck: boolean;
+    supportsBetting: boolean;
+    requiresSiteUrl: boolean;
+  };
+  sites: Array<{
+    id: string;
+    name: string;
+    displayName: string;
+    baseUrl: string;
+    platformUrl?: string;
+    description: string;
+    requiresSiteUrl: boolean;
+  }>;
+}
+
+interface PlatformsResponse {
+  success: boolean;
+  data: {
+    platforms: Platform[];
+    totalPlatforms: number;
+    timestamp: string;
+  };
+  message: string;
+}
 
 export function AddAccountModal({ isOpen, onClose, onSuccess }: AddAccountModalProps) {
   const { token } = useAuth();
@@ -29,17 +54,60 @@ export function AddAccountModal({ isOpen, onClose, onSuccess }: AddAccountModalP
   });
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingPlatforms, setIsLoadingPlatforms] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [platforms, setPlatforms] = useState<Platform[]>([]);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
+  const [availableSites, setAvailableSites] = useState<Platform['sites']>([]);
 
-  const handleSiteChange = (siteId: string) => {
-    const site = SITES.find(s => s.id === siteId);
+  // Carregar plataformas quando o modal abrir
+  useEffect(() => {
+    if (isOpen && platforms.length === 0) {
+      loadPlatforms();
+    }
+  }, [isOpen, platforms.length]);
+
+  const loadPlatforms = async () => {
+    setIsLoadingPlatforms(true);
+    try {
+      const response = await fetch('/api/platforms');
+      const data: PlatformsResponse = await response.json();
+      
+      if (data.success) {
+        setPlatforms(data.data.platforms);
+      } else {
+        setError('Erro ao carregar plataformas');
+      }
+    } catch {
+      setError('Erro de conexão ao carregar plataformas');
+    } finally {
+      setIsLoadingPlatforms(false);
+    }
+  };
+
+  const handlePlatformChange = (platformId: string) => {
+    const platform = platforms.find(p => p.id === platformId);
+    setSelectedPlatform(platform || null);
+    setAvailableSites(platform?.sites || []);
+    
+    // Reset form data when platform changes
     setFormData(prev => ({
       ...prev,
-      platform: site?.platform || 'biahosted',
+      platform: platformId,
+      site: '',
+      name: '',
+      siteUrl: ''
+    }));
+  };
+
+  const handleSiteChange = (siteId: string) => {
+    const site = availableSites.find(s => s.id === siteId);
+    setFormData(prev => ({
+      ...prev,
       site: siteId,
-      name: site?.name || '',
-      siteUrl: site?.siteUrl || ''
+      name: prev.name || site?.displayName || '',
+      siteUrl: site?.baseUrl || ''
     }));
   };
 
@@ -67,14 +135,7 @@ export function AddAccountModal({ isOpen, onClose, onSuccess }: AddAccountModalP
           onSuccess();
           onClose();
           // Reset form
-          setFormData({
-            platform: '',
-            site: '',
-            name: '',
-            email: '',
-            password: '',
-            siteUrl: ''
-          });
+          resetForm();
         }, 1500);
       } else {
         setError(data.error || 'Erro ao adicionar conta');
@@ -84,6 +145,21 @@ export function AddAccountModal({ isOpen, onClose, onSuccess }: AddAccountModalP
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const resetForm = () => {
+    setFormData({
+      platform: '',
+      site: '',
+      name: '',
+      email: '',
+      password: '',
+      siteUrl: ''
+    });
+    setSelectedPlatform(null);
+    setAvailableSites([]);
+    setError('');
+    setSuccess('');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -125,41 +201,59 @@ export function AddAccountModal({ isOpen, onClose, onSuccess }: AddAccountModalP
             </div>
           )}
 
-          {/* Platform (readonly) - só aparece quando site é selecionado */}
-          {formData.site && (
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Plataforma
-              </label>
-              <input
-                type="text"
-                value={formData.platform}
-                readOnly
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 text-gray-600"
-              />
+          {/* Loading Platforms */}
+          {isLoadingPlatforms && (
+            <div className="flex items-center justify-center py-8">
+              <Loader2 className="w-6 h-6 animate-spin text-blue-600 mr-2" />
+              <span className="text-gray-600">Carregando plataformas...</span>
             </div>
           )}
 
-          {/* Site Selection */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Site de Apostas *
-            </label>
-            <select
-              name="site"
-              value={formData.site}
-              onChange={(e) => handleSiteChange(e.target.value)}
-              required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
-            >
-              <option value="">Selecione um site</option>
-              {SITES.map((site) => (
-                <option key={site.id} value={site.id}>
-                  {site.name}
-                </option>
-              ))}
-            </select>
-          </div>
+          {/* Platform Selection */}
+          {!isLoadingPlatforms && platforms.length > 0 && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Plataforma *
+              </label>
+              <select
+                name="platform"
+                value={formData.platform}
+                onChange={(e) => handlePlatformChange(e.target.value)}
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+              >
+                <option value="">Selecione uma plataforma</option>
+                {platforms.map((platform) => (
+                  <option key={platform.id} value={platform.id}>
+                    {platform.name} - {platform.description}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {/* Site Selection - só aparece quando plataforma é selecionada */}
+          {selectedPlatform && availableSites.length > 0 && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Site de Apostas *
+              </label>
+              <select
+                name="site"
+                value={formData.site}
+                onChange={(e) => handleSiteChange(e.target.value)}
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+              >
+                <option value="">Selecione um site</option>
+                {availableSites.map((site) => (
+                  <option key={site.id} value={site.id}>
+                    {site.displayName}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
 
           {/* Account Name */}
           <div>
@@ -221,19 +315,24 @@ export function AddAccountModal({ isOpen, onClose, onSuccess }: AddAccountModalP
             </div>
           </div>
 
-          {/* Site URL (readonly) */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              URL do Site
-            </label>
-            <input
-              type="url"
-              name="siteUrl"
-              value={formData.siteUrl}
-              readOnly
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 text-gray-600"
-            />
-          </div>
+          {/* Site URL - aparece quando há uma URL configurada */}
+          {formData.siteUrl && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                URL do Site
+              </label>
+              <input
+                type="url"
+                name="siteUrl"
+                value={formData.siteUrl}
+                readOnly
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 text-gray-600"
+              />
+              <p className="text-xs text-gray-500 mt-1">
+                URL configurada automaticamente para {selectedPlatform?.name}
+              </p>
+            </div>
+          )}
 
           {/* Actions */}
           <div className="flex space-x-3 pt-4">
@@ -246,7 +345,7 @@ export function AddAccountModal({ isOpen, onClose, onSuccess }: AddAccountModalP
             </button>
             <button
               type="submit"
-              disabled={isLoading}
+              disabled={isLoading || !formData.platform || !formData.site || !formData.name || !formData.email || !formData.password}
               className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {isLoading ? (

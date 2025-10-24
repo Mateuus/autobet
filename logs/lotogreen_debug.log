@@ -1200,3 +1200,1071 @@
 }
 ================================================================================
 
+[2025-10-23T14:47:53.157Z] 🚀 [kl1ewv8z4] REQUISIÇÃO - lotogreen
+{
+  "requestId": "kl1ewv8z4",
+  "timestamp": "2025-10-23T14:47:53.157Z",
+  "siteName": "lotogreen",
+  "integration": "lotogreen",
+  "url": "https://lotogreen.bet.br/api/auth/login",
+  "method": "post",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Content-Type": "application/json",
+    "Origin": "https://lotogreen.bet.br"
+  },
+  "body": {
+    "email": "muvucasbars@gmail.com",
+    "password": "Mts.19950927",
+    "login": "muvucasbars@gmail.com",
+    "app_source": "web"
+  },
+  "sessionCookies": "",
+  "withCredentials": true,
+  "maxBodyLength": null
+}
+================================================================================
+
+[2025-10-23T14:47:53.603Z] ✅ [kl1ewv8z4] RESPOSTA - lotogreen
+{
+  "requestId": "kl1ewv8z4",
+  "timestamp": "2025-10-23T14:47:53.603Z",
+  "siteName": "lotogreen",
+  "integration": "lotogreen",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Thu, 23 Oct 2025 14:47:53 GMT",
+    "content-type": "application/json",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "access-control-allow-origin": "*",
+    "access-control-allow-methods": "PUT, GET, POST, DELETE, OPTIONS",
+    "access-control-allow-headers": "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization",
+    "access-control-max-age": "1728000",
+    "trailing-slash": "true",
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "no-cache, private",
+    "cf-cache-status": "DYNAMIC",
+    "x-frame-options": "SAMEORIGIN",
+    "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=ereEpbx9GHPOA9URV5rEkhecho5n6QsZxNcUccceMQJEDQv7ycONzEFFr%2FTrAUPN%2BWCZrofXpCpZvnRlB6dRsOBediGtbmEzCLsMhd78ebrUGV15r43sig%3D%3D\"}]}",
+    "strict-transport-security": "max-age=31536000; includeSubDomains",
+    "access-control-allow-credentials": "true",
+    "server": "cloudflare",
+    "cf-ray": "9932083cfa4bf195-GRU"
+  },
+  "data": {
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhY2tvZmZpY2UubG90b2dyZWVuLmNvbS9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTIzMDg3MywiZXhwIjoxNzYxNDAzNjczLCJuYmYiOjE3NjEyMzA4NzMsImp0aSI6IkRBNjVqVEY4Z2NTcFNxRlkiLCJzdWIiOiIwMWs4MmoweWU2ejN3MHJ3dnlzZGo0M2RhdiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJ1c2VyX2lkIjoiMDFrODJqMHllNnozdzByd3Z5c2RqNDNkYXYiLCJuYW1lIjoiTWF0ZXVzIFJvZHJpZ3VlcyBTYW50YW5hIiwiZW1haWwiOiJtdXZ1Y2FzYmFyc0BnbWFpbC5jb20iLCJwaG9uZSI6IjEzOTc0MTk4ODMwIiwiYmFsYW5jZSI6OTQwLCJkb2N1bWVudCI6IjIzNTk3OTk4ODYwIn0.JxreECnJsBLhO9evhJ--uvkWbXOkig6SmMH49Bw7meQ",
+    "token_type": "bearer",
+    "expires_in": 172800
+  },
+  "sessionCookies": "",
+  "responseTime": 446
+}
+================================================================================
+
+[2025-10-23T14:47:53.604Z] 🚀 [87r6s32vf] REQUISIÇÃO - lotogreen
+{
+  "requestId": "87r6s32vf",
+  "timestamp": "2025-10-23T14:47:53.604Z",
+  "siteName": "lotogreen",
+  "integration": "lotogreen",
+  "url": "https://lotogreen.bet.br/api/generate-token",
+  "method": "get",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhY2tvZmZpY2UubG90b2dyZWVuLmNvbS9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTIzMDg3MywiZXhwIjoxNzYxNDAzNjczLCJuYmYiOjE3NjEyMzA4NzMsImp0aSI6IkRBNjVqVEY4Z2NTcFNxRlkiLCJzdWIiOiIwMWs4MmoweWU2ejN3MHJ3dnlzZGo0M2RhdiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJ1c2VyX2lkIjoiMDFrODJqMHllNnozdzByd3Z5c2RqNDNkYXYiLCJuYW1lIjoiTWF0ZXVzIFJvZHJpZ3VlcyBTYW50YW5hIiwiZW1haWwiOiJtdXZ1Y2FzYmFyc0BnbWFpbC5jb20iLCJwaG9uZSI6IjEzOTc0MTk4ODMwIiwiYmFsYW5jZSI6OTQwLCJkb2N1bWVudCI6IjIzNTk3OTk4ODYwIn0.JxreECnJsBLhO9evhJ--uvkWbXOkig6SmMH49Bw7meQ",
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  },
+  "body": {
+    "user_id": "",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhY2tvZmZpY2UubG90b2dyZWVuLmNvbS9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTIzMDg3MywiZXhwIjoxNzYxNDAzNjczLCJuYmYiOjE3NjEyMzA4NzMsImp0aSI6IkRBNjVqVEY4Z2NTcFNxRlkiLCJzdWIiOiIwMWs4MmoweWU2ejN3MHJ3dnlzZGo0M2RhdiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJ1c2VyX2lkIjoiMDFrODJqMHllNnozdzByd3Z5c2RqNDNkYXYiLCJuYW1lIjoiTWF0ZXVzIFJvZHJpZ3VlcyBTYW50YW5hIiwiZW1haWwiOiJtdXZ1Y2FzYmFyc0BnbWFpbC5jb20iLCJwaG9uZSI6IjEzOTc0MTk4ODMwIiwiYmFsYW5jZSI6OTQwLCJkb2N1bWVudCI6IjIzNTk3OTk4ODYwIn0.JxreECnJsBLhO9evhJ--uvkWbXOkig6SmMH49Bw7meQ",
+    "expires_at": "2025-10-23T15:47:53.604Z"
+  },
+  "sessionCookies": ""
+}
+================================================================================
+
+[2025-10-23T14:47:53.816Z] ✅ [87r6s32vf] RESPOSTA - lotogreen
+{
+  "requestId": "87r6s32vf",
+  "timestamp": "2025-10-23T14:47:53.816Z",
+  "siteName": "lotogreen",
+  "integration": "lotogreen",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Thu, 23 Oct 2025 14:47:53 GMT",
+    "content-type": "application/json",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "access-control-allow-origin": "*",
+    "access-control-allow-methods": "PUT, GET, POST, DELETE, OPTIONS",
+    "access-control-allow-headers": "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization",
+    "access-control-max-age": "1728000",
+    "trailing-slash": "true",
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "no-cache, private",
+    "cf-cache-status": "DYNAMIC",
+    "x-frame-options": "SAMEORIGIN",
+    "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=um0oo%2Fd4qR9Xs5kuqlhuRLMTMXpH%2BZO48stTqBVAFj8JVupKPTU7YZtB%2FwNnKWlPccuHoPGIcGqiljLaScisliHwuDOyev%2F3LrCHT%2F2bmU%2B2bmHwg6LUEQ%3D%3D\"}]}",
+    "strict-transport-security": "max-age=31536000; includeSubDomains",
+    "access-control-allow-credentials": "true",
+    "server": "cloudflare",
+    "cf-ray": "9932083fc99bf195-GRU"
+  },
+  "data": {
+    "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+    "token": "_loto_0fuwIO5JX9bHH9tq",
+    "expires_at": "2025-10-23T15:47:53.676842Z"
+  },
+  "sessionCookies": "",
+  "responseTime": 212
+}
+================================================================================
+
+[2025-10-23T14:47:53.816Z] 🚀 [2joqdycbt] REQUISIÇÃO - lotogreen
+{
+  "requestId": "2joqdycbt",
+  "timestamp": "2025-10-23T14:47:53.816Z",
+  "siteName": "lotogreen",
+  "integration": "lotogreen",
+  "url": "https://lotogreen.bet.br/api/auth/me",
+  "method": "get",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhY2tvZmZpY2UubG90b2dyZWVuLmNvbS9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTIzMDg3MywiZXhwIjoxNzYxNDAzNjczLCJuYmYiOjE3NjEyMzA4NzMsImp0aSI6IkRBNjVqVEY4Z2NTcFNxRlkiLCJzdWIiOiIwMWs4MmoweWU2ejN3MHJ3dnlzZGo0M2RhdiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJ1c2VyX2lkIjoiMDFrODJqMHllNnozdzByd3Z5c2RqNDNkYXYiLCJuYW1lIjoiTWF0ZXVzIFJvZHJpZ3VlcyBTYW50YW5hIiwiZW1haWwiOiJtdXZ1Y2FzYmFyc0BnbWFpbC5jb20iLCJwaG9uZSI6IjEzOTc0MTk4ODMwIiwiYmFsYW5jZSI6OTQwLCJkb2N1bWVudCI6IjIzNTk3OTk4ODYwIn0.JxreECnJsBLhO9evhJ--uvkWbXOkig6SmMH49Bw7meQ",
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  },
+  "sessionCookies": ""
+}
+================================================================================
+
+[2025-10-23T14:47:54.051Z] ✅ [2joqdycbt] RESPOSTA - lotogreen
+{
+  "requestId": "2joqdycbt",
+  "timestamp": "2025-10-23T14:47:54.051Z",
+  "siteName": "lotogreen",
+  "integration": "lotogreen",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Thu, 23 Oct 2025 14:47:53 GMT",
+    "content-type": "application/json",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "access-control-allow-origin": "*",
+    "access-control-allow-methods": "PUT, GET, POST, DELETE, OPTIONS",
+    "access-control-allow-headers": "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization",
+    "access-control-max-age": "1728000",
+    "trailing-slash": "true",
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "no-cache, private",
+    "cf-cache-status": "DYNAMIC",
+    "x-frame-options": "SAMEORIGIN",
+    "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=7KSFSzgnz4aW7QsHiWFbwHfgGxOtQkTM%2FokPVOKDvayml55X9YGbKgVPndKI3glI5gSFs414RwYEUCGJ2zmpZU6LcqhnIXC8IRkGm%2FilkcZ1%2FiG%2F31dw%2FQ%3D%3D\"}]}",
+    "strict-transport-security": "max-age=31536000; includeSubDomains",
+    "access-control-allow-credentials": "true",
+    "server": "cloudflare",
+    "cf-ray": "993208411ceef195-GRU"
+  },
+  "data": {
+    "id": "01k82j0ye6z3w0rwvysdj43dav",
+    "name": "Mateus Rodrigues Santana",
+    "email": "muvucasbars@gmail.com",
+    "phone": "13974198830",
+    "birthday": "1995-09-27",
+    "email_verified_at": null,
+    "balance": 940,
+    "active": 1,
+    "status": "Ativo",
+    "ftd_paid": 1,
+    "ftd_active": null,
+    "created_at": "2025-10-21T04:56:45.000000Z",
+    "updated_at": "2025-10-23T14:47:53.000000Z",
+    "last_login_at": "2025-10-23 11:47:53",
+    "last_real_login_at": "2025-10-22T10:05:21.000000Z",
+    "gender": 1,
+    "kyc_verification": 0,
+    "referrer_id": null,
+    "identity_verify": 0,
+    "country": null,
+    "is_suspended": false,
+    "is_self_excluded": false,
+    "address_verify": 0,
+    "accepted_domain_migration": false,
+    "pix_type": "CPF",
+    "document": {
+      "id": 4023396,
+      "number": "23597998860",
+      "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+      "created_at": "2025-10-21T04:56:45.000000Z",
+      "updated_at": "2025-10-21T04:56:45.000000Z"
+    },
+    "address": {
+      "id": 1431886,
+      "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+      "street": "AV SAO FRANCISCO DE ASSIS, 3828 - CASA",
+      "city": "PRAIA GRANDE",
+      "state": "SP",
+      "neighborhood": "-",
+      "number": "0",
+      "zip_code": "11724475",
+      "created_at": "2025-10-21T04:56:48.000000Z",
+      "updated_at": "2025-10-21T04:56:48.000000Z"
+    },
+    "commission": null,
+    "deposit_rollover": {
+      "id": 1095885,
+      "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+      "total": 0,
+      "amount": 500
+    },
+    "user_rollover": null,
+    "settings": [
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "spent_daily",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "spent_weekly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "spent_monthly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "spent_annually",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "losses_daily",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "losses_weekly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "losses_monthly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "losses_annually",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "deposit_daily",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "deposit_weekly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "deposit_monthly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "deposit_annually",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "time_daily",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "time_weekly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "time_monthly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "time_annually",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "suspended",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "excluded",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "accepted_terms_at",
+        "value": true,
+        "type": "boolean"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "accept_domain_migration",
+        "value": false,
+        "type": "boolean"
+      }
+    ],
+    "is_email_valid": true,
+    "is_phone_valid": true
+  },
+  "sessionCookies": "",
+  "responseTime": 235
+}
+================================================================================
+
+[2025-10-23T14:52:32.829Z] 🚀 [68hii3uik] REQUISIÇÃO - lotogreen
+{
+  "requestId": "68hii3uik",
+  "timestamp": "2025-10-23T14:52:32.829Z",
+  "siteName": "lotogreen",
+  "integration": "lotogreen",
+  "url": "https://lotogreen.bet.br/api/auth/login",
+  "method": "post",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Content-Type": "application/json",
+    "Origin": "https://lotogreen.bet.br"
+  },
+  "body": {
+    "email": "muvucasbars@gmail.com",
+    "password": "Mts.19950927",
+    "login": "muvucasbars@gmail.com",
+    "app_source": "web"
+  },
+  "sessionCookies": "",
+  "withCredentials": true,
+  "maxBodyLength": null
+}
+================================================================================
+
+[2025-10-23T14:52:33.235Z] ✅ [68hii3uik] RESPOSTA - lotogreen
+{
+  "requestId": "68hii3uik",
+  "timestamp": "2025-10-23T14:52:33.235Z",
+  "siteName": "lotogreen",
+  "integration": "lotogreen",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Thu, 23 Oct 2025 14:52:33 GMT",
+    "content-type": "application/json",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "access-control-allow-origin": "*",
+    "access-control-allow-methods": "PUT, GET, POST, DELETE, OPTIONS",
+    "access-control-allow-headers": "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization",
+    "access-control-max-age": "1728000",
+    "trailing-slash": "true",
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "no-cache, private",
+    "cf-cache-status": "DYNAMIC",
+    "x-frame-options": "SAMEORIGIN",
+    "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=vR11DOaEqCcvEHzz7CABwiKKH%2BjsU6UK1DqBSWKdbeG%2B9WqsHLN%2F6qQ4yxqQuYxgVBqKY1ptszcbyoRTELfYJFiOWph9DZjp3eMH5kl2WjjAAfwvq9mREA%3D%3D\"}]}",
+    "strict-transport-security": "max-age=31536000; includeSubDomains",
+    "access-control-allow-credentials": "true",
+    "server": "cloudflare",
+    "cf-ray": "99320f10eb7726ed-GRU"
+  },
+  "data": {
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhY2tvZmZpY2UubG90b2dyZWVuLmNvbS9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTIzMTE1MywiZXhwIjoxNzYxNDAzOTUzLCJuYmYiOjE3NjEyMzExNTMsImp0aSI6Ik1xbVczeFgyOFBDTFp5UVMiLCJzdWIiOiIwMWs4MmoweWU2ejN3MHJ3dnlzZGo0M2RhdiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJ1c2VyX2lkIjoiMDFrODJqMHllNnozdzByd3Z5c2RqNDNkYXYiLCJuYW1lIjoiTWF0ZXVzIFJvZHJpZ3VlcyBTYW50YW5hIiwiZW1haWwiOiJtdXZ1Y2FzYmFyc0BnbWFpbC5jb20iLCJwaG9uZSI6IjEzOTc0MTk4ODMwIiwiYmFsYW5jZSI6OTQwLCJkb2N1bWVudCI6IjIzNTk3OTk4ODYwIn0.OzBocaCcLaJQXA3c6nV_x8OSWqIXD5XpVn0AOsDzwLE",
+    "token_type": "bearer",
+    "expires_in": 172800
+  },
+  "sessionCookies": "",
+  "responseTime": 406
+}
+================================================================================
+
+[2025-10-23T14:52:33.235Z] 🚀 [e0rm4dp0y] REQUISIÇÃO - lotogreen
+{
+  "requestId": "e0rm4dp0y",
+  "timestamp": "2025-10-23T14:52:33.235Z",
+  "siteName": "lotogreen",
+  "integration": "lotogreen",
+  "url": "https://lotogreen.bet.br/api/generate-token",
+  "method": "get",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhY2tvZmZpY2UubG90b2dyZWVuLmNvbS9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTIzMTE1MywiZXhwIjoxNzYxNDAzOTUzLCJuYmYiOjE3NjEyMzExNTMsImp0aSI6Ik1xbVczeFgyOFBDTFp5UVMiLCJzdWIiOiIwMWs4MmoweWU2ejN3MHJ3dnlzZGo0M2RhdiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJ1c2VyX2lkIjoiMDFrODJqMHllNnozdzByd3Z5c2RqNDNkYXYiLCJuYW1lIjoiTWF0ZXVzIFJvZHJpZ3VlcyBTYW50YW5hIiwiZW1haWwiOiJtdXZ1Y2FzYmFyc0BnbWFpbC5jb20iLCJwaG9uZSI6IjEzOTc0MTk4ODMwIiwiYmFsYW5jZSI6OTQwLCJkb2N1bWVudCI6IjIzNTk3OTk4ODYwIn0.OzBocaCcLaJQXA3c6nV_x8OSWqIXD5XpVn0AOsDzwLE",
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  },
+  "body": {
+    "user_id": "",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhY2tvZmZpY2UubG90b2dyZWVuLmNvbS9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTIzMTE1MywiZXhwIjoxNzYxNDAzOTUzLCJuYmYiOjE3NjEyMzExNTMsImp0aSI6Ik1xbVczeFgyOFBDTFp5UVMiLCJzdWIiOiIwMWs4MmoweWU2ejN3MHJ3dnlzZGo0M2RhdiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJ1c2VyX2lkIjoiMDFrODJqMHllNnozdzByd3Z5c2RqNDNkYXYiLCJuYW1lIjoiTWF0ZXVzIFJvZHJpZ3VlcyBTYW50YW5hIiwiZW1haWwiOiJtdXZ1Y2FzYmFyc0BnbWFpbC5jb20iLCJwaG9uZSI6IjEzOTc0MTk4ODMwIiwiYmFsYW5jZSI6OTQwLCJkb2N1bWVudCI6IjIzNTk3OTk4ODYwIn0.OzBocaCcLaJQXA3c6nV_x8OSWqIXD5XpVn0AOsDzwLE",
+    "expires_at": "2025-10-23T15:52:33.235Z"
+  },
+  "sessionCookies": ""
+}
+================================================================================
+
+[2025-10-23T14:52:33.445Z] ✅ [e0rm4dp0y] RESPOSTA - lotogreen
+{
+  "requestId": "e0rm4dp0y",
+  "timestamp": "2025-10-23T14:52:33.445Z",
+  "siteName": "lotogreen",
+  "integration": "lotogreen",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Thu, 23 Oct 2025 14:52:33 GMT",
+    "content-type": "application/json",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "access-control-allow-origin": "*",
+    "access-control-allow-methods": "PUT, GET, POST, DELETE, OPTIONS",
+    "access-control-allow-headers": "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization",
+    "access-control-max-age": "1728000",
+    "trailing-slash": "true",
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "no-cache, private",
+    "cf-cache-status": "DYNAMIC",
+    "x-frame-options": "SAMEORIGIN",
+    "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=qlp64mHvfiLQNnZixhRr3xK6vp7nl0Gq52iJwOjUnV%2FwsrHvZu%2BfIYnFQqLaTbdhiiVCneZEC3jk0i10UjXqGsOFBlPNjHk7SVz5YGjNOOvn%2BU0hLfkC4g%3D%3D\"}]}",
+    "strict-transport-security": "max-age=31536000; includeSubDomains",
+    "access-control-allow-credentials": "true",
+    "server": "cloudflare",
+    "cf-ray": "99320f1378cc26ed-GRU"
+  },
+  "data": {
+    "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+    "token": "_loto_uSNPCHDPscbU0MCf",
+    "expires_at": "2025-10-23T15:52:33.308328Z"
+  },
+  "sessionCookies": "",
+  "responseTime": 210
+}
+================================================================================
+
+[2025-10-23T14:52:33.445Z] 🚀 [xzhfjed9t] REQUISIÇÃO - lotogreen
+{
+  "requestId": "xzhfjed9t",
+  "timestamp": "2025-10-23T14:52:33.445Z",
+  "siteName": "lotogreen",
+  "integration": "lotogreen",
+  "url": "https://lotogreen.bet.br/api/auth/me",
+  "method": "get",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhY2tvZmZpY2UubG90b2dyZWVuLmNvbS9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTIzMTE1MywiZXhwIjoxNzYxNDAzOTUzLCJuYmYiOjE3NjEyMzExNTMsImp0aSI6Ik1xbVczeFgyOFBDTFp5UVMiLCJzdWIiOiIwMWs4MmoweWU2ejN3MHJ3dnlzZGo0M2RhdiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJ1c2VyX2lkIjoiMDFrODJqMHllNnozdzByd3Z5c2RqNDNkYXYiLCJuYW1lIjoiTWF0ZXVzIFJvZHJpZ3VlcyBTYW50YW5hIiwiZW1haWwiOiJtdXZ1Y2FzYmFyc0BnbWFpbC5jb20iLCJwaG9uZSI6IjEzOTc0MTk4ODMwIiwiYmFsYW5jZSI6OTQwLCJkb2N1bWVudCI6IjIzNTk3OTk4ODYwIn0.OzBocaCcLaJQXA3c6nV_x8OSWqIXD5XpVn0AOsDzwLE",
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  },
+  "sessionCookies": ""
+}
+================================================================================
+
+[2025-10-23T14:52:33.673Z] ✅ [xzhfjed9t] RESPOSTA - lotogreen
+{
+  "requestId": "xzhfjed9t",
+  "timestamp": "2025-10-23T14:52:33.673Z",
+  "siteName": "lotogreen",
+  "integration": "lotogreen",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Thu, 23 Oct 2025 14:52:33 GMT",
+    "content-type": "application/json",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "access-control-allow-origin": "*",
+    "access-control-allow-methods": "PUT, GET, POST, DELETE, OPTIONS",
+    "access-control-allow-headers": "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization",
+    "access-control-max-age": "1728000",
+    "trailing-slash": "true",
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "no-cache, private",
+    "cf-cache-status": "DYNAMIC",
+    "x-frame-options": "SAMEORIGIN",
+    "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=4MrrEu8M2CY8MlkusdBFrd04TlUOaRieExCmLB4pUgBikGvR3t2%2BaSxiSg%2F2ijFAVamV1XfjMCSaAIVKlPhUlj6921XjdxHMGvSUG3cCubNWfYunJ8UJKA%3D%3D\"}]}",
+    "strict-transport-security": "max-age=31536000; includeSubDomains",
+    "access-control-allow-credentials": "true",
+    "server": "cloudflare",
+    "cf-ray": "99320f14cbd526ed-GRU"
+  },
+  "data": {
+    "id": "01k82j0ye6z3w0rwvysdj43dav",
+    "name": "Mateus Rodrigues Santana",
+    "email": "muvucasbars@gmail.com",
+    "phone": "13974198830",
+    "birthday": "1995-09-27",
+    "email_verified_at": null,
+    "balance": 940,
+    "active": 1,
+    "status": "Ativo",
+    "ftd_paid": 1,
+    "ftd_active": null,
+    "created_at": "2025-10-21T04:56:45.000000Z",
+    "updated_at": "2025-10-23T14:52:33.000000Z",
+    "last_login_at": "2025-10-23 11:52:33",
+    "last_real_login_at": "2025-10-23T14:47:53.000000Z",
+    "gender": 1,
+    "kyc_verification": 0,
+    "referrer_id": null,
+    "identity_verify": 0,
+    "country": null,
+    "is_suspended": false,
+    "is_self_excluded": false,
+    "address_verify": 0,
+    "accepted_domain_migration": false,
+    "pix_type": "CPF",
+    "document": {
+      "id": 4023396,
+      "number": "23597998860",
+      "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+      "created_at": "2025-10-21T04:56:45.000000Z",
+      "updated_at": "2025-10-21T04:56:45.000000Z"
+    },
+    "address": {
+      "id": 1431886,
+      "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+      "street": "AV SAO FRANCISCO DE ASSIS, 3828 - CASA",
+      "city": "PRAIA GRANDE",
+      "state": "SP",
+      "neighborhood": "-",
+      "number": "0",
+      "zip_code": "11724475",
+      "created_at": "2025-10-21T04:56:48.000000Z",
+      "updated_at": "2025-10-21T04:56:48.000000Z"
+    },
+    "commission": null,
+    "deposit_rollover": {
+      "id": 1095885,
+      "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+      "total": 0,
+      "amount": 500
+    },
+    "user_rollover": null,
+    "settings": [
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "spent_daily",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "spent_weekly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "spent_monthly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "spent_annually",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "losses_daily",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "losses_weekly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "losses_monthly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "losses_annually",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "deposit_daily",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "deposit_weekly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "deposit_monthly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "deposit_annually",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "time_daily",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "time_weekly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "time_monthly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "time_annually",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "suspended",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "excluded",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "accepted_terms_at",
+        "value": true,
+        "type": "boolean"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "accept_domain_migration",
+        "value": false,
+        "type": "boolean"
+      }
+    ],
+    "is_email_valid": true,
+    "is_phone_valid": true
+  },
+  "sessionCookies": "",
+  "responseTime": 228
+}
+================================================================================
+
+[2025-10-24T06:26:26.544Z] 🚀 [en9fl9bae] REQUISIÇÃO - lotogreen
+{
+  "requestId": "en9fl9bae",
+  "timestamp": "2025-10-24T06:26:26.544Z",
+  "siteName": "lotogreen",
+  "integration": "lotogreen",
+  "url": "https://lotogreen.bet.br/api/auth/login",
+  "method": "post",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Content-Type": "application/json",
+    "Origin": "https://lotogreen.bet.br"
+  },
+  "body": {
+    "email": "muvucasbars@gmail.com",
+    "password": "Mts.19950927",
+    "login": "muvucasbars@gmail.com",
+    "app_source": "web"
+  },
+  "sessionCookies": "",
+  "withCredentials": true,
+  "maxBodyLength": null
+}
+================================================================================
+
+[2025-10-24T06:26:26.904Z] ✅ [en9fl9bae] RESPOSTA - lotogreen
+{
+  "requestId": "en9fl9bae",
+  "timestamp": "2025-10-24T06:26:26.904Z",
+  "siteName": "lotogreen",
+  "integration": "lotogreen",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Fri, 24 Oct 2025 06:26:26 GMT",
+    "content-type": "application/json",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "access-control-allow-origin": "*",
+    "access-control-allow-methods": "PUT, GET, POST, DELETE, OPTIONS",
+    "access-control-allow-headers": "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization",
+    "access-control-max-age": "1728000",
+    "trailing-slash": "true",
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "no-cache, private",
+    "cf-cache-status": "DYNAMIC",
+    "x-frame-options": "SAMEORIGIN",
+    "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=ym5m%2FvUked6WAE9eWADqEKEG%2BPCl15UgtnJUaEbjZrBljiPiTdkmp8safFVqma4Z%2F%2FkLxmmowHWGVmyn797o%2Fjw9WOpDTui4aU4HH394kqjHHjbhCvY1gw%3D%3D\"}]}",
+    "strict-transport-security": "max-age=31536000; includeSubDomains",
+    "access-control-allow-credentials": "true",
+    "server": "cloudflare",
+    "cf-ray": "9937671388061a98-GRU"
+  },
+  "data": {
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhY2tvZmZpY2UubG90b2dyZWVuLmNvbS9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTI4NzE4NiwiZXhwIjoxNzYxNDU5OTg2LCJuYmYiOjE3NjEyODcxODYsImp0aSI6IklDSkJ2UmIxbmt4VGVlQ1kiLCJzdWIiOiIwMWs4MmoweWU2ejN3MHJ3dnlzZGo0M2RhdiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJ1c2VyX2lkIjoiMDFrODJqMHllNnozdzByd3Z5c2RqNDNkYXYiLCJuYW1lIjoiTWF0ZXVzIFJvZHJpZ3VlcyBTYW50YW5hIiwiZW1haWwiOiJtdXZ1Y2FzYmFyc0BnbWFpbC5jb20iLCJwaG9uZSI6IjEzOTc0MTk4ODMwIiwiYmFsYW5jZSI6OTQwLCJkb2N1bWVudCI6IjIzNTk3OTk4ODYwIn0.cyiadAVe3xYbtZdvhl1EHE5vyre2NVPtdlfHmsqNtcY",
+    "token_type": "bearer",
+    "expires_in": 172800
+  },
+  "sessionCookies": "",
+  "responseTime": 360
+}
+================================================================================
+
+[2025-10-24T06:26:26.905Z] 🚀 [am2ls2mmy] REQUISIÇÃO - lotogreen
+{
+  "requestId": "am2ls2mmy",
+  "timestamp": "2025-10-24T06:26:26.905Z",
+  "siteName": "lotogreen",
+  "integration": "lotogreen",
+  "url": "https://lotogreen.bet.br/api/generate-token",
+  "method": "get",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhY2tvZmZpY2UubG90b2dyZWVuLmNvbS9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTI4NzE4NiwiZXhwIjoxNzYxNDU5OTg2LCJuYmYiOjE3NjEyODcxODYsImp0aSI6IklDSkJ2UmIxbmt4VGVlQ1kiLCJzdWIiOiIwMWs4MmoweWU2ejN3MHJ3dnlzZGo0M2RhdiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJ1c2VyX2lkIjoiMDFrODJqMHllNnozdzByd3Z5c2RqNDNkYXYiLCJuYW1lIjoiTWF0ZXVzIFJvZHJpZ3VlcyBTYW50YW5hIiwiZW1haWwiOiJtdXZ1Y2FzYmFyc0BnbWFpbC5jb20iLCJwaG9uZSI6IjEzOTc0MTk4ODMwIiwiYmFsYW5jZSI6OTQwLCJkb2N1bWVudCI6IjIzNTk3OTk4ODYwIn0.cyiadAVe3xYbtZdvhl1EHE5vyre2NVPtdlfHmsqNtcY",
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  },
+  "body": {
+    "user_id": "",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhY2tvZmZpY2UubG90b2dyZWVuLmNvbS9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTI4NzE4NiwiZXhwIjoxNzYxNDU5OTg2LCJuYmYiOjE3NjEyODcxODYsImp0aSI6IklDSkJ2UmIxbmt4VGVlQ1kiLCJzdWIiOiIwMWs4MmoweWU2ejN3MHJ3dnlzZGo0M2RhdiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJ1c2VyX2lkIjoiMDFrODJqMHllNnozdzByd3Z5c2RqNDNkYXYiLCJuYW1lIjoiTWF0ZXVzIFJvZHJpZ3VlcyBTYW50YW5hIiwiZW1haWwiOiJtdXZ1Y2FzYmFyc0BnbWFpbC5jb20iLCJwaG9uZSI6IjEzOTc0MTk4ODMwIiwiYmFsYW5jZSI6OTQwLCJkb2N1bWVudCI6IjIzNTk3OTk4ODYwIn0.cyiadAVe3xYbtZdvhl1EHE5vyre2NVPtdlfHmsqNtcY",
+    "expires_at": "2025-10-24T07:26:26.905Z"
+  },
+  "sessionCookies": ""
+}
+================================================================================
+
+[2025-10-24T06:26:27.111Z] ✅ [am2ls2mmy] RESPOSTA - lotogreen
+{
+  "requestId": "am2ls2mmy",
+  "timestamp": "2025-10-24T06:26:27.111Z",
+  "siteName": "lotogreen",
+  "integration": "lotogreen",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Fri, 24 Oct 2025 06:26:27 GMT",
+    "content-type": "application/json",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "access-control-allow-origin": "*",
+    "access-control-allow-methods": "PUT, GET, POST, DELETE, OPTIONS",
+    "access-control-allow-headers": "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization",
+    "access-control-max-age": "1728000",
+    "trailing-slash": "true",
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "no-cache, private",
+    "cf-cache-status": "DYNAMIC",
+    "x-frame-options": "SAMEORIGIN",
+    "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=WK4LrGdffB5X4OAEKBlKgC0Vayjuqy5fwUHgUuQKAj%2BF%2B99GAQlId0CLmShtXDx6o8yQ2ii%2BPzx1oXknysaPXzjpGE%2Bt1xx5h%2BO%2FgYTfSfiSCpsEWRz6UQ%3D%3D\"}]}",
+    "strict-transport-security": "max-age=31536000; includeSubDomains",
+    "access-control-allow-credentials": "true",
+    "server": "cloudflare",
+    "cf-ray": "99376715c89c1a98-GRU"
+  },
+  "data": {
+    "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+    "token": "_loto_tRctHPNQCrlsMgb5",
+    "expires_at": "2025-10-24T07:26:26.958855Z"
+  },
+  "sessionCookies": "",
+  "responseTime": 206
+}
+================================================================================
+
+[2025-10-24T06:26:27.111Z] 🚀 [agssuleed] REQUISIÇÃO - lotogreen
+{
+  "requestId": "agssuleed",
+  "timestamp": "2025-10-24T06:26:27.111Z",
+  "siteName": "lotogreen",
+  "integration": "lotogreen",
+  "url": "https://lotogreen.bet.br/api/auth/me",
+  "method": "get",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhY2tvZmZpY2UubG90b2dyZWVuLmNvbS9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTc2MTI4NzE4NiwiZXhwIjoxNzYxNDU5OTg2LCJuYmYiOjE3NjEyODcxODYsImp0aSI6IklDSkJ2UmIxbmt4VGVlQ1kiLCJzdWIiOiIwMWs4MmoweWU2ejN3MHJ3dnlzZGo0M2RhdiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJ1c2VyX2lkIjoiMDFrODJqMHllNnozdzByd3Z5c2RqNDNkYXYiLCJuYW1lIjoiTWF0ZXVzIFJvZHJpZ3VlcyBTYW50YW5hIiwiZW1haWwiOiJtdXZ1Y2FzYmFyc0BnbWFpbC5jb20iLCJwaG9uZSI6IjEzOTc0MTk4ODMwIiwiYmFsYW5jZSI6OTQwLCJkb2N1bWVudCI6IjIzNTk3OTk4ODYwIn0.cyiadAVe3xYbtZdvhl1EHE5vyre2NVPtdlfHmsqNtcY",
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  },
+  "sessionCookies": ""
+}
+================================================================================
+
+[2025-10-24T06:26:27.332Z] ✅ [agssuleed] RESPOSTA - lotogreen
+{
+  "requestId": "agssuleed",
+  "timestamp": "2025-10-24T06:26:27.332Z",
+  "siteName": "lotogreen",
+  "integration": "lotogreen",
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "date": "Fri, 24 Oct 2025 06:26:27 GMT",
+    "content-type": "application/json",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "access-control-allow-origin": "*",
+    "access-control-allow-methods": "PUT, GET, POST, DELETE, OPTIONS",
+    "access-control-allow-headers": "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization",
+    "access-control-max-age": "1728000",
+    "trailing-slash": "true",
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "no-cache, private",
+    "cf-cache-status": "DYNAMIC",
+    "x-frame-options": "SAMEORIGIN",
+    "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=cbgKOdeaeO7Wv4ysRUBxw%2Bx3o1ODdPusFmVNN%2BBNT92Qjyc%2F8tVzDI5jukQBz0xLQWC6PCgfDEQhQoOQKUjQJeILzpi%2FqAX%2Fzx2ndNaIeCzLviPg212%2B1A%3D%3D\"}]}",
+    "strict-transport-security": "max-age=31536000; includeSubDomains",
+    "access-control-allow-credentials": "true",
+    "server": "cloudflare",
+    "cf-ray": "9937671718e21a98-GRU"
+  },
+  "data": {
+    "id": "01k82j0ye6z3w0rwvysdj43dav",
+    "name": "Mateus Rodrigues Santana",
+    "email": "muvucasbars@gmail.com",
+    "phone": "13974198830",
+    "birthday": "1995-09-27",
+    "email_verified_at": null,
+    "balance": 940,
+    "active": 1,
+    "status": "Ativo",
+    "ftd_paid": 1,
+    "ftd_active": null,
+    "created_at": "2025-10-21T04:56:45.000000Z",
+    "updated_at": "2025-10-24T06:26:26.000000Z",
+    "last_login_at": "2025-10-24 03:26:26",
+    "last_real_login_at": "2025-10-23T14:52:33.000000Z",
+    "gender": 1,
+    "kyc_verification": 0,
+    "referrer_id": null,
+    "identity_verify": 0,
+    "country": null,
+    "is_suspended": false,
+    "is_self_excluded": false,
+    "address_verify": 0,
+    "accepted_domain_migration": false,
+    "pix_type": "CPF",
+    "document": {
+      "id": 4023396,
+      "number": "23597998860",
+      "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+      "created_at": "2025-10-21T04:56:45.000000Z",
+      "updated_at": "2025-10-21T04:56:45.000000Z"
+    },
+    "address": {
+      "id": 1431886,
+      "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+      "street": "AV SAO FRANCISCO DE ASSIS, 3828 - CASA",
+      "city": "PRAIA GRANDE",
+      "state": "SP",
+      "neighborhood": "-",
+      "number": "0",
+      "zip_code": "11724475",
+      "created_at": "2025-10-21T04:56:48.000000Z",
+      "updated_at": "2025-10-21T04:56:48.000000Z"
+    },
+    "commission": null,
+    "deposit_rollover": {
+      "id": 1095885,
+      "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+      "total": 0,
+      "amount": 500
+    },
+    "user_rollover": null,
+    "settings": [
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "spent_daily",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "spent_weekly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "spent_monthly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "spent_annually",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "losses_daily",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "losses_weekly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "losses_monthly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "losses_annually",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "deposit_daily",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "deposit_weekly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "deposit_monthly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "deposit_annually",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "time_daily",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "time_weekly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "time_monthly",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "time_annually",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "suspended",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "excluded",
+        "value": 0,
+        "type": "integer"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "accepted_terms_at",
+        "value": true,
+        "type": "boolean"
+      },
+      {
+        "user_id": "01k82j0ye6z3w0rwvysdj43dav",
+        "name": "accept_domain_migration",
+        "value": false,
+        "type": "boolean"
+      }
+    ],
+    "is_email_valid": true,
+    "is_phone_valid": true
+  },
+  "sessionCookies": "",
+  "responseTime": 221
+}
+================================================================================
+

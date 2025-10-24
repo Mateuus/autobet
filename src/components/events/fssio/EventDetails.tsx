@@ -15,6 +15,24 @@ const getLocalizedValue = (value: string | Record<string, string> | null | undef
   return '';
 };
 
+// Função para traduzir categorias
+const translateCategory = (category: string): string => {
+  const translations: Record<string, string> = {
+    'Main': 'Todos',
+    'Full Time': 'Tempo Completo',
+    'Halves': 'Tempos',
+    'Quarters': 'Quartos',
+    'Goals': 'Gols',
+    'Corners': 'Escanteios',
+    'Cards': 'Cartões',
+    'Players': 'Jogadores',
+    'Specials': 'Especiais',
+    'Period': 'Período'
+  };
+  
+  return translations[category] || category;
+};
+
 // Usando as interfaces do fssbApi.ts
 
 interface EventDetailsProps {
@@ -27,7 +45,7 @@ export default function EventDetails({ eventId, onBack }: EventDetailsProps) {
   const [markets, setMarkets] = useState<FssbMarket[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState('Main');
+  const [selectedCategory, setSelectedCategory] = useState('Main'); // Será atualizado quando os dados carregarem
   const [selectedOdds, setSelectedOdds] = useState<string | null>(null);
   const [collapsedMarkets, setCollapsedMarkets] = useState<Set<number>>(new Set());
   const [searchTerm, setSearchTerm] = useState('');
@@ -75,6 +93,19 @@ export default function EventDetails({ eventId, onBack }: EventDetailsProps) {
           // Usar os mercados diretamente da API
           if (eventData.markets && Array.isArray(eventData.markets)) {
             setMarkets(eventData.markets);
+          }
+          
+          // Definir categoria inicial baseada nos marketsTypes disponíveis
+          if (eventData.marketsTypes && eventData.marketsTypes.length > 0) {
+            const availableCategories = eventData.marketsTypes.map((mt: { name: string }) => mt.name);
+            if (availableCategories.includes('Main')) {
+              setSelectedCategory('Main');
+            } else if (availableCategories.includes('Full Time')) {
+              setSelectedCategory('Full Time');
+            } else {
+              // Usar a primeira categoria disponível
+              setSelectedCategory(availableCategories[0]);
+            }
           }
         } else {
           setError('Evento não encontrado');
@@ -137,7 +168,7 @@ export default function EventDetails({ eventId, onBack }: EventDetailsProps) {
   // Criar categorias baseadas nos marketsTypes do endpoint
   const categories = event?.marketsTypes ? 
     event.marketsTypes.map(marketType => marketType.name) : 
-    ['Main', 'Halves', 'Goals', 'Corners', 'Cards', 'Players', 'Specials', 'Period'];
+    ['Main', 'Full Time', 'Halves', 'Quarters', 'Goals', 'Corners', 'Cards', 'Players', 'Specials', 'Period'];
 
   // Estados de loading e error
   if (loading) {
@@ -346,7 +377,7 @@ export default function EventDetails({ eventId, onBack }: EventDetailsProps) {
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-gray-900'
                   }`}
                 >
-                  {category}
+                  {translateCategory(category)}
                 </button>
               ))}
             </div>

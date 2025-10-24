@@ -67,11 +67,11 @@ export interface FssbOutcome {
   displayName: string | Record<string, string>;           //2 Display name (pode ser objeto localizado)
   TypeName: string | Record<string, string>;              //3 TypeName (pode ser objeto localizado)
   array2: string;                //4 Desconhecido
-  array3: string;                //5 Desconhecido
+  isSuspense: boolean;           //5 Se a odd está suspensa (true = não mostrar)
   odds: number;                  //6 Odds
-  isActive: boolean;             //7 Se está ativo
+  isBlocked: boolean;            //7 Se está bloqueado (false = pode apostar, true = bloqueado)
   oddsDisplay: string[];         //8 Display das odds
-  isSuspended: boolean;           //9 Se está suspenso
+  array9: boolean;               //9 Desconhecido (era isSuspended)
   providerId: number;            //10 Provider ID
   OutcomeType: string | Record<string, string>;           //11 Lado (Home/Away/Draw) (pode ser objeto localizado)
   MarketId: string;              //12 Market ID
@@ -130,7 +130,7 @@ export interface FssbEvent {
   startTime: string;             //11 "2025-10-25T19:00:00.000Z" - Data/hora de início
   status: string[];              //12 Status do evento
   isLive: boolean;               //13 false - Se está ao vivo
-  isSuspended: boolean;          //14 false - Se está suspenso
+  array14: boolean;              //14 Desconhecido (era isSuspended)
   gameStatus: FssbGameStatus;    //15 Status do jogo
   isPostponed: boolean;          //16 true - Se foi adiado
   lastUpdate: string;            //17 "" - Última atualização
@@ -474,7 +474,6 @@ export class FssbApiService {
         startTime: eventArray[11] as string,            // "2025-10-25T19:00:00.000Z"
         status: eventArray[12] as string[],              // Status do evento
         isLive: eventArray[13] as boolean,              // false
-        isSuspended: eventArray[14] as boolean,         // false
         gameStatus: eventArray[15] as FssbGameStatus,   // Status do jogo
         isPostponed: eventArray[16] as boolean,         // true
         lastUpdate: eventArray[17] as string,           // ""
@@ -494,8 +493,8 @@ export class FssbApiService {
                   name: outcomeArray[1] as string,             // Nome do outcome
                   displayName: outcomeArray[2] as string,       // Display name
                   odds: outcomeArray[6] as number,             // Odds
-                  isActive: outcomeArray[7] as boolean,       // Se está ativo
-                  isSuspended: outcomeArray[8] as boolean,      // Se está suspenso
+                  isBlocked: outcomeArray[7] as boolean,      // Se está bloqueado (false = pode apostar)
+                  array9: outcomeArray[8] as boolean,           // Desconhecido (era isSuspended)
                   oddsDisplay: outcomeArray[9] as string[],     // Display das odds
                   providerId: outcomeArray[10] as number,      // Provider ID
                   side: outcomeArray[11] as string,           // Lado (Home/Away/Draw)
@@ -604,7 +603,7 @@ export class FssbApiService {
         startTime: eventArray[11] as string,            // "2025-10-25T19:00:00.000Z"
         status: eventArray[12] as string[],              // Status do evento
         isLive: eventArray[13] as boolean,              // false
-        isSuspended: eventArray[14] as boolean,         // false
+        array14: eventArray[14] as boolean,             // false
         gameStatus: eventArray[15] as FssbGameStatus,   // Status do jogo
         isPostponed: eventArray[16] as boolean,         // true
         lastUpdate: eventArray[17] as string,           // ""
@@ -636,11 +635,11 @@ export class FssbApiService {
                   displayName: outcomeArray[2] as string,      // Display name
                   TypeName: outcomeArray[3] as string,         // TypeName
                   array2: outcomeArray[4] as string,           // Desconhecido
-                  array3: outcomeArray[5] as string,           // Desconhecido
+                  isSuspense: outcomeArray[5] as boolean,      // Se a odd está suspensa (true = não mostrar)
                   odds: outcomeArray[6] as number,             // Odds
-                  isActive: outcomeArray[7] as boolean,        // Se está ativo
+                  isBlocked: outcomeArray[7] as boolean,        // Se está bloqueado (false = pode apostar)
                   oddsDisplay: outcomeArray[8] as string[],    // Display das odds
-                  isSuspended: outcomeArray[9] as boolean,     // Se está suspenso
+                  array9: outcomeArray[9] as boolean,           // Desconhecido (era isSuspended)
                   providerId: outcomeArray[10] as number,      // Provider ID
                   OutcomeType: outcomeArray[11] as string,     // Lado (Home/Away/Draw)
                   MarketId: outcomeArray[12] as string,         // Market ID
