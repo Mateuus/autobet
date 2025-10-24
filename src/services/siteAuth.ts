@@ -19,7 +19,7 @@ export class SiteAuthService {
     this.account = account;
     this.repository = repository;
     this.userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36';
-    this.sessionCookies = savedCookies || '';
+    this.sessionCookies = this.cleanCookies(savedCookies || '');
   }
 
   /**
@@ -58,16 +58,8 @@ export class SiteAuthService {
       // Capturar cookies de sessão
       if (response.headers['set-cookie']) {
         const newCookies = response.headers['set-cookie'].join('; ');
-        console.log(`🍪 Login capturou ${response.headers['set-cookie'].length} cookies`);
-        console.log(`🍪 Cookies antes: ${this.sessionCookies ? this.sessionCookies.split(';').length : 0} cookies`);
-        
-        // Usar apenas os novos cookies (não combinar para evitar duplicação)
-        this.sessionCookies = newCookies;
-        
-        console.log(`🍪 Total de cookies após login: ${this.sessionCookies.split(';').length}`);
-        console.log(`🍪 Primeiros cookies do login: ${this.sessionCookies.substring(0, 200)}...`);
-      } else {
-        console.log(`⚠️ Login não capturou cookies`);
+        // Limpar e organizar cookies para evitar duplicação
+        this.sessionCookies = this.cleanCookies(newCookies);
       }
       
       const loginData = response.data as AccessToken;
@@ -142,8 +134,8 @@ export class SiteAuthService {
       // Capturar cookies de sessão se houver
       if (response.headers['set-cookie']) {
         const newCookies = response.headers['set-cookie'].join('; ');
-        // Usar apenas os novos cookies (não combinar para evitar duplicação)
-        this.sessionCookies = newCookies;
+        // Limpar e organizar cookies para evitar duplicação
+        this.sessionCookies = this.cleanCookies(newCookies);
       }
       
       const data = response.data as { credit: number };
@@ -220,7 +212,33 @@ export class SiteAuthService {
    * Definir cookies de sessão
    */
   setSessionCookies(cookies: string): void {
-    this.sessionCookies = cookies;
+    this.sessionCookies = this.cleanCookies(cookies);
+  }
+
+  /**
+   * Limpar e organizar cookies para evitar duplicação
+   */
+  private cleanCookies(cookies: string): string {
+    if (!cookies) return '';
+    
+    // Dividir cookies em array
+    const cookieArray = cookies.split(';').map(cookie => cookie.trim()).filter(cookie => cookie);
+    
+    // Criar mapa para evitar duplicatas (manter o último valor)
+    const cookieMap = new Map<string, string>();
+    
+    cookieArray.forEach(cookie => {
+      const [name, ...valueParts] = cookie.split('=');
+      if (name && valueParts.length > 0) {
+        const value = valueParts.join('=');
+        cookieMap.set(name.trim(), value);
+      }
+    });
+    
+    // Reconstruir string de cookies
+    return Array.from(cookieMap.entries())
+      .map(([name, value]) => `${name}=${value}`)
+      .join('; ');
   }
 
   /**
@@ -265,11 +283,6 @@ export class SiteAuthService {
     // Adicionar cookies de sessão se disponíveis
     if (this.sessionCookies) {
       config.headers!['Cookie'] = this.sessionCookies;
-      console.log(`🍪 Launch usando cookies: ${this.sessionCookies.split(';').length} cookies`);
-      console.log(`🔑 Launch usando token: ${userToken.substring(0, 50)}...`);
-      console.log(`🍪 Primeiros cookies: ${this.sessionCookies.substring(0, 200)}...`);
-    } else {
-      console.log(`⚠️ Launch sem cookies disponíveis`);
     }
 
     try {
