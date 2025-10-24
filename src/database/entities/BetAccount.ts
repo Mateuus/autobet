@@ -35,6 +35,9 @@ export class BetAccount {
   @Column({ type: 'text', nullable: true })
   platformToken?: string; // Token da plataforma para operações
 
+  @Column({ type: 'text', nullable: true })
+  sessionCookies?: string; // Cookies de sessão para manter autenticação
+
   @Column({ type: 'boolean', default: true })
   isActive!: boolean;
 

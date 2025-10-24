@@ -9,8 +9,9 @@ export class FssbPlatform extends BasePlatform {
   private userAgent: string;
   private sessionCookies: string = '';
   private platformUrl: string;
+  private savedCookies: string = ''; // Cookies salvos do banco de dados
 
-  constructor(siteName: string, baseUrl: string) {
+  constructor(siteName: string, baseUrl: string, savedCookies?: string) {
     // Determinar a URL da plataforma baseada no site
     const platformUrl = FssbPlatform.getPlatformUrl(siteName);
     
@@ -22,6 +23,7 @@ export class FssbPlatform extends BasePlatform {
     this.siteName = siteName;
     this.platformUrl = platformUrl;
     this.userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36';
+    this.savedCookies = savedCookies || '';
   }
 
   /**
@@ -109,6 +111,12 @@ export class FssbPlatform extends BasePlatform {
         config.headers = {
           ...config.headers,
           'Cookie': this.sessionCookies
+        };
+      } else if (this.savedCookies) {
+        // Usar cookies salvos do banco se não há cookies de sessão atuais
+        config.headers = {
+          ...config.headers,
+          'Cookie': this.savedCookies
         };
       }
 
@@ -220,6 +228,7 @@ export class FssbPlatform extends BasePlatform {
     };
 
     const result = await this.makeRequest<AccessToken>(config);
+    
     return result;
   }
 
@@ -261,10 +270,19 @@ export class FssbPlatform extends BasePlatform {
         'Accept-Encoding': 'gzip, deflate, br',
         'Connection': 'keep-alive',
         'Origin': this.baseUrl,
-        'Referer': this.baseUrl
+        'Referer': this.baseUrl,
+        'Content-Type': 'application/json'
       },
       withCredentials: true
     };
+
+    // Adicionar cookies se disponíveis
+    if (this.sessionCookies) {
+      (config.headers as Record<string, string>)['Cookie'] = this.sessionCookies;
+    } else if (this.savedCookies) {
+      // Usar cookies salvos do banco se não há cookies de sessão atuais
+      (config.headers as Record<string, string>)['Cookie'] = this.savedCookies;
+    }
 
     try {
       const data = await this.makeRequest<{ credit: number }>(config);
@@ -281,8 +299,35 @@ export class FssbPlatform extends BasePlatform {
    * Obter perfil do usuário
    */
   async getProfile(platformToken: string): Promise<UserProfile> {
-    // TODO: Implementar getProfile específico do FSBB
-    throw new Error('Método getProfile não implementado para FSBB');
+    const config = {
+      method: 'GET',
+      url: `${this.baseUrl}/api/users/profile`,
+      headers: {
+        'Authorization': `Bearer ${platformToken}`,
+        'User-Agent': this.userAgent,
+        'Accept': '*/*',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive',
+        'Origin': this.baseUrl,
+        'Referer': this.baseUrl
+      },
+      withCredentials: true
+    };
+
+    try {
+      const data = await this.makeRequest<UserProfile>(config);
+      return data;
+    } catch (error) {
+      console.error('Erro ao obter perfil da conta FSSB:', error);
+      throw new Error('Erro ao verificar perfil da conta');
+    }
+  }
+
+  /**
+   * Obter cookies de sessão atuais
+   */
+  getSessionCookies(): string {
+    return this.sessionCookies || this.savedCookies;
   }
 
   /**

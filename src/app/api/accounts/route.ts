@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { BiahostedPlatform } from '@/lib/platforms/BiahostedPlatform';
-import { FssbPlatform } from '@/lib/platforms/FssbPlatform';
+import { createPlatformInstance } from '@/lib/utils/platformFactory';
 import { AppDataSource } from '@/database/data-source';
 import { BetAccount } from '@/database/entities/BetAccount';
 import { verifyJWTToken } from '@/lib/auth/jwt';
@@ -159,7 +158,7 @@ export async function POST(request: NextRequest) {
 
       if (platform === 'biahosted') {
         // Plataforma BiaHosted (McGames, LotoGreen, etc.)
-        platformInstance = new BiahostedPlatform(site, siteUrl);
+        platformInstance = createPlatformInstance(platform, site, siteUrl);
         loginResult = await platformInstance.login({ email, password });
         
         if (!loginResult.access_token) {
@@ -179,7 +178,7 @@ export async function POST(request: NextRequest) {
 
       } else if (platform === 'fssb') {
         // Plataforma FSSB (Bet7K, PixBet, etc.)
-        platformInstance = new FssbPlatform(site, siteUrl);
+        platformInstance = createPlatformInstance(platform, site, siteUrl);
         loginResult = await platformInstance.login({ email, password });
         
         if (!loginResult.access_token) {

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { AppDataSource } from '@/database/data-source';
 import { BetAccount } from '@/database/entities/BetAccount';
-import { BiahostedPlatform } from '@/lib/platforms/BiahostedPlatform';
+import { getPlatformInstance } from '@/lib/utils/platformFactory';
 import { BetData, LoginCredentials } from '@/types';
 import { OddsStateResponse, OddsStatesApiResponse } from '@/services/biaHostedApi';
 
@@ -252,7 +252,7 @@ async function processBetForAccount(account: BetAccount, betData: BetData, stake
     console.log(`🎯 Processando aposta para ${account.site} (ID: ${account.id})`);
     
     // Criar instância da plataforma
-    const platform = new BiahostedPlatform(account.site, account.siteUrl);
+    const platform = getPlatformInstance(account);
     
     // Credenciais de login
     const credentials: LoginCredentials = {
@@ -264,20 +264,31 @@ async function processBetForAccount(account: BetAccount, betData: BetData, stake
     console.log(`🔐 Fazendo login em ${account.site}...`);
     const loginResult = await platform.login(credentials);
 
-    // 2. Gerar token de usuário
-    console.log(`🎫 Gerando token de usuário para ${account.site}...`);
-    const userToken = await platform.generateToken(loginResult.access_token, loginResult.access_token);
+    // 2. Tratar cada plataforma de forma específica
+    let userToken: { token: string; user_id: string };
+    let platformToken: { accessToken: string };
+    
+    if (account.platform.toLowerCase() === 'fssb') {
+      // Para FSSB, usar apenas o access_token (não tem generateToken nem signIn)
+      console.log(`🔧 Usando fluxo FSSB para ${account.site}...`);
+      userToken = { token: loginResult.access_token, user_id: 'temp' };
+      platformToken = { accessToken: loginResult.access_token };
+    } else {
+      // Para Biahosted, usar o fluxo completo
+      console.log(`🎫 Gerando token de usuário para ${account.site}...`);
+      userToken = await platform.generateToken(loginResult.access_token, loginResult.access_token);
 
-    console.log(userToken);
+      console.log(userToken);
 
-    // 3. Fazer sign in na plataforma
-    console.log(`🚪 Fazendo sign in na plataforma para ${account.site}...`);
-    const platformToken = await platform.signIn(userToken.token);
+      // 3. Fazer sign in na plataforma
+      console.log(`🚪 Fazendo sign in na plataforma para ${account.site}...`);
+      platformToken = await platform.signIn(userToken.token);
 
-    console.log(platformToken); //platformToken.accessToken
+      console.log(platformToken); //platformToken.accessToken
+    }
     
     // 4. Atualizar odds para cada integration
-    const integration = account.site.toLowerCase() === 'mcgames' ? 'mcgames2' : platform.getSiteInfo().integration;
+    const integration = account.site.toLowerCase() === 'mcgames' ? 'mcgames2' : account.site.toLowerCase();
     const oddsUpdated = await updateOddsInBetData(betData, integration);
     
     if (oddsUpdated) {

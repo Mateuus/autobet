@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyJWTToken } from '@/lib/auth/jwt';
-import { BiahostedPlatform } from '@/lib/platforms/BiahostedPlatform';
+import { getPlatformInstance } from '@/lib/utils/platformFactory';
+import { FssbPlatform } from '@/lib/platforms/FssbPlatform';
 import { AppDataSource } from '@/database/data-source';
 import { BetAccount } from '@/database/entities/BetAccount';
 
@@ -50,11 +51,37 @@ export async function POST(request: NextRequest) {
     // Atualizar todas as contas em paralelo
     const updatePromises = accounts.map(async (account: BetAccount) => {
       try {
-        const platform = new BiahostedPlatform(account.site, account.siteUrl);
+        const platform = getPlatformInstance(account);
         
-        // Para McGames e EstrelaBet, fazer login primeiro para obter cookies de sessão
-        if (account.site.toLowerCase() === 'mcgames' || account.site.toLowerCase() === 'estrelabet') {
-          console.log(`🍪 ${account.site} detectado - fazendo login para obter cookies de sessão`);
+        // Para plataforma Biahosted, tentar usar token existente primeiro
+        if (account.platform.toLowerCase() === 'biahosted') {          
+          // Primeiro, tentar usar o token existente se disponível
+          if (account.accessToken) {
+            try {
+              const balance = await platform.getBalance(account.accessToken);
+              
+              // Atualizar conta no banco
+              await betAccountRepository.update(account.id, {
+                balance: balance,
+                lastBalanceUpdate: new Date()
+              });
+
+              return {
+                id: account.id,
+                name: account.site,
+                success: true,
+                balance: balance,
+                message: `Token existente válido para ${account.site}`
+              };
+              
+            } catch {
+              console.log(`⚠️ Token expirado para ${account.site}, fazendo login...`);
+              // Token expirado, continuar para fazer login
+            }
+          }
+          
+          // Se chegou aqui, token não existe ou expirou - fazer login
+          console.log(`🍪 Fazendo login para obter novo token para ${account.site}...`);
           
           try {
             // Fazer login para obter cookies de sessão
@@ -67,19 +94,99 @@ export async function POST(request: NextRequest) {
               throw new Error(`Falha no login do ${account.site} - credenciais inválidas`);
             }
 
-            console.log(`✅ Login do ${account.site} realizado - cookies de sessão obtidos`);
+            console.log(`✅ Login do ${account.site} realizado - novo token obtido`);
             
             // Usar o access_token do login para buscar saldo
             const balance = await platform.getBalance(loginResult.access_token);
 
             console.log(`💰 Saldo obtido do ${account.site}: ${balance} centavos`);
 
-            // Atualizar conta no banco
-            await betAccountRepository.update(account.id, {
+            // Preparar dados para atualização
+            const updateData: Partial<BetAccount> = {
               accessToken: loginResult.access_token,
               balance: balance,
               lastBalanceUpdate: new Date(),
               lastTokenRefresh: new Date()
+            };
+            
+            // Salvar cookies de sessão se disponíveis (para FSSB)
+            if (account.platform.toLowerCase() === 'fssb' && platform instanceof FssbPlatform) {
+              const currentCookies = platform.getSessionCookies();
+              if (currentCookies) {
+                updateData.sessionCookies = currentCookies;
+              }
+            }
+            
+            // Atualizar conta no banco
+            await betAccountRepository.update(account.id, updateData);
+
+            return {
+              id: account.id,
+              name: account.site,
+              success: true,
+              balance: balance,
+              message: `Novo token obtido para ${account.site}`
+            };
+
+          } catch (loginError) {
+            console.error(`❌ Erro no login do ${account.site}:`, loginError);
+            throw new Error(`Erro no login do ${account.site}. Verifique as credenciais.`);
+          }
+        }
+
+        // Para plataforma FSSB, tentar usar token existente primeiro
+        if (account.platform.toLowerCase() === 'fssb') {          
+          // Primeiro, tentar usar o token existente se disponível
+          if (account.accessToken) {
+            try {
+              const balance = await platform.getBalance(account.accessToken);              
+              // Atualizar conta no banco
+              await betAccountRepository.update(account.id, {
+                balance: balance,
+                lastBalanceUpdate: new Date()
+              });
+
+              return {
+                id: account.id,
+                name: account.site,
+                success: true,
+                balance: balance,
+                message: `Token existente válido para ${account.site}`
+              };
+              
+            } catch {
+              console.log(`⚠️ Token expirado para ${account.site}, fazendo login...`);
+              // Token expirado, continuar para fazer login
+            }
+          }
+          
+          // Se chegou aqui, token não existe ou expirou - fazer login
+          console.log(`🍪 Fazendo login para obter novo token para ${account.site}...`);
+          
+          try {
+            // Fazer login para obter novo token
+            const loginResult = await platform.login({
+              email: account.email,
+              password: account.password
+            });
+
+            if (!loginResult.access_token) {
+              throw new Error('Falha no login - credenciais inválidas');
+            }
+
+            // Para FSSB, usar apenas o access_token (não tem generateToken)
+            const balance = await platform.getBalance(loginResult.access_token);
+
+            // Atualizar conta no banco (apenas accessToken para FSSB)
+            await betAccountRepository.update(account.id, {
+              accessToken: loginResult.access_token,
+              balance: balance,
+              lastBalanceUpdate: new Date(),
+              lastTokenRefresh: new Date(),
+              // Salvar cookies de sessão se disponíveis (para FSSB)
+              ...(account.platform.toLowerCase() === 'fssb' && platform instanceof FssbPlatform ? {
+                sessionCookies: platform.getSessionCookies()
+              } : {})
             });
 
             return {
@@ -87,48 +194,17 @@ export async function POST(request: NextRequest) {
               name: account.site,
               success: true,
               balance: balance,
-              message: `Login automático realizado para ${account.site}`
+              message: `Novo token obtido para ${account.site}`
             };
 
           } catch (loginError) {
-            console.error(`❌ Erro no login automático do ${account.site}:`, loginError);
-            throw new Error(`Erro no login automático do ${account.site}. Verifique as credenciais.`);
+            console.error(`❌ Erro no login do ${account.site}:`, loginError);
+            throw new Error(`Erro no login do ${account.site}. Verifique as credenciais.`);
           }
         }
 
-        // Para outros sites, usar o fluxo normal
-        // Fazer login para obter novo token
-        const loginResult = await platform.login({
-          email: account.email,
-          password: account.password
-        });
-
-        if (!loginResult.access_token) {
-          throw new Error('Falha no login - credenciais inválidas');
-        }
-
-        // Gerar novo token de usuário
-        const userToken = await platform.generateToken(loginResult.access_token, loginResult.access_token);
-
-        // Obter saldo atualizado
-        const balance = await platform.getBalance(loginResult.access_token);
-
-        // Atualizar conta no banco
-        await betAccountRepository.update(account.id, {
-          accessToken: loginResult.access_token,
-          userToken: userToken.token,
-          balance: balance,
-          lastBalanceUpdate: new Date(),
-          lastTokenRefresh: new Date()
-        });
-
-        return {
-          id: account.id,
-          name: account.site,
-          success: true,
-          balance: balance,
-          message: 'Conta atualizada com sucesso'
-        };
+        // Se chegou aqui, plataforma não reconhecida
+        throw new Error(`Plataforma não suportada: ${account.platform}`);
       } catch (error) {
         console.error(`Erro ao atualizar conta ${account.site}:`, error);
         return {

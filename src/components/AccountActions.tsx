@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { RefreshCw, DollarSign, User, Loader2, Power } from 'lucide-react';
+import { RefreshCw, DollarSign, User, Loader2, Power, Trash2 } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 
 interface AccountActionsProps {
@@ -12,9 +12,10 @@ interface AccountActionsProps {
   status?: string;
   onSuccess?: (message: string) => void;
   onError?: (error: string) => void;
+  onAccountDeleted?: () => void;
 }
 
-export function AccountActions({ accountId, site, platform, email, status, onSuccess, onError }: AccountActionsProps) {
+export function AccountActions({ accountId, site, platform, email, status, onSuccess, onError, onAccountDeleted }: AccountActionsProps) {
   const { token } = useAuth();
   const [isLoading, setIsLoading] = useState<string | null>(null);
 
@@ -36,6 +37,11 @@ export function AccountActions({ accountId, site, platform, email, status, onSuc
       if (response.ok && data.success) {
         const message = getSuccessMessage(action, data.data);
         onSuccess?.(message);
+        
+        // Se a ação foi de exclusão, chamar callback específico
+        if (action === 'delete_account') {
+          onAccountDeleted?.();
+        }
       } else {
         onError?.(data.error || 'Erro ao executar ação');
       }
@@ -58,6 +64,8 @@ export function AccountActions({ accountId, site, platform, email, status, onSuc
         return `Perfil obtido com sucesso para ${site}`;
       case 'toggle_status':
         return `${site} ${dataObj.isActive ? 'ativada' : 'desativada'} com sucesso`;
+      case 'delete_account':
+        return `Conta ${site} excluída com sucesso`;
       default:
         return 'Ação executada com sucesso';
     }
@@ -73,6 +81,8 @@ export function AccountActions({ accountId, site, platform, email, status, onSuc
         return 'Buscar Perfil';
       case 'toggle_status':
         return status === 'Ativo' ? 'Desativar' : 'Ativar';
+      case 'delete_account':
+        return 'Excluir';
       default:
         return 'Executar';
     }
@@ -88,6 +98,8 @@ export function AccountActions({ accountId, site, platform, email, status, onSuc
         return <User className="w-4 h-4 text-purple-600" />;
       case 'toggle_status':
         return <Power className="w-4 h-4 text-orange-600" />;
+      case 'delete_account':
+        return <Trash2 className="w-4 h-4 text-red-600" />;
       default:
         return null;
     }
@@ -101,6 +113,11 @@ export function AccountActions({ accountId, site, platform, email, status, onSuc
       id: 'toggle_status', 
       label: status === 'Ativo' ? 'Desativar Conta' : 'Ativar Conta', 
       description: status === 'Ativo' ? 'Desativa a conta para parar operações' : 'Ativa a conta para operações'
+    },
+    { 
+      id: 'delete_account', 
+      label: 'Excluir Conta', 
+      description: 'Remove permanentemente a conta do sistema'
     }
   ];
 
@@ -147,11 +164,13 @@ export function AccountActions({ accountId, site, platform, email, status, onSuc
               className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
                 isLoading === action.id
                   ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  : action.id === 'toggle_status'
-                    ? status === 'Ativo'
-                      ? 'bg-red-600 text-white hover:bg-red-700'
-                      : 'bg-green-600 text-white hover:bg-green-700'
-                    : 'bg-blue-600 text-white hover:bg-blue-700'
+                  : action.id === 'delete_account'
+                    ? 'bg-red-600 text-white hover:bg-red-700'
+                    : action.id === 'toggle_status'
+                      ? status === 'Ativo'
+                        ? 'bg-red-600 text-white hover:bg-red-700'
+                        : 'bg-green-600 text-white hover:bg-green-700'
+                      : 'bg-blue-600 text-white hover:bg-blue-700'
               }`}
             >
               {isLoading === action.id ? (
