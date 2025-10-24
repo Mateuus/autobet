@@ -528,7 +528,7 @@ export class FssbPlatform extends BasePlatform {
         comboSize: 0,
         isLive: event.IsLive,
         numberOfLines: 1,
-        maxStake: selection.Settings.MaxWin,
+        maxStake: selection.Settings.MaxWin / selection.TrueOdds,
         minStake: selection.Settings.MinBet,
         numberOfBets: 1,
         oddStyleID: "1",
