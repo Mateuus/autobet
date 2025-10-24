@@ -35,19 +35,38 @@ export class SiteAuthService {
       headers: {
         'Origin': this.baseUrl,
         'User-Agent': this.userAgent,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': '*/*',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive',
+        'Referer': this.baseUrl,
+        'Host': this.baseUrl.replace('https://', ''),
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache'
       },
       data,
       withCredentials: true,
       maxBodyLength: Infinity
     };
 
+    // Adicionar cookies existentes se disponíveis
+    if (this.sessionCookies) {
+      config.headers!['Cookie'] = this.sessionCookies;
+    }
+
     try {
       const response = await axios.request(config);
       
       // Capturar cookies de sessão
       if (response.headers['set-cookie']) {
-        this.sessionCookies = response.headers['set-cookie'].join('; ');
+        const newCookies = response.headers['set-cookie'].join('; ');
+        console.log(`🍪 Cookies capturados no login:`, response.headers['set-cookie']);
+        console.log(`🍪 Total de cookies: ${response.headers['set-cookie'].length}`);
+        // Combinar cookies existentes com novos cookies
+        this.sessionCookies = this.sessionCookies ? 
+          `${this.sessionCookies}; ${newCookies}` : 
+          newCookies;
+        console.log(`🍪 Cookies finais salvos: ${this.sessionCookies.substring(0, 200)}...`);
       }
       
       return response.data;
@@ -76,7 +95,9 @@ export class SiteAuthService {
         'Origin': this.baseUrl,
         'Referer': this.baseUrl,
         'Content-Type': 'application/json',
-        'Host': this.baseUrl.replace('https://', '')
+        'Host': this.baseUrl.replace('https://', ''),
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache'
       },
       withCredentials: true
     };
@@ -84,6 +105,8 @@ export class SiteAuthService {
           // Adicionar cookies se disponíveis
           if (this.sessionCookies) {
             config.headers!['Cookie'] = this.sessionCookies;
+            console.log(`🍪 Usando cookies no getBalance: ${this.sessionCookies.split(';').length} cookies`);
+            console.log(`🍪 Primeiros cookies: ${this.sessionCookies.substring(0, 200)}...`);
           }
 
     try {
@@ -91,7 +114,11 @@ export class SiteAuthService {
       
       // Capturar cookies de sessão se houver
       if (response.headers['set-cookie']) {
-        this.sessionCookies = response.headers['set-cookie'].join('; ');
+        const newCookies = response.headers['set-cookie'].join('; ');
+        // Combinar cookies existentes com novos cookies
+        this.sessionCookies = this.sessionCookies ? 
+          `${this.sessionCookies}; ${newCookies}` : 
+          newCookies;
       }
       
       const data = response.data as { credit: number };
