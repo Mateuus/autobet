@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { AppDataSource } from '@/database/data-source';
 import { BetAccount } from '@/database/entities/BetAccount';
 import { BasePlatform } from '@/lib/platforms/BasePlatform';
-import { FssbPlatform } from '@/lib/platforms/FssbPlatform';
 import { getPlatformInstance } from '@/lib/utils/platformFactory';
 import { SiteAuthService } from '@/services/siteAuth';
 import { Repository } from 'typeorm';
@@ -51,7 +50,7 @@ export async function POST(
 
     // Detectar plataforma baseada no site
     const platform = getPlatformInstance(account);
-    const siteAuth = new SiteAuthService(account.siteUrl, account.sessionCookies);
+    const siteAuth = new SiteAuthService(account.siteUrl, account, betAccountRepository, account.sessionCookies);
 
     switch (action) {
       case 'refresh_tokens':
@@ -89,29 +88,74 @@ async function refreshTokens(
   repository: Repository<BetAccount>
 ) {
   try {
+    // Para plataforma Biahosted, usar métodos da própria plataforma
+    if (account.platform.toLowerCase() === 'biahosted') {
+      // Fazer login usando a plataforma Biahosted
+      const loginResult = await platform.login({ 
+        email: account.email, 
+        password: account.password 
+      });
 
-    // Fazer login na base do site para obter novos tokens
-    const loginResult = await siteAuth.login({ 
-      email: account.email, 
-      password: account.password 
-    });
+      if (!loginResult.access_token) {
+        return NextResponse.json({ 
+          error: 'Falha no login - credenciais inválidas' 
+        }, { status: 400 });
+      }
 
-    if (!loginResult.access_token) {
-      return NextResponse.json({ 
-        error: 'Falha no login - credenciais inválidas' 
-      }, { status: 400 });
+      // Gerar token de usuário
+      const userToken = await platform.generateToken(
+        loginResult.access_token, 
+        loginResult.access_token
+      );
+
+      // Fazer sign in para obter platform token
+      const platformToken = await platform.signIn(userToken.token);
+
+      // Preparar dados para atualização
+      const updateData: Partial<BetAccount> = {
+        accessToken: loginResult.access_token,
+        userToken: userToken.token,
+        platformToken: platformToken.accessToken,
+        userId: userToken.user_id,
+        lastTokenRefresh: new Date()
+      };
+
+      // Atualizar no banco usando save para evitar locks
+      Object.assign(account, updateData);
+      
+      // Adicionar timeout para evitar travamentos
+      const savePromise = repository.save(account);
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Timeout na operação de banco')), 10000)
+      );
+      
+      await Promise.race([savePromise, timeoutPromise]);
+
+      return NextResponse.json({
+        success: true,
+        data: {
+          message: 'Tokens renovados com sucesso',
+          accountId: account.id,
+          site: account.site,
+          lastTokenRefresh: account.lastTokenRefresh
+        }
+      });
     }
 
-    // Preparar dados para atualização
-    const updateData: Partial<BetAccount> = {
-      lastTokenRefresh: new Date()
-    };
+    // Para plataforma FSSB, usar SiteAuthService
+    if (account.platform.toLowerCase() === 'fssb') {
+      // Fazer login na base do site (já salva accessToken automaticamente)
+      const loginResult = await siteAuth.login({ 
+        email: account.email, 
+        password: account.password 
+      });
 
-    // Para plataformas FSSB, usar o fluxo completo com launch + signIn
-    if (platform instanceof FssbPlatform) {
-      // Atualizar access token para FSSB
-      updateData.accessToken = loginResult.access_token;
-      
+      if (!loginResult.access_token) {
+        return NextResponse.json({ 
+          error: 'Falha no login - credenciais inválidas' 
+        }, { status: 400 });
+      }
+
       // Fazer launch para obter URL da plataforma
       const launchResponse = await siteAuth.launch(loginResult.access_token, account.site);
       
@@ -122,51 +166,24 @@ async function refreshTokens(
       // Fazer signIn para capturar cookies da plataforma
       const platformToken = await platform.signIn(launchResponse.url);
       
-      // Salvar cookies da plataforma no platformToken
-      updateData.platformToken = platformToken.accessToken;
-      
-      // Salvar cookies de sessão do site
-      const currentCookies = siteAuth.getSessionCookies();
-      if (currentCookies) {
-        updateData.sessionCookies = currentCookies;
-      }
-    } else {
-      // Para plataformas Biahosted, usar o fluxo completo
-      const userToken = await platform.generateToken(
-        loginResult.access_token, 
-        loginResult.access_token
-      );
+      // Atualizar apenas platformToken no banco
+      account.platformToken = platformToken.accessToken;
+      await repository.save(account);
 
-      // Fazer sign in para obter platform token
-      const platformToken = await platform.signIn(userToken.token);
-
-      // Atualizar tokens no banco
-      updateData.accessToken = loginResult.access_token;
-      updateData.userToken = userToken.token;
-      updateData.platformToken = platformToken.accessToken;
-      updateData.userId = userToken.user_id;
+      return NextResponse.json({
+        success: true,
+        data: {
+          message: 'Tokens renovados com sucesso',
+          accountId: account.id,
+          site: account.site,
+          lastTokenRefresh: account.lastTokenRefresh
+        }
+      });
     }
 
-    // Atualizar no banco usando save para evitar locks
-    Object.assign(account, updateData);
-    
-    // Adicionar timeout para evitar travamentos
-    const savePromise = repository.save(account);
-    const timeoutPromise = new Promise((_, reject) => 
-      setTimeout(() => reject(new Error('Timeout na operação de banco')), 10000)
-    );
-    
-    await Promise.race([savePromise, timeoutPromise]);
-
-    return NextResponse.json({
-      success: true,
-      data: {
-        message: 'Tokens renovados com sucesso',
-        accountId: account.id,
-        site: account.site,
-        lastTokenRefresh: account.lastTokenRefresh
-      }
-    });
+    return NextResponse.json({ 
+      error: 'Plataforma não reconhecida' 
+    }, { status: 400 });
 
   } catch (error) {
     console.error(`Erro ao renovar tokens para ${account.site}:`, error);

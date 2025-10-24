@@ -1,5 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { LoginCredentials, AccessToken, UserProfile } from '@/types';
+import { BetAccount } from '@/database/entities/BetAccount';
+import { Repository } from 'typeorm';
 
 /**
  * Serviço para autenticação e operações na base do site
@@ -9,12 +11,15 @@ export class SiteAuthService {
   private baseUrl: string;
   private userAgent: string;
   private sessionCookies: string = '';
+  private account: BetAccount;
+  private repository: Repository<BetAccount>;
 
-  constructor(baseUrl: string, savedCookies?: string) {
+  constructor(baseUrl: string, account: BetAccount, repository: Repository<BetAccount>, savedCookies?: string) {
     this.baseUrl = baseUrl;
+    this.account = account;
+    this.repository = repository;
     this.userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36';
     this.sessionCookies = savedCookies || '';
-    
   }
 
   /**
@@ -35,14 +40,7 @@ export class SiteAuthService {
       headers: {
         'Origin': this.baseUrl,
         'User-Agent': this.userAgent,
-        'Content-Type': 'application/json',
-        'Accept': '*/*',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Connection': 'keep-alive',
-        'Referer': this.baseUrl,
-        'Host': this.baseUrl.replace('https://', ''),
-        'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache'
+        'Content-Type': 'application/json'
       },
       data,
       withCredentials: true,
@@ -51,7 +49,7 @@ export class SiteAuthService {
 
     // Adicionar cookies existentes se disponíveis
     if (this.sessionCookies) {
-      config.headers!['Cookie'] = this.sessionCookies;
+      //config.headers!['Cookie'] = this.sessionCookies;
     }
 
     try {
@@ -60,16 +58,47 @@ export class SiteAuthService {
       // Capturar cookies de sessão
       if (response.headers['set-cookie']) {
         const newCookies = response.headers['set-cookie'].join('; ');
-        console.log(`🍪 Cookies capturados no login:`, response.headers['set-cookie']);
-        console.log(`🍪 Total de cookies: ${response.headers['set-cookie'].length}`);
-        // Combinar cookies existentes com novos cookies
-        this.sessionCookies = this.sessionCookies ? 
-          `${this.sessionCookies}; ${newCookies}` : 
-          newCookies;
-        console.log(`🍪 Cookies finais salvos: ${this.sessionCookies.substring(0, 200)}...`);
+        console.log(`🍪 Login capturou ${response.headers['set-cookie'].length} cookies`);
+        console.log(`🍪 Cookies antes: ${this.sessionCookies ? this.sessionCookies.split(';').length : 0} cookies`);
+        
+        // Usar apenas os novos cookies (não combinar para evitar duplicação)
+        this.sessionCookies = newCookies;
+        
+        console.log(`🍪 Total de cookies após login: ${this.sessionCookies.split(';').length}`);
+        console.log(`🍪 Primeiros cookies do login: ${this.sessionCookies.substring(0, 200)}...`);
+      } else {
+        console.log(`⚠️ Login não capturou cookies`);
       }
       
-      return response.data;
+      const loginData = response.data as AccessToken;
+      
+      // Salvar accessToken no banco de dados
+      if (loginData.access_token) {
+        this.account.accessToken = loginData.access_token;
+        this.account.lastTokenRefresh = new Date();
+        
+        // Salvar cookies de sessão se disponíveis
+        if (this.sessionCookies) {
+          this.account.sessionCookies = this.sessionCookies;
+        }
+        
+        // Atualizar no banco usando save para evitar locks
+        Object.assign(this.account, {
+          accessToken: loginData.access_token,
+          lastTokenRefresh: new Date(),
+          sessionCookies: this.sessionCookies
+        });
+        
+        // Adicionar timeout para evitar travamentos
+        const savePromise = this.repository.save(this.account);
+        const timeoutPromise = new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Timeout na operação de banco')), 10000)
+        );
+        
+        await Promise.race([savePromise, timeoutPromise]);
+      }
+      
+      return loginData;
     } catch (error) {
       console.error('Erro no login do site:', error);
       throw new Error('Erro no login do site');
@@ -105,8 +134,6 @@ export class SiteAuthService {
           // Adicionar cookies se disponíveis
           if (this.sessionCookies) {
             config.headers!['Cookie'] = this.sessionCookies;
-            console.log(`🍪 Usando cookies no getBalance: ${this.sessionCookies.split(';').length} cookies`);
-            console.log(`🍪 Primeiros cookies: ${this.sessionCookies.substring(0, 200)}...`);
           }
 
     try {
@@ -115,10 +142,8 @@ export class SiteAuthService {
       // Capturar cookies de sessão se houver
       if (response.headers['set-cookie']) {
         const newCookies = response.headers['set-cookie'].join('; ');
-        // Combinar cookies existentes com novos cookies
-        this.sessionCookies = this.sessionCookies ? 
-          `${this.sessionCookies}; ${newCookies}` : 
-          newCookies;
+        // Usar apenas os novos cookies (não combinar para evitar duplicação)
+        this.sessionCookies = newCookies;
       }
       
       const data = response.data as { credit: number };
@@ -228,14 +253,23 @@ export class SiteAuthService {
         'Sec-GPC': '1',
         'Tenant': siteName,
         'User-Agent': this.userAgent,
-        'Version': 'vz3b-deploy-48a5c65ee07315239ff9b8c502af29d4ae44c5ff-531f751d32a6cfcb460e'
+        'Version': 'vz3b-deploy-48a5c65ee07315239ff9b8c502af29d4ae44c5ff-531f751d32a6cfcb460e',
+        'Origin': this.baseUrl,
+        'Host': this.baseUrl.replace('https://', ''),
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache'
       },
       withCredentials: true
     };
 
-    // Adicionar cookies se disponíveis
+    // Adicionar cookies de sessão se disponíveis
     if (this.sessionCookies) {
       config.headers!['Cookie'] = this.sessionCookies;
+      console.log(`🍪 Launch usando cookies: ${this.sessionCookies.split(';').length} cookies`);
+      console.log(`🔑 Launch usando token: ${userToken.substring(0, 50)}...`);
+      console.log(`🍪 Primeiros cookies: ${this.sessionCookies.substring(0, 200)}...`);
+    } else {
+      console.log(`⚠️ Launch sem cookies disponíveis`);
     }
 
     try {
