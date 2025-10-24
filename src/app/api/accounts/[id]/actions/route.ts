@@ -4,6 +4,7 @@ import { BetAccount } from '@/database/entities/BetAccount';
 import { BasePlatform } from '@/lib/platforms/BasePlatform';
 import { FssbPlatform } from '@/lib/platforms/FssbPlatform';
 import { getPlatformInstance } from '@/lib/utils/platformFactory';
+import { SiteAuthService } from '@/services/siteAuth';
 import { Repository } from 'typeorm';
 import { verifyJWTToken } from '@/lib/auth/jwt';
 
@@ -50,13 +51,14 @@ export async function POST(
 
     // Detectar plataforma baseada no site
     const platform = getPlatformInstance(account);
+    const siteAuth = new SiteAuthService(account.siteUrl, account.sessionCookies);
 
     switch (action) {
       case 'refresh_tokens':
-        return await refreshTokens(account, platform, betAccountRepository);
+        return await refreshTokens(account, platform, siteAuth, betAccountRepository);
       
       case 'get_balance':
-        return await getBalance(account, platform, betAccountRepository);
+        return await getBalance(account, platform, siteAuth, betAccountRepository);
       
       case 'get_profile':
         return await getProfile(account, platform);
@@ -82,14 +84,14 @@ export async function POST(
 // Função para renovar tokens
 async function refreshTokens(
   account: BetAccount, 
-  platform: BasePlatform, 
+  platform: BasePlatform,
+  siteAuth: SiteAuthService,
   repository: Repository<BetAccount>
 ) {
   try {
-    console.log(`🔄 Renovando tokens para conta ${account.id} (${account.site})`);
 
-    // Fazer login novamente para obter novos tokens
-    const loginResult = await platform.login({ 
+    // Fazer login na base do site para obter novos tokens
+    const loginResult = await siteAuth.login({ 
       email: account.email, 
       password: account.password 
     });
@@ -105,13 +107,26 @@ async function refreshTokens(
       lastTokenRefresh: new Date()
     };
 
-    // Para plataformas FSSB, usar apenas o access_token
+    // Para plataformas FSSB, usar o fluxo completo com launch + signIn
     if (platform instanceof FssbPlatform) {
-      // Atualizar apenas o access token para FSSB
+      // Atualizar access token para FSSB
       updateData.accessToken = loginResult.access_token;
       
-      // Salvar cookies de sessão para FSSB
-      const currentCookies = platform.getSessionCookies();
+      // Fazer launch para obter URL da plataforma
+      const launchResponse = await siteAuth.launch(loginResult.access_token, account.site);
+      
+      if (!launchResponse.success) {
+        throw new Error('Falha no launch da plataforma');
+      }
+      
+      // Fazer signIn para capturar cookies da plataforma
+      const platformToken = await platform.signIn(launchResponse.url);
+      
+      // Salvar cookies da plataforma no platformToken
+      updateData.platformToken = platformToken.accessToken;
+      
+      // Salvar cookies de sessão do site
+      const currentCookies = siteAuth.getSessionCookies();
       if (currentCookies) {
         updateData.sessionCookies = currentCookies;
       }
@@ -122,12 +137,8 @@ async function refreshTokens(
         loginResult.access_token
       );
 
-      console.log(userToken);
-
       // Fazer sign in para obter platform token
       const platformToken = await platform.signIn(userToken.token);
-
-      console.log(platformToken); //platformToken.accessToken
 
       // Atualizar tokens no banco
       updateData.accessToken = loginResult.access_token;
@@ -136,10 +147,16 @@ async function refreshTokens(
       updateData.userId = userToken.user_id;
     }
 
-    // Atualizar no banco usando update
-    await repository.update(account.id, updateData);
-
-    console.log(`✅ Tokens renovados com sucesso para ${account.site}`);
+    // Atualizar no banco usando save para evitar locks
+    Object.assign(account, updateData);
+    
+    // Adicionar timeout para evitar travamentos
+    const savePromise = repository.save(account);
+    const timeoutPromise = new Promise((_, reject) => 
+      setTimeout(() => reject(new Error('Timeout na operação de banco')), 10000)
+    );
+    
+    await Promise.race([savePromise, timeoutPromise]);
 
     return NextResponse.json({
       success: true,
@@ -152,7 +169,7 @@ async function refreshTokens(
     });
 
   } catch (error) {
-    console.error(`❌ Erro ao renovar tokens para ${account.site}:`, error);
+    console.error(`Erro ao renovar tokens para ${account.site}:`, error);
     return NextResponse.json({ 
       error: 'Erro ao renovar tokens. Verifique as credenciais.' 
     }, { status: 400 });
@@ -162,7 +179,8 @@ async function refreshTokens(
 // Função para buscar saldo
 async function getBalance(
   account: BetAccount, 
-  platform: BasePlatform, 
+  platform: BasePlatform,
+  siteAuth: SiteAuthService,
   repository: Repository<BetAccount>
 ) {
   try {    
@@ -172,7 +190,12 @@ async function getBalance(
       // Primeiro, tentar usar o token existente se disponível
       if (account.accessToken) {
         try {
-          const balance = await platform.getBalance(account.accessToken);
+          // Carregar cookies de sessão se disponíveis
+          if (account.sessionCookies) {
+            siteAuth.setSessionCookies(account.sessionCookies);
+          }
+          
+          const balance = await siteAuth.getBalance(account.accessToken);
           
           // Atualizar saldo no banco (valor já vem em centavos da API)
           account.balance = balance;
@@ -191,17 +214,15 @@ async function getBalance(
           });
           
         } catch {
-          console.log(`⚠️ Token expirado para ${account.site}, fazendo login...`);
           // Token expirado, continuar para fazer login
         }
       }
       
       // Se chegou aqui, token não existe ou expirou - fazer login
-      console.log(`🍪 Fazendo login para obter novo token para ${account.site}...`);
       
       try {
         // Fazer login para obter cookies de sessão
-        const loginResult = await platform.login({ 
+        const loginResult = await siteAuth.login({ 
           email: account.email, 
           password: account.password 
         });
@@ -212,12 +233,8 @@ async function getBalance(
           }, { status: 400 });
         }
 
-        console.log(`✅ Login do ${account.site} realizado - novo token obtido`);
-        
         // Usar o access_token do login para buscar saldo
-        const balance = await platform.getBalance(loginResult.access_token);
-
-        console.log(`💰 Saldo obtido do ${account.site}: ${balance} centavos`);
+        const balance = await siteAuth.getBalance(loginResult.access_token);
 
         // Preparar dados para atualização
         const updateData: Partial<BetAccount> = {
@@ -225,19 +242,22 @@ async function getBalance(
           lastBalanceUpdate: new Date()
         };
         
-        // Salvar cookies de sessão se disponíveis (para FSSB)
-        if (account.platform.toLowerCase() === 'fssb' && platform instanceof FssbPlatform) {
-          const currentCookies = platform.getSessionCookies();
-          if (currentCookies) {
-            updateData.sessionCookies = currentCookies;
-            console.log(`🍪 Cookies salvos para ${account.site}: ${currentCookies.substring(0, 50)}...`);
-          }
+        // Salvar cookies de sessão do site
+        const currentCookies = siteAuth.getSessionCookies();
+        if (currentCookies) {
+          updateData.sessionCookies = currentCookies;
         }
         
-        // Atualizar no banco usando update
-        await repository.update(account.id, updateData);
-
-        console.log(`✅ Saldo atualizado: R$ ${(balance / 100).toFixed(2)} para ${account.site}`);
+        // Atualizar no banco usando save para evitar locks
+        Object.assign(account, updateData);
+        
+        // Adicionar timeout para evitar travamentos
+        const savePromise = repository.save(account);
+        const timeoutPromise = new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Timeout na operação de banco')), 10000)
+        );
+        
+        await Promise.race([savePromise, timeoutPromise]);
 
         return NextResponse.json({
           success: true,
@@ -251,9 +271,9 @@ async function getBalance(
         });
 
       } catch (loginError) {
-        console.error(`❌ Erro no login do ${account.site}:`, loginError);
+        console.error(`Erro no login do ${account.site}:`, loginError);
         return NextResponse.json({ 
-          error: `Erro no login do ${account.site}. Verifique as credenciais.` 
+          error: `Erro ao conectar com ${account.site}. Verifique as credenciais.` 
         }, { status: 400 });
       }
     }
@@ -261,38 +281,49 @@ async function getBalance(
     // Para plataforma FSSB, tentar usar token existente primeiro
     if (account.platform.toLowerCase() === 'fssb') {
       // Primeiro, tentar usar o token existente se disponível
-      if (account.accessToken) {
-        try {
-          const balance = await platform.getBalance(account.accessToken);
-          
-          // Atualizar saldo no banco (valor já vem em centavos da API)
-          account.balance = balance;
-          account.lastBalanceUpdate = new Date();
-          await repository.save(account);
-
-          return NextResponse.json({
-            success: true,
-            data: {
-              accountId: account.id,
-              site: account.site,
-              balance: balance / 100, // Converter centavos para reais
-              lastBalanceUpdate: account.lastBalanceUpdate,
-              message: `Token existente válido para ${account.site}`
+      if (account.accessToken && account.sessionCookies) {
+        // Verificar se o token não é muito antigo (mais de 1 hora)
+        const tokenAge = account.lastTokenRefresh ? 
+          (Date.now() - new Date(account.lastTokenRefresh).getTime()) / (1000 * 60 * 60) : 999;
+        
+        if (tokenAge < 1) {
+          try {
+            // Carregar cookies de sessão do site
+            if (account.sessionCookies) {
+              siteAuth.setSessionCookies(account.sessionCookies);
             }
-          });
-          
-        } catch {
-          console.log(`⚠️ Token expirado para ${account.site}, fazendo login...`);
-          // Token expirado, continuar para fazer login
+            
+            const balance = await siteAuth.getBalance(account.accessToken);
+            
+            // Atualizar saldo no banco (valor já vem em centavos da API)
+            account.balance = balance;
+            account.lastBalanceUpdate = new Date();
+            await repository.save(account);
+
+            return NextResponse.json({
+              success: true,
+              data: {
+                accountId: account.id,
+                site: account.site,
+                balance: balance / 100, // Converter centavos para reais
+                lastBalanceUpdate: account.lastBalanceUpdate,
+                message: `Token existente válido para ${account.site}`
+              }
+            });
+            
+              } catch {
+                // Token expirado, continuar para fazer login
+          }
+        } else {
+          // Token muito antigo, continuar para fazer login
         }
       }
       
       // Se chegou aqui, token não existe ou expirou - fazer login
-      console.log(`🍪 Fazendo login para obter novo token para ${account.site}...`);
       
       try {
         // Fazer login para obter novo token
-        const loginResult = await platform.login({
+        const loginResult = await siteAuth.login({
           email: account.email,
           password: account.password
         });
@@ -304,14 +335,31 @@ async function getBalance(
         }
 
         // Para FSSB, usar apenas o access_token (não tem generateToken)
-        const balance = await platform.getBalance(loginResult.access_token);
+        const balance = await siteAuth.getBalance(loginResult.access_token);
 
-        // Atualizar saldo no banco (valor já vem em centavos da API)
-        account.balance = balance;
-        account.lastBalanceUpdate = new Date();
-        await repository.save(account);
+        // Preparar dados para atualização
+        const updateData: Partial<BetAccount> = {
+          balance: balance,
+          lastBalanceUpdate: new Date(),
+          accessToken: loginResult.access_token
+        };
 
-        console.log(`✅ Saldo atualizado: R$ ${(balance / 100).toFixed(2)} para ${account.site}`);
+        // Salvar cookies de sessão do login
+        const currentCookies = siteAuth.getSessionCookies();
+        if (currentCookies) {
+          updateData.sessionCookies = currentCookies;
+        }
+
+        // Atualizar no banco usando save para evitar locks
+        Object.assign(account, updateData);
+        
+        // Adicionar timeout para evitar travamentos
+        const savePromise = repository.save(account);
+        const timeoutPromise = new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Timeout na operação de banco')), 10000)
+        );
+        
+        await Promise.race([savePromise, timeoutPromise]);
 
         return NextResponse.json({
           success: true,
@@ -325,15 +373,15 @@ async function getBalance(
         });
 
       } catch (loginError) {
-        console.error(`❌ Erro no login do ${account.site}:`, loginError);
+        console.error(`Erro no login do ${account.site}:`, loginError);
         return NextResponse.json({ 
-          error: `Erro no login do ${account.site}. Verifique as credenciais.` 
+          error: `Erro ao conectar com ${account.site}. Verifique as credenciais.` 
         }, { status: 400 });
       }
     }
 
   } catch (error) {
-    console.error(`❌ Erro ao buscar saldo para ${account.site}:`, error);
+    console.error(`Erro ao buscar saldo para ${account.site}:`, error);
     
     // Se erro 401, sugerir renovação de tokens
     if (error instanceof Error && error.message.includes('401')) {
@@ -352,8 +400,6 @@ async function getBalance(
 // Função para buscar perfil completo
 async function getProfile(account: BetAccount, platform: BasePlatform) {
   try {
-    console.log(`👤 Buscando perfil para conta ${account.id} (${account.site})`);
-
     // Verificar se tem token válido
     if (!account.accessToken) {
       return NextResponse.json({ 
@@ -363,8 +409,6 @@ async function getProfile(account: BetAccount, platform: BasePlatform) {
 
     // Buscar perfil usando o accessToken do login
     const profile = await platform.getProfile(account.accessToken);
-
-    console.log(`✅ Perfil obtido para ${account.site}`);
 
     return NextResponse.json({
       success: true,
@@ -376,7 +420,7 @@ async function getProfile(account: BetAccount, platform: BasePlatform) {
     });
 
   } catch (error) {
-    console.error(`❌ Erro ao buscar perfil para ${account.site}:`, error);
+    console.error(`Erro ao buscar perfil para ${account.site}:`, error);
     
     // Se erro 401, sugerir renovação de tokens
     if (error instanceof Error && error.message.includes('401')) {
@@ -398,8 +442,6 @@ async function toggleAccountStatus(
   repository: Repository<BetAccount>
 ) {
   try {
-    console.log(`🔄 Alternando status da conta ${account.id} (${account.site})`);
-    
     // Alternar o status atual
     const newStatus = !account.isActive;
     
@@ -408,7 +450,6 @@ async function toggleAccountStatus(
     await repository.save(account);
 
     const statusText = newStatus ? 'ativada' : 'desativada';
-    console.log(`✅ Conta ${account.site} ${statusText} com sucesso`);
 
     return NextResponse.json({
       success: true,
@@ -422,7 +463,7 @@ async function toggleAccountStatus(
     });
 
   } catch (error) {
-    console.error(`❌ Erro ao alternar status da conta ${account.site}:`, error);
+    console.error(`Erro ao alternar status da conta ${account.site}:`, error);
     return NextResponse.json({ 
       error: 'Erro ao alterar status da conta' 
     }, { status: 400 });
@@ -435,12 +476,8 @@ async function deleteAccount(
   repository: Repository<BetAccount>
 ) {
   try {
-    console.log(`🗑️ Excluindo conta ${account.id} (${account.site})`);
-    
     // Excluir a conta do banco
     await repository.remove(account);
-
-    console.log(`✅ Conta ${account.site} excluída com sucesso`);
 
     return NextResponse.json({
       success: true,
@@ -453,7 +490,7 @@ async function deleteAccount(
     });
 
   } catch (error) {
-    console.error(`❌ Erro ao excluir conta ${account.site}:`, error);
+    console.error(`Erro ao excluir conta ${account.site}:`, error);
     return NextResponse.json({ 
       error: 'Erro ao excluir conta' 
     }, { status: 400 });

@@ -1,6 +1,6 @@
 import { BasePlatform } from './BasePlatform';
-import { LoginCredentials, AccessToken, UserToken, PlatformToken, BetData, BetResult, UserProfile } from '@/types';
-import { AxiosRequestConfig } from 'axios';
+import { UserToken, PlatformToken, BetData, BetResult, UserProfile } from '@/types';
+import axios, { AxiosRequestConfig } from 'axios';
 import { appendFileSync } from 'fs';
 import { join } from 'path';
 
@@ -203,33 +203,10 @@ export class FssbPlatform extends BasePlatform {
   }
 
   /**
-   * Etapa 1: Login na plataforma FSBB
+   * Login é feito na base do site, não na plataforma FSSB
    */
-  async login(credentials: LoginCredentials): Promise<AccessToken> {
-    const data = {
-      login: credentials.email,
-      email: credentials.email,
-      password: credentials.password,
-      app_source: 'web',
-      captcha_token: ''
-    };
-
-    const config = {
-      method: 'post',
-      url: `${this.baseUrl}/api/auth/login`,
-      headers: {
-        'Origin': this.baseUrl,
-        'User-Agent': this.userAgent,
-        'Content-Type': 'application/json'
-      },
-      data,
-      withCredentials: true,
-      maxBodyLength: Infinity
-    };
-
-    const result = await this.makeRequest<AccessToken>(config);
-    
-    return result;
+  async login(): Promise<never> {
+    throw new Error('Login deve ser feito através do SiteAuthService');
   }
 
   /**
@@ -241,11 +218,84 @@ export class FssbPlatform extends BasePlatform {
   }
 
   /**
-   * Etapa 3: SignIn na plataforma de apostas
+   * SignIn na plataforma de apostas (capturar cookies do link)
    */
-  async signIn(userToken: string): Promise<PlatformToken> {
-    // TODO: Implementar signIn específico do FSBB
-    throw new Error('Método signIn não implementado para FSBB');
+  async signIn(platformUrl: string): Promise<PlatformToken> {
+    try {
+      console.log(`🍪 Capturando cookies da plataforma: ${platformUrl}`);
+
+      // Fazer GET na URL da plataforma para capturar cookies
+      const platformCookies = await this.getPlatformCookies(platformUrl);
+
+      console.log(`✅ Cookies da plataforma capturados: ${platformCookies ? 'Sim' : 'Não'}`);
+
+      // Retornar o token da plataforma (cookies capturados)
+      return {
+        accessToken: platformCookies || platformUrl, // Fallback para URL se não conseguir cookies
+        currency: 'BRL',
+        isUserLocked: false,
+        isAgency: false,
+        currencySign: 'R$',
+        currencyId: 1,
+        currencyDisplay: 2,
+        encryptedPlayerId: '',
+        regDate: new Date().toISOString()
+      };
+
+    } catch (error) {
+      console.error('Erro ao capturar cookies da plataforma FSSB:', error);
+      throw new Error('Erro ao capturar cookies da plataforma');
+    }
+  }
+
+  /**
+   * Função específica para capturar cookies da URL da plataforma FSSB
+   */
+  private async getPlatformCookies(platformUrl: string): Promise<string | null> {
+    try {
+      console.log(`🍪 Capturando cookies da plataforma: ${platformUrl}`);
+
+      const response = await axios.get(platformUrl, {
+        headers: {
+          'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+          'Accept-Encoding': 'gzip, deflate, br, zstd',
+          'Accept-Language': 'pt-BR,pt;q=0.9,en;q=0.8',
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache',
+          'Sec-CH-UA': '"Brave";v="141", "Not?A_Brand";v="8", "Chromium";v="141"',
+          'Sec-CH-UA-Mobile': '?0',
+          'Sec-CH-UA-Platform': '"Windows"',
+          'Sec-Fetch-Dest': 'document',
+          'Sec-Fetch-Mode': 'navigate',
+          'Sec-Fetch-Site': 'cross-site',
+          'Sec-Fetch-User': '?1',
+          'Sec-GPC': '1',
+          'Upgrade-Insecure-Requests': '1',
+          'User-Agent': this.userAgent
+        },
+        maxRedirects: 5,
+        timeout: 10000
+      });
+
+      // Capturar cookies do header Set-Cookie
+      const setCookieHeaders = response.headers['set-cookie'];
+      if (setCookieHeaders && setCookieHeaders.length > 0) {
+        const cookies = setCookieHeaders.join('; ');
+        console.log(`✅ Cookies capturados com sucesso: ${cookies.substring(0, 100)}...`);
+        
+        // Salvar cookies na instância
+        this.sessionCookies = cookies;
+        
+        return cookies;
+      }
+
+      console.log('⚠️ Nenhum cookie encontrado na resposta');
+      return null;
+
+    } catch (error) {
+      console.error('Erro ao capturar cookies da plataforma:', error);
+      return null;
+    }
   }
 
   /**
@@ -257,42 +307,10 @@ export class FssbPlatform extends BasePlatform {
   }
 
   /**
-   * Verificar saldo da conta
+   * GetBalance é feito na base do site, não na plataforma FSSB
    */
-  async getBalance(platformToken: string): Promise<number> {
-    const config = {
-      method: 'GET',
-      url: `${this.baseUrl}/api/users/wallet?withCurrentUser=true`,
-      headers: {
-        'Authorization': `Bearer ${platformToken}`,
-        'User-Agent': this.userAgent,
-        'Accept': '*/*',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Connection': 'keep-alive',
-        'Origin': this.baseUrl,
-        'Referer': this.baseUrl,
-        'Content-Type': 'application/json'
-      },
-      withCredentials: true
-    };
-
-    // Adicionar cookies se disponíveis
-    if (this.sessionCookies) {
-      (config.headers as Record<string, string>)['Cookie'] = this.sessionCookies;
-    } else if (this.savedCookies) {
-      // Usar cookies salvos do banco se não há cookies de sessão atuais
-      (config.headers as Record<string, string>)['Cookie'] = this.savedCookies;
-    }
-
-    try {
-      const data = await this.makeRequest<{ credit: number }>(config);
-      
-      // O valor vem em centavos, então dividimos por 100 para converter para reais
-      return data.credit || 0;
-    } catch (error) {
-      console.error('Erro ao obter saldo da conta FSSB:', error);
-      throw new Error('Erro ao verificar saldo da conta');
-    }
+  async getBalance(): Promise<never> {
+    throw new Error('GetBalance deve ser feito através do SiteAuthService');
   }
 
   /**
@@ -328,6 +346,13 @@ export class FssbPlatform extends BasePlatform {
    */
   getSessionCookies(): string {
     return this.sessionCookies || this.savedCookies;
+  }
+
+  /**
+   * Definir cookies de sessão
+   */
+  setSessionCookies(cookies: string): void {
+    this.sessionCookies = cookies;
   }
 
   /**

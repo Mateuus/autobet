@@ -1,0 +1,50 @@
+const axios = require('axios');
+
+let config = {
+  method: 'get',
+  maxBodyLength: Infinity,
+  url: 'https://7k.bet.br/api/cactus-sportbook/launch',
+  headers: { 
+    'Accept': 'application/json', 
+    'Accept-Encoding': 'gzip, deflate, br, zstd', 
+    'Accept-Language': 'pt-BR,pt;q=0.7', 
+    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS03ay1iZXRici5iczJiZXQuY29tL3YyL2F1dGgvbG9naW4iLCJpYXQiOjE3NjEyOTMwMjEsImV4cCI6MTc2MTg5NzgyMSwibmJmIjoxNzYxMjkzMDIxLCJqdGkiOiJ5aUNGN09xWGRpTGFISWhTIiwic3ViIjoiMjkyMjczNDkiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3IiwiaGEiOiI1IiwiaGIiOiIwMTZjODY3NjI5ODNkNmY2MDYzNjM2MmE5MzIyZWRmMyIsImhjIjoiNzQyZjYzOTcyOWNiYmM5ZmI4ZmVlZmRlOTY4NWJhMTciLCJoaSI6ImFlZDEwOGY1ZjNiMTZjZDNiMjM4NDhhZGI4ODFhOTcwIiwiaGQiOiIzYmE4ZTVlNjQyN2IwNGRlMmYyNzlhYTQ0ZjJmNTQ4MSIsImhsIjoiMDVlM2E2ZjhlZDk0ZmNjN2U3OTg1OTRjZGM0NDFhOTQiLCJoZiI6IjFfZTRlNGVmOGQ2YWE1NDcxYzMyNDBlYmFhMDQ4ZTA5ZDBfMTc2MTI5MzAyMCJ9.8nqxncMY5YRxH96c4apfShl2EyK2gT43pggvx1e1wPU', 
+    'City': 'Praia Grande', 
+    'Country': 'BR', 
+    'Country_alpha3': 'BRA', 
+    'Currency': 'BRL', 
+    'Jurisdiction': 'BR', 
+    'Language': 'pt-br', 
+    'Origin-Domain': '7k.bet.br', 
+    'Priority': 'u=1, i', 
+    'Referer': 'https://7k.bet.br/sports?tab=Early', 
+    'Sec-CH-UA': '"Brave";v="141", "Not?A_Brand";v="8", "Chromium";v="141"', 
+    'Sec-CH-UA-Mobile': '?0', 
+    'Sec-CH-UA-Platform': '"Windows"', 
+    'Sec-Fetch-Dest': 'empty', 
+    'Sec-Fetch-Mode': 'cors', 
+    'Sec-Fetch-Site': 'same-origin', 
+    'Sec-GPC': '1', 
+    'Tenant': '7k.bet.br', 
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 
+    'Version': 'vz3b-deploy-48a5c65ee07315239ff9b8c502af29d4ae44c5ff-531f751d32a6cfcb460e', 
+    'Cookie': '__Host-jwt_token_lax=eyJpdiI6IkMvMy8yVi9Kd0kvUUZncmllRTRrZHc9PSIsInZhbHVlIjoiakR2bmdLVURUNmd1aHgvSzdlNUVuYVRpbHZzclE1MlgydnFhZXhzanZBRnU2S2dLN1h6OWpGUStFaTRhMEZYK3AyQXhLNTZ3dlRyWDZSOUcwVGFrUzRFaktlbXFLeDZjOEhUazg3MWhFamc9IiwibWFjIjoiMmI5ZDA2NTYwODUxMGZlYzhkOGU2ODY4MzYwNmNjYzQwN2U0MTBhOTIxODIxZTM0NWU5NjFjMGI5ZWI5MjUzMSIsInRhZyI6IiJ9; __Host-jwt_token_none=eyJpdiI6IlY4UEpnSitabDJ6T0VYeXV2RkhYTWc9PSIsInZhbHVlIjoid05TZllKM2xzdTJ4VDlubFR4a2ZvSDhaQUhVWWNWRW54TXZSK2I0aXRGaks0WThFNjlZbDUzVlFWTEF6OHo2cGhNT0pCRnN5RjI3bXRPSEo3NTF6aE1tMHVlUmxHTzllR3RnZmxraEo0WVU9IiwibWFjIjoiMTMxM2I0Y2IwZGE0NzYzOGNhMzA0NTFjODQwZjVmMWRjZTM5MmE1Y2U0YjgxODdhZDRiY2Q4NWZkMmIzYzA2OCIsInRhZyI6IiJ9; __Host-jwt_token_strict=eyJpdiI6Ilk5cUM1dDl2MDhjdk9yVHRCOVNQQ3c9PSIsInZhbHVlIjoiemVvNk9lb1FJMUtPSFE5a2k5dkNNekZ1ZHgzVzNvVERLNy9Gc3ZtRHd2QVc5NS9NRlMwM0xmdGJ4cG9CUEZOK3ZHazZOOC9KWnZPN29DbVlZaEJ6b3ZJVjZyV1ZNSUtaTmsrd2RpRHppUzg9IiwibWFjIjoiMmJiZDlhYjUzN2M0ZTgyYjY0N2I4NjdiM2MxOGVjNDZiZWYzM2EzZWE2NjA0NDMyNjY1NDg3MWY0MjIwNDg3OSIsInRhZyI6IiJ9; __cf_bm=sX1wg1d1zNfj6UV_18DtuPbeMwK3_Sa6.on7VkMAuio-1761293021-1.0.1.1-Dz2Wd.HqbRUM73MoSkySYbhW9v_nt2LtYA4aYJjcN8uqFmO.cLUJ32uA4scYyKAPMKS.c8QE_f.QsZm6u0arkoe0mlNeIwG83vwcCXt90pM; _cfuvid=c1Y5GL9PeV133QaHvPLXXLwol7tP3pNViALUin8Anl0-1761289109364-0.0.1.1-604800000; bet7k_session=eyJpdiI6ImdtWkJHR09JOEpZSVkwVkJIRHJkV3c9PSIsInZhbHVlIjoiblZyd2VvQkdQVmpDSWV3UzB4bHpqdTdVaFdMRUJpTnFSNW5QOGs0YUQ5djczSVVCR3g5MjdyNnlYR0xHL1BObStvMmg4WjR6RjJmRi9sYmVXL1BWMW5BMStra1prNUpjVjN4SDc0LzJIUFAwd09mRTVvdHBmVFJJY21TM1hkSysiLCJtYWMiOiI0MTYyNGMyNmQzOTgyYzY1ZWZiMGEwNGQ3NWMwNjNiNWQ2NTg1ZTkyMWY3NDJiOGViMWI4MmYwYWFlZDRiMThkIiwidGFnIjoiIn0%3D'
+  }
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+//resposta
+/*
+{
+    "success": true,
+    "url": "https://prod20350-kbet-152319626.fssb.io/br-pt/spbk?operatorToken=a7kbetbr-fad62738b396a82b564a5d69d4626510e0f24454f5293e437b2436bbef140351"
+}
+
+*/
