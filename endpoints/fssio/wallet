@@ -1,0 +1,261 @@
+const axios = require('axios');
+
+let config = {
+  method: 'get',
+  maxBodyLength: Infinity,
+  url: 'https://7k.bet.br/api/users/wallet?withCurrentUser=true',
+  headers: { 
+    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS03ay1iZXRici5iczJiZXQuY29tL3YyL2F1dGgvbG9naW4iLCJpYXQiOjE3NjEyODkwMDEsImV4cCI6MTc2MTg5MzgwMSwibmJmIjoxNzYxMjg5MDAxLCJqdGkiOiJLUnZ3Snl0NEVsa1RBZWlkIiwic3ViIjoiMjkyMjczNDkiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3IiwiaGEiOiI1IiwiaGIiOiJmYTZkN2ViMGIzY2VhYzc4OTExNzYxZjQyYjZmNWNhNiIsImhjIjoiNzQyZjYzOTcyOWNiYmM5ZmI4ZmVlZmRlOTY4NWJhMTciLCJoaSI6ImFlZDEwOGY1ZjNiMTZjZDNiMjM4NDhhZGI4ODFhOTcwIiwiaGQiOiIzYmE4ZTVlNjQyN2IwNGRlMmYyNzlhYTQ0ZjJmNTQ4MSIsImhsIjoiMDVlM2E2ZjhlZDk0ZmNjN2U3OTg1OTRjZGM0NDFhOTQiLCJoZiI6IjFfYmZjZGIzMDRjYjkzYjZkZGM0ZGQxOGFkNWU4MTQ1NDNfMTc2MTI4ODk5OSJ9.p29ZvJcNjb1oN5SiOYeJM-qq2ESyRXMddW4zAHvm6K8', 
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 
+    'Cookie': '__Host-jwt_token_lax=eyJpdiI6ImpvYzFlblpFbXk0aXlEMWVtUGR3Q1E9PSIsInZhbHVlIjoiRXpoQ05jL3VRZEZPQkVFZHlDaCsrTXBDekFKZlM3aDJHellPRUx0QmQ2Qkc5MlhuUWM4Y0V0NWU3Nk9yOXVxejhpU1VVbTcvbTNUeHhkdm0xOG5JK1RkSEI5WFZTVHV0dkwvZHc3QWZKRTA9IiwibWFjIjoiOTdjZDIwOWIyNWM1NDE0MzE3NDgyYjRiYzc0ZTAzODBkYzdlYWQ5ZTY4YTcwMzg4YzJhY2Y3OTA2NDM2YmE1MCIsInRhZyI6IiJ9; __Host-jwt_token_none=eyJpdiI6IkJnSTB1bVROamhUOTBLK3JTS0JPeWc9PSIsInZhbHVlIjoiNit6bkJWL0JyUk01WWVQay9KSWhVRVZXRGMyUEdTclNmanBYK3pkSGZsWDFUa01BNUd0dzVOS2xZckI4ZVlTSUE1V3lSeFBSdU1NRFhXY2pPOGVJSHVHRGpGczVwRU93NGpOMlJmcDZJalE9IiwibWFjIjoiYjQ4YmI0MWU5NGJlYTRlMTUwY2U3ZjBiMGY4MWQ2ZTBkNzRmZjM5OTAxODU2OWYyODg0ZjJmMThmOTIwNzNmYiIsInRhZyI6IiJ9; __Host-jwt_token_strict=eyJpdiI6ImQvQXUrVVBBRTBSZndleXQyMGhmQUE9PSIsInZhbHVlIjoiSXFZWVBoMTNVK3BDZFB5RlhzS25ha3Q0Q1I5cUhSdHZtVkNDSFVlaFN6dG05eGUwU0pMT1Q4OXFvNDdnbVBndVU2aUg2Q1Mza2hZNGdCNlU4cU01OSs1aG5jTVhyT3p4VWZpaFl1M3g3RnM9IiwibWFjIjoiM2E3YTkyY2VhZmE5N2Y2ZjBhOGViYzk0YTQ5Njk4MzY0M2U1MGJhM2I1NzliMjQ5Yzg0ODEwNWJjZDBlMTViNiIsInRhZyI6IiJ9; __cf_bm=Pl405v1i1kvjwNHjIZ0oeIk4cvlSnpJeZBeCTNOQBHA-1761289109-1.0.1.1-5qq6cGPVjgNYbjZedv8zaHD9X1M1X9g2hIH7bNk.R0lyx1YY5_qfIB4H4V0W3gMlgL4E.n9WeEatT3m4yRzOLqAq52yA4m7HmCiDhv4NQlw; _cfuvid=c1Y5GL9PeV133QaHvPLXXLwol7tP3pNViALUin8Anl0-1761289109364-0.0.1.1-604800000; bet7k_session=eyJpdiI6Im94U1RDZnYzeGRLaEVLZ3ZrVjBUN1E9PSIsInZhbHVlIjoiRFZKTmcxZ1F3NVBwVEdmUEZiSktRZFVpY0tPN2l5ZFhKdHk0M1VTTUtmWnM2OUd2ejJaWklKaUJsbVEyTGY3dzNzNlBqbWZVOHgzZnh1b1l6WWR6S0hkSkRBdDFVaTNwZ2xReHNsVy9adVJ3RkIycVdrMGY5cS9RYkYzRXd6Uk4iLCJtYWMiOiI4NTBkZjkyMzJmODM2NDQ1MzdhYTJlZjYyYWJiYjRhNTJkZDMwYzE3NmRhMGNiODllMzRiNGZiMzhiYTMxMThlIiwidGFnIjoiIn0%3D'
+  }
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+//respota
+/*
+{
+    "id": 29231083,
+    "balance": 0,
+    "credit": 388,
+    "available_value": 0,
+    "user_id": 29227349,
+    "created_at": "2025-03-30T19:19:35.000000Z",
+    "updated_at": "2025-10-24T06:18:08.000000Z",
+    "bonus": 0,
+    "max_withdraw_amount": null,
+    "withdraw_enabled": 1,
+    "rollover_is_active": 0,
+    "rollover_amount": 0,
+    "withdraw_enable_now": true,
+    "withdraw_next_date": null,
+    "bonus_wallet_result": {
+        "id": 27132457,
+        "credit": 0,
+        "credit_hold": 0,
+        "sports_amount_hold": 0,
+        "sports_rollover_count": 0,
+        "casino_amount_hold": 0,
+        "casino_rollover_count": 0,
+        "user_id": 29227349,
+        "rollover_type": null,
+        "expiry_datetime": "2025-10-11 14:13:17",
+        "created_at": "2025-03-30T19:19:35.000000Z",
+        "updated_at": "2025-10-11T17:13:17.000000Z"
+    },
+    "cashback_wallet_result": null,
+    "has_transactions": "2025-04-23 01:38:37",
+    "min_withdraw_amount": null,
+    "user_profile": {
+        "id": 29227349,
+        "name": "Mateus Rodrigues Santana",
+        "email": "muvucasbars@gmail.com",
+        "username": "82a91e7986e3790f75993648273d7342",
+        "email_verified_at": null,
+        "token": "a7kbetbr_-nOe5OxUK4LJ1So7HjN5xLtRFU8p3SHEWq7aFBbf6klhMFWKxlhKlAm1yniR2",
+        "ftd_value": 1000,
+        "ftd_date": "2025-04-23 01:38:37",
+        "created_at": "2025-03-30T19:19:35.000000Z",
+        "updated_at": "2025-10-24T06:56:40.000000Z",
+        "is_active": 1,
+        "phone": "13996907780",
+        "commission": null,
+        "manager_id": null,
+        "admin_id": null,
+        "commission_grid_id": null,
+        "affiliation_code": "b2f678a2ff9f",
+        "recommended_by": null,
+        "menu_list": null,
+        "bonus_enabled": 0,
+        "first_name": "Mateus",
+        "last_name": "Santana",
+        "mother_name": "Agmar Rodrigues De Jesus",
+        "gender": 0,
+        "birth_date": "1995-09-27",
+        "cancelled_account": 0,
+        "is_test": 0,
+        "ddi": "+55",
+        "country": "BRA",
+        "currency": "BRL",
+        "language": "pt-br",
+        "timezone": "America/Sao_Paulo",
+        "address": "Sao Francisco De Assis, 3828, Casa - Tupiry",
+        "city": "Praia Grande",
+        "state": "SP",
+        "zipcode": "11724475",
+        "is_internal": 0,
+        "app_source": null,
+        "country_data": {
+            "id": 254,
+            "name": "Brasil",
+            "code": "BRA",
+            "flag_image_src": "",
+            "auto_update": 1,
+            "created_at": null,
+            "updated_at": "2024-02-15T00:45:02.000000Z",
+            "ddi": "+55",
+            "currency": "BRL",
+            "alpha2": "BR"
+        },
+        "_cached": {
+            "get-credits": {
+                "credit": 3.88,
+                "bonus": 0
+            },
+            "get-first-deposit": {
+                "success": true,
+                "data": {
+                    "id": 75302200172,
+                    "type": "credit",
+                    "type_id": null,
+                    "amount": 100000,
+                    "status": "approved",
+                    "wallet_id": 29231083,
+                    "src": "deposit_charge",
+                    "src_id": 345181214,
+                    "created_at": "2025-04-23T04:38:38.000000Z",
+                    "updated_at": "2025-04-23T04:39:25.000000Z",
+                    "bonus_wallet_id": null,
+                    "credit_percent": 0,
+                    "bonus_percent": 0,
+                    "cashed_out_amount": 0,
+                    "user_id": null,
+                    "old_balance": 0,
+                    "old_bonus_balance": 0,
+                    "is_casino": 0,
+                    "created_date": "2025-04-23"
+                }
+            },
+            "user-first-bet": {
+                "message": "Orderbet",
+                "orderBet": null,
+                "success": true
+            }
+        },
+        "user_info": {
+            "user_id": 29227349,
+            "tc_accepted_at": "2025-03-30 16:19:36",
+            "mkt_accepted_at": "2025-03-30 16:19:36",
+            "lgpd_accepted_at": "2025-03-30 16:19:36",
+            "law_accepted_at": "2025-03-30 16:19:36",
+            "migrate_accepted_at": "2025-03-30 16:19:36",
+            "privacy_accepted_at": "2025-03-30 16:19:36",
+            "status": 1,
+            "status_updated_at": "2025-06-29 15:45:39",
+            "status_note": null,
+            "user_pause": 0,
+            "user_pause_at": null,
+            "user_exclusion": 0,
+            "user_exclusion_at": null,
+            "spa_exclusion": 0,
+            "spa_exclusion_at": null,
+            "spa_exclusion_note": null,
+            "operator_exclusion": 0,
+            "operator_exclusion_at": null,
+            "operator_exclusion_note": null,
+            "operator_exclusion_by": null,
+            "user_limit_period": null,
+            "user_limit_time": null,
+            "user_limit_time_active": 0,
+            "user_limit_time_period": null,
+            "user_limit_time_change": null,
+            "user_limit_bet": null,
+            "user_limit_bet_active": 0,
+            "user_limit_bet_period": null,
+            "user_limit_bet_change": null,
+            "user_limit_loss": null,
+            "user_limit_loss_active": 0,
+            "user_limit_loss_period": null,
+            "user_limit_loss_change": null,
+            "user_limit_deposit": null,
+            "user_limit_deposit_active": 0,
+            "user_limit_deposit_period": null,
+            "user_limit_deposit_change": null,
+            "user_limit_withdrawal": null,
+            "user_limit_last_change": null,
+            "last_verification_at": null,
+            "login_at": "2025-10-24 03:56:54",
+            "login_attempt_qty": 4,
+            "login_city": "Campinas",
+            "login_state": "SP",
+            "login_ip": "179.125.211.139",
+            "validate_email_at": "2025-03-30 16:19:36",
+            "validate_sms_at": "2025-07-01 13:46:01",
+            "kyc_validated_at": "2025-03-31 00:17:18",
+            "latitude": "-22.90556",
+            "longitude": "-47.06083",
+            "strong_password": 1,
+            "location_at": "2025-10-24 03:56:57",
+            "nationalities": "[{\"id\": 1, \"value\": \"Brasileiro (a)\"}]",
+            "created_at": "2025-03-30T19:19:35.000000Z",
+            "updated_at": "2025-10-24T06:56:57.000000Z",
+            "id": 4381469,
+            "two_factor_enabled": 0,
+            "two_factor_type": null,
+            "two_factor_at": null,
+            "login_device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+            "force_request_kyc": false,
+            "force_request_kyc_reasons": [
+                "password_changed"
+            ]
+        },
+        "roles": [
+            {
+                "id": 5,
+                "name": "player",
+                "guard_name": "api",
+                "created_at": "2024-12-19T11:11:17.000000Z",
+                "updated_at": "2024-12-19T11:11:17.000000Z",
+                "pivot": {
+                    "model_id": 29227349,
+                    "role_id": 5,
+                    "model_type": "App\\Models\\User"
+                }
+            }
+        ],
+        "wallet": {
+            "id": 29231083,
+            "balance": 0,
+            "credit": 388,
+            "available_value": 0,
+            "user_id": 29227349,
+            "created_at": "2025-03-30T19:19:35.000000Z",
+            "updated_at": "2025-10-24T06:18:08.000000Z",
+            "bonus": 0,
+            "max_withdraw_amount": null,
+            "withdraw_enabled": 1,
+            "rollover_is_active": 0,
+            "rollover_amount": 0
+        },
+        "bonus_wallet": {
+            "id": 27132457,
+            "credit": 0,
+            "credit_hold": 0,
+            "sports_amount_hold": 0,
+            "sports_rollover_count": 0,
+            "casino_amount_hold": 0,
+            "casino_rollover_count": 0,
+            "user_id": 29227349,
+            "rollover_type": null,
+            "expiry_datetime": "2025-10-11 14:13:17",
+            "created_at": "2025-03-30T19:19:35.000000Z",
+            "updated_at": "2025-10-11T17:13:17.000000Z"
+        },
+        "document": {
+            "id": 26439058,
+            "type": "cpf",
+            "number": "23597998860",
+            "user_id": 29227349,
+            "created_at": "2025-03-30T19:19:35.000000Z",
+            "updated_at": "2025-03-30T19:19:35.000000Z"
+        }
+    }
+}
+*/

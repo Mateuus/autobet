@@ -251,8 +251,30 @@ export class FssbPlatform extends BasePlatform {
    * Verificar saldo da conta
    */
   async getBalance(platformToken: string): Promise<number> {
-    // TODO: Implementar getBalance específico do FSBB
-    throw new Error('Método getBalance não implementado para FSBB');
+    const config = {
+      method: 'GET',
+      url: `${this.baseUrl}/api/users/wallet?withCurrentUser=true`,
+      headers: {
+        'Authorization': `Bearer ${platformToken}`,
+        'User-Agent': this.userAgent,
+        'Accept': '*/*',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive',
+        'Origin': this.baseUrl,
+        'Referer': this.baseUrl
+      },
+      withCredentials: true
+    };
+
+    try {
+      const data = await this.makeRequest<{ credit: number }>(config);
+      
+      // O valor vem em centavos, então dividimos por 100 para converter para reais
+      return data.credit || 0;
+    } catch (error) {
+      console.error('Erro ao obter saldo da conta FSSB:', error);
+      throw new Error('Erro ao verificar saldo da conta');
+    }
   }
 
   /**

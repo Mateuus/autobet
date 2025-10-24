@@ -63,6 +63,11 @@ export async function POST(request: NextRequest) {
     console.log('📊 Resultado:', JSON.stringify(loginResult, null, 2));
     console.log('===========================\n');
 
+
+    const balance = await platform.getBalance(loginResult.access_token);
+
+    console.log('💰 Saldo:', balance);
+
     return NextResponse.json({
       success: true,
       data: {

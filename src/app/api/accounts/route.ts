@@ -179,8 +179,7 @@ export async function POST(request: NextRequest) {
 
       } else if (platform === 'fssb') {
         // Plataforma FSSB (Bet7K, PixBet, etc.)
-        const baseUrl = site === 'bet7k' ? 'https://7k.bet.br' : 'https://pix.bet.br';
-        platformInstance = new FssbPlatform(site, baseUrl);
+        platformInstance = new FssbPlatform(site, siteUrl);
         loginResult = await platformInstance.login({ email, password });
         
         if (!loginResult.access_token) {
@@ -199,14 +198,33 @@ export async function POST(request: NextRequest) {
         }, { status: 400 });
       }
 
+      // Buscar saldo atual da conta
+      let currentBalance = 0;
+      try {
+        if (platform === 'biahosted') {
+          currentBalance = await platformInstance.getBalance(platformToken.accessToken);
+        } else if (platform === 'fssb') {
+          currentBalance = await platformInstance.getBalance(platformToken.accessToken);
+        }
+      } catch (balanceError) {
+        console.warn('Erro ao buscar saldo inicial, usando 0:', balanceError);
+        currentBalance = 0;
+      }
+
       // Criar nova conta no banco de dados
       const newBetAccount = new BetAccount();
       newBetAccount.platform = platform; // 'biahosted' ou 'fssb'
       newBetAccount.site = site; // 'mcgames', 'bet7k', etc.
       newBetAccount.email = email;
       newBetAccount.password = password; // Em produção, você deveria hash a senha
-      newBetAccount.siteUrl = platform === 'biahosted' ? siteUrl : null; // FSSB não precisa
-      newBetAccount.balance = 0;
+      // Definir siteUrl baseado na plataforma
+      if (platform === 'biahosted') {
+        newBetAccount.siteUrl = siteUrl;
+      } else if (platform === 'fssb') {
+        // Para FSSB, usar a URL base do site
+        newBetAccount.siteUrl = siteUrl;
+      }
+      newBetAccount.balance = currentBalance;
       
       // Obter userId baseado na plataforma
       if (platform === 'biahosted') {
@@ -240,6 +258,7 @@ export async function POST(request: NextRequest) {
           name: savedAccount.site,
           platform: savedAccount.platform,
           email: savedAccount.email,
+          balance: savedAccount.balance,
           status: 'Ativo'
         }
       });
