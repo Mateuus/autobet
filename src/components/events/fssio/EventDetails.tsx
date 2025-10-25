@@ -236,23 +236,12 @@ export default function EventDetails({ eventId, onBack }: EventDetailsProps) {
   // Filtrar mercados por categoria e pesquisa
   const getFilteredMarkets = () => {
     let filteredMarkets = markets;
-
-    console.log('🔍 [EventDetails] Filtro - Categoria selecionada:', selectedCategory);
-    console.log('🔍 [EventDetails] Filtro - Total de mercados:', markets.length);
-    console.log('🔍 [EventDetails] Filtro - Primeiros 3 mercados:', markets.slice(0, 3).map(m => ({
-      id: m._id,
-      name: m.name,
-      marketType: m.marketType
-    })));
-
     // Filtrar por categoria (marketType)
     if (selectedCategory) {
       filteredMarkets = filteredMarkets.filter(market =>
         market.marketType && market.marketType.includes(selectedCategory)
       );
     }
-
-    console.log('🔍 [EventDetails] Filtro - Mercados após filtro:', filteredMarkets.length);
 
     // Filtrar por pesquisa
     if (searchTerm.trim()) {
@@ -445,9 +434,51 @@ export default function EventDetails({ eventId, onBack }: EventDetailsProps) {
                 onOutcomeClick={(outcomeId: string) => {
                   const oddsId = `market-${market._id}-${outcomeId}`;
                   handleOddsClick(oddsId);
+                  // A chamada addSelection já é feita pelo MarketCard.tsx
                 }}
                 selectedOutcomeId={selectedOdds?.startsWith(`market-${market._id}-`) ? 
                   selectedOdds.replace(`market-${market._id}-`, '') : null}
+                eventData={{
+                  id: event.id,
+                  name: event.name,
+                  startDate: event.startTime,
+                  code: 0,
+                  competitors: event.teams.map(team => ({
+                    id: team.id,
+                    name: team.name
+                  })),
+                  sport: {
+                    typeId: parseInt(event.sportId),
+                    iconName: 'soccer',
+                    hasLiveEvents: event.isLive,
+                    id: parseInt(event.sportId),
+                    name: event.sportName
+                  },
+                  championship: {
+                    hasLiveEvents: false,
+                    id: parseInt(event.leagueId),
+                    name: event.leagueName
+                  },
+                  category: {
+                    iso: 'BR',
+                    hasLiveEvents: false,
+                    id: 1,
+                    name: 'Categoria'
+                  }
+                }}
+                marketData={{
+                  typeId: 1,
+                  isMB: false,
+                  sv: undefined,
+                  shortName: getLocalizedValue(market.displayName) || getLocalizedValue(market.name),
+                  name: getLocalizedValue(market.displayName) || getLocalizedValue(market.name),
+                  desktopOddIds: [market.outcomes.map(o => o.id)],
+                  mobileOddIds: [market.outcomes.map(o => o.id)],
+                  isBB: false,
+                  so: 0,
+                  sportMarketId: market._id,
+                  id: market._id
+                }}
               />
             );
           })

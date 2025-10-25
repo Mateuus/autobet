@@ -8,10 +8,11 @@ export default function FloatingBettingButton() {
   const { selections, isOpen, setIsOpen } = useBetting();
   const [isHovered, setIsHovered] = useState(false);
 
-  if (selections.length === 0) return null;
+  console.log('🎯 [FloatingBettingButton] Seleções:', selections.length, selections.map(s => s.odd.id));
 
+  // Sempre mostrar o botão em ambas as plataformas
   return (
-    <div className="fixed bottom-6 right-6 z-[9998]">
+    <div className="fixed bottom-6 right-6 z-9998">
       <button
         onClick={() => setIsOpen(!isOpen)}
         onMouseEnter={() => setIsHovered(true)}

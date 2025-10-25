@@ -9,6 +9,9 @@ import SportsList from './SportsList';
 import LeaguesSidebar from './LeaguesSidebar';
 import LeagueEvents from './LeagueEvents';
 import EventDetails from './EventDetails';
+import FloatingBettingButton from '../../betting/FloatingBettingButton';
+import BettingSlipModal from '../../betting/BettingSlipModal';
+import { useBetting } from '@/contexts/BettingContext';
 
 interface FssioEventsProps {
   className?: string;
@@ -22,6 +25,7 @@ interface League {
 export default function FssioEvents({ className }: FssioEventsProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { isOpen, setIsOpen } = useBetting();
   
   const [selectedSportId, setSelectedSportId] = useState<string>('');
   const [selectedLeagueId, setSelectedLeagueId] = useState<string>('');
@@ -253,6 +257,10 @@ export default function FssioEvents({ className }: FssioEventsProps) {
           </CardContent>
         </Card>
       )}
+
+      {/* Sistema de Apostas */}
+      <FloatingBettingButton />
+      <BettingSlipModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </div>
   );
 }

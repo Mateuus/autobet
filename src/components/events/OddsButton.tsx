@@ -11,7 +11,7 @@ interface OddsButtonProps {
   isDisabled?: boolean;
   oddStatus?: number;
   // Novas props para integração com sistema de apostas
-  oddId?: number;
+  oddId?: string | number;
   eventData?: {
     id: number;
     name: string;

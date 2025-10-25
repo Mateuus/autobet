@@ -11,6 +11,12 @@ import {
   FssbBetsResponse,
   FssbBetError
 } from '@/types';
+
+// Interface estendida para BetData com campos específicos do FSSB
+interface FssbBetData extends BetData {
+  platform?: string;
+  fssbSelections?: FssbBetslipRequest[];
+}
 import axios, { AxiosRequestConfig } from 'axios';
 import { appendFileSync } from 'fs';
 import { join } from 'path';
@@ -588,19 +594,32 @@ export class FssbPlatform extends BasePlatform {
    */
   async placeBet(platformToken: string, betData: BetData): Promise<BetResult> {
     try {
-      // Extrair dados da aposta
-      const selections = betData.betMarkets.map(market => 
-        market.odds.map(odd => ({
-          selectionId: odd.id.toString(),
-          viewKey: 1,
-          isCrossBet: false,
-          isAddedToBetslip: false,
-          isDynamicMarket: false,
-          isBetBuilderBet: false
-        }))
-      ).flat();
-
-      const stake = betData.stakes[0] || 0.1; // Valor padrão se não especificado
+      // Extrair dados da aposta - verificar se vem do formato FSSB ou Biahosted
+      let selections: FssbBetslipRequest[];
+      let stake: number;
+      
+      const fssbBetData = betData as FssbBetData;
+      
+      if (fssbBetData.platform === 'fssb' && fssbBetData.fssbSelections) {
+        // Formato FSSB direto
+        selections = fssbBetData.fssbSelections;
+        stake = betData.stakes[0] || 0.1;
+        console.log(`🎯 Usando formato FSSB direto: ${selections.length} seleções`);
+      } else {
+        // Formato Biahosted (conversão)
+        selections = betData.betMarkets.map(market => 
+          market.odds.map(odd => ({
+            selectionId: odd.id.toString(),
+            viewKey: 1,
+            isCrossBet: false,
+            isAddedToBetslip: false,
+            isDynamicMarket: false,
+            isBetBuilderBet: false
+          }))
+        ).flat();
+        stake = betData.stakes[0] || 0.1;
+        console.log(`🎯 Convertendo formato Biahosted para FSSB: ${selections.length} seleções`);
+      }
 
       this.saveLogToFile(`🎯 Iniciando processo de aposta`, {
         selections,

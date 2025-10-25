@@ -17,23 +17,7 @@ import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
 import FloatingBettingButton from '@/components/betting/FloatingBettingButton';
 import BettingSlipModal from '@/components/betting/BettingSlipModal';
 import { useBetting } from '@/contexts/BettingContext';
-
-interface Platform {
-  id: string;
-  name: string;
-  description: string;
-  defaultSite: string;
-  integration: string;
-  sites: Site[];
-}
-
-interface Site {
-  id: string;
-  name: string;
-  url: string;
-  integration: string;
-  isDefault: boolean;
-}
+import { PlatformProvider, usePlatform, Platform, Site } from '@/contexts/PlatformContext';
 
 function EventsContent() {
   const router = useRouter();
@@ -47,9 +31,8 @@ function EventsContent() {
   const [activeTab, setActiveTab] = useState<EventTabType>('prematch');
   const { isOpen, setIsOpen } = useBetting();
   
-  // Estados para seleção de plataforma
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
-  const [selectedSite, setSelectedSite] = useState<Site | null>(null);
+  // Usar contexto de plataforma
+  const { selectedPlatform, selectedSite, setSelectedPlatform, setSelectedSite } = usePlatform();
   const [showPlatformSelector, setShowPlatformSelector] = useState(true);
 
   // Criar uma data fixa para evitar recriação a cada render
@@ -365,7 +348,9 @@ function EventsContent() {
 export default function EventsPage() {
   return (
     <ProtectedRoute>
-      <EventsContent />
+      <PlatformProvider>
+        <EventsContent />
+      </PlatformProvider>
     </ProtectedRoute>
   );
 }

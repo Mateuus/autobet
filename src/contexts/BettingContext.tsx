@@ -10,7 +10,7 @@ export interface BettingSelection {
     oddStatus: number;
     sv?: string;
     competitorId: number;
-    id: number;
+    id: string | number; // Permitir tanto string quanto number para FSSIO
     name: string;
     lineDir: number;
     priceDir: number;
@@ -54,15 +54,15 @@ export interface BettingSelection {
   };
   market: {
     shortName: string;
-    desktopOddIds: number[][];
-    mobileOddIds: number[][];
+    desktopOddIds: (string | number)[][];
+    mobileOddIds: (string | number)[][];
     isBB: boolean;
     so: number;
     typeId: number;
     isMB: boolean;
-    sportMarketId: number;
+    sportMarketId: string | number;
     sv?: string;
-    id: number;
+    id: string | number;
     name: string;
   };
   widgetInfo: {
@@ -78,7 +78,7 @@ export interface BettingState {
   selections: BettingSelection[];
   totoCampaigns: unknown[];
   selectionView: string;
-  oddIds: number[];
+  oddIds: (string | number)[];
   boostedOddIds: number[];
   lastUpdated: string;
   isCast: boolean;
@@ -88,9 +88,9 @@ export interface BettingState {
 interface BettingContextType {
   selections: BettingSelection[];
   addSelection: (selection: BettingSelection) => void;
-  removeSelection: (oddId: number) => void;
+  removeSelection: (oddId: string | number) => void;
   clearAllSelections: () => void;
-  isSelected: (oddId: number) => boolean;
+  isSelected: (oddId: string | number) => boolean;
   getTotalStake: () => number;
   getTotalWin: () => number;
   isOpen: boolean;
@@ -106,11 +106,14 @@ export function BettingProvider({ children }: { children: ReactNode }) {
   // Carregar seleções do localStorage ao inicializar
   useEffect(() => {
     const savedState = localStorage.getItem('bettingSlip');
+    console.log('🎯 [BettingContext] Carregando do localStorage:', savedState);
     if (savedState) {
       try {
         const parsedState = JSON.parse(savedState);
+        console.log('🎯 [BettingContext] Estado parseado:', parsedState);
         if (parsedState.state?.selections) {
           setSelections(parsedState.state.selections);
+          console.log('🎯 [BettingContext] Seleções carregadas:', parsedState.state.selections.length);
         }
       } catch (error) {
         console.error('Erro ao carregar seleções do localStorage:', error);
@@ -134,23 +137,29 @@ export function BettingProvider({ children }: { children: ReactNode }) {
       version: 0
     };
     
+    console.log('🎯 [BettingContext] Salvando no localStorage:', bettingState);
     localStorage.setItem('bettingSlip', JSON.stringify(bettingState));
   }, [selections]);
 
   const addSelection = (selection: BettingSelection) => {
+    console.log('🎯 [BettingContext] Adicionando seleção:', selection.odd.id, selection.odd.name);
     setSelections(prev => {
       // Verificar se já existe uma seleção com o mesmo oddId
       const existingIndex = prev.findIndex(s => s.odd.id === selection.odd.id);
       if (existingIndex !== -1) {
-        // Se já existe, remover
+        // Se já existe, remover (toggle behavior)
+        console.log('🎯 [BettingContext] Removendo seleção existente (toggle)');
         return prev.filter(s => s.odd.id !== selection.odd.id);
       }
       // Se não existe, adicionar
-      return [...prev, selection];
+      console.log('🎯 [BettingContext] Adicionando nova seleção');
+      const newSelections = [...prev, selection];
+      console.log('🎯 [BettingContext] Total de seleções:', newSelections.length);
+      return newSelections;
     });
   };
 
-  const removeSelection = (oddId: number) => {
+  const removeSelection = (oddId: string | number) => {
     setSelections(prev => prev.filter(s => s.odd.id !== oddId));
   };
 
@@ -158,7 +167,7 @@ export function BettingProvider({ children }: { children: ReactNode }) {
     setSelections([]);
   };
 
-  const isSelected = (oddId: number) => {
+  const isSelected = (oddId: string | number) => {
     return selections.some(s => s.odd.id === oddId);
   };
 

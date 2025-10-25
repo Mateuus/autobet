@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { X, Trash2, Settings } from 'lucide-react';
 import { useBetting } from '@/contexts/BettingContext';
+import { usePlatform } from '@/contexts/PlatformContext';
 
 interface BettingSlipModalProps {
   isOpen: boolean;
@@ -12,9 +13,13 @@ interface BettingSlipModalProps {
 
 export default function BettingSlipModal({ isOpen, onClose }: BettingSlipModalProps) {
   const { selections, removeSelection, clearAllSelections } = useBetting();
+  const { isFssbPlatform, isBiahostedPlatform } = usePlatform();
   const [activeTab, setActiveTab] = useState<'simples' | 'multipla'>('simples');
-  const [stakes, setStakes] = useState<Record<number, number>>({});
+  const [stakes, setStakes] = useState<Record<string | number, number>>({});
   const router = useRouter();
+
+  console.log('🎯 [BettingSlipModal] Modal aberto:', isOpen);
+  console.log('🎯 [BettingSlipModal] Seleções:', selections.length, selections);
 
   if (!isOpen) return null;
 
@@ -35,7 +40,7 @@ export default function BettingSlipModal({ isOpen, onClose }: BettingSlipModalPr
     });
   };
 
-  const handleStakeChange = (oddId: number, value: string) => {
+  const handleStakeChange = (oddId: string | number, value: string) => {
     const stakeValue = parseFloat(value) || 0;
     setStakes(prev => ({
       ...prev,
@@ -43,7 +48,7 @@ export default function BettingSlipModal({ isOpen, onClose }: BettingSlipModalPr
     }));
   };
 
-  const calculatePotentialWin = (oddId: number) => {
+  const calculatePotentialWin = (oddId: string | number) => {
     const stake = stakes[oddId] || 0;
     const selection = selections.find(s => s.odd.id === oddId);
     if (!selection) return 0;
@@ -70,7 +75,7 @@ export default function BettingSlipModal({ isOpen, onClose }: BettingSlipModalPr
     }
   };
 
-  const handleRemoveSelection = (oddId: number) => {
+  const handleRemoveSelection = (oddId: string | number) => {
     removeSelection(oddId);
     // Limpar o stake quando remover a seleção
     setStakes(prev => {
@@ -81,49 +86,117 @@ export default function BettingSlipModal({ isOpen, onClose }: BettingSlipModalPr
   };
 
   const prepareBettingPayload = () => {
-    // Agrupar seleções por evento
-    const eventsMap = new Map();
-    
-    selections.forEach(selection => {
-      const eventId = selection.event.id;
-      if (!eventsMap.has(eventId)) {
-        eventsMap.set(eventId, {
-          id: selection.event.id,
-          isBanker: selection.isBanker,
-          dbId: 10, // Valor fixo por enquanto
-          sportName: selection.sport.name,
-          rC: selection.event.rc,
-          eventName: selection.event.name,
-          catName: selection.category.name,
-          champName: selection.championship.name,
-          sportTypeId: selection.sport.typeId,
-          odds: []
-        });
-      }
+    if (isFssbPlatform) {
+      // Para FSSB, enviar no formato específico com selectionId
+      const fssbSelections = selections.map(selection => ({
+        selectionId: selection.odd.id.toString(), // FSSB usa string
+        viewKey: 1,
+        isCrossBet: false,
+        isAddedToBetslip: false,
+        isDynamicMarket: false,
+        isBetBuilderBet: false
+      }));
+
+      const stakesArray = selections.map(selection => stakes[selection.odd.id] || 0);
+
+      return {
+        platform: 'fssb',
+        data: {
+          selections: fssbSelections,
+          stakes: stakesArray
+        }
+      };
+    } else if (isBiahostedPlatform) {
+      // Para Biahosted, usar formato original
+      const eventsMap = new Map();
       
-      const event = eventsMap.get(eventId);
-      event.odds.push({
-        id: selection.odd.id,
-        marketId: selection.market.id,
-        price: selection.odd.price,
-        marketName: selection.market.name,
-        marketTypeId: selection.market.typeId,
-        mostBalanced: selection.market.isMB,
-        selectionTypeId: selection.odd.typeId,
-        selectionName: selection.odd.name,
-        widgetInfo: selection.widgetInfo
+      selections.forEach(selection => {
+        const eventId = selection.event.id;
+        if (!eventsMap.has(eventId)) {
+          eventsMap.set(eventId, {
+            id: selection.event.id,
+            isBanker: selection.isBanker,
+            dbId: 10, // Valor fixo por enquanto
+            sportName: selection.sport.name,
+            rC: selection.event.rc,
+            eventName: selection.event.name,
+            catName: selection.category.name,
+            champName: selection.championship.name,
+            sportTypeId: selection.sport.typeId,
+            odds: []
+          });
+        }
+        
+        const event = eventsMap.get(eventId);
+        event.odds.push({
+          id: selection.odd.id,
+          marketId: selection.market.id,
+          price: selection.odd.price,
+          marketName: selection.market.name,
+          marketTypeId: selection.market.typeId,
+          mostBalanced: selection.market.isMB,
+          selectionTypeId: selection.odd.typeId,
+          selectionName: selection.odd.name,
+          widgetInfo: selection.widgetInfo
+        });
       });
-    });
 
-    const betMarkets = Array.from(eventsMap.values());
-    const stakesArray = selections.map(selection => stakes[selection.odd.id] || 0);
+      const betMarkets = Array.from(eventsMap.values());
+      const stakesArray = selections.map(selection => stakes[selection.odd.id] || 0);
 
-    return {
-      data: {
-        betMarkets,
-        stakes: stakesArray
-      }
-    };
+      return {
+        platform: 'biahosted',
+        data: {
+          betMarkets,
+          stakes: stakesArray
+        }
+      };
+    } else {
+      // Fallback para formato padrão
+      const eventsMap = new Map();
+      
+      selections.forEach(selection => {
+        const eventId = selection.event.id;
+        if (!eventsMap.has(eventId)) {
+          eventsMap.set(eventId, {
+            id: selection.event.id,
+            isBanker: selection.isBanker,
+            dbId: 10,
+            sportName: selection.sport.name,
+            rC: selection.event.rc,
+            eventName: selection.event.name,
+            catName: selection.category.name,
+            champName: selection.championship.name,
+            sportTypeId: selection.sport.typeId,
+            odds: []
+          });
+        }
+        
+        const event = eventsMap.get(eventId);
+        event.odds.push({
+          id: selection.odd.id,
+          marketId: selection.market.id,
+          price: selection.odd.price,
+          marketName: selection.market.name,
+          marketTypeId: selection.market.typeId,
+          mostBalanced: selection.market.isMB,
+          selectionTypeId: selection.odd.typeId,
+          selectionName: selection.odd.name,
+          widgetInfo: selection.widgetInfo
+        });
+      });
+
+      const betMarkets = Array.from(eventsMap.values());
+      const stakesArray = selections.map(selection => stakes[selection.odd.id] || 0);
+
+      return {
+        platform: 'unknown',
+        data: {
+          betMarkets,
+          stakes: stakesArray
+        }
+      };
+    }
   };
 
   const handlePlaceBet = async () => {

@@ -2,8 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { AppDataSource } from '@/database/data-source';
 import { BetAccount } from '@/database/entities/BetAccount';
 import { getPlatformInstance } from '@/lib/utils/platformFactory';
-import { BetData, LoginCredentials } from '@/types';
+import { BetData, LoginCredentials, PlatformToken } from '@/types';
 import { OddsStateResponse, OddsStatesApiResponse } from '@/services/biaHostedApi';
+
+// Interface estendida para PlatformToken com campos específicos do FSSB
+interface FssbPlatformToken extends PlatformToken {
+  platformCustomerId?: number;
+}
 
 interface BettingOdd {
   id: number;
@@ -37,8 +42,17 @@ interface BettingEvent {
 }
 
 interface BettingPayload {
+  platform?: string;
   data: {
-    betMarkets: BettingEvent[];
+    betMarkets?: BettingEvent[];
+    selections?: Array<{
+      selectionId: string;
+      viewKey: number;
+      isCrossBet: boolean;
+      isAddedToBetslip: boolean;
+      isDynamicMarket: boolean;
+      isBetBuilderBet: boolean;
+    }>;
     stakes: number[];
   };
 }
@@ -269,10 +283,21 @@ async function processBetForAccount(account: BetAccount, betData: BetData, stake
     let platformToken: { accessToken: string };
     
     if (account.platform.toLowerCase() === 'fssb') {
-      // Para FSSB, usar apenas o access_token (não tem generateToken nem signIn)
+      // Para FSSB, fazer signIn na plataforma para capturar cookies e customerId
       console.log(`🔧 Usando fluxo FSSB para ${account.site}...`);
+      
+      // Obter URL da plataforma baseada no site
+      const platformUrl = account.site.toLowerCase() === 'bet7k' 
+        ? 'https://prod20350-kbet-152319626.fssb.io/api'
+        : 'https://prod20383.fssb.io/api';
+      
+      console.log(`🚪 Fazendo sign in na plataforma FSSB para ${account.site}...`);
+      const fssbSignInResult = await platform.signIn(platformUrl);
+      
       userToken = { token: loginResult.access_token, user_id: 'temp' };
-      platformToken = { accessToken: loginResult.access_token };
+      platformToken = { accessToken: fssbSignInResult.accessToken };
+      
+      console.log(`✅ FSSB SignIn concluído - CustomerId: ${(fssbSignInResult as FssbPlatformToken).platformCustomerId || 'N/A'}`);
     } else {
       // Para Biahosted, usar o fluxo completo
       console.log(`🎫 Gerando token de usuário para ${account.site}...`);
@@ -287,25 +312,44 @@ async function processBetForAccount(account: BetAccount, betData: BetData, stake
       console.log(platformToken); //platformToken.accessToken
     }
     
-    // 4. Atualizar odds para cada integration
-    const integration = account.site.toLowerCase() === 'mcgames' ? 'mcgames2' : account.site.toLowerCase();
-    const oddsUpdated = await updateOddsInBetData(betData, integration);
-    
-    if (oddsUpdated) {
-      console.log(`✅ Odds atualizadas com sucesso para ${account.site}`);
+    // 4. Atualizar odds para cada integration (apenas para Biahosted)
+    let oddsUpdated = false;
+    if (account.platform.toLowerCase() !== 'fssb') {
+      const integration = account.site.toLowerCase() === 'mcgames' ? 'mcgames2' : account.site.toLowerCase();
+      oddsUpdated = await updateOddsInBetData(betData, integration);
+      
+      if (oddsUpdated) {
+        console.log(`✅ Odds atualizadas com sucesso para ${account.site}`);
+      } else {
+        console.log(`ℹ️ Odds mantidas (sem mudanças significativas) para ${account.site}`);
+      }
     } else {
-      console.log(`ℹ️ Odds mantidas (sem mudanças significativas) para ${account.site}`);
+      console.log(`ℹ️ Pulando atualização de odds para FSSB (${account.site})`);
     }
     
     const betPayload: BetData = {
       ...betData,
       culture: 'pt-BR',
       timezoneOffset: 180,
-      integration: integration,
+      integration: account.platform.toLowerCase() !== 'fssb' ? (account.site.toLowerCase() === 'mcgames' ? 'mcgames2' : account.site.toLowerCase()) : 'fssb',
       deviceType: 1,
       numFormat: 'en-GB',
       countryCode: 'BR',
-      requestId: generateRandomRequestId()
+      requestId: generateRandomRequestId(),
+      // Para FSSB, adicionar dados específicos
+      ...(account.platform.toLowerCase() === 'fssb' && {
+        platform: 'fssb',
+        fssbSelections: betData.betMarkets?.flatMap(market => 
+          market.odds.map(odd => ({
+            selectionId: odd.id.toString(),
+            viewKey: 1,
+            isCrossBet: false,
+            isAddedToBetslip: false,
+            isDynamicMarket: false,
+            isBetBuilderBet: false
+          }))
+        ) || []
+      })
     };
     
     // 6. Fazer a aposta
@@ -429,11 +473,61 @@ export async function POST(request: NextRequest) {
     console.log('🚀 Iniciando processamento de aposta...');
     const body: BettingPayload = await request.json();
     
-    //console.log('🎯 Recebido payload do frontend:', JSON.stringify(body, null, 2));
+    console.log('🎯 Recebido payload do frontend:', JSON.stringify(body, null, 2));
     
-    // Aqui você pode processar os dados conforme necessário
+    // Detectar plataforma
+    const platform = body.platform || 'biahosted'; // Default para biahosted
     const { data } = body;
-    const { betMarkets, stakes } = data;
+    
+    console.log(`🔧 Plataforma detectada: ${platform}`);
+    
+    // Processar dados baseado na plataforma
+    let betMarkets: BettingEvent[] = [];
+    let stakes: number[] = [];
+    
+    if (platform === 'fssb') {
+      // Para FSSB, usar selections diretamente
+      const { selections, stakes: fssbStakes } = data;
+      stakes = fssbStakes;
+      
+      // Converter selections para formato betMarkets (necessário para compatibilidade)
+      betMarkets = selections?.map((selection, index) => ({
+        id: index + 1, // ID temporário
+        isBanker: false,
+        dbId: 10,
+        sportName: 'Futebol', // Valor padrão
+        rC: false,
+        eventName: `Evento ${index + 1}`,
+        catName: 'Categoria',
+        champName: 'Campeonato',
+        sportTypeId: 1,
+        odds: [{
+          id: parseInt(selection.selectionId),
+          marketId: 1,
+          price: 2.0, // Valor padrão - será atualizado pela API
+          marketName: 'Mercado',
+          marketTypeId: 1,
+          mostBalanced: false,
+          selectionTypeId: 1,
+          selectionName: 'Seleção',
+          widgetInfo: {
+            widget: 1,
+            page: 1,
+            tabIndex: 1,
+            tipsterId: null,
+            suggestionType: null
+          }
+        }]
+      })) || [];
+      
+      console.log(`🎯 FSSB: ${selections?.length || 0} seleções processadas`);
+    } else {
+      // Para Biahosted, usar formato original
+      betMarkets = data.betMarkets || [];
+      stakes = data.stakes || [];
+      
+      console.log(`🎯 Biahosted: ${betMarkets.length} eventos processados`);
+    }
     
     // Buscar todas as contas ativas
     const activeAccounts = await getActiveAccounts();
