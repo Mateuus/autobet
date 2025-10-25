@@ -1,13 +1,13 @@
 import { 
   BarChart3, 
-  Users, 
   CreditCard, 
   TrendingUp,
   DollarSign,
-  Activity,
   Target,
-  Zap
+  FileText,
+  User
 } from 'lucide-react';
+import Link from 'next/link';
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
 
 function DashboardContent() {
@@ -123,7 +123,7 @@ function DashboardContent() {
           </div>
           
           {/* Placeholder Chart */}
-          <div className="h-64 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg flex items-center justify-center">
+          <div className="h-64 bg-linear-to-r from-blue-50 to-purple-50 rounded-lg flex items-center justify-center">
             <div className="text-center">
               <BarChart3 className="w-12 h-12 text-gray-400 mx-auto mb-2" />
               <p className="text-gray-500">Gráfico de performance</p>
@@ -168,36 +168,46 @@ function DashboardContent() {
       {/* Quick Actions */}
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
         <h2 className="text-lg font-semibold text-gray-900 mb-6">Ações Rápidas</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <button className="flex items-center space-x-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Link href="/dashboard/accounts" className="flex items-center space-x-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
             <div className="p-2 bg-green-50 rounded-lg">
               <CreditCard className="w-5 h-5 text-green-600" />
             </div>
             <div className="text-left">
-              <p className="font-medium text-gray-900">Adicionar Conta</p>
-              <p className="text-sm text-gray-500">Conectar nova conta de apostas</p>
+              <p className="font-medium text-gray-900">Gerenciar Contas</p>
+              <p className="text-sm text-gray-500">Conectar e gerenciar contas</p>
             </div>
-          </button>
+          </Link>
           
-          <button className="flex items-center space-x-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+          <Link href="/dashboard/betting" className="flex items-center space-x-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
             <div className="p-2 bg-blue-50 rounded-lg">
-              <Target className="w-5 h-5 text-blue-600" />
+              <FileText className="w-5 h-5 text-blue-600" />
             </div>
             <div className="text-left">
-              <p className="font-medium text-gray-900">Criar Estratégia</p>
-              <p className="text-sm text-gray-500">Configurar nova estratégia</p>
+              <p className="font-medium text-gray-900">Extrato de Apostas</p>
+              <p className="text-sm text-gray-500">Ver histórico completo</p>
             </div>
-          </button>
+          </Link>
           
-          <button className="flex items-center space-x-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+          <Link href="/dashboard/betting/account-extract" className="flex items-center space-x-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
             <div className="p-2 bg-purple-50 rounded-lg">
-              <Activity className="w-5 h-5 text-purple-600" />
+              <User className="w-5 h-5 text-purple-600" />
             </div>
             <div className="text-left">
-              <p className="font-medium text-gray-900">Ver Relatórios</p>
-              <p className="text-sm text-gray-500">Analisar performance</p>
+              <p className="font-medium text-gray-900">Extrato por Conta</p>
+              <p className="text-sm text-gray-500">Análise individual</p>
             </div>
-          </button>
+          </Link>
+          
+          <Link href="/dashboard/strategies" className="flex items-center space-x-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+            <div className="p-2 bg-orange-50 rounded-lg">
+              <Target className="w-5 h-5 text-orange-600" />
+            </div>
+            <div className="text-left">
+              <p className="font-medium text-gray-900">Estratégias</p>
+              <p className="text-sm text-gray-500">Configurar estratégias</p>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

@@ -12,7 +12,9 @@ import {
   ChevronLeft,
   ChevronRight,
   User,
-  Calendar
+  Calendar,
+  FileText,
+  Receipt
 } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { usePathname } from 'next/navigation';
@@ -35,6 +37,8 @@ export function Sidebar({ isCollapsed, onToggle }: SidebarProps) {
     { name: 'Contas', href: '/dashboard/accounts', icon: CreditCard, isAuth: true },
     { name: 'Eventos', href: '/events', icon: Calendar, isAuth: true },
     { name: 'Estratégias', href: '/dashboard/strategies', icon: BarChart3, isAuth: true },
+    { name: 'Extrato de Apostas', href: '/dashboard/betting', icon: FileText, isAuth: true },
+    { name: 'Extrato por Conta', href: '/dashboard/betting/account-extract', icon: Receipt, isAuth: true },
     { name: 'Histórico', href: '/dashboard/history', icon: History, isAuth: true },
     { name: 'Configurações', href: '/dashboard/settings', icon: Settings, isAuth: true },
   ];
@@ -56,6 +60,12 @@ export function Sidebar({ isCollapsed, onToggle }: SidebarProps) {
     }
     if (href === '/events') {
       return pathname === '/events';
+    }
+    if (href === '/dashboard/betting') {
+      return pathname === '/dashboard/betting';
+    }
+    if (href === '/dashboard/betting/account-extract') {
+      return pathname === '/dashboard/betting/account-extract';
     }
     return pathname.startsWith(href);
   };
