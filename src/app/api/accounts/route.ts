@@ -4,6 +4,7 @@ import { AppDataSource } from '@/database/data-source';
 import { BetAccount } from '@/database/entities/BetAccount';
 import { verifyJWTToken } from '@/lib/auth/jwt';
 import { Account } from '@/database/entities/Account';
+import { SiteAuthService } from '@/services/siteAuth';
 
 // GET /api/accounts - Listar contas do usuário
 export async function GET(request: NextRequest) {
@@ -179,7 +180,14 @@ export async function POST(request: NextRequest) {
       } else if (platform === 'fssb') {
         // Plataforma FSSB (Bet7K, PixBet, etc.)
         platformInstance = createPlatformInstance(platform, site, siteUrl);
-        loginResult = await platformInstance.login({ email, password });
+
+        // Usar SiteAuthService para login
+        const tempAccount = new BetAccount();
+        tempAccount.site = site;
+        tempAccount.siteUrl = siteUrl;
+        const siteAuthService = new SiteAuthService(siteUrl, tempAccount, betAccountRepository);
+        loginResult = await siteAuthService.login({ email, password });
+        console.log(loginResult);
         
         if (!loginResult.access_token) {
           return NextResponse.json({ 

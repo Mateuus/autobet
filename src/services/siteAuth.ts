@@ -26,17 +26,47 @@ export class SiteAuthService {
    * Login na base do site
    */
   async login(credentials: LoginCredentials): Promise<AccessToken> {
-    const data = {
-      login: credentials.email,
-      email: credentials.email,
-      password: credentials.password,
-      app_source: 'web',
-      captcha_token: ''
-    };
+    // Detectar se é PixBet e usar payload específico
+    const isPixBet = this.baseUrl.includes('pix.bet') || this.account.site === 'pixbet';
+    
+    let data: Record<string, unknown>;
+    
+    if (isPixBet) {
+      // Detectar se é CPF ou email baseado no formato
+      const loginType = this.detectPixBetLoginType(credentials.email);
+      
+      // Payload específico do PixBet
+      data = {
+        type: loginType,
+        email: credentials.email,
+        password: credentials.password
+      };
+    } else {
+      // Payload padrão para outros sites
+      data = {
+        login: credentials.email,
+        email: credentials.email,
+        password: credentials.password,
+        app_source: 'web',
+        captcha_token: ''
+      };
+    }
+    
+    //endpoint de login do site
+    let loginEndpoint: string;
+    //vamos colocar um switch é melhor quando tiver mais sites para login
+    switch (this.account.site) {
+      case 'pixbet':
+        loginEndpoint = `${this.baseUrl}/api/v1/client/access/login`;
+        break;
+      default:
+        loginEndpoint = `${this.baseUrl}/api/auth/login`;
+    }
+
 
     const config: AxiosRequestConfig = {
       method: 'post',
-      url: `${this.baseUrl}/api/auth/login`,
+      url: loginEndpoint,
       headers: {
         'Origin': this.baseUrl,
         'User-Agent': this.userAgent,
@@ -62,7 +92,27 @@ export class SiteAuthService {
         this.sessionCookies = this.cleanCookies(newCookies);
       }
       
-      const loginData = response.data as AccessToken;
+      let loginData: AccessToken;
+      
+      if (isPixBet) {
+        // Resposta específica do PixBet
+        const pixBetResponse = response.data as {
+          isActiveUser: boolean;
+          validated_docs: number;
+          data: {
+            token: string;
+            cpf?: string;
+          };
+        };
+        
+        // Converter para formato AccessToken padrão
+        loginData = {
+          access_token: pixBetResponse.data.token
+        } as AccessToken;
+      } else {
+        // Resposta padrão para outros sites
+        loginData = response.data as AccessToken;
+      }
       
       // Salvar accessToken no banco de dados
       if (loginData.access_token) {
@@ -213,6 +263,29 @@ export class SiteAuthService {
    */
   setSessionCookies(cookies: string): void {
     this.sessionCookies = this.cleanCookies(cookies);
+  }
+
+  /**
+   * Detectar tipo de login do PixBet (email ou cpf)
+   */
+  private detectPixBetLoginType(email: string): string {
+    // Se contém @, é email
+    if (email.includes('@')) {
+      return 'email';
+    }
+    
+    // Se é apenas números e tem 11 dígitos, é CPF
+    if (/^\d{11}$/.test(email)) {
+      return 'cpf';
+    }
+    
+    // Se contém apenas números, assumir CPF
+    if (/^\d+$/.test(email)) {
+      return 'cpf';
+    }
+    
+    // Padrão: email
+    return 'email';
   }
 
   /**

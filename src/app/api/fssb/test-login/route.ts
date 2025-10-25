@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { FssbPlatform } from '@/lib/platforms/FssbPlatform';
+import { SiteAuthService } from '@/services/siteAuth';
 import { LoginCredentials } from '@/types';
+import { BetAccount } from '@/database/entities/BetAccount';
+import { AppDataSource } from '@/database/data-source';
 
 export async function POST(request: NextRequest) {
   try {    
@@ -42,41 +45,63 @@ export async function POST(request: NextRequest) {
     // Criar instância da plataforma
     const platform = new FssbPlatform(siteName, baseUrl);
 
+    // Inicializar conexão com o banco se necessário
+    if (!AppDataSource.isInitialized) {
+      await AppDataSource.initialize();
+    }
+    const betAccountRepository = AppDataSource.getRepository(BetAccount);
+
+    // Criar conta temporária para o SiteAuthService
+    const tempAccount = new BetAccount();
+    tempAccount.site = siteName;
+    tempAccount.siteUrl = baseUrl;
+    tempAccount.email = credentials.email;
+    tempAccount.password = credentials.password;
+
+    // Criar instância do SiteAuthService
+    const siteAuthService = new SiteAuthService(baseUrl, tempAccount, betAccountRepository);
+
     // Obter informações do site para debug
     const siteInfo = platform.getSiteInfo();
     const loginConfig = platform.getSiteLoginConfig();
 
-    console.log('\n🧪 ===== TESTING LOGIN =====');
+    console.log('\n🧪 ===== TESTING LOGIN WITH SITEAUTHSERVICE =====');
     console.log(`🎯 Site: ${siteName}`);
     console.log(`📧 Email: ${credentials.email}`);
     console.log(`🔑 Password: ${'*'.repeat(credentials.password.length)}`);
     console.log(`📍 Site Info:`, JSON.stringify(siteInfo, null, 2));
     console.log(`⚙️ Login Config:`, JSON.stringify(loginConfig, null, 2));
-    console.log('=============================\n');
+    console.log('===============================================\n');
 
-    // Tentar fazer login
-    console.log('🔄 Iniciando processo de login...');
-    const loginResult = await platform.login(credentials);
+    // Tentar fazer login usando SiteAuthService
+    console.log('🔄 Iniciando processo de login via SiteAuthService...');
+    const loginResult = await siteAuthService.login(credentials);
     
     console.log('\n✅ ===== LOGIN SUCCESS =====');
-    console.log('🎉 Login realizado com sucesso!');
+    console.log('🎉 Login realizado com sucesso via SiteAuthService!');
     console.log('📊 Resultado:', JSON.stringify(loginResult, null, 2));
     console.log('===========================\n');
 
+    // Testar obtenção de saldo usando o SiteAuthService
+    console.log('💰 Testando obtenção de saldo via SiteAuthService...');
+    const balance = await siteAuthService.getBalance(loginResult.access_token);
+    console.log('💰 Saldo obtido:', balance);
 
-    const balance = await platform.getBalance(loginResult.access_token);
-
-    console.log('💰 Saldo:', balance);
+    // Testar obtenção de cookies de sessão
+    const sessionCookies = siteAuthService.getSessionCookies();
+    console.log('🍪 Cookies de sessão:', sessionCookies ? 'Disponíveis' : 'Não disponíveis');
 
     return NextResponse.json({
       success: true,
       data: {
         loginResult,
+        balance,
+        sessionCookies: sessionCookies ? 'Disponíveis' : 'Não disponíveis',
         siteInfo,
         loginConfig,
         timestamp: new Date().toISOString()
       },
-      message: `Login realizado com sucesso para ${siteName}`
+      message: `Login realizado com sucesso via SiteAuthService para ${siteName}`
     });
 
   } catch (error: unknown) {

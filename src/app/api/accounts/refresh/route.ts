@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { verifyJWTToken } from '@/lib/auth/jwt';
 import { getPlatformInstance } from '@/lib/utils/platformFactory';
 import { FssbPlatform } from '@/lib/platforms/FssbPlatform';
+import { SiteAuthService } from '@/services/siteAuth';
 import { AppDataSource } from '@/database/data-source';
 import { BetAccount } from '@/database/entities/BetAccount';
 
@@ -134,7 +135,7 @@ export async function POST(request: NextRequest) {
           }
         }
 
-        // Para plataforma FSSB, tentar usar token existente primeiro
+        // Para plataforma FSSB, usar SiteAuthService para login
         if (account.platform.toLowerCase() === 'fssb') {          
           // Primeiro, tentar usar o token existente se disponível
           if (account.accessToken) {
@@ -160,12 +161,20 @@ export async function POST(request: NextRequest) {
             }
           }
           
-          // Se chegou aqui, token não existe ou expirou - fazer login
-          console.log(`🍪 Fazendo login para obter novo token para ${account.site}...`);
+          // Se chegou aqui, token não existe ou expirou - fazer login usando SiteAuthService
+          console.log(`🍪 Fazendo login usando SiteAuthService para obter novo token para ${account.site}...`);
           
           try {
-            // Fazer login para obter novo token
-            const loginResult = await platform.login({
+            // Criar instância do SiteAuthService para fazer login no site
+            const siteAuthService = new SiteAuthService(
+              account.siteUrl,
+              account,
+              betAccountRepository,
+              account.sessionCookies
+            );
+
+            // Fazer login usando SiteAuthService
+            const loginResult = await siteAuthService.login({
               email: account.email,
               password: account.password
             });
@@ -174,27 +183,36 @@ export async function POST(request: NextRequest) {
               throw new Error('Falha no login - credenciais inválidas');
             }
 
-            // Para FSSB, usar apenas o access_token (não tem generateToken)
-            const balance = await platform.getBalance(loginResult.access_token);
+            console.log(`✅ Login do ${account.site} realizado via SiteAuthService - novo token obtido`);
 
-            // Atualizar conta no banco (apenas accessToken para FSSB)
-            await betAccountRepository.update(account.id, {
+            // Usar o access_token do SiteAuthService para buscar saldo via plataforma
+            const balance = await siteAuthService.getBalance(loginResult.access_token);
+
+            console.log(`💰 Saldo obtido do ${account.site}: ${balance} centavos`);
+
+            // Preparar dados para atualização
+            const updateData: Partial<BetAccount> = {
               accessToken: loginResult.access_token,
               balance: balance,
               lastBalanceUpdate: new Date(),
-              lastTokenRefresh: new Date(),
-              // Salvar cookies de sessão se disponíveis (para FSSB)
-              ...(account.platform.toLowerCase() === 'fssb' && platform instanceof FssbPlatform ? {
-                sessionCookies: platform.getSessionCookies()
-              } : {})
-            });
+              lastTokenRefresh: new Date()
+            };
+            
+            // Salvar cookies de sessão do SiteAuthService se disponíveis
+            const currentCookies = siteAuthService.getSessionCookies();
+            if (currentCookies) {
+              updateData.sessionCookies = currentCookies;
+            }
+
+            // Atualizar conta no banco
+            await betAccountRepository.update(account.id, updateData);
 
             return {
               id: account.id,
               name: account.site,
               success: true,
               balance: balance,
-              message: `Novo token obtido para ${account.site}`
+              message: `Novo token obtido via SiteAuthService para ${account.site}`
             };
 
           } catch (loginError) {

@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { AppDataSource } from '../src/lib/database';
+import { AppDataSource } from '../src/database/data-source';
 import { Account } from '../src/database/entities/Account';
 import bcrypt from 'bcryptjs';
 
