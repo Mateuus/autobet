@@ -104,4 +104,27 @@ export class LotogreenPlatform extends BasePlatform {
 
     return await this.makeRequest<UserProfile>(config);
   }
+
+  /**
+   * Obter betslip atual (Lotogreen não suporta betslip público)
+   */
+  async getBetslip(): Promise<unknown[]> {
+    console.log(`ℹ️ Lotogreen não suporta betslip público`);
+    return [];
+  }
+
+  /**
+   * Limpar betslip atual (Lotogreen não suporta betslip público)
+   */
+  async clearBetslip(): Promise<void> {
+    console.log(`ℹ️ Lotogreen não suporta betslip público`);
+  }
+
+  /**
+   * Adicionar seleções ao betslip (Lotogreen não suporta betslip público)
+   */
+  async addToBetslip(): Promise<unknown[]> {
+    console.log(`ℹ️ Lotogreen não suporta betslip público`);
+    return [];
+  }
 }

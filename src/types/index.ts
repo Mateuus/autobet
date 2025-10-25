@@ -124,7 +124,7 @@ export interface BetData {
 }
 
 export interface BetMarket {
-  id: number;
+  id: number | string;
   isBanker: boolean;
   dbId: number;
   sportName: string;
@@ -137,7 +137,7 @@ export interface BetMarket {
 }
 
 export interface BetOdd {
-  id: number;
+  id: number | string;
   sPOV?: string;
   marketId: number;
   price: number;
@@ -311,6 +311,7 @@ export interface FssbBetslipResponse {
         };
         TrueOdds: number;
         OutcomeType: string;
+        Points: number;
         Tags: unknown[];
         TemplateOddsSettingsIndex: number;
         TemplateGroupSettingsIndex: number;

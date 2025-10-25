@@ -59,6 +59,21 @@ export abstract class BasePlatform {
   abstract getProfile(platformToken: string): Promise<UserProfile>;
 
   /**
+   * Obter betslip atual (apenas para plataformas que suportam)
+   */
+  abstract getBetslip(): Promise<unknown[]>;
+
+  /**
+   * Limpar betslip atual (apenas para plataformas que suportam)
+   */
+  abstract clearBetslip(): Promise<void>;
+
+  /**
+   * Adicionar seleções ao betslip (apenas para plataformas que suportam)
+   */
+  abstract addToBetslip(selections: unknown[]): Promise<unknown[]>;
+
+  /**
    * Método auxiliar para fazer requisições HTTP
    */
   protected async makeRequest<T>(config: AxiosRequestConfig): Promise<T> {

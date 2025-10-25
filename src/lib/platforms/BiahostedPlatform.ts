@@ -697,6 +697,33 @@ export class BiahostedPlatform extends BasePlatform {
   }
 
   /**
+   * Obter betslip atual (implementação padrão para Biahosted)
+   */
+  async getBetslip(): Promise<unknown[]> {
+    // Biahosted não tem betslip público, retorna array vazio
+    console.log(`ℹ️ Biahosted não suporta betslip público para ${this.siteName}`);
+    return [];
+  }
+
+  /**
+   * Limpar betslip atual (implementação padrão para Biahosted)
+   */
+  async clearBetslip(): Promise<void> {
+    // Biahosted não tem betslip público, não há nada para limpar
+    console.log(`ℹ️ Biahosted não suporta limpeza de betslip para ${this.siteName}`);
+  }
+
+  /**
+   * Adicionar seleções ao betslip (implementação padrão para Biahosted)
+   */
+  async addToBetslip(selections: unknown[]): Promise<unknown[]> {
+    // Biahosted não tem betslip público, retorna array vazio
+    console.log(`ℹ️ Biahosted não suporta adição ao betslip para ${this.siteName}`);
+    console.log(`📝 Tentativa de adicionar ${selections.length} seleções`);
+    return [];
+  }
+
+  /**
    * Obter configurações específicas do site para login
    */
   getSiteLoginConfig() {

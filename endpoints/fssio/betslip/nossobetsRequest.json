@@ -1,0 +1,114 @@
+[
+    {
+        "betName": "single bet",
+        "type": "single",
+        "count": "0.65",
+        "selectionsMapped": [
+            {
+                "id": "0OU766498958343434276OMM",
+                "trueOdds": 2.12,
+                "displayOdds": {
+                    "Decimal": "2.12",
+                    "Malay": "-0.893",
+                    "HK": "1.12",
+                    "Indo": "1.12",
+                    "American": "112",
+                    "Fractional": "9/8"
+                },
+                "points": 2.5,
+                "marketId": "0OU766498958343434276",
+                "eventId": "766498955642302464",
+                "timestamp": "31373631363235323536373238!z20l617973767a66706c6278eeebb7db134eaebc8e3badf3e8dee84d",
+                "intervalTiming": "31373631363235323536373239!d20l6d6835726477716465381a904bc805c7ec6134fee128bc6b24aa",
+                "promotionIds": []
+            }
+        ],
+        "trueOdds": 2.12,
+        "displayOdds": {
+            "Decimal": "2.12",
+            "Malay": "-0.893",
+            "HK": "1.12",
+            "Indo": "1.12",
+            "American": "112",
+            "Fractional": "9/8"
+        },
+        "clientOdds": "2.12",
+        "comboSize": 0,
+        "isLive": false,
+        "numberOfLines": 1,
+        "maxStake": 37468.42,
+        "minStake": 0.65,
+        "numberOfBets": 1,
+        "oddStyleID": "1",
+        "sportID": 1,
+        "feRequestTime": "2025-10-25T06:51:00.281Z",
+        "metaData": {
+            "device": "desktop",
+            "isTablet": false,
+            "bettingView": "EU Modern View",
+            "balancePriority": 1,
+            "fullURL": "https://prod20350-kbet-152319626.fssb.io/br-pt/spbk",
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+            "shareBetSlipCode": "",
+            "refererDomain": "undefined",
+            "highMarginConfig": {
+                "enableTestCustomer": false,
+                "enableOperatorContribution": false,
+                "numberOfSelections": 2,
+                "marketTypeIds": [
+                    "QA60",
+                    "ML1",
+                    "OU257",
+                    "HC2220",
+                    "HC270",
+                    "QA144",
+                    "OU201",
+                    "QA158",
+                    "OU1446",
+                    "QA61",
+                    "QA62",
+                    "QA291",
+                    "ML656",
+                    "HC628",
+                    "OU677",
+                    "OU641",
+                    "QA658",
+                    "QA687",
+                    "QA633",
+                    "ML623",
+                    "QA646",
+                    "QA626",
+                    "QA644"
+                ]
+            },
+            "siteOption": true,
+            "featuredSelections": []
+        },
+        "selectionsNames": [
+            {
+                "id": "0OU766498958343434276OMM",
+                "selectionName": "Mais de 2.5"
+            }
+        ],
+        "selectionsPlaced": [
+            "0OU766498958343434276OMM"
+        ],
+        "stake": "0.65",
+        "potentialReturns": 1.38,
+        "freeBet": {
+            "id": 0,
+            "amount": 0,
+            "gainDecimal": 0,
+            "isRiskFreeBet": false
+        },
+        "JackpotContribution": {},
+        "calculationSettings": {
+            "useNewCalculationSettings": true,
+            "oddsRoundingMode": 0,
+            "gainRoundingMode": 1,
+            "roundCombinationOdds": false
+        },
+        "fotd": 162225012,
+        "tags": []
+    }
+]

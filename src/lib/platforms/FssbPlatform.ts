@@ -18,6 +18,8 @@ interface FssbBetData extends BetData {
   fssbSelections?: FssbBetslipRequest[];
 }
 import axios, { AxiosRequestConfig } from 'axios';
+import { wrapper } from 'axios-cookiejar-support';
+import { CookieJar } from 'tough-cookie';
 import { appendFileSync } from 'fs';
 import { join } from 'path';
 
@@ -28,6 +30,7 @@ export class FssbPlatform extends BasePlatform {
   private platformUrl: string;
   private savedCookies: string = ''; // Cookies salvos do banco de dados
   private customerId: number | null = null; // Customer ID extraído da página
+  private cookieJar: CookieJar; // Cookie jar para gerenciar cookies automaticamente
 
   constructor(siteName: string, baseUrl: string, savedCookies?: string) {
     // Determinar a URL da plataforma baseada no site
@@ -42,6 +45,13 @@ export class FssbPlatform extends BasePlatform {
     this.platformUrl = platformUrl;
     this.userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36';
     this.savedCookies = savedCookies || '';
+    
+    // Criar cookie jar e configurar axios com suporte a cookies
+    this.cookieJar = new CookieJar();
+    this.httpClient = wrapper(axios.create({ 
+      jar: this.cookieJar,
+      withCredentials: true 
+    }));
   }
 
   /**
@@ -50,9 +60,9 @@ export class FssbPlatform extends BasePlatform {
   private static getPlatformUrl(siteName: string): string {
     switch (siteName.toLowerCase()) {
       case 'bet7k':
-        return 'https://prod20350-kbet-152319626.fssb.io/api';
+        return 'https://prod20350-kbet-152319626.fssb.io';
       case 'pixbet':
-        return 'https://prod20383.fssb.io/api';
+        return 'https://prod20383.fssb.io';
       default:
         throw new Error(`Site não suportado: ${siteName}`);
     }
@@ -124,20 +134,16 @@ export class FssbPlatform extends BasePlatform {
     const timestamp = new Date().toISOString();
     
     try {
-      // Adicionar cookies se disponíveis
-      if (this.sessionCookies) {
-        config.headers = {
-          ...config.headers,
-          'Cookie': this.sessionCookies
-        };
-      } else if (this.savedCookies) {
-        // Usar cookies salvos do banco se não há cookies de sessão atuais
-        config.headers = {
-          ...config.headers,
-          'Cookie': this.savedCookies
-        };
-      }
-
+      // Com cookie jar, não precisamos gerenciar cookies manualmente
+      // O axios-cookiejar-support faz isso automaticamente
+      
+      // Capturar cookies detalhados antes da requisição
+      const cookiesBeforeRequest = this.cookieJar.getCookiesSync(config.url as string);
+      const cookieStringBeforeRequest = cookiesBeforeRequest.map(cookie => `${cookie.key}=${cookie.value}`).join('; ');
+      
+      console.log(`🍪 [${requestId}] Cookies antes da requisição ${config.method} ${config.url}:`);
+      console.log(`📋 Cookie Jar (${cookiesBeforeRequest.length} cookies):`, cookieStringBeforeRequest);
+      
       // Log detalhado da requisição
       const requestLog = {
         requestId,
@@ -148,7 +154,8 @@ export class FssbPlatform extends BasePlatform {
         method: config.method,
         headers: config.headers,
         body: config.data,
-        sessionCookies: this.sessionCookies,
+        cookieJarCookies: cookiesBeforeRequest,
+        cookieJarCookiesString: cookieStringBeforeRequest,
         withCredentials: config.withCredentials,
         maxBodyLength: config.maxBodyLength
       };
@@ -157,10 +164,12 @@ export class FssbPlatform extends BasePlatform {
       
       const response = await this.httpClient.request(config);
       
-      // Capturar cookies da resposta
-      if (response.headers['set-cookie']) {
-        this.sessionCookies = response.headers['set-cookie'].join('; ');
-      }
+      // Capturar cookies após a resposta
+      const cookiesAfterResponse = this.cookieJar.getCookiesSync(config.url as string);
+      const cookieStringAfterResponse = cookiesAfterResponse.map(cookie => `${cookie.key}=${cookie.value}`).join('; ');
+      
+      console.log(`🍪 [${requestId}] Cookies após a resposta ${config.method} ${config.url}:`);
+      console.log(`📋 Cookie Jar (${cookiesAfterResponse.length} cookies):`, cookieStringAfterResponse);
       
       // Log detalhado da resposta
       const responseLog = {
@@ -173,7 +182,8 @@ export class FssbPlatform extends BasePlatform {
         headers: response.headers,
         data: response.data,
         cookies: response.headers['set-cookie'],
-        sessionCookies: this.sessionCookies,
+        cookieJarCookies: cookiesAfterResponse,
+        cookieJarCookiesString: cookieStringAfterResponse,
         responseTime: Date.now() - new Date(timestamp).getTime()
       };
       
@@ -230,7 +240,7 @@ export class FssbPlatform extends BasePlatform {
   /**
    * Etapa 2: Gerar token de usuário
    */
-  async generateToken(_accessToken: string, _userToken: string): Promise<UserToken> {
+  async generateToken(): Promise<UserToken> {
     // TODO: Implementar geração de token específica do FSBB
     throw new Error('Método generateToken não implementado para FSBB');
   }
@@ -244,9 +254,6 @@ export class FssbPlatform extends BasePlatform {
 
       // Fazer GET na URL da plataforma para capturar cookies
       const [platformCookies, platformCustomerId] = await this.getPlatformCookies(platformUrl);
-
-      //console.log(`✅ Cookies da plataforma capturados: ${platformCookies ? 'Sim' : 'Não'}`);
-      //console.log(`🆔 Customer ID capturado: ${platformCustomerId || 'Não encontrado'}`);
 
       // Retornar o token da plataforma (cookies capturados) e customerId
       return {
@@ -312,9 +319,7 @@ export class FssbPlatform extends BasePlatform {
    */
   private async getPlatformCookies(platformUrl: string): Promise<[string | null, number | null]> {
     try {
-      //console.log(`🍪 Capturando cookies da plataforma: ${platformUrl}`);
-
-      const response = await axios.get(platformUrl, {
+      const response = await this.httpClient.get(platformUrl, {
         headers: {
           'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
           'Accept-Language': 'pt-BR,pt;q=0.9,en;q=0.8',
@@ -333,30 +338,23 @@ export class FssbPlatform extends BasePlatform {
         },
         maxRedirects: 5,
         timeout: 10000,
-        responseType: 'text', // Forçar texto para evitar problemas de encoding
-        responseEncoding: 'utf8' // Especificar encoding UTF-8
+        responseType: 'text',
+        responseEncoding: 'utf8'
       });
 
       // Extrair customerId do HTML
       const htmlContent = response.data;
       this.customerId = this.extractCustomerIdFromHtml(htmlContent);
 
-      // Capturar cookies do header Set-Cookie
-      const setCookieHeaders = response.headers['set-cookie'];
-      let cookies: string | null = null;
+      // Obter cookies do cookie jar
+      const cookies = this.cookieJar.getCookiesSync(platformUrl);
+      const cookieString = cookies.map(cookie => `${cookie.key}=${cookie.value}`).join('; ');
       
-      if (setCookieHeaders && setCookieHeaders.length > 0) {
-        cookies = setCookieHeaders.join('; ');
-        //console.log(`✅ Cookies capturados com sucesso: ${cookies.substring(0, 100)}...`);
-        
-        // Salvar cookies na instância
-        this.sessionCookies = cookies;
-      } else {
-        console.log('⚠️ Nenhum cookie encontrado na resposta');
-      }
+      // Salvar cookies na instância
+      this.sessionCookies = cookieString;
 
       // Retornar cookies e customerId
-      return [cookies, this.customerId];
+      return [cookieString, this.customerId];
 
     } catch (error) {
       console.error('Erro ao capturar cookies da plataforma:', error);
@@ -367,20 +365,18 @@ export class FssbPlatform extends BasePlatform {
   /**
    * Obter betslip atual
    */
-  private async getBetslip(): Promise<FssbBetslipResponse[]> {
+  async getBetslip(): Promise<FssbBetslipResponse[]> {
     const config = {
       method: 'GET',
-      url: `${this.platformUrl}/betslip/betslip?initial=true`,
+      url: `${this.platformUrl}/api/betslip/betslip?initial=true`,
       headers: {
-        'Cookie': this.getSessionCookies(),
         'User-Agent': this.userAgent,
         'Accept': '*/*',
         'Accept-Encoding': 'gzip, deflate, br',
         'Connection': 'keep-alive',
         'Origin': this.platformUrl,
         'Referer': this.platformUrl
-      },
-      withCredentials: true
+      }
     };
 
     try {
@@ -395,28 +391,37 @@ export class FssbPlatform extends BasePlatform {
   /**
    * Limpar betslip (enviar array vazio)
    */
-  private async clearBetslip(): Promise<void> {
+  async clearBetslip(): Promise<void> {
     const config = {
       method: 'POST',
-      url: `${this.platformUrl}/betslip/betslip`,
+      url: `${this.platformUrl}/api/betslip/betslip`,
       headers: {
-        'Content-Type': 'application/json',
-        'Cookie': this.getSessionCookies(),
-        'User-Agent': this.userAgent,
-        'Accept': '*/*',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Connection': 'keep-alive',
-        'Origin': this.platformUrl,
-        'Referer': this.platformUrl
+        'Content-Type': 'application/json'
       },
-      data: [],
-      withCredentials: true
+      data: []
     };
 
     try {
       await this.makeRequest(config);
+      console.log(`✅ Betslip limpo com sucesso`);
     } catch (error) {
       console.error('Erro ao limpar betslip:', error);
+      
+      // Log detalhado do erro para debug
+      if (error && typeof error === 'object' && 'response' in error) {
+        const axiosError = error as { 
+          response?: { 
+            status?: number; 
+            statusText?: string;
+            data?: unknown 
+          };
+        };
+        
+        console.error(`📥 Status: ${axiosError.response?.status}`);
+        console.error(`📥 Status Text: ${axiosError.response?.statusText}`);
+        console.error(`📥 Response Data:`, axiosError.response?.data);
+      }
+      
       throw new Error('Erro ao limpar betslip');
     }
   }
@@ -424,10 +429,10 @@ export class FssbPlatform extends BasePlatform {
   /**
    * Adicionar seleções ao betslip
    */
-  private async addToBetslip(selections: FssbBetslipRequest[]): Promise<FssbBetslipResponse[]> {
+  async addToBetslip(selections: unknown[]): Promise<FssbBetslipResponse[]> {
     const config = {
       method: 'POST',
-      url: `${this.platformUrl}/betslip/betslip`,
+      url: `${this.platformUrl}/api/betslip/betslip`,
       headers: {
         'Content-Type': 'application/json',
         'Cookie': this.getSessionCookies(),
@@ -454,10 +459,27 @@ export class FssbPlatform extends BasePlatform {
   /**
    * Fazer a aposta final
    */
-  private async placeBets(betsRequest: FssbBetsRequest[]): Promise<FssbBetsResponse | FssbBetError> {
+  async placeBets(betsRequest: FssbBetsRequest[]): Promise<FssbBetsResponse | unknown> {
+    // Capturar cookies antes da requisição
+    const cookiesBeforeRequest = this.cookieJar.getCookiesSync(this.platformUrl);
+    const cookieStringBeforeRequest = cookiesBeforeRequest.map(cookie => `${cookie.key}=${cookie.value}`).join('; ');
+    
+    // Extrair cookies específicos
+    const authorizationCookie = this.getAuthorizationCookie();
+    const sessionCookie = this.getSessionCookie();
+    
+    console.log(`🍪 Cookies antes da requisição placeBets:`);
+    console.log(`📋 Cookie Jar (${cookiesBeforeRequest.length} cookies):`, cookieStringBeforeRequest);
+    console.log(`📋 Session Cookies:`, this.sessionCookies);
+    console.log(`🔑 Authorization Cookie:`, authorizationCookie);
+    console.log(`🔑 Session Cookie:`, sessionCookie);
+    
+    // Listar todos os cookies para debug
+    this.listAllCookies();
+    
     const config = {
       method: 'POST',
-      url: `${this.platformUrl}/betslip/bets`,
+      url: `${this.platformUrl}/api/betslip/bets`,
       headers: {
         'Accept': 'application/json',
         'Accept-Language': 'pt-BR,pt;q=0.9',
@@ -468,27 +490,90 @@ export class FssbPlatform extends BasePlatform {
         'Pragma': 'no-cache',
         'Priority': 'u=1, i',
         'Referer': `${this.platformUrl}/br-pt/spbk`,
-        'Sec-Ch-Ua': '"Google Chrome";v="141", "Not?A_Brand";v="8", "Chromium";v="141"',
-        'Sec-Ch-Ua-Mobile': '?0',
-        'Sec-Ch-Ua-Platform': '"Windows"',
-        'Sec-Fetch-Dest': 'empty',
-        'Sec-Fetch-Mode': 'cors',
-        'Sec-Fetch-Site': 'same-origin',
         'Time-Area': '1',
         'User-Agent': this.userAgent,
-        'Accept-Encoding': 'gzip, deflate, br, zstd',
-        'Cookie': this.getSessionCookies()
+        'Accept-Encoding': 'gzip, deflate, br',
+        // Adicionar cookies específicos se existirem
+        ...(authorizationCookie && { 'Authorization': authorizationCookie }),
+        ...(sessionCookie && { 'Session': sessionCookie })
       },
       data: betsRequest,
       withCredentials: true
     };
 
     try {
-      const data = await this.makeRequest<FssbBetsResponse | FssbBetError>(config);
+      const data = await this.makeRequest<FssbBetsResponse | unknown>(config);
+      
+      // Capturar cookies após a requisição
+      const cookiesAfterRequest = this.cookieJar.getCookiesSync(this.platformUrl);
+      const cookieStringAfterRequest = cookiesAfterRequest.map(cookie => `${cookie.key}=${cookie.value}`).join('; ');
+      
+      console.log(`🍪 Cookies após a requisição placeBets:`);
+      console.log(`📋 Cookie Jar (${cookiesAfterRequest.length} cookies):`, cookieStringAfterRequest);
+      
       return data;
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Erro ao fazer aposta:', error);
-      throw new Error('Erro ao fazer aposta');
+      
+      // Tratamento detalhado de erro
+      if (error && typeof error === 'object' && 'response' in error) {
+        // Erro com resposta do servidor
+        const axiosError = error as { response: { status: number; statusText: string; data: unknown } };
+        const status = axiosError.response.status;
+        const statusText = axiosError.response.statusText;
+        const responseData = axiosError.response.data;
+        
+        console.error(`❌ Erro HTTP ${status}: ${statusText}`);
+        console.error(`📋 Response Body:`, JSON.stringify(responseData, null, 2));
+        
+        // Criar objeto de erro estruturado
+        const structuredError = {
+          success: false,
+          error: `HTTP ${status}: ${statusText}`,
+          details: responseData,
+          statusCode: status,
+          statusText: statusText,
+          timestamp: new Date().toISOString()
+        };
+        
+        return structuredError;
+      } else if (error && typeof error === 'object' && 'request' in error) {
+        // Erro de rede (sem resposta)
+        console.error('❌ Erro de rede - sem resposta do servidor');
+        console.error('📋 Request config:', JSON.stringify((error as unknown as { config: unknown }).config, null, 2));
+        
+        const structuredError = {
+          success: false,
+          error: 'Erro de rede - sem resposta do servidor',
+          details: {
+            message: (error as unknown as { message: string }).message,
+            code: (error as unknown as { code: string }).code,
+            config: (error as unknown as { config: unknown }).config
+          },
+          statusCode: 0,
+          statusText: 'Network Error',
+          timestamp: new Date().toISOString()
+        };
+        
+        return structuredError;
+      } else {
+        // Outros erros
+        console.error('❌ Erro desconhecido:', error);
+        
+        const structuredError = {
+          success: false,
+          error: (error as { message: string })?.message || 'Erro desconhecido',
+          details: {
+            message: (error as { message: string })?.message,
+            stack: (error as { stack: string })?.stack
+          },
+          statusCode: 0,
+          statusText: 'Unknown Error',
+          timestamp: new Date().toISOString()
+        };
+        
+        return structuredError;
+      }
     }
   }
 
@@ -506,13 +591,14 @@ export class FssbPlatform extends BasePlatform {
   /**
    * Construir objeto de aposta baseado nos dados do betslip
    */
-  private buildBetsRequest(
+  buildBetsRequest(
     betslipData: FssbBetslipResponse[], 
-    stake: number
+    stakes: number[]
   ): FssbBetsRequest[] {
-    return betslipData.map(item => {
+    return betslipData.map((item, index) => {
       const selection = item.market.Changeset.Selection;
       const event = item.event.Changeset;
+      const stake = stakes[index] || stakes[0]; // Usar stake específico ou o primeiro como fallback
       
       return {
         betName: "single bet",
@@ -522,6 +608,7 @@ export class FssbPlatform extends BasePlatform {
           id: selection._id,
           trueOdds: selection.TrueOdds,
           displayOdds: selection.DisplayOdds,
+          ...(selection.Points !== undefined && { points: selection.Points }), // Só incluir se existir
           marketId: selection.MarketId,
           eventId: selection.EventId,
           timestamp: item.timestamp,
@@ -568,7 +655,7 @@ export class FssbPlatform extends BasePlatform {
         }],
         selectionsPlaced: [selection._id],
         stake: stake.toString(),
-        potentialReturns: stake * selection.TrueOdds,
+        potentialReturns: Math.round(stake * selection.TrueOdds * 100) / 100,
         freeBet: {
           id: 0,
           amount: 0,
@@ -637,14 +724,15 @@ export class FssbPlatform extends BasePlatform {
 
       // 2. Adicionar seleções ao betslip
       this.saveLogToFile(`➕ Adicionando seleções ao betslip`, { selections });
-      const betslipData = await this.addToBetslip(selections);
+      const betslipData = await this.addToBetslip(selections) as FssbBetslipResponse[];
 
       if (betslipData.length === 0) {
         throw new Error('Nenhuma seleção foi adicionada ao betslip');
       }
 
       // 3. Construir requisição de aposta
-      const betsRequest = this.buildBetsRequest(betslipData, stake);
+      const stakes = betData.stakes || [stake]; // Usar array de stakes ou fallback para stake único
+      const betsRequest = this.buildBetsRequest(betslipData, stakes);
       
       this.saveLogToFile(`📝 Construindo requisição de aposta`, {
         betsCount: betsRequest.length,
@@ -659,7 +747,7 @@ export class FssbPlatform extends BasePlatform {
       const betResult = await this.placeBets(betsRequest);
 
       // Verificar se houve erro na aposta
-      if ('error' in betResult) {
+      if ('error' in (betResult as object)) {
         const error = betResult as FssbBetError;
         this.saveLogToFile(`❌ Erro na aposta`, error);
         
@@ -780,10 +868,69 @@ export class FssbPlatform extends BasePlatform {
   }
 
   /**
+   * Extrair cookie específico do cookie jar
+   */
+  private getCookieValue(cookieName: string): string | null {
+    const cookies = this.cookieJar.getCookiesSync(this.platformUrl);
+    const cookie = cookies.find(c => c.key === cookieName);
+    return cookie ? cookie.value : null;
+  }
+
+  /**
+   * Obter cookie de Authorization
+   */
+  getAuthorizationCookie(): string | null {
+    return this.getCookieValue('Authorization') || 
+           this.getCookieValue('authorization') || 
+           this.getCookieValue('auth') ||
+           this.getCookieValue('token');
+  }
+
+  /**
+   * Obter cookie de Session
+   */
+  getSessionCookie(): string | null {
+    return this.getCookieValue('Session') || 
+           this.getCookieValue('session') || 
+           this.getCookieValue('sessionId') ||
+           this.getCookieValue('JSESSIONID');
+  }
+
+  /**
+   * Listar todos os cookies disponíveis para debug
+   */
+  listAllCookies(): void {
+    const cookies = this.cookieJar.getCookiesSync(this.platformUrl);
+    console.log(`🍪 Todos os cookies disponíveis (${cookies.length}):`);
+    cookies.forEach((cookie, index) => {
+      console.log(`  ${index + 1}. ${cookie.key} = ${cookie.value.substring(0, 50)}${cookie.value.length > 50 ? '...' : ''}`);
+    });
+  }
+
+  /**
    * Definir cookies de sessão
    */
   setSessionCookies(cookies: string): void {
     this.sessionCookies = cookies;
+  }
+
+  /**
+   * Receber cookies de sessão do SiteAuthService
+   * Esta função é chamada após o login ser feito através do SiteAuthService
+   */
+  receiveSessionCookies(sessionCookies: string): void {
+    console.log(`🍪 Recebendo cookies de sessão do SiteAuthService para ${this.siteName}`);
+    console.log(`📝 Cookies recebidos: ${sessionCookies ? sessionCookies.substring(0, 100) + '...' : 'Nenhum'}`);
+    
+    this.sessionCookies = sessionCookies;
+    
+    // Log para debug
+    this.saveLogToFile(`🍪 Cookies de sessão recebidos do SiteAuthService`, {
+      siteName: this.siteName,
+      cookiesLength: sessionCookies.length,
+      cookiesPreview: sessionCookies.substring(0, 200),
+      hasCookies: !!sessionCookies
+    });
   }
 
   /**
