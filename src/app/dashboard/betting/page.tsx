@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { BettingStatsCards, QuickStatsRow } from '@/components/betting/BettingStatsCards';
 import { BettingList } from '@/components/betting/BettingList';
 import { BettingDetails } from '@/components/betting/BettingDetails';
-import { DashboardLayout } from '@/components/layout/DashboardLayout';
+import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
 import { BetBetting } from '@/types/betting';
 
 function BettingExtractContent() {
@@ -23,6 +23,14 @@ function BettingExtractContent() {
 
   return (
     <div className="space-y-6">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900">Extrato de Apostas</h1>
+          <p className="text-gray-600">Acompanhe todas as suas apostas automáticas e analise a performance</p>
+        </div>
+      </div>
+
       {view === 'list' ? (
         <>
           {/* Cards de Estatísticas */}
@@ -46,17 +54,8 @@ function BettingExtractContent() {
 
 export default function BettingExtractPage() {
   return (
-    <DashboardLayout title="Extrato de Apostas">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">
-          Extrato de Apostas
-        </h1>
-        <p className="text-gray-600">
-          Acompanhe todas as suas apostas automáticas e analise a performance
-        </p>
-      </div>
-
+    <ProtectedRoute>
       <BettingExtractContent />
-    </DashboardLayout>
+    </ProtectedRoute>
   );
 }

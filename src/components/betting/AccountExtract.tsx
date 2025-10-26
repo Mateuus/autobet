@@ -163,12 +163,23 @@ export function AccountExtract({ accountId }: AccountExtractProps) {
                   height: '2.5rem',
                   width: '100%',
                   borderRadius: '0.375rem',
-                  border: '1px solid #d1d5db',
+                  border: '2px solid #d1d5db',
                   backgroundColor: 'white',
                   padding: '0.5rem 0.75rem',
                   fontSize: '0.875rem',
+                  fontWeight: '500',
+                  color: '#374151',
                   outline: 'none',
-                  transition: 'border-color 0.2s ease-in-out'
+                  transition: 'all 0.2s ease-in-out',
+                  cursor: 'pointer'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#3b82f6';
+                  e.target.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = '#d1d5db';
+                  e.target.style.boxShadow = 'none';
                 }}
               >
                 <option value="all">Todas as contas</option>
@@ -192,12 +203,23 @@ export function AccountExtract({ accountId }: AccountExtractProps) {
                   height: '2.5rem',
                   width: '100%',
                   borderRadius: '0.375rem',
-                  border: '1px solid #d1d5db',
+                  border: '2px solid #d1d5db',
                   backgroundColor: 'white',
                   padding: '0.5rem 0.75rem',
                   fontSize: '0.875rem',
+                  fontWeight: '500',
+                  color: '#374151',
                   outline: 'none',
-                  transition: 'border-color 0.2s ease-in-out'
+                  transition: 'all 0.2s ease-in-out',
+                  cursor: 'pointer'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#3b82f6';
+                  e.target.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = '#d1d5db';
+                  e.target.style.boxShadow = 'none';
                 }}
               >
                 <option value="all">Todos</option>
@@ -216,7 +238,7 @@ export function AccountExtract({ accountId }: AccountExtractProps) {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Total Apostado</p>
+                <p className="text-sm text-gray-700">Total Apostado</p>
                 <p className="text-2xl font-bold text-gray-900">
                   R$ {accountStats.totalStake.toFixed(2)}
                 </p>
@@ -230,7 +252,7 @@ export function AccountExtract({ accountId }: AccountExtractProps) {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Taxa de Sucesso</p>
+                <p className="text-sm text-gray-700">Taxa de Sucesso</p>
                 <p className="text-2xl font-bold text-gray-900">
                   {successRate.toFixed(1)}%
                 </p>
@@ -244,7 +266,7 @@ export function AccountExtract({ accountId }: AccountExtractProps) {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Lucro/Prejuízo</p>
+                <p className="text-sm text-gray-700">Lucro/Prejuízo</p>
                 <p className={`text-2xl font-bold ${
                   profitLoss >= 0 ? 'text-green-600' : 'text-red-600'
                 }`}>
@@ -264,7 +286,7 @@ export function AccountExtract({ accountId }: AccountExtractProps) {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Total de Bilhetes</p>
+                <p className="text-sm text-gray-700">Total de Bilhetes</p>
                 <p className="text-2xl font-bold text-gray-900">
                   {accountStats.totalBilhetes}
                 </p>
@@ -300,28 +322,28 @@ export function AccountExtract({ accountId }: AccountExtractProps) {
                     </Badge>
                   </div>
                   <div className="text-right">
-                    <p className="text-sm text-gray-600">Bilhete ID</p>
+                    <p className="text-sm text-gray-700">Bilhete ID</p>
                     <p className="font-mono text-sm">{bilhete.bilheteId}</p>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-3">
                   <div>
-                    <p className="text-sm text-gray-600">Stake</p>
-                    <p className="font-semibold">R$ {bilhete.stake.toFixed(2)}</p>
+                    <p className="text-sm text-gray-700">Stake</p>
+                    <p className="font-semibold text-gray-900">R$ {bilhete.stake.toFixed(2)}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600">Odd</p>
-                    <p className="font-semibold">{bilhete.odd.toFixed(2)}</p>
+                    <p className="text-sm text-gray-700">Odd</p>
+                    <p className="font-semibold text-gray-900">{bilhete.odd.toFixed(2)}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600">Ganho Potencial</p>
-                    <p className="font-semibold">
+                    <p className="text-sm text-gray-700">Ganho Potencial</p>
+                    <p className="font-semibold text-gray-900">
                       R$ {bilhete.potentialWin ? bilhete.potentialWin.toFixed(2) : '0.00'}
                     </p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600">Ganho Real</p>
+                    <p className="text-sm text-gray-700">Ganho Real</p>
                     <p className={`font-semibold ${
                       bilhete.actualWin && bilhete.actualWin > 0 
                         ? 'text-green-600' 
@@ -333,8 +355,8 @@ export function AccountExtract({ accountId }: AccountExtractProps) {
                     </p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600">Data</p>
-                    <p className="font-semibold">
+                    <p className="text-sm text-gray-700">Data</p>
+                    <p className="font-semibold text-gray-900">
                       {bilhete.createdAt.toLocaleDateString('pt-BR')}
                     </p>
                   </div>
@@ -354,7 +376,7 @@ export function AccountExtract({ accountId }: AccountExtractProps) {
                                  bilhete.betData.bets[0].selections[0].event || 
                                  'Evento não especificado'}
                               </p>
-                              <p className="text-gray-600">
+                              <p className="text-gray-700">
                                 {bilhete.betData.bets[0].selections[0].Name || 
                                  bilhete.betData.bets[0].selections[0].selection || 
                                  'Seleção não especificada'}

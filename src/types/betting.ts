@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+
 // Tipos para o sistema de extrato de apostas
 export interface BetBilhete {
   id: string;
@@ -160,7 +163,7 @@ export const mockBetBettings: BetBetting[] = [
     totalPotentialWin: 3.46, // 1.15 + 1.17 + 1.14
     totalActualWin: 1.14, // Apenas 1 bilhete foi resolvido
     profitLoss: -0.51, // 1.14 - 1.95 (considerando apenas o resolvido)
-    status: 'partial',
+    status: 'pending',
     betConfig: {
       strategy: 'brasileirao-tarde',
       markets: ['1x2'],

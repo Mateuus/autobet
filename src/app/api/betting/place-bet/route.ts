@@ -5,6 +5,11 @@ import { getPlatformInstance } from '@/lib/utils/platformFactory';
 import { BetData, LoginCredentials } from '@/types';
 import { OddsStateResponse, OddsStatesApiResponse } from '@/services/biaHostedApi';
 import { FssbPlatform } from '@/lib/platforms/FssbPlatform';
+import { 
+  BettingService, 
+  PlatformResponseProcessor,
+  CreateBetBettingData
+} from '@/services';
 
 // Interface estendida para PlatformToken com campos específicos do FSSB (comentada por enquanto)
 // interface FssbPlatformToken extends PlatformToken {
@@ -91,10 +96,28 @@ interface BettingResult {
   betId?: string;
   error?: string;
   stake: number;
+  odd?: number;
+  potentialWin?: number;
   balance: number;
   newBalance?: number;
   processingTime: number;
   timestamp: string;
+  bettingResult?: {
+    success: boolean;
+    bilheteId?: string;
+    stake: number;
+    odd: number;
+    potentialWin: number;
+    balanceBefore: number;
+    balanceAfter?: number;
+    error?: {
+      type: string;
+      code: string;
+      message: string;
+      details?: unknown;
+    };
+    rawResponse?: unknown;
+  }; // Resultado completo do sistema de apostas para debug
 }
 
 /**
@@ -288,7 +311,14 @@ async function getActiveAccounts(platform?: string): Promise<BetAccount[]> {
  * @param stake - Valor da aposta
  * @returns Resultado da aposta
  */
-async function processBetForAccountBia(account: BetAccount, betData: BetData, stake: number): Promise<BettingResult> {
+async function processBetForAccountBia(
+  account: BetAccount, 
+  betData: BetData, 
+  stake: number,
+  betBettingId: string,
+  bettingService: BettingService,
+  responseProcessor: PlatformResponseProcessor
+): Promise<BettingResult> {
   const startTime = Date.now();
   const timestamp = new Date().toISOString();
   
@@ -343,6 +373,28 @@ async function processBetForAccountBia(account: BetAccount, betData: BetData, st
     // 6. Fazer a aposta
     console.log(`🎲 Executando aposta de R$ ${stake.toFixed(2)} em ${account.site}...`);
     const betResult = await platform.placeBet(platformToken.accessToken, betPayload);
+    console.log('🎯 Resposta Biahosted:', betResult);
+
+    // Processar resposta com o novo sistema de apostas
+    console.log(`📝 Processando resposta Biahosted para ${account.site}...`);
+    const balanceBefore = account.balance / 100; // Converter de centavos para reais
+    
+    const bettingResult = await responseProcessor.processBiahostedSuccess(
+      betBettingId,
+      account.id,
+      account.platform,
+      account.site,
+      balanceBefore,
+      betResult
+    );
+
+    console.log(`✅ Resultado processado:`, {
+      success: bettingResult.success,
+      bilheteId: bettingResult.bilheteId,
+      stake: bettingResult.stake,
+      odd: bettingResult.odd,
+      potentialWin: bettingResult.potentialWin
+    });
     
     // 7. Fazer novo login para verificar saldo
     console.log(`🔐 Fazendo novo login em ${account.site}...`);
@@ -354,7 +406,7 @@ async function processBetForAccountBia(account: BetAccount, betData: BetData, st
     const processingTime = Date.now() - startTime;
     
     console.log(`✅ Aposta realizada com sucesso em ${account.site} em ${processingTime}ms`);
-    console.log(`   - Bet ID: ${betResult.bets?.[0]?.id || 'N/A'}`);
+    console.log(`   - Bet ID: ${bettingResult.bilheteId || 'N/A'}`);
     console.log(`   - Saldo anterior: R$ ${(account.balance / 100).toFixed(2)}`);
     console.log(`   - Saldo atual: R$ ${(newBalance / 100).toFixed(2)}`);
     
@@ -362,13 +414,16 @@ async function processBetForAccountBia(account: BetAccount, betData: BetData, st
       accountId: account.id,
       site: account.site,
       platform: account.platform,
-      success: true,
-      betId: betResult.bets?.[0]?.id?.toString() || `BET_${Date.now()}`,
-      stake: stake,
+      success: bettingResult.success,
+      betId: bettingResult.bilheteId || `BET_${Date.now()}`,
+      stake: bettingResult.stake,
+      odd: bettingResult.odd,
+      potentialWin: bettingResult.potentialWin,
       balance: account.balance,
       newBalance: newBalance,
       processingTime: processingTime,
-      timestamp: timestamp
+      timestamp: timestamp,
+      bettingResult: bettingResult // Incluir resultado completo para debug
     };
     
   } catch (error) {
@@ -377,17 +432,52 @@ async function processBetForAccountBia(account: BetAccount, betData: BetData, st
     
     console.error(`❌ Erro ao processar aposta Biahosted em ${account.site}:`, errorMessage);
     
-    return {
-      accountId: account.id,
-      site: account.site,
-      platform: account.platform,
-      success: false,
-      error: errorMessage,
-      stake: stake,
-      balance: account.balance,
-      processingTime: processingTime,
-      timestamp: timestamp
-    };
+    // Processar erro com o novo sistema de apostas
+    console.log(`📝 Processando erro Biahosted para ${account.site}...`);
+    const balanceBefore = account.balance / 100; // Converter de centavos para reais
+    
+    try {
+      const bettingResult = await responseProcessor.processBiahostedError(
+        betBettingId,
+        account.id,
+        account.platform,
+        account.site,
+        balanceBefore,
+        error
+      );
+
+      console.log(`✅ Erro processado:`, {
+        success: bettingResult.success,
+        error: bettingResult.error
+      });
+
+      return {
+        accountId: account.id,
+        site: account.site,
+        platform: account.platform,
+        success: false,
+        error: errorMessage,
+        stake: stake,
+        balance: account.balance,
+        processingTime: processingTime,
+        timestamp: timestamp,
+        bettingResult: bettingResult // Incluir resultado completo para debug
+      };
+    } catch (processingError) {
+      console.error(`❌ Erro ao processar erro no sistema de apostas:`, processingError);
+      
+      return {
+        accountId: account.id,
+        site: account.site,
+        platform: account.platform,
+        success: false,
+        error: errorMessage,
+        stake: stake,
+        balance: account.balance,
+        processingTime: processingTime,
+        timestamp: timestamp
+      };
+    }
   }
 }
 
@@ -398,7 +488,14 @@ async function processBetForAccountBia(account: BetAccount, betData: BetData, st
  * @param stake - Valor da aposta
  * @returns Resultado da aposta
  */
-async function processBetForAccountFssb(account: BetAccount, fssbBetData: FssbBetData, stake: number): Promise<BettingResult> {
+async function processBetForAccountFssb(
+  account: BetAccount, 
+  fssbBetData: FssbBetData, 
+  stake: number,
+  betBettingId: string,
+  bettingService: BettingService,
+  responseProcessor: PlatformResponseProcessor
+): Promise<BettingResult> {
   const startTime = Date.now();
   const timestamp = new Date().toISOString();
   
@@ -467,45 +564,30 @@ async function processBetForAccountFssb(account: BetAccount, fssbBetData: FssbBe
 
     //Vamos fazer a bets agora. 
     const bets = await (platform as FssbPlatform).placeBets(betsRequest);
-    console.log(bets);
+    console.log('🎯 Resposta FSSB:', bets);
 
+    // Processar resposta com o novo sistema de apostas
+    console.log(`📝 Processando resposta FSSB para ${account.site}...`);
+    const balanceBefore = account.balance / 100; // Converter de centavos para reais
+    
+    const bettingResult = await responseProcessor.processFSSBSuccess(
+      betBettingId,
+      account.id,
+      account.platform,
+      account.site,
+      balanceBefore,
+      bets
+    );
 
-    // Exemplo de como adicionar seleções ao betslip (comentado por enquanto)
-    // const testSelections = [
-    //   {
-    //     selectionId: "0OU766498958343434276OMM",
-    //     viewKey: 1,
-    //     isCrossBet: false,
-    //     isAddedToBetslip: false,
-    //     isDynamicMarket: false,
-    //     isBetBuilderBet: false
-    //   }
-    // ];
-    // console.log(`➕ Adicionando seleções de teste ao betslip...`);
-    // const addedSelections = await platform.addToBetslip(testSelections);
-    // console.log(`✅ Seleções adicionadas: ${addedSelections.length} itens`);
-    
-    //console.log(betslipResponse);
+    console.log(`✅ Resultado processado:`, {
+      success: bettingResult.success,
+      bilheteId: bettingResult.bilheteId,
+      stake: bettingResult.stake,
+      odd: bettingResult.odd,
+      potentialWin: bettingResult.potentialWin
+    });
 
-    
-    //const platformToken = { accessToken: fssbSignInResult.accessToken };
-    //console.log(`✅ FSSB SignIn concluído - CustomerId: ${(fssbSignInResult as FssbPlatformToken).platformCustomerId || 'N/A'}`);
-    
-    // 4. Preparar payload específico para FSSB (comentado por enquanto)
-    // const betPayload: BetData = {
-    //   ...betData,
-    //   culture: 'pt-BR',
-    //   timezoneOffset: 180,
-    //   integration: 'fssb',
-    //   deviceType: 1,
-    //   numFormat: 'en-GB',
-    //   countryCode: 'BR',
-    //   requestId: generateRandomRequestId()
-    // };
-    
-    // 5. Fazer a aposta
-    //console.log(`🎲 Executando aposta de R$ ${stake.toFixed(2)} em ${account.site}...`);
-    //const betResult = await platform.placeBet(platformToken.accessToken, betPayload);
+    //Regitrar o bilhete na base de dados
     
     // 6. Verificar saldo após a aposta usando SiteAuthService
     console.log(`💰 Verificando saldo após aposta em ${account.site}...`);
@@ -518,13 +600,16 @@ async function processBetForAccountFssb(account: BetAccount, fssbBetData: FssbBe
       accountId: account.id,
       site: account.site,
       platform: account.platform,
-      success: true,
-      betId: '', /*betResult.bets?.[0]?.id?.toString() || `BET_${Date.now()}`,*/
-      stake: stake,
+      success: bettingResult.success,
+      betId: bettingResult.bilheteId || `BET_${Date.now()}`,
+      stake: bettingResult.stake,
+      odd: bettingResult.odd,
+      potentialWin: bettingResult.potentialWin,
       balance: account.balance,
-      newBalance: 0, /*newBalance,*/
+      newBalance: bettingResult.balanceAfter ? Math.round(bettingResult.balanceAfter * 100) : account.balance, // Converter para centavos
       processingTime: processingTime,
-      timestamp: timestamp
+      timestamp: timestamp,
+      bettingResult: bettingResult // Incluir resultado completo para debug
     };
     
   } catch (error) {
@@ -533,17 +618,52 @@ async function processBetForAccountFssb(account: BetAccount, fssbBetData: FssbBe
     
     console.error(`❌ Erro ao processar aposta FSSB em ${account.site}:`, errorMessage);
     
-    return {
-      accountId: account.id,
-      site: account.site,
-      platform: account.platform,
-      success: false,
-      error: errorMessage,
-      stake: stake,
-      balance: account.balance,
-      processingTime: processingTime,
-      timestamp: timestamp
-    };
+    // Processar erro com o novo sistema de apostas
+    console.log(`📝 Processando erro FSSB para ${account.site}...`);
+    const balanceBefore = account.balance / 100; // Converter de centavos para reais
+    
+    try {
+      const bettingResult = await responseProcessor.processFSSBError(
+        betBettingId,
+        account.id,
+        account.platform,
+        account.site,
+        balanceBefore,
+        error
+      );
+
+      console.log(`✅ Erro processado:`, {
+        success: bettingResult.success,
+        error: bettingResult.error
+      });
+
+      return {
+        accountId: account.id,
+        site: account.site,
+        platform: account.platform,
+        success: false,
+        error: errorMessage,
+        stake: stake,
+        balance: account.balance,
+        processingTime: processingTime,
+        timestamp: timestamp,
+        bettingResult: bettingResult // Incluir resultado completo para debug
+      };
+    } catch (processingError) {
+      console.error(`❌ Erro ao processar erro no sistema de apostas:`, processingError);
+      
+      return {
+        accountId: account.id,
+        site: account.site,
+        platform: account.platform,
+        success: false,
+        error: errorMessage,
+        stake: stake,
+        balance: account.balance,
+        processingTime: processingTime,
+        timestamp: timestamp
+      };
+    }
   }
 }
 
@@ -555,7 +675,15 @@ async function processBetForAccountFssb(account: BetAccount, fssbBetData: FssbBe
  * @param stake - Valor da aposta por conta
  * @returns Resultado consolidado de todas as apostas
  */
-async function processBettingWorker(accounts: BetAccount[], betData: BetData, fssbBetData: FssbBetData, stake: number): Promise<BettingWorkerResult> {
+async function processBettingWorker(
+  accounts: BetAccount[], 
+  betData: BetData, 
+  fssbBetData: FssbBetData, 
+  stake: number,
+  betBettingId: string,
+  bettingService: BettingService,
+  responseProcessor: PlatformResponseProcessor
+): Promise<BettingWorkerResult> {
   const workerStartTime = Date.now();
   
   console.log(`🚀 Iniciando worker de apostas para ${accounts.length} contas`);
@@ -566,9 +694,9 @@ async function processBettingWorker(accounts: BetAccount[], betData: BetData, fs
   const bettingPromises = accounts.map(account => {
     // Escolher função baseada na plataforma
     if (account.platform.toLowerCase() === 'fssb') {
-      return processBetForAccountFssb(account, fssbBetData, stake);
+      return processBetForAccountFssb(account, fssbBetData, stake, betBettingId, bettingService, responseProcessor);
     } else {
-      return processBetForAccountBia(account, betData, stake);
+      return processBetForAccountBia(account, betData, stake, betBettingId, bettingService, responseProcessor);
     }
   });
   
@@ -624,6 +752,10 @@ export async function POST(request: NextRequest) {
     const body: BettingPayload = await request.json();
     
     console.log('🎯 Recebido payload do frontend:', JSON.stringify(body, null, 2));
+    
+    // Inicializar serviços de apostas
+    const bettingService = new BettingService();
+    const responseProcessor = new PlatformResponseProcessor();
     
     // Detectar plataforma
     const platform = body.platform || 'biahosted'; // Default para biahosted
@@ -682,23 +814,7 @@ export async function POST(request: NextRequest) {
     // HACK: Para teste - usar todas as contas mesmo sem saldo suficiente
     console.log('🔧 HACK ATIVO: Ignorando verificação de saldo para teste');
     const testAccounts = activeAccounts; // Usar todas as contas para teste
-    
-    // Verificar se há contas com saldo suficiente (comentado para teste)
-    // if (balanceResult.sufficientBalance.length === 0) {
-    //   console.log('❌ Nenhuma conta com saldo suficiente - retornando erro 400');
-    //   return NextResponse.json({
-    //     success: false,
-    //     message: 'Nenhuma conta com saldo suficiente encontrada',
-    //     requiredBalance: totalStakeRequired,
-    //     availableBalance: balanceResult.totalAvailable / 100,
-    //     insufficientAccounts: balanceResult.insufficientBalance.map(account => ({
-    //       id: account.id,
-    //       site: account.site,
-    //       balance: account.balance / 100,
-    //       needed: (totalStakeInCents - account.balance) / 100
-    //     }))
-    //   }, { status: 400 });
-    // }
+
     
     console.log(`🔧 TESTE: Usando ${testAccounts.length} contas da plataforma ${platform} para teste (ignorando saldo):`);
     testAccounts.forEach((account, index) => {
@@ -773,93 +889,79 @@ export async function POST(request: NextRequest) {
     
     console.log(`🎲 Stake por conta: R$ ${stakePerAccount.toFixed(2)}`);
     
+    // Criar registro principal da aposta no banco de dados
+    console.log(`\n📝 Criando registro principal da aposta...`);
+    const betBettingData: CreateBetBettingData = {
+      accountId: 'user-1', // TODO: Pegar do contexto de autenticação
+      description: `Aposta automática - ${platform.toUpperCase()} - ${new Date().toLocaleString('pt-BR')}`,
+      betConfig: {
+        platform,
+        betMarkets: platform === 'fssb' ? fssbBetData : betMarkets,
+        stakes,
+        totalStakeRequired
+      },
+      stakePerAccount,
+      totalAccounts: testAccounts.length
+    };
+
+    const betBetting = await bettingService.createBetBetting(betBettingData);
+    console.log(`✅ BetBetting criado: ${betBetting.id}`);
+    
     // Executar o worker de apostas (usando contas de teste)
     console.log(`\n🚀 Iniciando processamento de apostas com HACK...`);
-    const workerResult = await processBettingWorker(testAccounts, betData!, fssbBetData!, stakePerAccount);
+    const workerResult = await processBettingWorker(testAccounts, betData!, fssbBetData!, stakePerAccount, betBetting.id, bettingService, responseProcessor);
     
-    // Calcular odds total e ganho potencial
-    let totalOdds = 1;
-    let eventsCount = 0;
-    let selectionsCount = 0;
-    
-    if (platform === 'fssb') {
-      // Para FSSB, não temos odds disponíveis no payload atual
-      totalOdds = 1; // Valor padrão
-      eventsCount = fssbBetData!.selections.length;
-      selectionsCount = fssbBetData!.selections.length;
-    } else {
-      // Para Biahosted, calcular odds normalmente
-      totalOdds = betMarkets.reduce((total: number, event: BettingEvent) => {
-        return total * event.odds.reduce((eventTotal: number, odd: BettingOdd) => eventTotal * odd.price, 1);
-      }, 1);
-      eventsCount = betMarkets.length;
-      selectionsCount = betMarkets.reduce((total: number, event: BettingEvent) => total + event.odds.length, 0);
-    }
-    const potentialWin = workerResult.totalStake * totalOdds;
     
     console.log('\n💰 Resumo final da operação:');
     console.log(`- Stake total: R$ ${workerResult.totalStake.toFixed(2)}`);
-    console.log(`- Odds total: ${totalOdds.toFixed(2)}`);
-    console.log(`- Ganho potencial: R$ ${potentialWin.toFixed(2)}`);
     console.log(`- Taxa de sucesso: ${workerResult.summary.successRate.toFixed(2)}%`);
     console.log(`- Tempo total: ${workerResult.totalProcessingTime}ms`);
     
-    // Preparar resposta consolidada
+    // Buscar dados completos do BetBetting e BetBilhetes
+    const betBettingComplete = await bettingService.getBetBettingById(betBetting.id);
+    const betBilhetes = await bettingService.getBetBilhetesByBetBettingId(betBetting.id);
+
+    // Preparar resposta consolidada simplificada
     const response = {
       success: workerResult.successfulBets > 0,
       message: workerResult.successfulBets > 0 
-        ? `${workerResult.successfulBets} apostas processadas com sucesso (HACK ATIVO)` 
-        : 'Nenhuma aposta foi processada com sucesso (HACK ATIVO)',
-      workerResult: {
-        totalAccounts: workerResult.totalAccounts,
-        successfulBets: workerResult.successfulBets,
-        failedBets: workerResult.failedBets,
-        totalStake: workerResult.totalStake,
-        totalProcessingTime: workerResult.totalProcessingTime,
-        successRate: workerResult.summary.successRate
-      },
+        ? `${workerResult.successfulBets} apostas processadas com sucesso` 
+        : 'Nenhuma aposta foi processada com sucesso',
+      betBetting: betBettingComplete ? {
+        id: betBettingComplete.id,
+        accountId: betBettingComplete.accountId,
+        description: betBettingComplete.description,
+        stakeTotal: Number(betBettingComplete.stakeTotal),
+        averageOdd: Number(betBettingComplete.averageOdd),
+        totalBilhetes: betBettingComplete.totalBilhetes,
+        successfulBilhetes: betBettingComplete.successfulBilhetes,
+        failedBilhetes: betBettingComplete.failedBilhetes,
+        totalPotentialWin: betBettingComplete.totalPotentialWin ? Number(betBettingComplete.totalPotentialWin) : null,
+        status: betBettingComplete.status,
+        createdAt: betBettingComplete.createdAt,
+        updatedAt: betBettingComplete.updatedAt
+      } : null,
+      bilhetes: betBilhetes.map(bilhete => ({
+        id: bilhete.id,
+        platform: bilhete.platform,
+        site: bilhete.site,
+        bilheteId: bilhete.bilheteId,
+        stake: Number(bilhete.stake),
+        odd: Number(bilhete.odd),
+        potentialWin: bilhete.potentialWin ? Number(bilhete.potentialWin) : null,
+        balanceBefore: Number(bilhete.balanceBefore),
+        balanceAfter: bilhete.balanceAfter ? Number(bilhete.balanceAfter) : null,
+        status: bilhete.status,
+        errorMessage: bilhete.errorMessage,
+        createdAt: bilhete.createdAt
+      })),
       summary: {
         totalStake: workerResult.totalStake,
-        totalOdds,
-        potentialWin,
-        betType: eventsCount === 1 ? 'simples' : 'multipla',
-        eventsCount: eventsCount,
-        selectionsCount: selectionsCount
-      },
-      accounts: {
-        sufficientBalance: balanceResult.sufficientBalance.map(account => ({
-          id: account.id,
-          site: account.site,
-          platform: account.platform,
-          balance: account.balance / 100,
-          siteUrl: account.siteUrl,
-          userId: account.userId
-        })),
-        insufficientBalance: balanceResult.insufficientBalance.map(account => ({
-          id: account.id,
-          site: account.site,
-          platform: account.platform,
-          balance: account.balance / 100,
-          needed: (totalStakeInCents - account.balance) / 100,
-          siteUrl: account.siteUrl
-        })),
-        totalRequired: totalStakeRequired,
-        totalAvailable: balanceResult.totalAvailable / 100
-      },
-      bettingResults: workerResult.results.map(result => ({
-        accountId: result.accountId,
-        site: result.site,
-        platform: result.platform,
-        success: result.success,
-        betId: result.betId,
-        error: result.error,
-        stake: result.stake,
-        balance: result.balance / 100, // Converter para reais
-        newBalance: result.newBalance ? result.newBalance / 100 : undefined,
-        processingTime: result.processingTime,
-        timestamp: result.timestamp
-      })),
-      timestamp: new Date().toISOString()
+        successfulBets: workerResult.successfulBets,
+        failedBets: workerResult.failedBets,
+        successRate: workerResult.summary.successRate,
+        processingTime: workerResult.totalProcessingTime
+      }
     };
     
     //console.log('✅ Resposta enviada para o frontend:', response);

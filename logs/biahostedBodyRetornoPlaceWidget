@@ -1,0 +1,50 @@
+{
+    "culture": "pt-BR",
+    "timezoneOffset": 180,
+    "integration": "lotogreen",
+    "deviceType": 1,
+    "numFormat": "en-GB",
+    "countryCode": "BR",
+    "betType": 0,
+    "isAutoCharge": false,
+    "stakes": [
+      15
+    ],
+    "oddsChangeAction": 1,
+    "betMarkets": [
+      {
+        "id": 14083496,
+        "isBanker": false,
+        "dbId": 10,
+        "sportName": "Futebol",
+        "rC": false,
+        "eventName": "Flamengo vs. Racing Club",
+        "catName": "Américas",
+        "champName": "Copa Libertadores",
+        "sportTypeId": 1,
+        "odds": [
+          {
+            "id": 2911669708,
+            "marketId": 1189183450,
+            "price": 4.3334,
+            "marketName": "Vencedor do encontro",
+            "marketTypeId": 1,
+            "mostBalanced": false,
+            "selectionTypeId": 1,
+            "selectionName": "Empate",
+            "widgetInfo": {
+              "widget": 12,
+              "page": 3,
+              "tabIndex": 3
+            }
+          }
+        ]
+      }
+    ],
+    "eachWays": [
+      false
+    ],
+    "requestId": "iE404mHi26jVwY5ENHS2",
+    "confirmedByClient": false,
+    "device": 0
+  },

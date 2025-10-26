@@ -111,12 +111,23 @@ export function BettingList({ onViewDetails }: BettingListProps) {
                   height: '2.5rem',
                   width: '100%',
                   borderRadius: '0.375rem',
-                  border: '1px solid #d1d5db',
+                  border: '2px solid #d1d5db',
                   backgroundColor: 'white',
                   padding: '0.5rem 0.75rem',
                   fontSize: '0.875rem',
+                  fontWeight: '500',
+                  color: '#374151',
                   outline: 'none',
-                  transition: 'border-color 0.2s ease-in-out'
+                  transition: 'all 0.2s ease-in-out',
+                  cursor: 'pointer'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#3b82f6';
+                  e.target.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = '#d1d5db';
+                  e.target.style.boxShadow = 'none';
                 }}
               >
                 <option value="all">Todos</option>
@@ -139,12 +150,23 @@ export function BettingList({ onViewDetails }: BettingListProps) {
                   height: '2.5rem',
                   width: '100%',
                   borderRadius: '0.375rem',
-                  border: '1px solid #d1d5db',
+                  border: '2px solid #d1d5db',
                   backgroundColor: 'white',
                   padding: '0.5rem 0.75rem',
                   fontSize: '0.875rem',
+                  fontWeight: '500',
+                  color: '#374151',
                   outline: 'none',
-                  transition: 'border-color 0.2s ease-in-out'
+                  transition: 'all 0.2s ease-in-out',
+                  cursor: 'pointer'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#3b82f6';
+                  e.target.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = '#d1d5db';
+                  e.target.style.boxShadow = 'none';
                 }}
               >
                 <option value="all">Todos</option>
@@ -167,12 +189,23 @@ export function BettingList({ onViewDetails }: BettingListProps) {
                   height: '2.5rem',
                   width: '100%',
                   borderRadius: '0.375rem',
-                  border: '1px solid #d1d5db',
+                  border: '2px solid #d1d5db',
                   backgroundColor: 'white',
                   padding: '0.5rem 0.75rem',
                   fontSize: '0.875rem',
+                  fontWeight: '500',
+                  color: '#374151',
                   outline: 'none',
-                  transition: 'border-color 0.2s ease-in-out'
+                  transition: 'all 0.2s ease-in-out',
+                  cursor: 'pointer'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#3b82f6';
+                  e.target.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = '#d1d5db';
+                  e.target.style.boxShadow = 'none';
                 }}
               >
                 <option value="all">Todas</option>
@@ -208,7 +241,7 @@ export function BettingList({ onViewDetails }: BettingListProps) {
                       <DollarSign className="h-4 w-4 text-gray-500" />
                       <div>
                         <p className="text-sm text-gray-600">Stake Total</p>
-                        <p className="font-semibold">R$ {betting.stakeTotal.toFixed(2)}</p>
+                        <p className="font-semibold text-gray-900">R$ {betting.stakeTotal.toFixed(2)}</p>
                       </div>
                     </div>
 
@@ -216,7 +249,7 @@ export function BettingList({ onViewDetails }: BettingListProps) {
                       <TrendingUp className="h-4 w-4 text-gray-500" />
                       <div>
                         <p className="text-sm text-gray-600">Odd Média</p>
-                        <p className="font-semibold">{betting.averageOdd.toFixed(2)}</p>
+                        <p className="font-semibold text-gray-900">{betting.averageOdd.toFixed(2)}</p>
                       </div>
                     </div>
 
@@ -224,7 +257,7 @@ export function BettingList({ onViewDetails }: BettingListProps) {
                       <Target className="h-4 w-4 text-gray-500" />
                       <div>
                         <p className="text-sm text-gray-600">Bilhetes</p>
-                        <p className="font-semibold">
+                        <p className="font-semibold text-gray-900">
                           {betting.successfulBilhetes}/{betting.totalBilhetes}
                         </p>
                       </div>
@@ -249,7 +282,7 @@ export function BettingList({ onViewDetails }: BettingListProps) {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between text-sm text-gray-500">
+                  <div className="flex items-center justify-between text-sm text-gray-700">
                     <span>
                       Criado em {betting.createdAt.toLocaleDateString('pt-BR')} às{' '}
                       {betting.createdAt.toLocaleTimeString('pt-BR', { 

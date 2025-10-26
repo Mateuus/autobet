@@ -2,9 +2,40 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { X, Trash2, Settings } from 'lucide-react';
+import { X, Trash2, Settings, Loader2 } from 'lucide-react';
 import { useBetting } from '@/contexts/BettingContext';
 import { usePlatform } from '@/contexts/PlatformContext';
+import { BettingResultModal } from '@/components/betting/BettingResultModal';
+
+interface BilheteResult {
+  id: string;
+  platform: string;
+  site: string;
+  bilheteId?: string;
+  stake: number;
+  odd: number;
+  potentialWin?: number | null;
+  balanceBefore: number;
+  balanceAfter?: number | null;
+  status: string;
+  errorMessage?: string;
+  createdAt: Date;
+}
+
+interface BetBettingResult {
+  id: string;
+  accountId: string;
+  description?: string;
+  stakeTotal: number;
+  averageOdd: number;
+  totalBilhetes: number;
+  successfulBilhetes: number;
+  failedBilhetes: number;
+  totalPotentialWin?: number | null;
+  status: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
 interface BettingSlipModalProps {
   isOpen: boolean;
@@ -16,6 +47,19 @@ export default function BettingSlipModal({ isOpen, onClose }: BettingSlipModalPr
   const { isFssbPlatform, isBiahostedPlatform } = usePlatform();
   const [activeTab, setActiveTab] = useState<'simples' | 'multipla'>('simples');
   const [stakes, setStakes] = useState<Record<string | number, number>>({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [showResultModal, setShowResultModal] = useState(false);
+  const [bettingResult, setBettingResult] = useState<{
+    betBetting: BetBettingResult | null;
+    bilhetes: BilheteResult[];
+    summary: {
+      totalStake: number;
+      successfulBets: number;
+      failedBets: number;
+      successRate: number;
+      processingTime: number;
+    };
+  } | null>(null);
   const router = useRouter();
 
   console.log('🎯 [BettingSlipModal] Modal aberto:', isOpen);
@@ -200,6 +244,8 @@ export default function BettingSlipModal({ isOpen, onClose }: BettingSlipModalPr
   };
 
   const handlePlaceBet = async () => {
+    setIsLoading(true);
+    
     try {
       const payload = prepareBettingPayload();
       
@@ -216,14 +262,23 @@ export default function BettingSlipModal({ isOpen, onClose }: BettingSlipModalPr
       if (response.ok) {
         const result = await response.json();
         console.log('✅ Resposta do backend:', result);
-        alert('Aposta enviada com sucesso!');
+        
+        // Armazenar resultado e mostrar modal
+        setBettingResult(result);
+        setShowResultModal(true);
+        
+        // Fechar o modal de aposta
+        onClose();
       } else {
-        console.error('❌ Erro ao enviar aposta:', response.statusText);
+        const errorData = await response.json();
+        console.error('❌ Erro ao enviar aposta:', errorData);
         alert('Erro ao enviar aposta. Tente novamente.');
       }
     } catch (error) {
       console.error('❌ Erro na requisição:', error);
       alert('Erro na conexão. Tente novamente.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -380,9 +435,17 @@ export default function BettingSlipModal({ isOpen, onClose }: BettingSlipModalPr
             {/* Place bet button */}
             <button 
               onClick={handlePlaceBet}
-              className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2.5 rounded transition-colors"
+              disabled={isLoading}
+              className="w-full bg-red-600 hover:bg-red-700 disabled:bg-red-400 disabled:cursor-not-allowed text-white font-medium py-2.5 rounded transition-colors flex items-center justify-center gap-2"
             >
-              Fazer aposta
+              {isLoading ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  Processando...
+                </>
+              ) : (
+                'Fazer aposta'
+              )}
             </button>
 
             {/* Settings */}
@@ -393,6 +456,24 @@ export default function BettingSlipModal({ isOpen, onClose }: BettingSlipModalPr
           </div>
         )}
       </div>
+
+      {/* Modal de Resultados */}
+      {bettingResult && (
+        <BettingResultModal
+          isOpen={showResultModal}
+          onClose={() => {
+            setShowResultModal(false);
+            setBettingResult(null);
+          }}
+          betBetting={bettingResult.betBetting}
+          bilhetes={bettingResult.bilhetes}
+          summary={bettingResult.summary}
+          onRetry={(bilheteId) => {
+            console.log('Retentar aposta:', bilheteId);
+            // TODO: Implementar lógica de retry
+          }}
+        />
+      )}
     </div>
   );
 }
